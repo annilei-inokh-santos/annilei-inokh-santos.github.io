@@ -28,6 +28,29 @@ html, body {
 
 
 /* ============================================================
+   2.1 TEXT SIZE SCALING
+   ============================================================ */
+/* Global +30% text size increase */
+html {
+  font-size: 130%;
+}
+
+/* Mobile devices - additional +15% (total +45% from original) */
+@media (max-width: 768px) {
+  html {
+    font-size: 145%;
+  }
+}
+
+/* Extra small devices - maintain readability */
+@media (max-width: 480px) {
+  html {
+    font-size: 145%;
+  }
+}
+
+
+/* ============================================================
    3. CSS VARIABLES — THEMES
    ============================================================ */
 .p.dark {
