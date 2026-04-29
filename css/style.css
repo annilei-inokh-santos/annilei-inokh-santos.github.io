@@ -220,10 +220,10 @@ h1 {
   font-size: 14px !important;
 }
 
-/* Mobile devices - additional +35% (total +65% from original) */
+/* Mobile devices - additional +30% (+60% total from original) */
 @media (max-width: 768px) {
   .p {
-    font-size: 1.65rem;
+    font-size: 1.6rem;
   }
   
   .eyebrow {
