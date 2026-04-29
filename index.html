@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Annilei Inokh C. Santos</title>
+
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Lordicon Web Component -->
+  <script src="https://cdn.lordicon.com/lordicon.js"></script>
+</head>
+<body>
+
+<div class="p dark" id="site">
+
+  <!-- Animated Orb Background -->
+  <div class="orb-container" id="orbContainer">
+    <div class="interactive-orb" id="interactiveOrb"></div>
+  </div>
+
+  <div class="content-wrapper">
+
+    <!-- ── Navigation ─────────────────────────────────────── -->
+    <nav>
+      <div class="logo" style="display:inline-flex;align-items:center;gap:10px;">AICS<div class="status-pill"><div class="sdot"></div>busy</div></div>
+      <div class="nav-r">
+        <a href="#exp">experience</a>
+        <a href="#proj">projects</a>
+        <a href="#connect">connect</a>
+        <button class="toggle-btn" id="modeBtn">
+          <span class="t-icon" id="modeIcon">☀</span>
+          <span id="modeTxt">light</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ── Hero ───────────────────────────────────────────── -->
+    <div class="hero">
+      <div class="eyebrow">frontend developer · visual designer</div>
+      <h1>Technical by curriculum.<br><em>Creative by nature.</em></h1>
+
+      <div class="hero-body">
+        <p class="hero-desc">
+          I code like a designer thinks. Creativity didn't get left behind;<br>
+          it just learned new tools. People notice.
+          <u><i>That's what I'm most proud of.</i></u>
+        </p><br>
+
+        <div class="cta-wrap">
+          <div class="cta-portfolio">
+            <svg class="portfolio-icon"
+                 xmlns="http://www.w3.org/2000/svg"
+                 width="32" height="32"
+                 viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="1.3125"
+                 stroke-linecap="round"
+                 stroke-linejoin="round">
+              <path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"/>
+              <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/>
+              <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/>
+              <circle cx="6.5"  cy="12.5" r=".5" fill="currentColor"/>
+              <circle cx="8.5"  cy="7.5"  r=".5" fill="currentColor"/>
+            </svg>
+            View design portfolio
+          </div>
+          <div class="cta-hint">graphic &amp; visual work · render.com</div>
+
+          <!-- GIF Interactive Button — static on load, animates on hover (CSS) -->
+          <button class="gif-button" id="gifBtn" aria-label="Interactive button">
+            <lord-icon class="fallback-icon"
+              src="https://cdn.lordicon.com/ailnzwyn.json"
+              trigger="hover"
+              stroke="bold"
+              colors="primary:#b8d4ff,secondary:#d4c8ff"
+              style="width:60px;height:60px">
+            </lord-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Two-Column: Experience + Projects ──────────────── -->
+    <div class="two-col">
+
+      <!-- Experience -->
+      <div class="col-l">
+        <div class="sec-label">experience</div>
+
+        <div class="exp-item" id="exp">
+          <div class="exp-top">
+            <div class="exp-role">Academy Delegate: Cloud Elite</div>
+            <div class="proj-tag t-b">Apr 2026 – Present</div>
+          </div>
+          <div class="exp-place"><a href="https://www.accenture.com/ph-en">Accenture · Mandaluyong City</a></div>
+          <div class="exp-desc">An Academy Delegate in the Cloud Elite program, focusing on cloud technologies and enterprise solutions.</div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-top">
+            <div class="exp-role">Microsoft AppDev OJT Trainee</div>
+            <div class="proj-tag t-v">Feb 2026 – Apr 2026</div>
+          </div>
+          <div class="exp-place"><a href="https://www.accenture.com/ph-en">Accenture · Mandaluyong City</a></div>
+          <div class="exp-desc">On-the-job trainee specializing in Microsoft application development and enterprise software solutions.</div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-top">
+            <div class="exp-role">Volunteer Graphics Designer</div>
+            <div class="proj-tag t-b">Nov 2025 – Mar 2026</div>
+          </div>
+          <div class="exp-place"><a href="https://www.facebook.com/arduinodayph">Arduino Day Philippines (ADPH)</a></div>
+          <div class="exp-desc">Delivered 30+ promotional materials including social media pubmats and merchandise designs, while collaborating with the Creatives team on event planning and quality control.</div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-top">
+            <div class="exp-role">Creatives Officer</div>
+            <div class="proj-tag t-v">Aug 2024 – Nov 2024</div>
+          </div>
+          <div class="exp-place"><a href="https://www.facebook.com/stiorca.alpha">Alliance of Leading Programmers through Heuristic Adaptation (ALPHA)</a></div>
+          <div class="exp-desc">Produced 15+ club promotional materials, managed design requests, and assisted with event logistics as a Creatives Officer.</div>
+        </div>
+      </div>
+
+      <!-- Projects -->
+      <div class="col-r">
+        <div class="sec-label" id="proj">projects</div>
+
+        <div class="proj-item">
+          <div class="proj-top">
+            <div class="proj-name">project alpha</div>
+            <div class="proj-tag t-b">2026 · _jsx_</div>
+          </div>
+          <div class="proj-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+        </div>
+
+        <div class="proj-item">
+          <div class="proj-top">
+            <div class="proj-name">project beta</div>
+            <div class="proj-tag t-v">2026 · _csx_</div>
+          </div>
+          <div class="proj-desc">Ut enim ad minim veniam, quis nostrud exercitation.</div>
+        </div>
+
+        <div class="proj-item">
+          <div class="proj-top">
+            <div class="proj-name">project gamma</div>
+            <div class="proj-tag t-b">2026 · _htx_</div>
+          </div>
+          <div class="proj-desc">Duis aute irure dolor in reprehenderit.</div>
+        </div>
+
+        <div class="proj-item">
+          <div class="proj-top">
+            <div class="proj-name">project delta</div>
+            <div class="proj-tag t-v">2026 · _jsx_</div>
+          </div>
+          <div class="proj-desc">Excepteur sint occaecat cupidatat non proident.</div>
+        </div>
+
+        <div class="proj-item">
+          <div class="proj-top">
+            <div class="proj-name">project epsilon</div>
+            <div class="proj-tag t-b">2026 · _jsx_</div>
+          </div>
+          <div class="proj-desc">Sed ut perspiciatis unde omnis iste natus error.</div>
+        </div>
+
+        <div class="proj-item">
+          <div class="proj-top">
+            <div class="proj-name">project legacy</div>
+            <div class="proj-tag t-v">2020 · _legacy_</div>
+          </div>
+          <div class="proj-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+        </div>
+      </div>
+
+    </div><!-- /.two-col -->
+
+    <!-- ── Connect ────────────────────────────────────────── -->
+    <div class="contrib-band" id="connect">
+      <div class="sec-label">connect</div>
+      <div class="contrib-inner" style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+        <div>
+          <div class="c-big"><b class="shimmer-letter">A</b>nnilei <b class="shimmer-letter">I</b>nokh <b class="shimmer-letter">C</b>anapit <b class="shimmer-letter">S</b>antos</div>
+          <div class="c-sub"><em>Connect with me on my other platforms.</em></div>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+
+          <!-- GitHub -->
+          <a href="https://github.com/leiixz"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="social-btn github-lordicon">
+            <lord-icon src="https://cdn.lordicon.com/lllcnxva.json"
+                       trigger="hover"
+                       style="width:50px;height:50px"></lord-icon>
+          </a>
+
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/annilei-inokh-santos-2175923a7/"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="social-btn linkedin-lordicon">
+            <lord-icon src="https://cdn.lordicon.com/qjbuypqy.json"
+                       trigger="hover"
+                       stroke="bold"
+                       state="hover-draw"
+                       style="width:30px;height:30px"></lord-icon>
+          </a>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Footer ─────────────────────────────────────────── -->
+    <div class="bottom">
+      <div class="sig-row">
+        <div class="sig s-b">HTML/CSS/JS</div>
+        <div class="sig s-v">GitHub</div>
+        <div class="sig s-b">Deepseek · Gemini · Claude</div>
+      </div>
+      <div class="build-note">annilei inokh · 2026</div>
+    </div>
+
+  </div><!-- /.content-wrapper -->
+</div><!-- /#site -->
+
+<!-- Popup Modal for Portfolio Version Selector -->
+<div id="carouselModal" class="modal">
+  <span class="close-btn">&times;</span>
+  <div class="modal-inner">
+    <!-- Top Carousel Container - Portfolio Versions -->
+    <div class="carousel-wrapper">
+      <div class="carousel-container">
+        <button class="carousel-arrow left-arrow">&#10094;</button>
+        <div class="carousel-track-container">
+          <div class="carousel-track" id="carouselTrack">
+            <div class="carousel-card" data-version="v1" data-number="1" data-created-month="JUN" data-created-day="15" data-created-year="2025">
+              <img src="https://placehold.co/400x250/4a6fa5/white?text=Portfolio+v1" alt="Portfolio Version 1" class="card-image">
+              <span class="version-label">v1</span>
+            </div>
+            <div class="carousel-card" data-version="v2" data-number="2" data-created-month="AUG" data-created-day="20" data-created-year="2025">
+              <img src="https://placehold.co/400x250/7b8a9e/white?text=Portfolio+v2" alt="Portfolio Version 2" class="card-image">
+              <span class="version-label">v2</span>
+            </div>
+            <div class="carousel-card" data-version="v3" data-number="3" data-created-month="DEC" data-created-day="10" data-created-year="2025">
+              <img src="https://placehold.co/400x250/9b7bb5/white?text=Portfolio+v3" alt="Portfolio Version 3" class="card-image">
+              <span class="version-label">v3</span>
+            </div>
+            <div class="carousel-card" data-version="v4" data-number="4" data-created-month="FEB" data-created-day="28" data-created-year="2026">
+              <img src="https://placehold.co/400x250/d4c8ff/1e1e2a?text=Portfolio+v4" alt="Portfolio Version 4" class="card-image">
+              <span class="version-label">v4</span>
+            </div>
+            <div class="carousel-card" data-version="v5" data-number="5" data-created-month="MAY" data-created-day="05" data-created-year="2026">
+              <img src="https://placehold.co/400x250/b8ffd4/1e1e2a?text=Portfolio+v5" alt="Portfolio Version 5" class="card-image">
+              <span class="version-label">v5</span>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-arrow right-arrow">&#10095;</button>
+      </div>
+    </div>
+
+    <!-- Bottom Display - Selected Version Display (Stacked Layout) -->
+    <div class="bottom-rectangle" id="bottomRectangle">
+      <div class="rectangle-content">
+        <!-- Destination Time (Portfolio Creation Date) -->
+        <div class="time-container destination-time">
+          <div class="time-values-wrapper">
+            <div class="time-item">
+              <div class="time-label">MONTH</div>
+              <div class="time-value-box month-box" data-ghost="MMM">
+                <div class="time-month" id="destinationMonth">JUN</div>
+              </div>
+            </div>
+            <div class="time-item">
+              <div class="time-label">DAY</div>
+              <div class="time-value-box day-box" data-ghost="88">
+                <div class="time-day" id="destinationDay">15</div>
+              </div>
+            </div>
+            <div class="time-item">
+              <div class="time-label">YEAR</div>
+              <div class="time-value-box year-box" data-ghost="8888">
+                <div class="time-year" id="destinationYear">2025</div>
+              </div>
+            </div>
+          </div>
+          <div class="time-header">DESTINATION TIME</div>
+        </div>
+
+        <!-- Present Time (Real-time) -->
+        <div class="time-container present-time">
+          <div class="time-values-wrapper">
+            <div class="time-item">
+              <div class="time-label">MONTH</div>
+              <div class="time-value-box month-box" data-ghost="MMM">
+                <div class="time-month" id="presentMonth">---</div>
+              </div>
+            </div>
+            <div class="time-item">
+              <div class="time-label">DAY</div>
+              <div class="time-value-box day-box" data-ghost="88">
+                <div class="time-day" id="presentDay">--</div>
+              </div>
+            </div>
+            <div class="time-item">
+              <div class="time-label">YEAR</div>
+              <div class="time-value-box year-box" data-ghost="8888">
+                <div class="time-year" id="presentYear">----</div>
+              </div>
+            </div>
+          </div>
+          <div class="time-header">PRESENT TIME</div>
+        </div>
+
+        <!-- Last Time Departed (Previously Selected Portfolio) -->
+        <div class="time-container last-departed">
+          <div class="time-values-wrapper">
+            <div class="time-item">
+              <div class="time-label">MONTH</div>
+              <div class="time-value-box month-box" data-ghost="MMM">
+                <div class="time-month" id="lastMonth">---</div>
+              </div>
+            </div>
+            <div class="time-item">
+              <div class="time-label">DAY</div>
+              <div class="time-value-box day-box" data-ghost="88">
+                <div class="time-day" id="lastDay">--</div>
+              </div>
+            </div>
+            <div class="time-item">
+              <div class="time-label">YEAR</div>
+              <div class="time-value-box year-box" data-ghost="8888">
+                <div class="time-year" id="lastYear">----</div>
+              </div>
+            </div>
+          </div>
+          <div class="time-header">LAST TIME DEPARTED</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- External Script — loaded at end of body for DOM availability -->
+<script src="js/script.js"></script>
+
+</body>
+</html>

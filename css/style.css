@@ -1,0 +1,1336 @@
+/* ============================================================
+   STYLE.CSS — Annilei Inokh C. Santos Portfolio
+   ============================================================ */
+
+
+/* ============================================================
+   1. IMPORTS
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500&family=Montserrat:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.cdnfonts.com/css/ds-digital');
+
+
+/* ============================================================
+   2. RESET & BASE
+   ============================================================ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Smooth scrolling on both — browser picks whichever is the scroll container */
+html, body {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+
+/* ============================================================
+   3. CSS VARIABLES — THEMES
+   ============================================================ */
+.p.dark {
+  --bg:        #090b11;
+  --bg2:       #0e1118;
+  --bg3:       #13161f;
+  --border:    rgba(255,255,255,0.07);
+  --border2:   rgba(255,255,255,0.04);
+  --txt:       #e2eafc;
+  --txt2:      rgba(226,234,252,0.7);
+  --txt3:      rgba(226,234,252,0.35);
+  --blue:      #b8d4ff;
+  --blue-bg:   rgba(184,212,255,0.08);
+  --blue-bd:   rgba(184,212,255,0.4);
+  --violet:    #d4c8ff;
+  --violet-bg: rgba(212,200,255,0.08);
+  --violet-bd: rgba(212,200,255,0.38);
+  --head:      #eff3fc;
+  --orb1:      rgba(100,80,200,0.4);
+  --orb2:      rgba(80,150,220,0.35);
+  --orb3:      rgba(180,100,200,0.3);
+  --link:      #7aa2f7;
+  --link-hover:#b4f9f9;
+}
+
+.p.light {
+  --bg:        #fdf7e8;
+  --bg2:       #faf0dd;
+  --bg3:       #f7e8d0;
+  --border:    rgba(0,0,0,0.08);
+  --border2:   rgba(0,0,0,0.05);
+  --txt:       #3d3522;
+  --txt2:      rgba(61,53,34,0.72);
+  --txt3:      rgba(61,53,34,0.4);
+  --blue:      #7b8a9e;
+  --blue-bg:   rgba(123,138,158,0.08);
+  --blue-bd:   rgba(123,138,158,0.3);
+  --violet:    #9b7bb5;
+  --violet-bg: rgba(155,123,181,0.06);
+  --violet-bd: rgba(155,123,181,0.25);
+  --head:      #3d3522;
+  --orb1:      rgba(155,123,181,0.25);
+  --orb2:      rgba(123,138,158,0.2);
+  --orb3:      rgba(180,100,200,0.2);
+  --link:      #8b5e9e;
+  --link-hover: #a875b8;
+}
+
+
+/* ============================================================
+   4. GLOBAL
+   ============================================================ */
+.p {
+  font-family: 'Outfit', sans-serif;
+  width: 100%;
+  min-height: 100vh;
+  transition: background 0.3s, color 0.3s;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  background: var(--bg);
+  color: var(--txt);
+}
+
+/* Montserrat for bold elements */
+h1, .exp-role, .proj-name, .cta, .exp-place, .c-big, .logo b {
+  font-family: 'Montserrat', sans-serif;
+}
+h1         { font-weight: 700; }
+.exp-role  { font-weight: 600; }
+.proj-name { font-weight: 600; }
+.cta       { font-weight: 600; }
+.c-big     { font-weight: 700; }
+
+/* Distinct clickable link styles */
+a {
+  color: var(--link);
+  text-decoration: none;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+
+/* ============================================================
+   5. ANIMATIONS / KEYFRAMES
+   ============================================================ */
+@keyframes shimmerMove {
+  0%   { background-position: 250% 0; }
+  100% { background-position: -250% 0; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { text-shadow: 0 0 0px rgba(184,212,255,0); }
+  50%       { text-shadow: 0 0 4px var(--blue); }
+}
+
+@keyframes bl {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.2; }
+}
+
+@keyframes floatOrb {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(20px, -20px) scale(1.05); }
+}
+
+
+/* ============================================================
+   6. COMPONENTS — Orbs / Background
+   ============================================================ */
+.orb-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.4;
+  transition: transform 0.3s ease-out, opacity 0.2s ease, left 3s linear, top 3s linear;
+  pointer-events: none;
+  will-change: transform;
+}
+.p.dark .orb  { opacity: 0.25; }
+.p.light .orb { opacity: 0.15; }
+
+.interactive-orb {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  transition: transform 0.05s linear;
+  z-index: 0;
+  opacity: 0.5;
+}
+.p.dark .interactive-orb  { opacity: 0.35; }
+.p.light .interactive-orb { opacity: 0.2; }
+
+
+/* ============================================================
+   7. COMPONENTS — Content Wrapper
+   ============================================================ */
+.content-wrapper {
+  position: relative;
+  z-index: 2;
+  overflow-x: hidden;
+  max-width: min(1400px, 100vw);
+  margin: 0 auto;
+  width: 100%;
+}
+
+
+/* ============================================================
+   8. COMPONENTS — Navigation
+   ============================================================ */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 36px;
+  border-bottom: 0.5px solid var(--border);
+  position: relative;
+  z-index: 3;
+  background: transparent;
+  backdrop-filter: blur(2px);
+}
+
+.logo {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(
+    90deg,
+    var(--txt3) 0%,
+    var(--txt3) 30%,
+    var(--blue) 50%,
+    var(--txt3) 70%,
+    var(--txt3) 100%
+  );
+  background-size: 250% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: shimmerMove 8s ease-in-out infinite, pulseGlow 4s ease-in-out infinite;
+}
+
+/* Status pill inside .logo must opt out of the shimmer text clip */
+.logo .status-pill {
+  background-clip: unset;
+  -webkit-background-clip: unset;
+  color: var(--blue);
+  animation: none;
+  text-shadow: none;
+  font-size: 9px;
+  vertical-align: middle;
+}
+
+.nav-r { display: flex; gap: 20px; align-items: center; }
+.nav-r a {
+  font-size: 12px;
+  color: var(--txt3);
+  text-decoration: none;
+  font-weight: 300;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.nav-r a:hover { color: var(--txt); text-decoration: underline; }
+
+
+/* ============================================================
+   9. COMPONENTS — Status Pill
+   ============================================================ */
+.status-pill {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 0.5px solid var(--blue-bd);
+  color: var(--blue);
+  letter-spacing: 0.1em;
+  background: var(--bg2);
+}
+
+.sdot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--blue);
+  animation: bl 2s infinite;
+}
+
+
+/* ============================================================
+   10. COMPONENTS — Toggle Button
+   ============================================================ */
+.toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px 6px 12px;
+  border-radius: 40px;
+  border: 2.5px solid var(--border);
+  background: transparent;
+  color: var(--txt2);
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 0.06em;
+}
+.toggle-btn:hover {
+  color: var(--blue);
+  background: var(--blue-bg);
+  border-color: var(--blue-bd);
+  transform: none;
+}
+
+.t-icon {
+  font-size: 16px;
+  line-height: 1;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.toggle-btn:hover .t-icon { transform: rotate(25deg); }
+
+
+/* ============================================================
+   11. SECTIONS — Hero
+   ============================================================ */
+.hero {
+  padding: 56px 36px 0;
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--blue);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  opacity: 0.8;
+}
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 42px;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: var(--head);
+  font-weight: 700;
+  max-width: 520px;
+  margin-bottom: 8px;
+  text-align: left;
+}
+h1 em {
+  font-style: italic;
+  color: var(--violet);
+  font-family: 'DM Serif Display', serif;
+  font-weight: 400;
+  display: block;
+  text-align: right;
+}
+
+.hero-body {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: start;
+  margin-top: 16px;
+  padding-bottom: 48px;
+  border-bottom: 0.5px solid var(--border);
+}
+
+.hero-desc {
+  font-size: 14px;
+  color: var(--txt2);
+  font-weight: 350;
+  line-height: 1.65;
+  max-width: 480px;
+}
+.hero-desc em {
+  color: var(--violet);
+  font-style: normal;
+  font-weight: 500;
+}
+
+.cta-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.cta-hint {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  color: var(--txt3);
+  text-align: right;
+  margin-top: 6px;
+}
+
+
+/* ============================================================
+   12. COMPONENTS — CTA Portfolio Button
+   ============================================================ */
+.cta-portfolio {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 28px;
+  border-radius: 0;
+  border: 2px dashed var(--violet);
+  background: transparent;
+  color: var(--violet);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  position: relative;
+  backdrop-filter: blur(2px);
+}
+.cta-portfolio:hover {
+  border: 2px solid var(--violet);
+  background: var(--violet-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 0 12px rgba(124,58,237,0.3);
+}
+.cta-portfolio .portfolio-icon {
+  width: 32px;
+  height: 32px;
+  transition: transform 0.3s ease;
+  stroke: var(--violet);
+}
+
+
+/* ============================================================
+   13. COMPONENTS — GIF Interactive Button (FIXED: Lordicon fallback with theme colors)
+   ============================================================ */
+.gif-button {
+  display: inline-block;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  transition: transform 0.3s ease;
+  width: 80px;
+  height: 80px;
+  background-image: url('../assets/delorean-static.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fallback Lordicon - hidden by default, shows when images fail */
+.gif-button .fallback-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  display: none;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+/* When image fails to load, hide background image and show icon */
+.gif-button.image-failed {
+  background-image: none !important;
+  background-color: transparent !important;
+}
+
+.gif-button.image-failed .fallback-icon {
+  display: block;
+}
+
+.gif-button:hover {
+  background-image: url('../assets/delorean.gif');
+}
+
+/* On hover when image failed, animate the icon */
+.gif-button.image-failed:hover .fallback-icon {
+  transform: translate(-50%, -50%) scale(1.15);
+}
+
+/* Dark mode icon colors */
+.p.dark .gif-button.image-failed .fallback-icon {
+  color: var(--blue);
+}
+
+/* Light mode icon colors - MUCH DARKER for visibility */
+.p.light .gif-button.image-failed .fallback-icon {
+  color: #5a3e7a;
+}
+
+
+/* ============================================================
+   14. COMPONENTS — Social Buttons
+   ============================================================ */
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.social-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+.social-btn:active { transform: translateY(0); }
+
+/* GitHub Lordicon specific */
+.social-btn.github-lordicon { background: rgba(184,212,255,0.08); backdrop-filter: blur(8px); }
+.social-btn.github-lordicon:hover { background: rgba(184,212,255,0.25); box-shadow: 0 8px 20px rgba(184,212,255,0.2); }
+.social-btn.github-lordicon lord-icon { width: 28px; height: 28px; transition: all 0.3s ease; }
+.social-btn.github-lordicon:hover lord-icon { transform: scale(1.1); }
+
+/* LinkedIn Lordicon specific */
+.social-btn.linkedin-lordicon { background: rgba(212,200,255,0.08); backdrop-filter: blur(8px); }
+.social-btn.linkedin-lordicon:hover { background: rgba(212,200,255,0.25); box-shadow: 0 8px 20px rgba(212,200,255,0.2); }
+.social-btn.linkedin-lordicon lord-icon { width: 28px; height: 28px; transition: all 0.3s ease; }
+.social-btn.linkedin-lordicon:hover lord-icon { transform: scale(1.1); }
+
+/* Light mode adjustments */
+.p.light .social-btn.github-lordicon        { background: rgba(74,111,165,0.1); }
+.p.light .social-btn.github-lordicon:hover  { background: rgba(74,111,165,0.2); }
+.p.light .social-btn.linkedin-lordicon       { background: rgba(124,58,237,0.08); }
+.p.light .social-btn.linkedin-lordicon:hover { background: rgba(124,58,237,0.18); }
+
+
+/* ============================================================
+   15. SECTIONS — Two-Column Layout
+   ============================================================ */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 0.5px solid var(--border);
+  position: relative;
+  background: transparent;
+}
+
+.col-l { padding: 40px 36px; border-right: 0.5px solid var(--border); }
+.col-r { padding: 40px 36px; }
+
+/* Section Label */
+.sec-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--blue);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sec-label::after {
+  content: '';
+  flex: 1;
+  height: 0.5px;
+  background: var(--border2);
+}
+
+
+/* ============================================================
+   16. COMPONENTS — Experience Items
+   ============================================================ */
+.exp-item { margin-bottom: 32px; }
+.exp-item:last-child { margin-bottom: 0; }
+
+.exp-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 6px;
+}
+
+.exp-role {
+  font-size: 12px;
+  color: var(--blue);
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: -0.1px;
+}
+
+.exp-year {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--txt3);
+  background: var(--bg2);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.exp-place {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--txt);
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: -0.2px;
+}
+
+.exp-place a {
+  color: var(--violet);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.exp-place a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+.exp-desc {
+  font-size: 12.5px;
+  color: var(--txt2);
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+
+/* ============================================================
+   17. COMPONENTS — Project Items
+   ============================================================ */
+.proj-item {
+  padding: 16px 0;
+  border-bottom: 0.5px solid var(--border2);
+}
+.proj-item:first-of-type { padding-top: 0; }
+.proj-item:last-child    { border-bottom: none; padding-bottom: 0; }
+
+.proj-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.proj-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--head);
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: -0.2px;
+}
+
+.proj-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  padding: 3px 10px;
+  border-radius: 5px;
+  border: 0.5px solid;
+  font-weight: 500;
+}
+.t-b { border-color: var(--blue-bd);   color: var(--blue);   background: var(--blue-bg); }
+.t-v { border-color: var(--violet-bd); color: var(--violet); background: var(--violet-bg); }
+
+.proj-desc {
+  font-size: 12.5px;
+  color: var(--txt2);
+  font-weight: 300;
+  line-height: 1.65;
+}
+
+
+/* ============================================================
+   18. SECTIONS — Connect / Contributions Band
+   ============================================================ */
+.contrib-band {
+  padding: 36px 36px 32px;
+  border-bottom: 0.5px solid var(--border);
+  position: relative;
+  background: transparent;
+}
+
+.contrib-inner {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.contrib-left { flex-shrink: 0; }
+
+.c-big {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 42px;
+  color: var(--head);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  font-weight: 700;
+  overflow: visible;
+  display: inline-block;
+}
+
+/* Shimmer effect for letters in c-big - Dark mode (mirroring light mode structure) */
+.c-big .shimmer-letter {
+  display: inline-block;
+  background: linear-gradient(
+    90deg,
+    #4a6fa5 0%,
+    #4a6fa5 20%,
+    #7aa2f7 40%,
+    #d4c8ff 60%,
+    #7aa2f7 80%,
+    #4a6fa5 100%
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: shimmerMove 3s linear infinite;
+  font-weight: 800;
+  font-family: 'Montserrat', sans-serif;
+  overflow: visible;
+  position: relative;
+  z-index: 1;
+}
+
+/* Light mode - original working version */
+.p.light .c-big .shimmer-letter {
+  background: linear-gradient(
+    90deg,
+    #6b4e8a 0%,
+    #6b4e8a 20%,
+    #9b7bb5 40%,
+    #b8d4ff 60%,
+    #9b7bb5 80%,
+    #6b4e8a 100%
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: shimmerMove 3s linear infinite;
+  font-weight: 800;
+}
+
+@keyframes shimmerMove {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.c-big em {
+  color: var(--blue);
+  font-style: normal;
+  font-family: 'DM Serif Display', serif;
+  font-size: 38px;
+}
+
+.c-big em {
+  color: var(--blue);
+  font-style: normal;
+  font-family: 'DM Serif Display', serif;
+  font-size: 38px;
+}
+
+.c-sub {
+  font-size: 14px;
+  color: var(--txt3);
+  margin-top: 6px;
+  font-weight: 350;
+  letter-spacing: 0.3px;
+}
+
+.c-sub em {
+  color: var(--violet);
+  font-style: italic;
+  font-weight: 500;
+}
+
+
+/* ============================================================
+   19. SECTIONS — Footer / Bottom Bar
+   ============================================================ */
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 36px 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+  position: relative;
+}
+
+.sig-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.sig {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 5px;
+  border: 0.5px solid;
+  letter-spacing: 0.3px;
+}
+.s-b { border-color: var(--blue-bd);   color: var(--blue);   background: var(--blue-bg); }
+.s-v { border-color: var(--violet-bd); color: var(--violet); background: var(--violet-bg); }
+
+.build-note {
+  font-family: 'DM Mono', monospace;
+  font-size: 9.5px;
+  color: var(--txt3);
+  letter-spacing: 0.2px;
+}
+
+/* ============================================================
+   20. MODAL / POPUP STYLES (Simplified centering)
+   ============================================================ */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+}
+
+.close-btn {
+  position: fixed;
+  top: 25px;
+  right: 35px;
+  font-size: 45px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 1002;
+  background: rgba(255, 255, 255, 0.15);
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+}
+
+.close-btn:hover {
+  color: var(--violet);
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.modal-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  background: transparent;
+  padding: 20px 0;
+}
+
+/* If content is too tall, allow scrolling within modal */
+@media (max-height: 700px) {
+  .modal-inner {
+    top: 30%;
+    transform: translate(-50%, -30%);
+  }
+}
+
+
+/* ============================================================
+   21. CAROUSEL STYLES (SINGLE CARD DISPLAY)
+   ============================================================ */
+.carousel-wrapper {
+  width: 100%;
+  background: transparent;
+  padding: 5px 0;
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.carousel-track-container {
+  overflow: hidden;
+  width: 300px;
+  background: transparent;
+  position: relative;
+  padding: 5px 0;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  gap: 0px;
+  padding: 5px 0;
+  margin: 0;
+  position: relative;
+}
+
+.carousel-card {
+  min-width: 280px;
+  width: 280px;
+  height: 170px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  background-color: #4a6fa5;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  margin: 0 10px;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.carousel-card:hover .card-image {
+  transform: scale(1.03);
+}
+
+.carousel-card:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.carousel-card.active {
+  box-shadow: 0 0 0 2px var(--violet), 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-card.active .card-image {
+  transform: scale(1.01);
+}
+
+.version-label {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  color: white;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 3px 8px;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(4px);
+}
+
+.p.light .version-label {
+  color: #1e1e2a;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.carousel-arrow {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  margin: 0 12px;
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.carousel-arrow:hover {
+  background: var(--blue-bg);
+  color: var(--blue);
+  transform: scale(1.1);
+}
+
+
+/* ============================================================
+   22. BOTTOM RECTANGLE STYLES (FIXED: 8888 ghost background effect - Proper alignment)
+   ============================================================ */
+.bottom-rectangle {
+  width: 70%;
+  max-width: 540px;
+  height: auto;
+  min-height: 280px;
+  background-color: #1a1a1c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  padding: 14px 12px;
+}
+
+.rectangle-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+/* Metallic Grey Texture for each time container */
+.time-container {
+  width: 100%;
+  background: linear-gradient(135deg, #3a3a3e 0%, #2a2a2e 50%, #3a3a3e 100%);
+  background-size: 200% 200%;
+  padding: 8px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Metallic texture effect */
+.time-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.03) 0px,
+    rgba(255, 255, 255, 0.03) 2px,
+    transparent 2px,
+    transparent 8px
+  );
+  pointer-events: none;
+}
+
+.time-values-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+/* Each time item contains label above and value box below */
+.time-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  position: relative;
+}
+
+/* Value container - Fixed width based on content type */
+.time-value-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+  border: 1px solid #555;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Specific fixed widths for each box type */
+.time-value-box.month-box {
+  width: 70px;
+  padding: 6px 0;
+}
+
+.time-value-box.day-box {
+  width: 55px;
+  padding: 6px 0;
+}
+
+.time-value-box.year-box {
+  width: 85px;
+  padding: 6px 0;
+}
+
+/* Ghost background effect using absolute positioning */
+.time-value-box::before {
+  content: attr(data-ghost);
+  font-family: 'DS-Digital', 'Orbitron', 'Courier New', 'Monaco', monospace;
+  font-size: 20px;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 2px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(255, 255, 255, 0.08);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 0;
+  width: 100%;
+}
+
+/* All values - positioned above ghost with exact same dimensions */
+.time-month,
+.time-day,
+.time-year {
+  font-family: 'DS-Digital', 'Orbitron', 'Courier New', 'Monaco', monospace;
+  font-size: 20px;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 2px;
+  position: relative;
+  z-index: 1;
+  background: transparent;
+  display: inline-block;
+}
+
+/* Specific widths for value text to match ghost */
+.time-month {
+  min-width: 55px;
+}
+
+.time-day {
+  min-width: 35px;
+}
+
+.time-year {
+  min-width: 75px;
+}
+
+/* Destination Time Values - RED */
+.destination-time .time-month,
+.destination-time .time-day,
+.destination-time .time-year {
+  color: #ff4444;
+}
+
+/* Present Time Values - GREEN */
+.present-time .time-month,
+.present-time .time-day,
+.present-time .time-year {
+  color: #4caf50;
+}
+
+/* Last Time Departed Values - GREEN */
+.last-departed .time-month,
+.last-departed .time-day,
+.last-departed .time-year {
+  color: #afaf4c;
+}
+
+/* Label container - RED theme, thick text */
+.time-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #ffffff;
+  text-transform: uppercase;
+  background: #8b0000;
+  padding: 3px 8px;
+  display: inline-block;
+}
+
+/* Time Header */
+.time-header {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: #ffffff;
+  text-align: center;
+  padding: 5px 12px;
+  background: #000000;
+  position: relative;
+  z-index: 1;
+  margin-top: 2px;
+  display: inline-block;
+  width: auto;
+  align-self: center;
+}
+
+/* Light mode adjustments */
+.p.light .bottom-rectangle {
+  background-color: #1a1a1c;
+}
+
+.p.light .time-container {
+  background: linear-gradient(135deg, #3a3a3e 0%, #2a2a2e 50%, #3a3a3e 100%);
+}
+
+.p.light .time-value-box {
+  background: #000000;
+  border-color: #555;
+}
+
+.p.light .time-label {
+  background: #8b0000;
+  color: #ffffff;
+}
+
+.p.light .time-header {
+  background: #000000;
+  color: #ffffff;
+}
+
+.p.light .destination-time .time-month,
+.p.light .destination-time .time-day,
+.p.light .destination-time .time-year {
+  color: #ff4444;
+}
+
+.p.light .present-time .time-month,
+.p.light .present-time .time-day,
+.p.light .present-time .time-year {
+  color: #4caf50;
+}
+
+.p.light .last-departed .time-month,
+.p.light .last-departed .time-day,
+.p.light .last-departed .time-year {
+  color: #4caf50;
+}
+
+.bottom-rectangle,
+.p.dark .bottom-rectangle,
+.p.light .bottom-rectangle {
+  background-color: #1a1a1c;
+}
+
+
+/* ============================================================
+   23. MEDIA QUERIES — Mobile Responsive (≤ 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+  /* ... keep all existing styles ... */
+  
+  .carousel-track-container {
+    width: 220px;
+  }
+
+  .carousel-card {
+    min-width: 200px;
+    width: 200px;
+    height: 125px;
+  }
+  .carousel-track { 
+    gap: 0px;
+    padding: 5px 0;
+  }
+  .carousel-arrow {
+    width: 38px;
+    height: 38px;
+    font-size: 22px;
+    margin: 0 6px;
+  }
+  .bottom-rectangle {
+    width: 85%;
+    max-width: 480px;
+    height: 200px;
+  }
+}
+
+
+/* ============================================================
+   24. MEDIA QUERIES — Narrow Devices (≤ 720px)
+   ============================================================ */
+@media (max-width: 720px) {
+  h1 em { margin-left: 60px; }
+}
+
+
+/* ============================================================
+   25. MEDIA QUERIES — Extra Small Devices (≤ 480px)
+   ============================================================ */
+@media (max-width: 480px) {
+  .carousel-track-container {
+    width: 180px;
+  }
+
+  .carousel-card {
+    min-width: 160px;
+    width: 160px;
+    height: 105px;
+  }
+  .carousel-track { 
+    gap: 0px;
+    padding: 5px 0;
+  }
+  .carousel-arrow {
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+    margin: 0 4px;
+  }
+  .bottom-rectangle {
+    width: 90%;
+    max-width: 350px;
+    height: 160px;
+  }
+}
