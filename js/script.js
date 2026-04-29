@@ -51,15 +51,18 @@ if (modeTxt)  modeTxt.textContent  = dark ? 'light' : 'dark';
  * the logic that uses it.
  */
 function injectOrbAnimation() {
-  const styleSheet = document.createElement('style');
-  styleSheet.textContent = `
-    @keyframes floatOrb {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      50%       { transform: translate(20px, -20px) scale(1.05); }
-    }
-    .orb { transition: left 3s linear, top 3s linear; }
-  `;
-  document.head.appendChild(styleSheet);
+  if (!document.getElementById('orbAnimStyles')) {
+    const styleSheet = document.createElement('style');
+    styleSheet.id = 'orbAnimStyles';
+    styleSheet.textContent = `
+      @keyframes floatOrb {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        50%       { transform: translate(20px, -20px) scale(1.05); }
+      }
+      .orb { transition: left 3s linear, top 3s linear; }
+    `;
+    document.head.appendChild(styleSheet);
+  }
 }
 
 /**
@@ -89,7 +92,7 @@ function createOrbs() {
     let dx = (Math.random() - 0.5) * 0.5;
     let dy = (Math.random() - 0.5) * 0.5;
 
-    setInterval(function () {
+    const intervalId = setInterval(function () {
       x += dx;
       y += dy;
       if (x < -20) x = 120;
@@ -99,6 +102,9 @@ function createOrbs() {
       orb.style.left = x + '%';
       orb.style.top  = y + '%';
     }, 3000);
+    
+    // Store interval ID for potential cleanup
+    orb.setAttribute('data-interval-id', intervalId);
   }
 }
 
@@ -203,33 +209,12 @@ let lastSelectedVersion = null;
 let lastSelectedMonth = null;
 let lastSelectedDay = null;
 let lastSelectedYear = null;
+let currentIndex = 2;
+let cards = [];
 
-// Load last visited portfolio from localStorage
-function loadLastVisitedPortfolio() {
-  const savedVersion = localStorage.getItem('lastVisitedPortfolio');
-  if (savedVersion && cards.length > 0) {
-    // Find the card with matching version
-    for (let i = 0; i < cards.length; i++) {
-      const version = cards[i].getAttribute('data-version');
-      if (version === savedVersion) {
-        currentIndex = i;
-        lastSelectedVersion = savedVersion;
-        lastSelectedMonth = cards[i].getAttribute('data-created-month') || '---';
-        lastSelectedDay = cards[i].getAttribute('data-created-day') || '--';
-        lastSelectedYear = cards[i].getAttribute('data-created-year') || '----';
-        lastSelectedIndex = i;
-        break;
-      }
-    }
-  }
-}
-
-// Save last visited portfolio to localStorage
-function saveLastVisitedPortfolio(version, month, day, year) {
-  localStorage.setItem('lastVisitedPortfolio', version);
-  localStorage.setItem('lastVisitedMonth', month);
-  localStorage.setItem('lastVisitedDay', day);
-  localStorage.setItem('lastVisitedYear', year);
+// Initialize cards after DOM is ready
+function initCards() {
+  cards = document.querySelectorAll('.carousel-card');
 }
 
 /**
@@ -266,11 +251,36 @@ function updateLastDeparted() {
   }
 }
 
+// Load last visited portfolio from localStorage
+function loadLastVisitedPortfolio() {
+  const savedVersion = localStorage.getItem('lastVisitedPortfolio');
+  if (savedVersion && cards.length > 0) {
+    for (let i = 0; i < cards.length; i++) {
+      const version = cards[i].getAttribute('data-version');
+      if (version === savedVersion) {
+        currentIndex = i;
+        lastSelectedVersion = savedVersion;
+        lastSelectedMonth = cards[i].getAttribute('data-created-month') || '---';
+        lastSelectedDay = cards[i].getAttribute('data-created-day') || '--';
+        lastSelectedYear = cards[i].getAttribute('data-created-year') || '----';
+        lastSelectedIndex = i;
+        break;
+      }
+    }
+  }
+}
+
+// Save last visited portfolio to localStorage
+function saveLastVisitedPortfolio(version, month, day, year) {
+  localStorage.setItem('lastVisitedPortfolio', version);
+  localStorage.setItem('lastVisitedMonth', month);
+  localStorage.setItem('lastVisitedDay', day);
+  localStorage.setItem('lastVisitedYear', year);
+}
+
 /* ============================================================
    4. CAROUSEL FUNCTIONALITY - PORTFOLIO VERSIONS (SINGLE CARD)
    ============================================================ */
-let currentIndex = 2;
-const cards = document.querySelectorAll('.carousel-card');
 const trackContainer = document.querySelector('.carousel-track-container');
 
 function getCardWidth() {
@@ -292,7 +302,6 @@ function updateCarouselPosition() {
 
 function updateCarousel() {
   updateCarouselPosition();
-  // Only update destination time, not last departed
   const currentCard = cards[currentIndex];
   if (currentCard) {
     const destMonth = currentCard.getAttribute('data-created-month') || '---';
@@ -333,7 +342,6 @@ function prevSlide() {
 
 // Card click handlers - opens actual portfolio version
 function openPortfolioVersion(version, month, day, year) {
-  // Map version to actual URL - replace with actual portfolio URLs
   const portfolioUrls = {
     'v1': 'https://portfolio-v1.example.com',
     'v2': 'https://portfolio-v2.example.com',
@@ -342,44 +350,22 @@ function openPortfolioVersion(version, month, day, year) {
     'v5': 'https://portfolio-v5.example.com'
   };
   
-  // Save to localStorage as the actual visited portfolio
   saveLastVisitedPortfolio(version, month, day, year);
   
-  // Update the last selected tracking variables
   lastSelectedVersion = version;
   lastSelectedMonth = month;
   lastSelectedDay = day;
   lastSelectedYear = year;
   lastSelectedIndex = currentIndex;
   
-  // Update the display
   updateLastDeparted();
   
   const url = portfolioUrls[version];
-  if (url) {
+  if (url && url !== 'https://portfolio-v1.example.com') {
     window.open(url, '_blank');
   } else {
-    console.log(`Portfolio ${version} - Add actual URL here`);
-    alert(`Opening portfolio ${version} - Add URL in portfolioUrls mapping`);
+    console.log(`Portfolio ${version} - Replace with actual URL`);
   }
-}
-
-if (cards.length > 0) {
-  cards.forEach((card, index) => {
-    card.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const version = card.getAttribute('data-version');
-      const month = card.getAttribute('data-created-month') || '---';
-      const day = card.getAttribute('data-created-day') || '--';
-      const year = card.getAttribute('data-created-year') || '----';
-      if (version) {
-        // Close modal first
-        closeModal();
-        // Open portfolio version (this will save to last departed)
-        openPortfolioVersion(version, month, day, year);
-      }
-    });
-  });
 }
 
 /* ============================================================
@@ -387,21 +373,13 @@ if (cards.length > 0) {
    ============================================================ */
 function openModal() {
   if (modal) {
-    modal.style.display = 'block';
-    modal.style.alignItems = 'center';
-    modal.style.justifyContent = 'center';
-    // Prevent background scrolling
+    modal.classList.add('modal--visible');
     document.body.style.overflow = 'hidden';
     document.body.classList.add('modal-open');
-    // Update present time with real-time date
     updatePresentTime();
-    // Load last visited portfolio from localStorage
     loadLastVisitedPortfolio();
-    // Update carousel to show last visited position
     updateCarousel();
-    // Update last departed display
     updateLastDeparted();
-    // Re-center carousel on open
     setTimeout(() => {
       updateCarousel();
     }, 10);
@@ -410,10 +388,58 @@ function openModal() {
 
 function closeModal() {
   if (modal) {
-    modal.style.display = 'none';
-    // Re-enable background scrolling
+    modal.classList.remove('modal--visible');
     document.body.style.overflow = '';
     document.body.classList.remove('modal-open');
+  }
+}
+
+// Initialize carousel after cards are defined
+function initCarousel() {
+  initCards();
+  if (cards.length > 0) {
+    const savedVersion = localStorage.getItem('lastVisitedPortfolio');
+    if (savedVersion) {
+      for (let i = 0; i < cards.length; i++) {
+        const version = cards[i].getAttribute('data-version');
+        if (version === savedVersion) {
+          currentIndex = i;
+          lastSelectedVersion = savedVersion;
+          lastSelectedMonth = localStorage.getItem('lastVisitedMonth') || cards[i].getAttribute('data-created-month') || '---';
+          lastSelectedDay = localStorage.getItem('lastVisitedDay') || cards[i].getAttribute('data-created-day') || '--';
+          lastSelectedYear = localStorage.getItem('lastVisitedYear') || cards[i].getAttribute('data-created-year') || '----';
+          lastSelectedIndex = i;
+          break;
+        }
+      }
+    } else {
+      const initialCard = cards[currentIndex];
+      if (initialCard) {
+        lastSelectedVersion = initialCard.getAttribute('data-version') || `v${currentIndex + 1}`;
+        lastSelectedMonth = initialCard.getAttribute('data-created-month') || '---';
+        lastSelectedDay = initialCard.getAttribute('data-created-day') || '--';
+        lastSelectedYear = initialCard.getAttribute('data-created-year') || '----';
+        lastSelectedIndex = currentIndex;
+      }
+    }
+    
+    cards.forEach((card) => {
+      card.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const version = card.getAttribute('data-version');
+        const month = card.getAttribute('data-created-month') || '---';
+        const day = card.getAttribute('data-created-day') || '--';
+        const year = card.getAttribute('data-created-year') || '----';
+        if (version) {
+          closeModal();
+          openPortfolioVersion(version, month, day, year);
+        }
+      });
+    });
+    
+    updateCarousel();
+    updatePresentTime();
+    updateLastDeparted();
   }
 }
 
@@ -427,33 +453,40 @@ if (closeBtn) {
   closeBtn.addEventListener('click', closeModal);
 }
 
-// Arrow button events - FIXED with onclick
+// Arrow button events - Fixed with addEventListener
 if (leftArrow) {
-  leftArrow.onclick = function(e) {
+  leftArrow.addEventListener('click', function(e) {
     e.stopPropagation();
     e.preventDefault();
     prevSlide();
-  };
+  });
 }
 
 if (rightArrow) {
-  rightArrow.onclick = function(e) {
+  rightArrow.addEventListener('click', function(e) {
     e.stopPropagation();
     e.preventDefault();
     nextSlide();
-  };
+  });
 }
 
 // Handle window resize for responsive carousel
 window.addEventListener('resize', () => {
-  if (modal && modal.style.display === 'block') {
+  if (modal && modal.classList.contains('modal--visible')) {
     updateCarousel();
   }
 });
 
-// Update present time every second (real-time)
-setInterval(updatePresentTime, 1000);
-
+// Update present time every second (real-time) - only update if modal is open
+let presentTimeInterval;
+function startPresentTimeUpdates() {
+  if (presentTimeInterval) clearInterval(presentTimeInterval);
+  presentTimeInterval = setInterval(() => {
+    if (modal && modal.classList.contains('modal--visible')) {
+      updatePresentTime();
+    }
+  }, 1000);
+}
 
 /* ============================================================
    6. INITIALISATION
@@ -461,40 +494,8 @@ setInterval(updatePresentTime, 1000);
 injectOrbAnimation();
 createOrbs();
 setupInteractiveOrb();
-
-// Initialize carousel
-if (cards.length > 0) {
-  // Try to load last visited portfolio first
-  const savedVersion = localStorage.getItem('lastVisitedPortfolio');
-  if (savedVersion) {
-    for (let i = 0; i < cards.length; i++) {
-      const version = cards[i].getAttribute('data-version');
-      if (version === savedVersion) {
-        currentIndex = i;
-        lastSelectedVersion = savedVersion;
-        lastSelectedMonth = localStorage.getItem('lastVisitedMonth') || cards[i].getAttribute('data-created-month') || '---';
-        lastSelectedDay = localStorage.getItem('lastVisitedDay') || cards[i].getAttribute('data-created-day') || '--';
-        lastSelectedYear = localStorage.getItem('lastVisitedYear') || cards[i].getAttribute('data-created-year') || '----';
-        lastSelectedIndex = i;
-        break;
-      }
-    }
-  } else {
-    // Default to v3 (index 2) if nothing saved
-    const initialCard = cards[currentIndex];
-    if (initialCard) {
-      lastSelectedVersion = initialCard.getAttribute('data-version') || `v${currentIndex + 1}`;
-      lastSelectedMonth = initialCard.getAttribute('data-created-month') || '---';
-      lastSelectedDay = initialCard.getAttribute('data-created-day') || '--';
-      lastSelectedYear = initialCard.getAttribute('data-created-year') || '----';
-      lastSelectedIndex = currentIndex;
-    }
-  }
-  
-  updateCarousel();
-  updatePresentTime();
-  updateLastDeparted();
-}
+initCarousel();
+startPresentTimeUpdates();
 
 
 /* ============================================================
@@ -525,7 +526,6 @@ function setupGifButtonFallback() {
   const gifButton = document.getElementById('gifBtn');
   if (!gifButton) return;
   
-  // Function to update icon colors based on theme
   function updateIconColors() {
     const icon = gifButton.querySelector('.fallback-icon');
     if (!icon) return;
@@ -533,39 +533,30 @@ function setupGifButtonFallback() {
     const isDark = document.getElementById('site').classList.contains('dark');
     
     if (isDark) {
-      // Dark mode colors - bright and vibrant
       icon.setAttribute('colors', 'primary:#b8d4ff,secondary:#d4c8ff');
     } else {
-      // Light mode colors - darker, more visible
       icon.setAttribute('colors', 'primary:#6b4e8a,secondary:#4a6fa5');
     }
   }
   
-  // Test if images can load
   const testImg = new Image();
   
-  // Check static image
   testImg.onerror = function() {
-    // Static image failed, mark button as failed
     gifButton.classList.add('image-failed');
     updateIconColors();
   };
   
   testImg.onload = function() {
-    // Image loaded successfully, ensure no fallback class
     gifButton.classList.remove('image-failed');
   };
   
-  // Start test with static image
   testImg.src = '../assets/delorean-static.png';
   
-  // Also check GIF on hover attempt
   let gifTested = false;
   gifButton.addEventListener('mouseenter', function() {
     if (!gifTested) {
       const testGif = new Image();
       testGif.onerror = function() {
-        // GIF failed too - ensure fallback remains active
         gifButton.classList.add('image-failed');
         updateIconColors();
       };
@@ -574,7 +565,6 @@ function setupGifButtonFallback() {
     }
   });
   
-  // Watch for theme changes to update icon colors
   const modeBtn = document.getElementById('modeBtn');
   if (modeBtn) {
     modeBtn.addEventListener('click', function() {
@@ -583,7 +573,6 @@ function setupGifButtonFallback() {
   }
 }
 
-// Call this function after initialization
 setupGifButtonFallback();
 
 /* ============================================================
@@ -591,18 +580,12 @@ setupGifButtonFallback();
    ============================================================ */
 
 function createSparkle(x, y) {
-  // Detect current theme
   const isDark = document.getElementById('site').classList.contains('dark');
   
-  // Theme-appropriate colors
   const darkColors = ['#b8d4ff', '#d4c8ff', '#ffffff', '#7aa2f7', '#a875b8'];
   const lightColors = ['#4a6fa5', '#8b5e9e', '#3d3522', '#6b4e8a', '#9b7bb5'];
   const colors = isDark ? darkColors : lightColors;
   
-  // Glow color based on theme
-  const glowColor = isDark ? 'rgba(184,212,255,0.6)' : 'rgba(74,111,165,0.6)';
-  
-  // Create container for sparkles
   const sparkleContainer = document.createElement('div');
   sparkleContainer.style.position = 'fixed';
   sparkleContainer.style.left = x + 'px';
@@ -613,7 +596,6 @@ function createSparkle(x, y) {
   sparkleContainer.style.zIndex = '9999';
   document.body.appendChild(sparkleContainer);
   
-  // Create multiple 4-pointed star particles
   const particleCount = 8;
   
   for (let i = 0; i < particleCount; i++) {
@@ -621,7 +603,6 @@ function createSparkle(x, y) {
     const angle = (Math.PI * 2 * i) / particleCount;
     const distance = 40 + Math.random() * 60;
     
-    // Create 4-pointed star shape using SVG
     const starSize = 12 + Math.random() * 8;
     const svgNS = "http://www.w3.org/2000/svg";
     const svg = document.createElementNS(svgNS, "svg");
@@ -633,7 +614,6 @@ function createSparkle(x, y) {
     svg.style.top = "0";
     svg.style.transform = `translate(-50%, -50%) rotate(${Math.random() * 360}deg)`;
     
-    // Create 4-pointed star path
     const path = document.createElementNS(svgNS, "path");
     const innerRadius = 3;
     const outerRadius = 8;
@@ -664,7 +644,6 @@ function createSparkle(x, y) {
     
     sparkleContainer.appendChild(particle);
     
-    // Animate the star particle
     const startX = 0;
     const startY = 0;
     const endX = Math.cos(angle) * distance + (Math.random() - 0.5) * 15;
@@ -680,7 +659,6 @@ function createSparkle(x, y) {
       const elapsed = timestamp - startTime;
       const progress = Math.min(elapsed / duration, 1);
       
-      // Ease out cubic
       const easeOut = 1 - Math.pow(1 - progress, 3);
       
       const currentX = startX + (endX * easeOut);
@@ -703,7 +681,6 @@ function createSparkle(x, y) {
     requestAnimationFrame(animateParticle);
   }
   
-  // Also add a central burst of tiny stars
   for (let i = 0; i < 5; i++) {
     const miniStar = document.createElement('div');
     const starSize = 6 + Math.random() * 6;
@@ -769,13 +746,11 @@ function createSparkle(x, y) {
     requestAnimationFrame(animateMini);
   }
   
-  // Remove container after animation
   setTimeout(() => {
     sparkleContainer.remove();
   }, 800);
 }
 
-// Add click event listener to the entire document
 document.addEventListener('click', function(e) {
   createSparkle(e.clientX, e.clientY);
 });

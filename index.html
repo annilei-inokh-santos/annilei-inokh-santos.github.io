@@ -24,12 +24,12 @@
 
     <!-- ── Navigation ─────────────────────────────────────── -->
     <nav>
-      <div class="logo" style="display:inline-flex;align-items:center;gap:10px;">AICS<div class="status-pill"><div class="sdot"></div>busy</div></div>
+      <div class="logo">AICS<div class="status-pill"><div class="sdot"></div>busy</div></div>
         <div class="nav-r">
-          <a href="#exp" data-mobile="exp">experience</a>
-          <a href="#proj" data-mobile="proj">projects</a>
-          <a href="#connect" data-mobile="conn">connect</a>
-          <button class="toggle-btn" id="modeBtn">
+          <a href="#exp">experience</a>
+          <a href="#proj">projects</a>
+          <a href="#connect">connect</a>
+          <button class="toggle-btn" id="modeBtn" aria-label="Toggle theme">
             <span class="t-icon" id="modeIcon">☀</span>
             <span id="modeTxt">light</span>
           </button>
@@ -43,13 +43,13 @@
 
       <div class="hero-body">
         <p class="hero-desc">
-          I code like a designer thinks. Creativity didn't get left behind;<br>
+          I code like a designer thinks. Creativity didn't get left behind;
           it just learned new tools. People notice.
           <u><i>That's what I'm most proud of.</i></u>
-        </p><br>
+        </p>
 
         <div class="cta-wrap">
-          <div class="cta-portfolio">
+          <div class="cta-portfolio" aria-label="View design portfolio">
             <svg class="portfolio-icon"
                  xmlns="http://www.w3.org/2000/svg"
                  width="32" height="32"
@@ -185,18 +185,22 @@
     <!-- ── Connect ────────────────────────────────────────── -->
     <div class="contrib-band" id="connect">
       <div class="sec-label">connect</div>
-      <div class="contrib-inner" style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+      <div class="contrib-inner">
         <div>
-          <div class="c-big"><b class="shimmer-letter">A</b>nnilei <b class="shimmer-letter">I</b>nokh <b class="shimmer-letter">C</b>anapit <b class="shimmer-letter">S</b>antos</div>
+          <div class="c-big">
+            <span class="name-first"><b class="shimmer-letter">A</b>nnilei <b class="shimmer-letter">I</b>nokh</span>
+            <span class="name-last"><b class="shimmer-letter">C</b>anapit <b class="shimmer-letter">S</b>antos</span>
+          </div>
           <div class="c-sub"><em>Connect with me on my other platforms.</em></div>
         </div>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <div class="social-links">
 
           <!-- GitHub -->
           <a href="https://github.com/annilei-inokh-santos"
              target="_blank"
              rel="noopener noreferrer"
-             class="social-btn github-lordicon">
+             class="social-btn github-lordicon"
+             aria-label="GitHub">
             <lord-icon src="https://cdn.lordicon.com/lllcnxva.json"
                        trigger="hover"
                        style="width:50px;height:50px"></lord-icon>
@@ -206,7 +210,8 @@
           <a href="https://www.linkedin.com/in/annilei-inokh-santos-2175923a7/"
              target="_blank"
              rel="noopener noreferrer"
-             class="social-btn linkedin-lordicon">
+             class="social-btn linkedin-lordicon"
+             aria-label="LinkedIn">
             <lord-icon src="https://cdn.lordicon.com/qjbuypqy.json"
                        trigger="hover"
                        stroke="bold"
@@ -221,24 +226,23 @@
     <!-- ── Footer ─────────────────────────────────────────── -->
     <div class="bottom">
       <div class="sig-row">
-        <div class="sig s-b">HTML/CSS/JS</div>
-        <div class="sig s-v">GitHub</div>
-        <div class="sig s-b">Deepseek · Gemini · Claude</div>
+        <div class="sig s-v">HTML/CSS/JS</div>
+        <div class="sig s-b">Deepseek 𖥔 Claude</div>
       </div>
-      <div class="build-note">annilei inokh · 2026</div>
+      <div class="build-note">annilei inokh 𖥔 2026</div>
     </div>
 
   </div><!-- /.content-wrapper -->
 </div><!-- /#site -->
 
 <!-- Popup Modal for Portfolio Version Selector -->
-<div id="carouselModal" class="modal">
-  <span class="close-btn">&times;</span>
+<div id="carouselModal" class="modal" role="dialog" aria-label="Portfolio version selector">
+  <span class="close-btn" aria-label="Close">&times;</span>
   <div class="modal-inner">
     <!-- Top Carousel Container - Portfolio Versions -->
     <div class="carousel-wrapper">
       <div class="carousel-container">
-        <button class="carousel-arrow left-arrow">&#10094;</button>
+        <button class="carousel-arrow left-arrow" aria-label="Previous portfolio">&#10094;</button>
         <div class="carousel-track-container">
           <div class="carousel-track" id="carouselTrack">
             <div class="carousel-card" data-version="v1" data-number="1" data-created-month="JUN" data-created-day="15" data-created-year="2025">
@@ -263,7 +267,7 @@
             </div>
           </div>
         </div>
-        <button class="carousel-arrow right-arrow">&#10095;</button>
+        <button class="carousel-arrow right-arrow" aria-label="Next portfolio">&#10095;</button>
       </div>
     </div>
 
