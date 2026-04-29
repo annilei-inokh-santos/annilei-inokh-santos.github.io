@@ -217,7 +217,9 @@ nav {
   font-weight: 700;
   letter-spacing: 0.14em;
   position: relative;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   background: linear-gradient(
     90deg,
     var(--txt3) 0%,
@@ -508,6 +510,12 @@ h1 em {
 /* ============================================================
    14. COMPONENTS — Social Buttons
    ============================================================ */
+.social-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
 .social-btn {
   display: inline-flex;
   align-items: center;
@@ -697,7 +705,8 @@ h1 em {
 .contrib-inner {
   display: flex;
   align-items: center;
-  gap: 32px;
+  justify-content: space-between;
+  gap: 24px;
   flex-wrap: wrap;
 }
 
@@ -712,6 +721,14 @@ h1 em {
   font-weight: 700;
   overflow: visible;
   display: inline-block;
+  white-space: normal;
+  word-break: keep-all;
+}
+
+.name-first,
+.name-last {
+  display: inline-block;
+  white-space: nowrap;
 }
 
 /* Shimmer effect for letters in c-big - Dark mode (mirroring light mode structure) */
@@ -769,13 +786,6 @@ h1 em {
   font-size: 38px;
 }
 
-.c-big em {
-  color: var(--blue);
-  font-style: normal;
-  font-family: 'DM Serif Display', serif;
-  font-size: 38px;
-}
-
 .c-sub {
   font-size: 14px;
   color: var(--txt3);
@@ -790,6 +800,19 @@ h1 em {
   font-weight: 500;
 }
 
+/* Mobile adjustments for name - prevents awkward line breaks */
+@media (max-width: 600px) {
+  .name-first,
+  .name-last {
+    display: block;
+    white-space: normal;
+  }
+  
+  .c-big {
+    line-height: 1.2;
+  }
+}
+
 
 /* ============================================================
    19. SECTIONS — Footer / Bottom Bar
@@ -799,16 +822,21 @@ h1 em {
   align-items: center;
   justify-content: space-between;
   padding: 22px 36px 24px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 12px;
   position: relative;
+  min-width: 0;
 }
 
 .sig-row {
   display: flex;
   gap: 8px;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  flex-shrink: 1;
+  min-width: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .sig {
@@ -819,6 +847,8 @@ h1 em {
   border-radius: 5px;
   border: 0.5px solid;
   letter-spacing: 0.3px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .s-b { border-color: var(--blue-bd);   color: var(--blue);   background: var(--blue-bg); }
 .s-v { border-color: var(--violet-bd); color: var(--violet); background: var(--violet-bg); }
@@ -828,6 +858,45 @@ h1 em {
   font-size: 9.5px;
   color: var(--txt3);
   letter-spacing: 0.2px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Mobile adjustments for footer - prevent stacking */
+@media (max-width: 768px) {
+  .bottom {
+    padding: 14px 20px;
+    gap: 8px;
+  }
+  
+  .sig {
+    font-size: 8px;
+    padding: 3px 8px;
+  }
+  
+  .sig-row {
+    gap: 5px;
+  }
+  
+  .build-note {
+    font-size: 8px;
+  }
+}
+
+/* Extra small screens - ensure no stacking, just scroll */
+@media (max-width: 550px) {
+  .bottom {
+    justify-content: flex-start;
+    gap: 10px;
+  }
+  
+  .sig-row {
+    flex-shrink: 0;
+  }
+  
+  .build-note {
+    flex-shrink: 0;
+  }
 }
 
 /* ============================================================
@@ -843,6 +912,12 @@ h1 em {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(8px);
+}
+
+.modal.modal--visible {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .close-btn {
@@ -1332,7 +1407,7 @@ h1 em {
   }
 }
 
-/* Mobile (≤ 768px) */
+/* Mobile (≤ 768px) - Consolidated - FIXED FOOTER STACKING */
 @media (max-width: 768px) {
   nav {
     padding: 14px 20px;
@@ -1415,14 +1490,30 @@ h1 em {
     gap: 20px;
   }
   
+  /* FIXED: Footer stays horizontal, no stacking */
   .bottom {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     padding: 18px 20px;
+    flex-wrap: nowrap;
   }
   
   .sig-row {
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    gap: 6px;
+  }
+  
+  .sig {
+    font-size: 8px;
+    padding: 3px 8px;
+    white-space: nowrap;
+  }
+  
+  .build-note {
+    font-size: 8px;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
   
   .carousel-track-container {
@@ -1467,6 +1558,24 @@ h1 em {
   
   .time-value-box.year-box {
     width: 75px;
+  }
+  
+  /* Improve touch targets */
+  .nav-r a,
+  .toggle-btn,
+  .cta-portfolio,
+  .social-btn,
+  .gif-button,
+  .carousel-arrow,
+  .close-btn {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .nav-r a:active,
+  .toggle-btn:active,
+  .cta-portfolio:active {
+    opacity: 0.7;
   }
 }
 
@@ -1525,6 +1634,20 @@ h1 em {
   .gif-button {
     width: 60px;
     height: 60px;
+  }
+  
+  /* Keep footer horizontal */
+  .bottom {
+    gap: 8px;
+  }
+  
+  .sig {
+    font-size: 7px;
+    padding: 3px 6px;
+  }
+  
+  .build-note {
+    font-size: 7px;
   }
   
   .carousel-track-container {
@@ -1637,6 +1760,23 @@ h1 em {
     height: 22px !important;
   }
   
+  /* Keep footer horizontal on very small screens - allow scroll if needed */
+  .bottom {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 10px;
+    justify-content: flex-start;
+  }
+  
+  .sig-row {
+    flex-shrink: 0;
+  }
+  
+  .build-note {
+    flex-shrink: 0;
+  }
+  
   .bottom-rectangle {
     width: 92%;
     min-height: 220px;
@@ -1701,63 +1841,4 @@ h1 em {
 /* Add a flexible container improvement for all breakpoints */
 .content-wrapper {
   padding: 0;
-}
-
-/* Improve touch targets on mobile */
-@media (max-width: 768px) {
-  .nav-r a,
-  .toggle-btn,
-  .cta-portfolio,
-  .social-btn,
-  .gif-button,
-  .carousel-arrow,
-  .close-btn {
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-  }
-  
-  .nav-r a:active,
-  .toggle-btn:active,
-  .cta-portfolio:active {
-    opacity: 0.7;
-  }
-}
-
-
-/* ============================================================
-   24. MEDIA QUERIES — Narrow Devices (≤ 720px)
-   ============================================================ */
-@media (max-width: 720px) {
-  h1 em { margin-left: 60px; }
-}
-
-
-/* ============================================================
-   25. MEDIA QUERIES — Extra Small Devices (≤ 480px)
-   ============================================================ */
-@media (max-width: 480px) {
-  .carousel-track-container {
-    width: 180px;
-  }
-
-  .carousel-card {
-    min-width: 160px;
-    width: 160px;
-    height: 105px;
-  }
-  .carousel-track { 
-    gap: 0px;
-    padding: 5px 0;
-  }
-  .carousel-arrow {
-    width: 32px;
-    height: 32px;
-    font-size: 18px;
-    margin: 0 4px;
-  }
-  .bottom-rectangle {
-    width: 90%;
-    max-width: 350px;
-    height: 160px;
-  }
 }
