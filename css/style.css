@@ -1265,34 +1265,331 @@ h1 em {
 
 
 /* ============================================================
-   23. MEDIA QUERIES — Mobile Responsive (≤ 768px)
+   23. MEDIA QUERIES — Tablet & Mobile Optimization
    ============================================================ */
+
+/* Tablet Landscape (≤ 1024px) */
+@media (max-width: 1024px) {
+  .hero {
+    padding: 40px 30px 0;
+  }
+  
+  h1 {
+    font-size: 36px;
+    max-width: 100%;
+  }
+  
+  .c-big {
+    font-size: 36px;
+  }
+}
+
+/* Tablet Portrait & Large Mobile (≤ 900px) */
+@media (max-width: 900px) {
+  .two-col {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  
+  .col-l {
+    border-right: none;
+    border-bottom: 0.5px solid var(--border);
+    padding: 32px 30px;
+  }
+  
+  .col-r {
+    padding: 32px 30px;
+  }
+  
+  .hero-body {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .cta-wrap {
+    align-items: flex-start;
+  }
+  
+  .cta-hint {
+    text-align: left;
+  }
+  
+  h1 em {
+    margin-left: 0;
+    text-align: left;
+  }
+}
+
+/* Mobile (≤ 768px) */
 @media (max-width: 768px) {
-  /* ... keep all existing styles ... */
+  nav {
+    padding: 14px 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
+  .nav-r {
+    gap: 14px;
+  }
+  
+  .hero {
+    padding: 30px 20px 0;
+  }
+  
+  h1 {
+    font-size: 28px;
+  }
+  
+  .c-big {
+    font-size: 28px;
+  }
+  
+  .contrib-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  
+  .bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 18px 20px;
+  }
+  
+  .sig-row {
+    flex-wrap: wrap;
+  }
   
   .carousel-track-container {
     width: 220px;
   }
-
+  
   .carousel-card {
     min-width: 200px;
     width: 200px;
     height: 125px;
   }
-  .carousel-track { 
+  
+  .carousel-track {
     gap: 0px;
     padding: 5px 0;
   }
+  
   .carousel-arrow {
     width: 38px;
     height: 38px;
     font-size: 22px;
     margin: 0 6px;
   }
+  
   .bottom-rectangle {
     width: 85%;
     max-width: 480px;
-    height: 200px;
+    min-height: 240px;
+  }
+  
+  .time-values-wrapper {
+    gap: 8px;
+  }
+  
+  .time-value-box.month-box {
+    width: 60px;
+  }
+  
+  .time-value-box.day-box {
+    width: 50px;
+  }
+  
+  .time-value-box.year-box {
+    width: 75px;
+  }
+}
+
+/* Small Mobile (≤ 600px) */
+@media (max-width: 600px) {
+  .exp-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  
+  .proj-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  
+  .logo {
+    font-size: 14px;
+  }
+  
+  .status-pill {
+    font-size: 7px;
+    padding: 2px 8px;
+  }
+  
+  .toggle-btn {
+    padding: 4px 10px 4px 8px;
+    font-size: 10px;
+  }
+  
+  .t-icon {
+    font-size: 14px;
+  }
+  
+  .carousel-track-container {
+    width: 180px;
+  }
+  
+  .carousel-card {
+    min-width: 160px;
+    width: 160px;
+    height: 105px;
+  }
+  
+  .carousel-arrow {
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+    margin: 0 4px;
+  }
+  
+  .close-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 32px;
+    top: 15px;
+    right: 20px;
+  }
+}
+
+/* Extra Small Mobile (≤ 480px) */
+@media (max-width: 480px) {
+  .col-l, .col-r {
+    padding: 24px 18px;
+  }
+  
+  .hero {
+    padding: 24px 16px 0;
+  }
+  
+  h1 {
+    font-size: 24px;
+  }
+  
+  .c-big {
+    font-size: 24px;
+  }
+  
+  .c-sub {
+    font-size: 12px;
+  }
+  
+  .exp-role {
+    font-size: 11px;
+  }
+  
+  .exp-desc {
+    font-size: 11px;
+  }
+  
+  .proj-name {
+    font-size: 12px;
+  }
+  
+  .proj-desc {
+    font-size: 11px;
+  }
+  
+  .cta-portfolio {
+    padding: 8px 18px;
+    font-size: 11px;
+  }
+  
+  .cta-portfolio .portfolio-icon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .gif-button {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .gif-button .fallback-icon {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .social-btn {
+    width: 38px;
+    height: 38px;
+  }
+  
+  .social-btn lord-icon {
+    width: 22px !important;
+    height: 22px !important;
+  }
+  
+  .bottom-rectangle {
+    width: 92%;
+    min-height: 220px;
+    padding: 10px 8px;
+  }
+  
+  .time-value-box.month-box {
+    width: 55px;
+  }
+  
+  .time-value-box.day-box {
+    width: 45px;
+  }
+  
+  .time-value-box.year-box {
+    width: 68px;
+  }
+  
+  .time-month, .time-day, .time-year {
+    font-size: 16px;
+  }
+  
+  .time-value-box::before {
+    font-size: 16px;
+  }
+  
+  .time-label {
+    font-size: 7px;
+    padding: 2px 6px;
+  }
+  
+  .time-header {
+    font-size: 8px;
+    padding: 3px 10px;
+  }
+}
+
+/* Add a flexible container improvement for all breakpoints */
+.content-wrapper {
+  padding: 0;
+}
+
+/* Improve touch targets on mobile */
+@media (max-width: 768px) {
+  .nav-r a,
+  .toggle-btn,
+  .cta-portfolio,
+  .social-btn,
+  .gif-button,
+  .carousel-arrow,
+  .close-btn {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .nav-r a:active,
+  .toggle-btn:active,
+  .cta-portfolio:active {
+    opacity: 0.7;
   }
 }
 
