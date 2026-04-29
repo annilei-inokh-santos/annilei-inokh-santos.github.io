@@ -117,6 +117,218 @@ a:hover {
 
 
 /* ============================================================
+   4.1 GLOBAL TEXT SIZE INCREASE (+30%)
+   ============================================================ */
+.p {
+  font-size: 1.3rem;
+}
+
+/* Scale all text elements proportionally */
+.eyebrow {
+  font-size: 13px !important;
+}
+
+h1 {
+  font-size: 55px !important;
+}
+
+.hero-desc {
+  font-size: 18px !important;
+}
+
+.cta-hint {
+  font-size: 12px !important;
+}
+
+.cta-portfolio {
+  font-size: 17px !important;
+}
+
+.nav-r a {
+  font-size: 16px !important;
+}
+
+.logo {
+  font-size: 23px !important;
+}
+
+.logo .status-pill {
+  font-size: 12px !important;
+}
+
+.toggle-btn {
+  font-size: 14px !important;
+}
+
+.sec-label {
+  font-size: 13px !important;
+}
+
+.exp-role {
+  font-size: 16px !important;
+}
+
+.exp-place {
+  font-size: 18px !important;
+}
+
+.exp-desc {
+  font-size: 16px !important;
+}
+
+.proj-name {
+  font-size: 18px !important;
+}
+
+.proj-tag {
+  font-size: 12px !important;
+}
+
+.proj-desc {
+  font-size: 16px !important;
+}
+
+.c-big {
+  font-size: 55px !important;
+}
+
+.c-sub {
+  font-size: 18px !important;
+}
+
+.sig {
+  font-size: 13px !important;
+}
+
+.build-note {
+  font-size: 12px !important;
+}
+
+.time-label {
+  font-size: 10px !important;
+}
+
+.time-header {
+  font-size: 12px !important;
+}
+
+.time-month, .time-day, .time-year {
+  font-size: 26px !important;
+}
+
+.version-label {
+  font-size: 14px !important;
+}
+
+/* Mobile devices - additional +35% (total +65% from original) */
+@media (max-width: 768px) {
+  .p {
+    font-size: 1.65rem;
+  }
+  
+  .eyebrow {
+    font-size: 16px !important;
+  }
+  
+  h1 {
+    font-size: 67px !important;
+  }
+  
+  .hero-desc {
+    font-size: 22px !important;
+  }
+  
+  .cta-hint {
+    font-size: 15px !important;
+  }
+  
+  .cta-portfolio {
+    font-size: 21px !important;
+  }
+  
+  .nav-r a {
+    font-size: 19px !important;
+  }
+  
+  .nav-r a::before {
+    font-size: 19px !important;
+  }
+  
+  .logo {
+    font-size: 28px !important;
+  }
+  
+  .logo .status-pill {
+    font-size: 14px !important;
+  }
+  
+  .toggle-btn {
+    font-size: 17px !important;
+  }
+  
+  .sec-label {
+    font-size: 16px !important;
+  }
+  
+  .exp-role {
+    font-size: 20px !important;
+  }
+  
+  .exp-place {
+    font-size: 22px !important;
+  }
+  
+  .exp-desc {
+    font-size: 20px !important;
+  }
+  
+  .proj-name {
+    font-size: 22px !important;
+  }
+  
+  .proj-tag {
+    font-size: 15px !important;
+  }
+  
+  .proj-desc {
+    font-size: 20px !important;
+  }
+  
+  .c-big {
+    font-size: 67px !important;
+  }
+  
+  .c-sub {
+    font-size: 22px !important;
+  }
+  
+  .sig {
+    font-size: 16px !important;
+  }
+  
+  .build-note {
+    font-size: 15px !important;
+  }
+  
+  .time-label {
+    font-size: 12px !important;
+  }
+  
+  .time-header {
+    font-size: 15px !important;
+  }
+  
+  .time-month, .time-day, .time-year {
+    font-size: 32px !important;
+  }
+  
+  .version-label {
+    font-size: 17px !important;
+  }
+}
+
+
+/* ============================================================
    5. ANIMATIONS / KEYFRAMES
    ============================================================ */
 @keyframes shimmerMove {
