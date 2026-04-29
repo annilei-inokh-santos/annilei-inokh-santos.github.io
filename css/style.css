@@ -207,6 +207,8 @@ nav {
   z-index: 3;
   background: transparent;
   backdrop-filter: blur(2px);
+  flex-wrap: nowrap;
+  gap: 16px;
 }
 
 .logo {
@@ -229,6 +231,7 @@ nav {
   -webkit-background-clip: text;
   color: transparent;
   animation: shimmerMove 8s ease-in-out infinite, pulseGlow 4s ease-in-out infinite;
+  flex-shrink: 0;
 }
 
 /* Status pill inside .logo must opt out of the shimmer text clip */
@@ -242,7 +245,12 @@ nav {
   vertical-align: middle;
 }
 
-.nav-r { display: flex; gap: 20px; align-items: center; }
+.nav-r { 
+  display: flex; 
+  gap: 20px; 
+  align-items: center;
+  flex-shrink: 0;
+}
 .nav-r a {
   font-size: 12px;
   color: var(--txt3);
@@ -250,6 +258,7 @@ nav {
   font-weight: 300;
   cursor: pointer;
   transition: color 0.2s;
+  white-space: nowrap;
 }
 .nav-r a:hover { color: var(--txt); text-decoration: underline; }
 
@@ -1327,12 +1336,51 @@ h1 em {
 @media (max-width: 768px) {
   nav {
     padding: 14px 20px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 12px;
   }
   
+  .logo {
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  
+  .logo .status-pill {
+    font-size: 7px;
+    padding: 2px 6px;
+  }
+  
   .nav-r {
-    gap: 14px;
+    gap: 10px;
+    flex-shrink: 1;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Shorten navigation text on mobile */
+  .nav-r a {
+    font-size: 0;
+  }
+  
+  .nav-r a[href="#exp"]::before {
+    content: "exp";
+    font-size: 11px;
+  }
+  
+  .nav-r a[href="#proj"]::before {
+    content: "proj";
+    font-size: 11px;
+  }
+  
+  .nav-r a[href="#connect"]::before {
+    content: "conn";
+    font-size: 11px;
+  }
+  
+  .toggle-btn {
+    padding: 4px 10px 4px 8px;
+    font-size: 10px;
+    white-space: nowrap;
   }
   
   .hero {
