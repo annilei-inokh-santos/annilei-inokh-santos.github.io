@@ -6,10 +6,12 @@
   <title>A StrayKids Blog | All About Stray Kids</title>
   <meta name="description" content="A fan blog dedicated to Stray Kids - member profiles, facts, and fun content for new STAYs">
   <link rel="stylesheet" href="/previous-versions/v1/project/blog-style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
 
-<!-- Version Notice Header - Revised Edition -->
+<!-- Version Notice -->
 <div class="version-notice">
   <div class="notice-container">
     <div class="notice-left">
@@ -23,21 +25,24 @@
   </div>
 </div>
 
-<!-- Header Section -->
-<header>
-  <h1 class="main-title">All About Stray<span class="skz-color">K</span>ids</h1>
+<!-- Header -->
+<header class="site-header">
+  <h1 class="site-title">All About Stray<span class="skz-color">K</span>ids</h1>
+  <p class="site-description">A complete guide for new STAYs — member profiles, fun moments, and everything in between</p>
 </header>
 
-<main>
-  <!-- Hero Image Section -->
-  <section class="hero-section">
-    <a href="https://www.youtube.com/watch?v=nGOd9dQWZKk" target="_blank" rel="noopener noreferrer">
-      <img src="/previous-versions/v1/project/blog-assets/all-in.png" alt="Stray Kids All In" class="hero-image border">
-    </a>
-  </section>
+<!-- Hero Image -->
+<div class="hero-section">
+  <a href="https://www.youtube.com/watch?v=nGOd9dQWZKk" target="_blank" rel="noopener noreferrer">
+    <img src="/previous-versions/v1/project/blog-assets/all-in.png" alt="Stray Kids All In" class="hero-image border">
+  </a>
+</div>
 
-  <!-- Introduction Section -->
-  <section class="introduction">
+<!-- Main Content Container -->
+<div class="content-container">
+
+  <!-- Introduction -->
+  <section class="intro-section">
     <p>
       Being a <em>new Stay</em> is difficult when you don't know much about them.<br>
       It's hard to keep up with what other fans are talking about, or how most<br>
@@ -49,27 +54,27 @@
     </p>
   </section>
 
-  <!-- What is Stray Kids Section -->
-  <section>
+  <!-- What is Stray Kids -->
+  <section class="content-section">
     <h2 class="section-title">What is <u>Stray<span class="skz-color">K</span>ids</u>?</h2>
     <a href="https://kprofiles.com/stray-kids-members-profile/" target="_blank">
-      <img src="/previous-versions/v1/project/blog-assets/skz-in-life-era.png" alt="Stray Kids Life Era" class="profile-image border">
+      <img src="/previous-versions/v1/project/blog-assets/skz-in-life-era.png" alt="Stray Kids Life Era" class="section-image border">
     </a>
     <div class="info-text">
       <p>- <strong>Stray Kids (스트레이 키즈)</strong> is a South Korean boy group under <a href="https://www.jype.com/" target="_blank">JYP Entertainment</a>.<br>
-      - The group were originally consists of 9 members:<br>
-      <strong><u>Woojin</u></strong>, <strong><u>Bang Chan</u></strong>, <strong><u>Lee Know</u></strong>, <strong><u>Changbin</u></strong>, <strong><u>Hyunjin</u></strong>, <strong><u>Han</u></strong>, <strong><u>Felix</u></strong>, <strong><u>Seungmin</u></strong>, and <strong><u>I.N</u></strong>.<br>
+      - The group originally consisted of 9 members:<br>
+      <strong>Woojin</strong>, <strong>Bang Chan</strong>, <strong>Lee Know</strong>, <strong>Changbin</strong>, <strong>Hyunjin</strong>, <strong>Han</strong>, <strong>Felix</strong>, <strong>Seungmin</strong>, and <strong>I.N</strong>.<br>
       - They were formed from a survival program with the same name, <em>Stray Kids</em>.<br>
       - They debuted on <u>March 25, 2018</u>.<br>
       - <strong>Woojin</strong> left the group on <u>27th October 2019</u>.</p>
     </div>
   </section>
 
-  <!-- What is Stay Section -->
-  <section>
+  <!-- What is Stay -->
+  <section class="content-section">
     <h2 class="section-title">What is <u>Stay</u>?</h2>
     <a href="https://www.youtube.com/watch?v=hVsG4XhKbYw" target="_blank">
-      <img src="/previous-versions/v1/project/blog-assets/stay.png" alt="STAY Fandom" class="profile-image border">
+      <img src="/previous-versions/v1/project/blog-assets/stay.png" alt="STAY Fandom" class="section-image border">
     </a>
     <div class="info-text">
       <p>- <strong>Stay (스테이)</strong> is the official fandom name for the group.<br>
@@ -79,207 +84,150 @@
     </div>
   </section>
 
-  <!-- Member Profiles Section - CAROUSEL VERSION -->
-  <section>
+  <!-- Member Profiles -->
+  <section class="content-section">
     <h2 class="section-title">Member Profiles</h2>
-    
     <div class="member-profiles-container">
       <div class="member-carousel-wrapper">
-        
-        <!-- Left Side: Carousel -->
         <div class="carousel-side">
           <div class="carousel-container">
             <button class="carousel-prev" id="prevBtn">❮</button>
             <button class="carousel-next" id="nextBtn">❯</button>
-            
-            <div id="carouselSlides">
-              <!-- Slides will be populated by JavaScript -->
-            </div>
-            
+            <div id="carouselSlides"></div>
             <div class="carousel-dots" id="carouselDots"></div>
           </div>
         </div>
-        
-        <!-- Right Side: Member Details -->
         <div class="details-side" id="memberDetails">
           <h3 id="detailsName">Bang Chan</h3>
           <div class="details-info" id="detailsInfo"></div>
           <div class="details-facts" id="detailsFacts"></div>
         </div>
-        
       </div>
     </div>
   </section>
 
-  <!-- MBTI Reference Table -->
-  <section>
-    <table class="mbti-table" border="5">
-      <caption class="mbti-caption">For reference on MBTI types:</caption>
-      <tr><th>E = Extroverted</th><th>I = Introverted</th></tr>
-      <tr><th>N = Intuitive</th><th>S = Observant</th></tr>
-      <tr><th>T = Thinking</th><th>F = Feeling</th></tr>
-      <tr><th>P = Perceiving</th><th>J = Judging</th></tr>
-    </table>
+  <!-- MBTI Reference -->
+  <section class="content-section">
+    <h2 class="section-title">MBTI Reference</h2>
+    <div class="mbti-grid">
+      <div class="mbti-card" data-type="intj"><div class="mbti-initials">INTJ</div><div class="mbti-name">Architect</div></div>
+      <div class="mbti-card" data-type="intp"><div class="mbti-initials">INTP</div><div class="mbti-name">Logician</div></div>
+      <div class="mbti-card" data-type="entj"><div class="mbti-initials">ENTJ</div><div class="mbti-name">Commander</div></div>
+      <div class="mbti-card" data-type="entp"><div class="mbti-initials">ENTP</div><div class="mbti-name">Debater</div></div>
+      <div class="mbti-card" data-type="infj"><div class="mbti-initials">INFJ</div><div class="mbti-name">Advocate</div></div>
+      <div class="mbti-card" data-type="infp"><div class="mbti-initials">INFP</div><div class="mbti-name">Mediator</div></div>
+      <div class="mbti-card" data-type="enfj"><div class="mbti-initials">ENFJ</div><div class="mbti-name">Protagonist</div></div>
+      <div class="mbti-card" data-type="enfp"><div class="mbti-initials">ENFP</div><div class="mbti-name">Campaigner</div></div>
+      <div class="mbti-card" data-type="istj"><div class="mbti-initials">ISTJ</div><div class="mbti-name">Logistician</div></div>
+      <div class="mbti-card" data-type="isfj"><div class="mbti-initials">ISFJ</div><div class="mbti-name">Defender</div></div>
+      <div class="mbti-card" data-type="estj"><div class="mbti-initials">ESTJ</div><div class="mbti-name">Executive</div></div>
+      <div class="mbti-card" data-type="esfj"><div class="mbti-initials">ESFJ</div><div class="mbti-name">Consul</div></div>
+      <div class="mbti-card" data-type="istp"><div class="mbti-initials">ISTP</div><div class="mbti-name">Virtuoso</div></div>
+      <div class="mbti-card" data-type="isfp"><div class="mbti-initials">ISFP</div><div class="mbti-name">Adventurer</div></div>
+      <div class="mbti-card" data-type="estp"><div class="mbti-initials">ESTP</div><div class="mbti-name">Entrepreneur</div></div>
+      <div class="mbti-card" data-type="esfp"><div class="mbti-initials">ESFP</div><div class="mbti-name">Entertainer</div></div>
+    </div>
   </section>
 
-  <!-- Crackhead Energy Section -->
-  <section>
-    <h1 class="main-title">S<span class="skz-color">K</span>Z having a big <u>Crackhead</u> energy</h1>
-    <a href="https://www.youtube.com/watch?v=5ch-a7a2SXI" target="_blank">
-      <img src="/previous-versions/v1/project/blog-assets/skz.png" alt="Stray Kids Crackhead Energy" class="hero-image border">
-    </a>
-
-    <div class="crackhead-links">
-      <!-- Bang Chan Crackhead -->
-      <div class="member-crackhead">
-        <h4 class="crackhead-title bangchan-bg">Chan - GENIUS BANG</h4>
-        <img src="/previous-versions/v1/project/blog-assets/bang-chan-01.jpg" alt="Chan Crackhead" class="member-image border">
-        <ul>
-          <li><a href="https://www.youtube.com/watch?v=m_TZbk9ReqY" target="_blank">His BODY</a></li>
-          <li><a href="https://www.youtube.com/watch?v=0obLZ5rr7-8" target="_blank">"Oi FeLiX"</a></li>
-          <li><a href="https://www.youtube.com/watch?v=nnc4pY8fGBc" target="_blank">"I'm YoUr... Daddy?"</a></li>
-          <li><a href="https://www.youtube.com/watch?v=r9JJG7EL0uE" target="_blank">Christiano Bangnaldo</a></li>
-          <li><a href="https://www.youtube.com/watch?v=MgexWKMI5g8" target="_blank">Australian Beef</a></li>
-        </ul>
+  <!-- Crackhead Energy -->
+  <section class="content-section">
+    <h2 class="section-title">SKZ having a big Crackhead energy</h2>
+    <div class="crackhead-container">
+      <div class="crackhead-header">
+        <p>Click any member to see their crackhead moments 🎬</p>
       </div>
-
-      <!-- Lee Know Crackhead -->
-      <div class="member-crackhead">
-        <h4 class="crackhead-title leeknow-bg">Lee Know - LEEKNOW IS CUTE</h4>
-        <img src="/previous-versions/v1/project/blog-assets/lee-know-01.jpg" alt="Lee Know Crackhead" class="member-image border">
-        <ul>
-          <li><a href="https://www.youtube.com/watch?v=bNfaSn288kE" target="_blank">"You know? I know? LEE KNOW! YEAHHHHH!!"</a></li>
-          <li><a href="https://www.youtube.com/watch?v=OuyAyqSEcXg" target="_blank">Dancing Gem</a></li>
-          <li><a href="https://www.youtube.com/watch?v=_5HfiX5xD7E" target="_blank">F A L S E T T O</a></li>
-          <li><a href="https://www.youtube.com/watch?v=oenqlXWYiok" target="_blank">AnYoNE of ThEsE hOpeFuLS</a></li>
-          <li><a href="https://www.youtube.com/watch?v=H-uTNfLlmuI&t=66s" target="_blank">adorable laugh uwu #1</a></li>
-        </ul>
-      </div>
-
-      <!-- Changbin Crackhead -->
-      <div class="member-crackhead">
-        <h4 class="crackhead-title changbin-bg">Changbin - DWAEKKI</h4>
-        <img src="/previous-versions/v1/project/blog-assets/chang-bin-01.jpg" alt="Changbin Crackhead" class="member-image border">
-        <ul>
-          <li><a href="https://www.youtube.com/watch?v=bJ5wylcxT-s" target="_blank">Changbin v.s. Binnie</a></li>
-          <li><a href="https://www.youtube.com/watch?v=zTM2NK8AO2I" target="_blank">Binsual</a></li>
-          <li><a href="https://www.youtube.com/watch?v=ZilXHbxNR_M" target="_blank">Fastest Rapper</a></li>
-          <li><a href="https://www.youtube.com/watch?v=KHcil6VPI5Y" target="_blank">Baby Changbin Aegyo</a></li>
-          <li><a href="https://www.youtube.com/watch?v=EOzZHHtPCJA" target="_blank">MAAAAAAAATRYOSHKA</a></li>
-        </ul>
-      </div>
-
-      <!-- Hyunjin Crackhead -->
-      <div class="member-crackhead">
-        <h4 class="crackhead-title hyunjin-bg">Hyunjin - HYUN.E</h4>
-        <img src="/previous-versions/v1/project/blog-assets/hyun-jin-01.jpg" alt="Hyunjin Crackhead" class="member-image border">
-        <ul>
-          <li><a href="https://www.youtube.com/watch?v=mzXFvKph4j4" target="_blank">Got7 Jinyoung's BIGGEST Fanboy</a></li>
-          <li><a href="https://www.youtube.com/watch?v=oi9PiBPzbCc" target="_blank">YoUr BeHaViOur Is sO-</a></li>
-          <li><a href="https://www.youtube.com/watch?v=GcLNXQqigo0" target="_blank">Tchh, HairBand</a></li>
-          <li><a href="https://www.youtube.com/watch?v=DeN_ju52Fr0" target="_blank">Drama Llama</a></li>
-          <li><a href="https://www.youtube.com/watch?v=LdrHan1Gbcw" target="_blank">Aussie</a></li>
-        </ul>
-      </div>
-
-      <!-- Han Crackhead -->
-      <div class="member-crackhead">
-        <h4 class="crackhead-title han-bg">Han - QUOKKA</h4>
-        <img src="/previous-versions/v1/project/blog-assets/han-01.jpg" alt="Han Crackhead" class="member-image border">
-        <ul>
-          <li><a href="https://www.youtube.com/watch?v=hW4jxR5e_xM" target="_blank">Squirrel</a></li>
-          <li><a href="https://www.youtube.com/watch?v=_w0Rcj8biA0" target="_blank">JiKiLgE *heavy breathing*</a></li>
-          <li><a href="https://www.youtube.com/watch?v=6nZhJTdYpck" target="_blank">"Gae."</a></li>
-          <li><a href="https://www.youtube.com/watch?v=tMu6JNCroOU" target="_blank">forgetting his lyrics</a></li>
-          <li><a href="https://www.youtube.com/watch?v=DytLxOcT4Hk" target="_blank">"eXcUsE Me NoONa, DO YoU hAvE A BoYFriEnD?"</a></li>
-        </ul>
-      </div>
-
-      <!-- Felix Crackhead -->
-      <div class="member-crackhead">
-        <h4 class="crackhead-title felix-bg">Felix - HAENGBOK</h4>
-        <img src="/previous-versions/v1/project/blog-assets/felix-01.jpg" alt="Felix Crackhead" class="member-image border">
-        <ul>
-          <li><a href="https://www.youtube.com/watch?v=9_wJHksWjno" target="_blank">Sunshine</a></li>
-          <li><a href="https://www.youtube.com/watch?v=9_MMMERPvtQ" target="_blank">a mosquito</a></li>
-          <li><a href="https://www.youtube.com/watch?v=jDajMMGIxSk" target="_blank">beatboxer</a></li>
-          <li><a href="https://www.youtube.com/watch?v=sd0qbaKLcrw" target="_blank">voice duality</a></li>
-          <li><a href="https://www.youtube.com/watch?v=EHwo_K6M-jk" target="_blank">u w u</a></li>
-        </ul>
-      </div>
-
-      <!-- Seungmin Crackhead -->
-      <div class="member-crackhead">
-        <h4 class="crackhead-title seungmin-bg">Seungmin - SEUNGMO</h4>
-        <img src="/previous-versions/v1/project/blog-assets/seung-min-01.jpg" alt="Seungmin Crackhead" class="member-image border">
-        <ul>
-          <li><a href="https://www.youtube.com/watch?v=Np_azGXMNaU" target="_blank">SEUNGMIN IN THE BUILDING</a></li>
-          <li><a href="https://www.youtube.com/watch?v=O80unzjHcq8" target="_blank">Day6 Fan President</a></li>
-          <li><a href="https://www.youtube.com/watch?v=Ru6F7pFtIlQ" target="_blank">puppy "mong mong"</a></li>
-          <li><a href="https://www.youtube.com/watch?v=MQDnJA7BQeI" target="_blank">Whipped for I.N</a></li>
-          <li><a href="https://www.youtube.com/watch?v=Yrw3IqCX-pg" target="_blank">noises</a></li>
-        </ul>
-      </div>
-
-      <!-- I.N Crackhead -->
-      <div class="member-crackhead">
-        <h4 class="crackhead-title jeongin-bg">I.N - AGIBBANG</h4>
-        <img src="/previous-versions/v1/project/blog-assets/yang-jeong-in-01.jpg" alt="I.N Crackhead" class="member-image border">
-        <ul>
-          <li><a href="https://www.youtube.com/watch?v=0jFk8JUAQoE" target="_blank">cute smile</a></li>
-          <li><a href="https://www.youtube.com/watch?v=JWhZlDuFyVI" target="_blank">baby shark uwu</a></li>
-          <li><a href="https://www.youtube.com/watch?v=VVK0sLLbSYQ" target="_blank">Trot Singing</a></li>
-          <li><a href="https://www.youtube.com/watch?v=xKX4X0_6Rac" target="_blank">effortlessly cute</a></li>
-          <li><a href="https://www.youtube.com/watch?v=ma4Oocz-oH8" target="_blank">suddenly snapped in God's Menu era</a></li>
-        </ul>
+      <div class="crackhead-grid" id="memberGrid"></div>
+    </div>
+    <div id="memberModal" class="crackhead-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="modalTitle">Bang Chan</h2>
+          <span class="modal-close">&times;</span>
+        </div>
+        <div class="modal-body">
+          <div class="modal-profile">
+            <img id="modalImage" src="" alt="Member">
+            <div class="modal-info">
+              <h3 id="modalSubtitle">GENIUS BANG</h3>
+              <p id="modalDesc">Leader Energy 🐺</p>
+            </div>
+          </div>
+          <div class="modal-links">
+            <h4>Crackhead Moments</h4>
+            <ul id="modalLinks"></ul>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Bias Poll Section -->
-  <section>
-    <h2 class="main-title">Who's your Stray<span class="skz-color">K</span>ids Bias?</h2>
-    <form id="biasForm" class="bias-form">
-      <label><input type="radio" name="bias" value="Bang Chan"><span class="bangchan-bg"> Bang Chan</span></label><br>
-      <label><input type="radio" name="bias" value="Lee Know"><span class="leeknow-bg"> Lee Know</span></label><br>
-      <label><input type="radio" name="bias" value="Seo Changbin"><span class="changbin-bg"> Seo Changbin</span></label><br>
-      <label><input type="radio" name="bias" value="Hwang Hyunjin"><span class="hyunjin-bg"> Hwang Hyunjin</span></label><br>
-      <label><input type="radio" name="bias" value="Han Jisung"><span class="han-bg"> Han Jisung</span></label><br>
-      <label><input type="radio" name="bias" value="Lee Felix"><span class="felix-bg"> Lee Felix</span></label><br>
-      <label><input type="radio" name="bias" value="Kim Seungmin"><span class="seungmin-bg"> Kim Seungmin</span></label><br>
-      <label><input type="radio" name="bias" value="Yang Jeongin"><span class="jeongin-bg"> Yang Jeongin</span></label><br>
-      <button type="submit" class="submit-btn">Vote!</button>
-    </form>
-    <p id="voteResult" class="vote-result"></p>
-  </section>
-
-  <!-- Felix Game Section -->
-  <section>
-    <h2 class="main-title">How To Be <span class="skz-color">행복해</span> (Happy) - The Felix Game</h2>
-    <a href="https://www.youtube.com/watch?v=ud4EDXrCWqM" target="_blank">
-      <img src="/previous-versions/v1/project/blog-assets/the-felix-game.png" alt="The Felix Game" class="hero-image border">
-    </a>
-    <div class="info-text">
-      <p>"<strong>How To Be 행복해</strong>", better known as "<strong>The Felix Game</strong>".<br>
-      It is programmed by <a href="https://the-felix-game.itch.io/" target="_blank">STAY Happy Productions</a>.<br>
-      It is a video game about <strong>Stray Kids</strong>.<br>
-      Made by STAY, for STAY.</p>
-      <p><strong>The Felix Game</strong> is a choice based game that focuses on a collecting mechanic.<br>
-      In the game, the player plays the role of <strong>Lee Felix</strong>,<br>
-      who gradually discovers more about Stray Kids and its members<br>
-      by making the right (or wrong) choices.</p>
-      <p><strong><u>They made this game as a gift for Felix, Stray Kids and STAY.</u></strong></p>
-      <p><a href="https://discord.gg/VhwYdumR" target="_blank">Join their Discord Server!</a><br>
-      <strong>or</strong><br>
-      <a href="https://the-felix-game.itch.io/thefelixgame" target="_blank">Check their Website!</a></p>
+  <!-- Bias Poll -->
+  <section class="content-section">
+    <h2 class="section-title">Who's your StrayKids Bias?</h2>
+    <div class="bias-container" id="biasContainer">
+      <div class="bias-form-container" id="biasFormContainer">
+        <div class="bias-options-grid">
+          <label class="bias-option" data-member="bangchan"><input type="radio" name="bias" value="Bang Chan"><img src="/previous-versions/v1/project/blog-assets/bang-chan.jpg" class="bias-thumb"><span class="bias-name">Bang Chan</span></label>
+          <label class="bias-option" data-member="leeknow"><input type="radio" name="bias" value="Lee Know"><img src="/previous-versions/v1/project/blog-assets/lee-know.jpg" class="bias-thumb"><span class="bias-name">Lee Know</span></label>
+          <label class="bias-option" data-member="changbin"><input type="radio" name="bias" value="Changbin"><img src="/previous-versions/v1/project/blog-assets/chang-bin.jpg" class="bias-thumb"><span class="bias-name">Changbin</span></label>
+          <label class="bias-option" data-member="hyunjin"><input type="radio" name="bias" value="Hyunjin"><img src="/previous-versions/v1/project/blog-assets/hyun-jin.jpg" class="bias-thumb"><span class="bias-name">Hyunjin</span></label>
+          <label class="bias-option" data-member="han"><input type="radio" name="bias" value="Han"><img src="/previous-versions/v1/project/blog-assets/han.jpg" class="bias-thumb"><span class="bias-name">Han</span></label>
+          <label class="bias-option" data-member="felix"><input type="radio" name="bias" value="Felix"><img src="/previous-versions/v1/project/blog-assets/felix.jpg" class="bias-thumb"><span class="bias-name">Felix</span></label>
+          <label class="bias-option" data-member="seungmin"><input type="radio" name="bias" value="Seungmin"><img src="/previous-versions/v1/project/blog-assets/seung-min.jpg" class="bias-thumb"><span class="bias-name">Seungmin</span></label>
+          <label class="bias-option" data-member="jeongin"><input type="radio" name="bias" value="I.N"><img src="/previous-versions/v1/project/blog-assets/yang-jeong-in.jpg" class="bias-thumb"><span class="bias-name">I.N</span></label>
+        </div>
+        <button type="button" id="voteSubmitBtn" class="submit-btn">Vote!</button>
+      </div>
+      <div class="bias-result-container" id="biasResultContainer" style="display: none;">
+        <div class="pie-chart-wrapper">
+          <canvas id="biasPieChart"></canvas>
+        </div>
+        <p id="voteResult" class="vote-result"></p>
+        <button type="button" id="resetVoteBtn" class="reset-btn">‹ Back to Vote</button>
+      </div>
     </div>
   </section>
 
-  <!-- Coming Soon Section -->
-  <section class="coming-soon">
-    <h1 class="main-title"><a href="#">PART 2 COMING SOON!</a></h1>
-  </section>
-</main>
+	<!-- Honorable Mention: The Felix Game -->
+	<section class="content-section">
+	<div class="honorable-container">
+		<div class="honorable-badge">🎮 Honorable Mention</div>
+		<div class="honorable-content">
+		<img src="/previous-versions/v1/project/blog-assets/the-felix-game.png" alt="The Felix Game" class="honorable-img">
+		<div class="honorable-info">
+			<h3>How To Be <span class="skz-color">행복해</span> (Happy)</h3>
+			<p class="honorable-subtitle">Better known as <strong>"The Felix Game"</strong></p>
+			<div class="honorable-description">
+			<p>"<strong>How To Be 행복해</strong>", better known as "<strong>The Felix Game</strong>".<br>
+			It is programmed by <a href="https://the-felix-game.itch.io/" target="_blank">STAY Happy Productions</a>.<br>
+			It is a video game about <strong>Stray Kids</strong>.<br>
+			Made by STAY, for STAY.</p>
+			<p><strong>The Felix Game</strong> is a choice-based game that focuses on a collecting mechanic.<br>
+			In the game, the player plays the role of <strong>Lee Felix</strong>,<br>
+			who gradually discovers more about Stray Kids and its members<br>
+			by making the right (or wrong) choices.</p>
+			<p class="honorable-note"><strong><u>They made this game as a gift for Felix, Stray Kids and STAY.</u></strong></p>
+			</div>
+			<div class="honorable-links">
+			<a href="https://discord.gg/VhwYdumR" target="_blank" class="honorable-btn secondary">Join their Discord Server!</a>
+			<a href="https://the-felix-game.itch.io/thefelixgame" target="_blank" class="honorable-btn primary">Play The Game →</a>
+			</div>
+		</div>
+		</div>
+	</div>
+	</section>
+
+  <!-- Coming Soon -->
+  <div class="coming-soon">
+    <p>📖 Part 2 Coming Soon — More content, deeper dives, and interactive features on the way.</p>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <p>© 2020 AICS Portfolio — A fan blog dedicated to Stray Kids</p>
+</footer>
 
 <script src="/previous-versions/v1/project/blog-script.js"></script>
 </body>
