@@ -343,11 +343,11 @@ function prevSlide() {
 // Card click handlers - opens actual portfolio version
 function openPortfolioVersion(version, month, day, year) {
   const portfolioUrls = {
-    'v1': 'https://portfolio-v1.example.com',
-    'v2': 'https://portfolio-v2.example.com',
-    'v3': 'https://portfolio-v3.example.com',
-    'v4': 'https://portfolio-v4.example.com',
-    'v5': 'https://portfolio-v5.example.com'
+    'v1': './previous-versions/v1.html',
+    'v2': './previous-versions/v2.html',
+    'v3': './previous-versions/v3.html',
+    'v4': './previous-versions/v4.html',
+    'v5': './previous-versions/v5.html'
   };
   
   saveLastVisitedPortfolio(version, month, day, year);
