@@ -224,10 +224,15 @@ img {
 }
 
 /* ============================================ */
-/* RESPONSIVE NAVIGATION - SHOW/HIDE CREDITS */
+/* RESPONSIVE NAVIGATION - 3 TIERS */
 /* ============================================ */
 
-/* Hide credits link on desktop by default */
+/* Default: Show all nav links (Home, Skills, Credits) */
+.nav-links {
+  display: flex;
+}
+
+/* Hide credits link on regular screens (default) */
 .mobile-only {
   display: none;
 }
@@ -239,10 +244,40 @@ img {
   }
 }
 
-/* Optional: Adjust nav-links gap on desktop when credits is hidden */
-@media screen and (min-width: 769px) {
+/* Very Large Screens (≥1600px) - Hide all nav links */
+@media screen and (min-width: 1600px) {
   .nav-links {
-    gap: 0.5rem;
+    display: none;
+  }
+  
+  .navbar {
+    justify-content: center;
+  }
+}
+
+/* Regular/Laptop Screens (769px - 1599px) - Show Home + Skills only */
+@media screen and (min-width: 769px) and (max-width: 1599px) {
+  .nav-links {
+    display: flex;
+  }
+  
+  .mobile-only {
+    display: none;
+  }
+  
+  .navbar {
+    justify-content: space-between;
+  }
+}
+
+/* Mobile (≤768px) - Show all three */
+@media screen and (max-width: 768px) {
+  .nav-links {
+    display: flex;
+  }
+  
+  .mobile-only {
+    display: inline-block;
   }
 }
 
