@@ -1,0 +1,296 @@
+/* ============================================ */
+/* STRAY KIDS BLOG - MAIN STYLES */
+/* ============================================ */
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #E6E6E6;
+  font-family: 'Courier New', Courier, "Lucida Console", monospace;
+  font-size: 20px;
+  color: #222222;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* Typography */
+.main-title {
+  font-family: 'Courier New', Courier, "Lucida Console", monospace;
+  font-size: 2.5em;
+  color: #FFFFFF;
+  background-color: #000000;
+  font-variant: small-caps;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  display: inline-block;
+}
+
+.section-title {
+  font-family: 'Courier New', Courier, "Lucida Console", monospace;
+  font-size: 200%;
+  font-weight: bold;
+  margin: 1.5rem 0 1rem;
+}
+
+.skz-color {
+  color: #ED580F;
+}
+
+/* Links */
+a {
+  font-family: 'Courier New', Courier, "Lucida Console", monospace;
+  font-weight: bold;
+}
+
+a:link {
+  color: #3c3c5d;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #80ced6;
+}
+
+a:active {
+  color: #8080d6;
+}
+
+a:visited {
+  color: #507c7c;
+  text-decoration: none;
+}
+
+/* Images */
+.border {
+  border: 2px solid black;
+  border-radius: 0;
+}
+
+.hero-image {
+  height: auto;
+  max-width: 900px;
+  width: 100%;
+  margin: 1rem auto;
+}
+
+.profile-image {
+  height: auto;
+  max-width: 430px;
+  width: 100%;
+  margin: 1rem auto;
+}
+
+.member-image {
+  height: auto;
+  max-width: 300px;
+  width: 100%;
+  margin: 1rem auto;
+  border-radius: 10px;
+}
+
+/* Member Profile Styles */
+.member-name {
+  font-size: 190%;
+  font-weight: bold;
+  padding: 0.25rem 1rem;
+  display: inline-block;
+  border-radius: 10px;
+  margin: 1rem 0;
+}
+
+.member-info {
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.member-facts {
+  text-align: left;
+  max-width: 800px;
+  margin: 1rem auto;
+}
+
+.facts-title {
+  font-size: 150%;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.info-label {
+  font-weight: bold;
+}
+
+/* Member Colors */
+.bangchan-bg { background-color: #779ecb; }
+.bangchan-color { color: #000080; }
+
+.leeknow-bg { background-color: #98ff98; }
+.leeknow-color { color: #48c072; }
+
+.changbin-bg { background-color: #3399ff; }
+.changbin-color { color: #3333ff; }
+
+.hyunjin-bg { background-color: #f2f2f2; }
+.hyunjin-color { color: #808080; }
+
+.han-bg { background-color: #ff4d4d; }
+.han-color { color: #ff0000; }
+
+.felix-bg { background-color: #000000; }
+.felix-color { color: #808080; }
+
+.seungmin-bg { background-color: #b300b3; }
+.seungmin-color { color: #b39eb5; }
+
+.jeongin-bg { background-color: #FF69B4; }
+.jeongin-color { color: #dea5a4; }
+
+/* MBTI Table */
+.mbti-table {
+  margin: 2rem auto;
+  border-collapse: collapse;
+}
+
+.mbti-table th {
+  color: white;
+  background-color: black;
+  padding: 0.5rem 1rem;
+}
+
+.mbti-caption {
+  font-size: 116%;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+/* Crackhead Section */
+.crackhead-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.member-crackhead {
+  flex: 1;
+  min-width: 250px;
+  text-align: center;
+}
+
+.crackhead-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 0.5rem;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+.member-crackhead ul {
+  display: inline-block;
+  text-align: left;
+  list-style-position: inside;
+  margin: 1rem 0;
+}
+
+.member-crackhead li {
+  margin: 0.5rem 0;
+}
+
+/* Bias Form */
+.bias-form {
+  text-align: center;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.bias-form label {
+  display: inline-block;
+  margin: 0.25rem;
+}
+
+.bias-form input[type="radio"] {
+  margin-right: 0.25rem;
+}
+
+.submit-btn {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.5rem 1.5rem;
+  margin: 1rem 0;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.submit-btn:hover {
+  opacity: 0.8;
+}
+
+.vote-result {
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+/* Coming Soon */
+.coming-soon a {
+  text-decoration: none;
+}
+
+.coming-soon a:link,
+.coming-soon a:visited,
+.coming-soon a:hover,
+.coming-soon a:active {
+  color: inherit;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+  
+  .main-title {
+    font-size: 1.8em;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+  }
+  
+  .member-name {
+    font-size: 1.3rem;
+  }
+  
+  .facts-title {
+    font-size: 1.2rem;
+  }
+  
+  .crackhead-links {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+  
+  .main-title {
+    font-size: 1.4em;
+  }
+  
+  .mbti-table th {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+  }
+}
