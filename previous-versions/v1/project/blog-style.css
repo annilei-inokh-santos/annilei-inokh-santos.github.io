@@ -18,6 +18,83 @@ body {
   line-height: 1.6;
 }
 
+/* ============================================ */
+/* VERSION NOTICE HEADER - REVISED EDITION */
+/* ============================================ */
+
+.version-notice {
+  background: #D4D4D4;
+  border-bottom: 1px solid #B0B0B0;
+  padding: 10px 20px;
+  margin-bottom: 1rem;
+}
+
+.notice-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.notice-left,
+.notice-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.notice-badge {
+  background: rgba(0, 0, 0, 0.08);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: #555555;
+  border: 1px solid #B0B0B0;
+  font-size: 0.7rem;
+}
+
+.notice-badge::after {
+  content: '↻';
+  margin-left: 4px;
+  font-size: 0.7rem;
+  opacity: 0.7;
+}
+
+.notice-text {
+  color: #444444;
+  margin: 0;
+  font-size: 0.75rem;
+}
+
+.notice-date {
+  color: #555555;
+  font-size: 0.7rem;
+  opacity: 0.8;
+}
+
+.notice-revision {
+  color: #333333;
+  opacity: 1;
+  font-weight: 500;
+  font-size: 0.7rem;
+}
+
+/* Hover effect for version notice */
+.version-notice:hover {
+  background: #C8C8C8;
+  transition: background 0.3s ease;
+}
+
+.version-notice:hover .notice-badge {
+  background: rgba(0, 0, 0, 0.12);
+  border-color: #999999;
+}
+
 /* Typography */
 .main-title {
   font-family: 'Courier New', Courier, "Lucida Console", monospace;
@@ -85,6 +162,294 @@ a:visited {
   margin: 1rem auto;
 }
 
+/* ============================================ */
+/* MEMBER PROFILES CAROUSEL SECTION */
+/* ============================================ */
+
+.member-profiles-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.member-carousel-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  min-height: 500px;
+}
+
+/* Left Side - Carousel */
+.carousel-side {
+  background: #f5f5f5;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: background 0.3s ease;
+}
+
+.carousel-container {
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.carousel-slide {
+  display: none;
+  text-align: center;
+  animation: fadeEffect 0.5s ease;
+  position: relative;
+}
+
+.carousel-slide.active {
+  display: block;
+}
+
+.carousel-slide img {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border: 3px solid #fff;
+  margin: 0 auto;
+  transition: box-shadow 0.3s ease;
+}
+
+/* Shine effect overlay */
+.carousel-slide::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.3), 
+    transparent);
+  transition: left 0.5s ease;
+  pointer-events: none;
+  border-radius: 20px;
+}
+
+.carousel-slide.active::before {
+  left: 100%;
+}
+
+/* Member color shine on container */
+.member-profiles-container[data-member="bangchan"] {
+  box-shadow: 0 10px 30px rgba(119, 158, 203, 0.3);
+  border: 1px solid rgba(119, 158, 203, 0.3);
+}
+
+.member-profiles-container[data-member="leeknow"] {
+  box-shadow: 0 10px 30px rgba(152, 255, 152, 0.3);
+  border: 1px solid rgba(152, 255, 152, 0.3);
+}
+
+.member-profiles-container[data-member="changbin"] {
+  box-shadow: 0 10px 30px rgba(51, 153, 255, 0.3);
+  border: 1px solid rgba(51, 153, 255, 0.3);
+}
+
+.member-profiles-container[data-member="hyunjin"] {
+  box-shadow: 0 10px 30px rgba(192, 192, 192, 0.3);
+  border: 1px solid rgba(192, 192, 192, 0.3);
+}
+
+.member-profiles-container[data-member="han"] {
+  box-shadow: 0 10px 30px rgba(255, 77, 77, 0.3);
+  border: 1px solid rgba(255, 77, 77, 0.3);
+}
+
+.member-profiles-container[data-member="felix"] {
+  box-shadow: 0 10px 30px rgba(128, 128, 128, 0.3);
+  border: 1px solid rgba(128, 128, 128, 0.3);
+}
+
+.member-profiles-container[data-member="seungmin"] {
+  box-shadow: 0 10px 30px rgba(179, 0, 179, 0.3);
+  border: 1px solid rgba(179, 0, 179, 0.3);
+}
+
+.member-profiles-container[data-member="jeongin"] {
+  box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+  border: 1px solid rgba(255, 105, 180, 0.3);
+}
+
+.member-profiles-container[data-member="woojin"] {
+  box-shadow: 0 10px 30px rgba(119, 221, 119, 0.3);
+  border: 1px solid rgba(119, 221, 119, 0.3);
+}
+
+.carousel-slide .member-carousel-name {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Navigation Arrows */
+.carousel-prev, .carousel-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.carousel-prev {
+  left: -20px;
+}
+
+.carousel-next {
+  right: -20px;
+}
+
+.carousel-prev:hover, .carousel-next:hover {
+  background: rgba(0, 0, 0, 0.8);
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Dots Navigation */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ccc;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: #ED580F;
+  width: 25px;
+  border-radius: 10px;
+}
+
+.dot:hover {
+  background: #ED580F;
+  opacity: 0.7;
+}
+
+/* Right Side - Member Details */
+.details-side {
+  padding: 2rem;
+  background: #fff;
+  overflow-y: auto;
+  max-height: 600px;
+}
+
+.details-side h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid #ED580F;
+  display: inline-block;
+}
+
+.details-info {
+  text-align: left;
+  margin-top: 1rem;
+}
+
+.details-info p {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.details-info .info-label {
+  font-weight: bold;
+  min-width: 120px;
+  display: inline-block;
+}
+
+.details-facts {
+  margin-top: 1.5rem;
+}
+
+.details-facts h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+  color: #ED580F;
+}
+
+.details-facts p {
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.details-facts a {
+  font-size: 0.85rem;
+}
+
+/* Animations */
+@keyframes fadeEffect {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Responsive */
+@media screen and (max-width: 900px) {
+  .member-carousel-wrapper {
+    grid-template-columns: 1fr;
+  }
+  
+  .carousel-side {
+    padding: 1.5rem;
+  }
+  
+  .details-side {
+    max-height: none;
+  }
+  
+  .carousel-prev {
+    left: 0;
+  }
+  
+  .carousel-next {
+    right: 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .details-info p {
+    font-size: 0.8rem;
+  }
+  
+  .details-facts p {
+    font-size: 0.75rem;
+  }
+  
+  .details-side h3 {
+    font-size: 1.4rem;
+  }
+}
+
 .member-image {
   height: auto;
   max-width: 300px;
@@ -150,6 +515,9 @@ a:visited {
 .jeongin-bg { background-color: #FF69B4; }
 .jeongin-color { color: #dea5a4; }
 
+.woojin-bg { background-color: #77dd77; }
+.woojin-color { color: #228B22; }
+
 /* MBTI Table */
 .mbti-table {
   margin: 2rem auto;
@@ -212,6 +580,8 @@ a:visited {
 .bias-form label {
   display: inline-block;
   margin: 0.25rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 20px;
 }
 
 .bias-form input[type="radio"] {
@@ -229,6 +599,7 @@ a:visited {
   border: none;
   cursor: pointer;
   transition: opacity 0.3s;
+  border-radius: 8px;
 }
 
 .submit-btn:hover {
@@ -278,6 +649,17 @@ a:visited {
     flex-direction: column;
     align-items: center;
   }
+  
+  .notice-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+  
+  .notice-left,
+  .notice-right {
+    justify-content: center;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -292,5 +674,19 @@ a:visited {
   .mbti-table th {
     padding: 0.25rem 0.5rem;
     font-size: 0.8rem;
+  }
+  
+  .notice-badge {
+    padding: 2px 6px;
+    font-size: 0.6rem;
+  }
+  
+  .notice-text {
+    font-size: 0.65rem;
+  }
+  
+  .notice-date,
+  .notice-revision {
+    font-size: 0.6rem;
   }
 }
