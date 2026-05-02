@@ -2,151 +2,213 @@
 document.addEventListener('DOMContentLoaded', function() {
   
 // ============================================
-// BIAS POLL SECTION - STANDARD PIE CHART (Chart.js)
+// BIAS POLL SECTION - FIXED
 // ============================================
 (function() {
-  const formContainer = document.getElementById('biasFormContainer');
-  const resultContainer = document.getElementById('biasResultContainer');
-  const voteBtn = document.getElementById('voteSubmitBtn');
-  const resetBtn = document.getElementById('resetVoteBtn');
-  const voteResultSpan = document.getElementById('voteResult');
-  const canvas = document.getElementById('biasPieChart');
+  // Wait for DOM and Chart.js to be ready
+  function initBiasPoll() {
+    const formContainer = document.getElementById('biasFormContainer');
+    const resultContainer = document.getElementById('biasResultContainer');
+    const voteBtn = document.getElementById('voteSubmitBtn');
+    const resetBtn = document.getElementById('resetVoteBtn');
+    const voteResultSpan = document.getElementById('voteResult');
+    const canvas = document.getElementById('biasPieChart');
+    const biasContainer = document.querySelector('.bias-container');
 
-  let pieChart = null;
-
-  // === Member data ===
-  const memberColors = [
-    '#779ecb', '#98ff98', '#3399ff', '#c0c0c0',
-    '#ff4d4d', '#b8860b', '#b300b3', '#FF69B4'
-  ];
-  const memberLabels = [
-    'Bang Chan', 'Lee Know', 'Changbin', 'Hyunjin',
-    'Han', 'Felix', 'Seungmin', 'I.N'
-  ];
-  const equalData = memberLabels.map(() => 12.5); // each gets 12.5%
-
-  // === Create / Update Chart with Larger Labels ===
-  function initChart() {
-    if (pieChart) {
-      pieChart.destroy();
+    // Check if required elements exist
+    if (!canvas) {
+      console.log('Canvas not found, retrying...');
+      setTimeout(initBiasPoll, 100);
+      return;
     }
-    if (!canvas) return;
 
-    pieChart = new Chart(canvas, {
-      type: 'pie',
-      data: {
-        labels: memberLabels,
-        datasets: [{
-          data: equalData,
-          backgroundColor: memberColors,
-          borderWidth: 2,
-          borderColor: '#ffffff',
-          hoverOffset: 10
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: true,
-        plugins: {
-          legend: {
-            position: 'bottom',
-            labels: {
-              font: { 
-                size: 12,           // Increased from 9 to 12
-                family: "'Courier New', monospace",
-                weight: 'bold'
-              },
-              boxWidth: 14,         // Increased from 10 to 14
-              boxHeight: 14,
-              padding: 12,          // More space between legend items
-              usePointStyle: true,
-              pointStyle: 'circle'
-            }
+    if (typeof Chart === 'undefined') {
+      console.log('Chart.js not loaded yet, retrying...');
+      setTimeout(initBiasPoll, 100);
+      return;
+    }
+
+    let pieChart = null;
+    let hasAnimatedEntry = false;
+
+    // Member data
+    const memberColors = [
+      '#779ecb', '#98ff98', '#3399ff', '#c0c0c0',
+      '#ff4d4d', '#b8860b', '#b300b3', '#FF69B4'
+    ];
+    const memberLabels = [
+      'Bang Chan', 'Lee Know', 'Changbin', 'Hyunjin',
+      'Han', 'Felix', 'Seungmin', 'I.N'
+    ];
+    const equalData = [12.5, 12.5, 12.5, 12.5, 12.5, 12.5, 12.5, 12.5];
+
+    // Initialize chart
+    function initChart() {
+      if (pieChart) {
+        pieChart.destroy();
+      }
+      
+      pieChart = new Chart(canvas, {
+        type: 'pie',
+        data: {
+          labels: memberLabels,
+          datasets: [{
+            data: equalData,
+            backgroundColor: memberColors,
+            borderWidth: 2,
+            borderColor: '#ffffff',
+            hoverOffset: 10
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          animation: {
+            duration: 800,
+            easing: 'easeOutQuart'
           },
-          tooltip: {
-            bodyFont: {
-              size: 12
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: {
+                font: { 
+                  size: 12,
+                  family: "'Courier New', monospace",
+                  weight: 'bold'
+                },
+                boxWidth: 14,
+                boxHeight: 14,
+                padding: 12,
+                usePointStyle: true,
+                pointStyle: 'circle'
+              }
             },
-            callbacks: {
-              label: (ctx) => `${ctx.label}: ${ctx.raw}%`
+            tooltip: {
+              bodyFont: { size: 12 },
+              callbacks: {
+                label: (ctx) => `${ctx.label}: ${ctx.raw}%`
+              }
             }
           }
         }
+      });
+      hasAnimatedEntry = true;
+    }
+
+    // Show result view
+    function showResult(selectedName) {
+      if (formContainer) {
+        formContainer.style.transition = 'opacity 0.3s ease';
+        formContainer.style.opacity = '0';
+        setTimeout(() => {
+          formContainer.style.display = 'none';
+          formContainer.style.opacity = '1';
+        }, 300);
       }
-    });
-  }
+      
+      if (resultContainer) {
+        resultContainer.style.display = 'flex';
+        resultContainer.style.opacity = '0';
+        setTimeout(() => {
+          resultContainer.style.transition = 'opacity 0.4s ease';
+          resultContainer.style.opacity = '1';
+        }, 50);
+      }
+      
+      if (resetBtn) resetBtn.style.display = 'inline-block';
 
-  // === Switch to result view ===
-  function showResult(selectedName) {
-    if (formContainer) formContainer.style.display = 'none';
-    if (resultContainer) resultContainer.style.display = 'flex';
-    if (resetBtn) resetBtn.style.display = 'inline-block';
-
-    if (voteResultSpan) {
-      voteResultSpan.innerHTML = `🎉 Thanks for voting! <strong>${selectedName}</strong> is your bias. 🎉`;
+      if (voteResultSpan) {
+        voteResultSpan.innerHTML = `🎉 Thanks for voting! <strong>${selectedName}</strong> is your bias. 🎉`;
+      }
+      
+      // Gentle animation
+      if (biasContainer) {
+        biasContainer.style.transition = 'box-shadow 0.4s ease';
+        biasContainer.style.boxShadow = '0 0 0 4px rgba(237, 88, 15, 0.3), 0 15px 40px rgba(0, 0, 0, 0.08)';
+        setTimeout(() => {
+          biasContainer.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.08)';
+        }, 400);
+      }
+      
+      if (canvas) {
+        canvas.style.transition = 'transform 0.3s ease, filter 0.3s ease';
+        canvas.style.transform = 'scale(1.02)';
+        canvas.style.filter = 'drop-shadow(0 0 12px rgba(237, 88, 15, 0.4))';
+        setTimeout(() => {
+          canvas.style.transform = 'scale(1)';
+          canvas.style.filter = 'drop-shadow(0 0 0 rgba(237, 88, 15, 0))';
+        }, 600);
+      }
     }
 
-    // glow effect
-    if (canvas) {
-      canvas.classList.add('chart-glow');
-      setTimeout(() => canvas.classList.remove('chart-glow'), 1200);
+    // Reset vote
+    function resetVote() {
+      if (resultContainer) {
+        resultContainer.style.transition = 'opacity 0.3s ease';
+        resultContainer.style.opacity = '0';
+        setTimeout(() => {
+          resultContainer.style.display = 'none';
+          resultContainer.style.opacity = '1';
+        }, 300);
+      }
+      
+      if (formContainer) {
+        formContainer.style.display = '';
+        formContainer.style.opacity = '0';
+        setTimeout(() => {
+          formContainer.style.transition = 'opacity 0.4s ease';
+          formContainer.style.opacity = '1';
+        }, 50);
+      }
+      
+      if (resetBtn) resetBtn.style.display = 'none';
+
+      const checkedRadio = document.querySelector('input[name="bias"]:checked');
+      if (checkedRadio) checkedRadio.checked = false;
+
+      localStorage.removeItem('skzBias');
+      hasAnimatedEntry = false;
     }
-  }
 
-  // === Back to voting ===
-  function resetVote() {
-    if (formContainer) formContainer.style.display = '';
-    if (resultContainer) resultContainer.style.display = 'none';
-    if (resetBtn) resetBtn.style.display = 'none';
-
-    // clear selected radio
-    const checkedRadio = document.querySelector('input[name="bias"]:checked');
-    if (checkedRadio) checkedRadio.checked = false;
-
-    localStorage.removeItem('skzBias');
-  }
-
-  // === Handle vote ===
-  if (voteBtn) {
-    voteBtn.addEventListener('click', () => {
-      const selected = document.querySelector('input[name="bias"]:checked');
-      if (!selected) {
-        if (voteResultSpan) {
-          voteResultSpan.innerHTML = '⚠️ Please select a member first!';
-          setTimeout(() => {
-            if (voteResultSpan && resultContainer?.style.display !== 'flex')
-              voteResultSpan.innerHTML = '';
-          }, 1800);
+    // Vote button handler
+    if (voteBtn) {
+      voteBtn.addEventListener('click', () => {
+        const selected = document.querySelector('input[name="bias"]:checked');
+        if (!selected) {
+          if (voteResultSpan) {
+            voteResultSpan.innerHTML = '⚠️ Please select a member first!';
+            voteResultSpan.style.color = '#ff0000';
+            setTimeout(() => {
+              if (voteResultSpan && resultContainer?.style.display !== 'flex')
+                voteResultSpan.innerHTML = '';
+            }, 1500);
+          }
+          return;
         }
-        return;
-      }
 
-      const selectedLabel = selected.parentElement.querySelector('.bias-name')?.textContent || selected.value;
-      localStorage.setItem('skzBias', selectedLabel);
-      showResult(selectedLabel);
-    });
-  }
+        const selectedLabel = selected.parentElement.querySelector('.bias-name')?.textContent || selected.value;
+        localStorage.setItem('skzBias', selectedLabel);
+        showResult(selectedLabel);
+      });
+    }
 
-  if (resetBtn) resetBtn.addEventListener('click', resetVote);
+    if (resetBtn) resetBtn.addEventListener('click', resetVote);
 
-  // === Load previous vote ===
-  const saved = localStorage.getItem('skzBias');
-  if (saved && resultContainer && formContainer) {
-    formContainer.style.display = 'none';
-    resultContainer.style.display = 'flex';
-    if (resetBtn) resetBtn.style.display = 'inline-block';
-    if (voteResultSpan) voteResultSpan.innerHTML = `🎉 You already voted for <strong>${saved}</strong>. 🎉`;
-  }
+    // Load saved vote
+    const saved = localStorage.getItem('skzBias');
+    if (saved && resultContainer && formContainer) {
+      formContainer.style.display = 'none';
+      resultContainer.style.display = 'flex';
+      if (resetBtn) resetBtn.style.display = 'inline-block';
+      if (voteResultSpan) voteResultSpan.innerHTML = `🎉 You already voted for <strong>${saved}</strong>. 🎉`;
+    }
 
-  // === Initialize chart when Chart.js is ready ===
-  if (typeof Chart !== 'undefined' && canvas) {
+    // Initialize chart
     initChart();
-  } else {
-    // fallback: wait a bit for the library
-    window.addEventListener('load', () => {
-      if (typeof Chart !== 'undefined' && canvas) initChart();
-    });
   }
+
+  // Start initialization
+  initBiasPoll();
 })();
 
   // ============================================

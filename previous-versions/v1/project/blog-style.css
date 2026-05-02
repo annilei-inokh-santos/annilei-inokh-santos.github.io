@@ -378,6 +378,42 @@ a:visited {
 }
 
 /* ============================================ */
+/* BORDER GLOW HOVER EFFECT - NO MOVEMENT */
+/* ============================================ */
+
+/* Hero Image */
+.hero-section a img {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.hero-section a:hover img {
+  border-color: #ED580F;
+  box-shadow: 0 0 0 1px #ED580F;
+}
+
+/* What is Stray Kids Image */
+.content-section:first-of-type .section-image {
+  transition: border-color 0.3s ease;
+  border: 2px solid black;
+}
+
+.content-section:first-of-type a:hover .section-image {
+  border-color: #ED580F;
+}
+
+/* What is Stay Image */
+.content-section:nth-of-type(2) .section-image {
+  transition: border-color 0.3s ease;
+  border: 2px solid black;
+}
+
+.content-section:nth-of-type(2) a:hover .section-image {
+  border-color: #ED580F;
+}
+
+
+/* ============================================ */
 /* MEMBER PROFILES CAROUSEL SECTION - COMPACT WITH TINTED BACKGROUND */
 /* ============================================ */
 
@@ -1353,8 +1389,93 @@ a:visited {
 }
 
 /* ============================================ */
-/* HONORABLE MENTION - THE FELIX GAME WITH LARGE IMAGE */
+/* BIAS POLL ANIMATIONS */
 /* ============================================ */
+
+/* Entry animation for result container */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Vote celebration pulse */
+@keyframes votePulse {
+  0% {
+    filter: drop-shadow(0 0 0 rgba(237, 88, 15, 0.5));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(237, 88, 15, 0.8));
+    transform: scale(1.02);
+  }
+  100% {
+    filter: drop-shadow(0 0 0 rgba(237, 88, 15, 0.5));
+    transform: scale(1);
+  }
+}
+
+.chart-vote-pulse {
+  animation: votePulse 0.6s ease-in-out;
+}
+
+/* Container celebration effect */
+@keyframes containerCelebration {
+  0% {
+    box-shadow: 0 0 0 0 rgba(237, 88, 15, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 15px rgba(237, 88, 15, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(237, 88, 15, 0);
+  }
+}
+
+.bias-container.vote-celebration {
+  animation: containerCelebration 0.8s ease-out;
+}
+
+/* Shake animation for error */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-3px); }
+  20%, 40%, 60%, 80% { transform: translateX(3px); }
+}
+
+/* Confetti animation */
+@keyframes confettiFall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Text fade in */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Result container transition */
+.bias-result-container {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
 
 /* ============================================ */
 /* HONORABLE MENTION - THE FELIX GAME */
@@ -1591,4 +1712,37 @@ a:visited {
   .honorable-title {
     font-size: 1rem;
   }
+}
+
+/* Archive Notice Styles */
+.archive-notice {
+  text-align: center;
+  padding: 2rem;
+  margin: 2rem 0;
+  background: linear-gradient(135deg, #f5f5f5, #e8e8e8);
+  border-radius: 16px;
+  border-left: 4px solid #ED580F;
+  clear: both;
+}
+
+.archive-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.archive-notice h3 {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.archive-notice p {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 0.25rem;
+}
+
+.archive-small {
+  font-size: 0.7rem;
+  color: #999;
 }
