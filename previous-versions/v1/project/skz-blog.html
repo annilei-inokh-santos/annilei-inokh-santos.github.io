@@ -183,46 +183,50 @@
           <canvas id="biasPieChart"></canvas>
         </div>
         <p id="voteResult" class="vote-result"></p>
-        <button type="button" id="resetVoteBtn" class="reset-btn">‹ Back to Vote</button>
+        <!-- REMOVED: <button type="button" id="resetVoteBtn" class="reset-btn">‹ Back to Vote</button> -->
       </div>
     </div>
   </section>
 
-	<!-- Honorable Mention: The Felix Game -->
-	<section class="content-section">
-	<div class="honorable-container">
-		<div class="honorable-badge">🎮 Honorable Mention</div>
-		<div class="honorable-content">
-		<img src="/previous-versions/v1/project/blog-assets/the-felix-game.png" alt="The Felix Game" class="honorable-img">
-		<div class="honorable-info">
-			<h3>How To Be <span class="skz-color">행복해</span> (Happy)</h3>
-			<p class="honorable-subtitle">Better known as <strong>"The Felix Game"</strong></p>
-			<div class="honorable-description">
-			<p>"<strong>How To Be 행복해</strong>", better known as "<strong>The Felix Game</strong>".<br>
-			It is programmed by <a href="https://the-felix-game.itch.io/" target="_blank">STAY Happy Productions</a>.<br>
-			It is a video game about <strong>Stray Kids</strong>.<br>
-			Made by STAY, for STAY.</p>
-			<p><strong>The Felix Game</strong> is a choice-based game that focuses on a collecting mechanic.<br>
-			In the game, the player plays the role of <strong>Lee Felix</strong>,<br>
-			who gradually discovers more about Stray Kids and its members<br>
-			by making the right (or wrong) choices.</p>
-			<p class="honorable-note"><strong><u>They made this game as a gift for Felix, Stray Kids and STAY.</u></strong></p>
-			</div>
-			<div class="honorable-links">
-			<a href="https://discord.gg/VhwYdumR" target="_blank" class="honorable-btn secondary">Join their Discord Server!</a>
-			<a href="https://the-felix-game.itch.io/thefelixgame" target="_blank" class="honorable-btn primary">Play The Game →</a>
-			</div>
-		</div>
-		</div>
-	</div>
-	</section>
+  <!-- Honorable Mention: The Felix Game -->
+  <section class="content-section">
+    <h2 class="section-title">The Felix Game • <span class="skz-color">STAY Studios</span></h2>
+    <div class="honorable-container">
+      <div class="honorable-content">
+        <div class="honorable-image">
+          <img src="/previous-versions/v1/project/blog-assets/the-felix-game.png" alt="The Felix Game" class="honorable-img">
+        </div>
+        <div class="honorable-info">
+          <h3>How To Be <span class="skz-color">행복해</span> (Happy)</h3>
+          <p class="honorable-subtitle">Better known as <strong>"The Felix Game"</strong></p>
+          <div class="honorable-description">
+            <p>A choice-based video game about <strong>Stray Kids</strong> where you play as <strong>Felix</strong>, discovering members through choices.</p>
+            <p class="honorable-note">🎮 Made by STAY, for STAY — a gift to Felix and the fandom.</p>
+          </div>
+          <div class="honorable-links">
+            <a href="https://the-felix-game.itch.io/thefelixgame" target="_blank" class="honorable-btn primary">Play The Game →</a>
+            <a href="https://linktr.ee/thefelixgame" target="_blank" class="honorable-btn secondary">All Links 🔗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- Archive Notice -->
-  <div class="archive-notice">
-    <div class="archive-icon">📦</div>
-    <h3>Archive Notice</h3>
-    <p>This blog is a preserved snapshot from 2020. No further updates are planned.</p>
-    <p class="archive-small">Thank you for visiting! 🖤</p>
+  <!-- Archive Notice Popup Modal -->
+  <div id="archivePopup" class="archive-popup-modal">
+    <div class="archive-popup-content">
+      <div class="archive-popup-header">
+        <span class="archive-popup-icon">📦</span>
+        <h3>Archive Notice</h3>
+      </div>
+      <div class="archive-popup-body">
+        <p>This blog is a preserved snapshot from 2020.</p>
+        <p>No further updates are planned.</p>
+        <div class="archive-popup-divider"></div>
+        <p class="archive-popup-thanks">Thank you for visiting! 🖤</p>
+      </div>
+      <button id="closeArchiveBtn" class="archive-popup-btn">Got it!</button>
+    </div>
   </div>
 
 </div>

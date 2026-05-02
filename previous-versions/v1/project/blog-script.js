@@ -2,213 +2,126 @@
 document.addEventListener('DOMContentLoaded', function() {
   
 // ============================================
-// BIAS POLL SECTION - FIXED
+// BIAS POLL SECTION - SIMPLE FADE TRANSITION (NO RESET BUTTON)
 // ============================================
 (function() {
-  // Wait for DOM and Chart.js to be ready
-  function initBiasPoll() {
-    const formContainer = document.getElementById('biasFormContainer');
-    const resultContainer = document.getElementById('biasResultContainer');
-    const voteBtn = document.getElementById('voteSubmitBtn');
-    const resetBtn = document.getElementById('resetVoteBtn');
-    const voteResultSpan = document.getElementById('voteResult');
-    const canvas = document.getElementById('biasPieChart');
-    const biasContainer = document.querySelector('.bias-container');
+  const formContainer = document.getElementById('biasFormContainer');
+  const resultContainer = document.getElementById('biasResultContainer');
+  const voteBtn = document.getElementById('voteSubmitBtn');
+  const voteResultSpan = document.getElementById('voteResult');
+  const canvas = document.getElementById('biasPieChart');
 
-    // Check if required elements exist
-    if (!canvas) {
-      console.log('Canvas not found, retrying...');
-      setTimeout(initBiasPoll, 100);
-      return;
-    }
+  let pieChart = null;
 
-    if (typeof Chart === 'undefined') {
-      console.log('Chart.js not loaded yet, retrying...');
-      setTimeout(initBiasPoll, 100);
-      return;
-    }
+  // Member data
+  const memberColors = [
+    '#779ecb', '#98ff98', '#3399ff', '#c0c0c0',
+    '#ff4d4d', '#b8860b', '#b300b3', '#FF69B4'
+  ];
+  const memberLabels = [
+    'Bang Chan', 'Lee Know', 'Changbin', 'Hyunjin',
+    'Han', 'Felix', 'Seungmin', 'I.N'
+  ];
+  const equalData = [12.5, 12.5, 12.5, 12.5, 12.5, 12.5, 12.5, 12.5];
 
-    let pieChart = null;
-    let hasAnimatedEntry = false;
-
-    // Member data
-    const memberColors = [
-      '#779ecb', '#98ff98', '#3399ff', '#c0c0c0',
-      '#ff4d4d', '#b8860b', '#b300b3', '#FF69B4'
-    ];
-    const memberLabels = [
-      'Bang Chan', 'Lee Know', 'Changbin', 'Hyunjin',
-      'Han', 'Felix', 'Seungmin', 'I.N'
-    ];
-    const equalData = [12.5, 12.5, 12.5, 12.5, 12.5, 12.5, 12.5, 12.5];
-
-    // Initialize chart
-    function initChart() {
-      if (pieChart) {
-        pieChart.destroy();
-      }
-      
-      pieChart = new Chart(canvas, {
-        type: 'pie',
-        data: {
-          labels: memberLabels,
-          datasets: [{
-            data: equalData,
-            backgroundColor: memberColors,
-            borderWidth: 2,
-            borderColor: '#ffffff',
-            hoverOffset: 10
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: true,
-          animation: {
-            duration: 800,
-            easing: 'easeOutQuart'
-          },
-          plugins: {
-            legend: {
-              position: 'bottom',
-              labels: {
-                font: { 
-                  size: 12,
-                  family: "'Courier New', monospace",
-                  weight: 'bold'
-                },
-                boxWidth: 14,
-                boxHeight: 14,
-                padding: 12,
-                usePointStyle: true,
-                pointStyle: 'circle'
-              }
-            },
-            tooltip: {
-              bodyFont: { size: 12 },
-              callbacks: {
-                label: (ctx) => `${ctx.label}: ${ctx.raw}%`
-              }
+  // Initialize chart
+  function initChart() {
+    if (pieChart) pieChart.destroy();
+    if (!canvas) return;
+    
+    pieChart = new Chart(canvas, {
+      type: 'pie',
+      data: {
+        labels: memberLabels,
+        datasets: [{
+          data: equalData,
+          backgroundColor: memberColors,
+          borderWidth: 2,
+          borderColor: '#ffffff',
+          hoverOffset: 10
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        animation: { duration: 500, easing: 'easeOutQuart' },
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: {
+              font: { size: 12, family: "'Courier New', monospace", weight: 'bold' },
+              boxWidth: 14, boxHeight: 14, padding: 12,
+              usePointStyle: true, pointStyle: 'circle'
             }
-          }
+          },
+          tooltip: { bodyFont: { size: 12 }, callbacks: { label: (ctx) => `${ctx.label}: ${ctx.raw}%` } }
         }
-      });
-      hasAnimatedEntry = true;
-    }
+      }
+    });
+  }
 
-    // Show result view
-    function showResult(selectedName) {
+  // Show result with fade
+  function showResult(selectedName) {
+    // Fade out form
+    if (formContainer) {
+      formContainer.style.transition = 'opacity 0.2s ease';
+      formContainer.style.opacity = '0';
+    }
+    
+    setTimeout(() => {
+      // Hide form
       if (formContainer) {
-        formContainer.style.transition = 'opacity 0.3s ease';
-        formContainer.style.opacity = '0';
-        setTimeout(() => {
-          formContainer.style.display = 'none';
-          formContainer.style.opacity = '1';
-        }, 300);
+        formContainer.style.display = 'none';
+        formContainer.style.opacity = '1';
       }
       
+      // Show and fade in result
       if (resultContainer) {
         resultContainer.style.display = 'flex';
         resultContainer.style.opacity = '0';
         setTimeout(() => {
-          resultContainer.style.transition = 'opacity 0.4s ease';
+          resultContainer.style.transition = 'opacity 0.3s ease';
           resultContainer.style.opacity = '1';
-        }, 50);
+        }, 20);
       }
       
-      if (resetBtn) resetBtn.style.display = 'inline-block';
-
+      // Version 10 message
       if (voteResultSpan) {
-        voteResultSpan.innerHTML = `🎉 Thanks for voting! <strong>${selectedName}</strong> is your bias. 🎉`;
+        voteResultSpan.innerHTML = `⭐ <strong>${selectedName}</strong> appreciates your support, Stay!`;
       }
-      
-      // Gentle animation
-      if (biasContainer) {
-        biasContainer.style.transition = 'box-shadow 0.4s ease';
-        biasContainer.style.boxShadow = '0 0 0 4px rgba(237, 88, 15, 0.3), 0 15px 40px rgba(0, 0, 0, 0.08)';
-        setTimeout(() => {
-          biasContainer.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.08)';
-        }, 400);
-      }
-      
-      if (canvas) {
-        canvas.style.transition = 'transform 0.3s ease, filter 0.3s ease';
-        canvas.style.transform = 'scale(1.02)';
-        canvas.style.filter = 'drop-shadow(0 0 12px rgba(237, 88, 15, 0.4))';
-        setTimeout(() => {
-          canvas.style.transform = 'scale(1)';
-          canvas.style.filter = 'drop-shadow(0 0 0 rgba(237, 88, 15, 0))';
-        }, 600);
-      }
-    }
-
-    // Reset vote
-    function resetVote() {
-      if (resultContainer) {
-        resultContainer.style.transition = 'opacity 0.3s ease';
-        resultContainer.style.opacity = '0';
-        setTimeout(() => {
-          resultContainer.style.display = 'none';
-          resultContainer.style.opacity = '1';
-        }, 300);
-      }
-      
-      if (formContainer) {
-        formContainer.style.display = '';
-        formContainer.style.opacity = '0';
-        setTimeout(() => {
-          formContainer.style.transition = 'opacity 0.4s ease';
-          formContainer.style.opacity = '1';
-        }, 50);
-      }
-      
-      if (resetBtn) resetBtn.style.display = 'none';
-
-      const checkedRadio = document.querySelector('input[name="bias"]:checked');
-      if (checkedRadio) checkedRadio.checked = false;
-
-      localStorage.removeItem('skzBias');
-      hasAnimatedEntry = false;
-    }
-
-    // Vote button handler
-    if (voteBtn) {
-      voteBtn.addEventListener('click', () => {
-        const selected = document.querySelector('input[name="bias"]:checked');
-        if (!selected) {
-          if (voteResultSpan) {
-            voteResultSpan.innerHTML = '⚠️ Please select a member first!';
-            voteResultSpan.style.color = '#ff0000';
-            setTimeout(() => {
-              if (voteResultSpan && resultContainer?.style.display !== 'flex')
-                voteResultSpan.innerHTML = '';
-            }, 1500);
-          }
-          return;
-        }
-
-        const selectedLabel = selected.parentElement.querySelector('.bias-name')?.textContent || selected.value;
-        localStorage.setItem('skzBias', selectedLabel);
-        showResult(selectedLabel);
-      });
-    }
-
-    if (resetBtn) resetBtn.addEventListener('click', resetVote);
-
-    // Load saved vote
-    const saved = localStorage.getItem('skzBias');
-    if (saved && resultContainer && formContainer) {
-      formContainer.style.display = 'none';
-      resultContainer.style.display = 'flex';
-      if (resetBtn) resetBtn.style.display = 'inline-block';
-      if (voteResultSpan) voteResultSpan.innerHTML = `🎉 You already voted for <strong>${saved}</strong>. 🎉`;
-    }
-
-    // Initialize chart
-    initChart();
+    }, 200);
   }
 
-  // Start initialization
-  initBiasPoll();
+  // Vote button
+  if (voteBtn) {
+    voteBtn.addEventListener('click', () => {
+      const selected = document.querySelector('input[name="bias"]:checked');
+      if (!selected) {
+        const errorMsg = document.createElement('p');
+        errorMsg.textContent = '⚠️ Please select a member first!';
+        errorMsg.style.color = '#ff0000';
+        errorMsg.style.fontSize = '0.8rem';
+        errorMsg.style.marginTop = '0.5rem';
+        
+        const existingError = formContainer.querySelector('.error-message');
+        if (existingError) existingError.remove();
+        errorMsg.className = 'error-message';
+        formContainer.appendChild(errorMsg);
+        
+        setTimeout(() => errorMsg.remove(), 1500);
+        return;
+      }
+      const selectedLabel = selected.parentElement.querySelector('.bias-name')?.textContent || selected.value;
+      showResult(selectedLabel);
+    });
+  }
+
+  // Always show form on page load
+  if (formContainer) formContainer.style.display = '';
+  if (resultContainer) resultContainer.style.display = 'none';
+
+  // Initialize chart
+  initChart();
 })();
 
   // ============================================
@@ -724,3 +637,54 @@ document.addEventListener('DOMContentLoaded', function() {
   
   console.log('Stray Kids Blog Loaded! 🎉');
 });
+
+// ============================================
+// ARCHIVE POPUP - ONE TIME ONLY (NO OUTSIDE CLICK)
+// ============================================
+(function() {
+  const popupKey = 'archivePopupShown';
+  const popupModal = document.getElementById('archivePopup');
+  const closeBtn = document.getElementById('closeArchiveBtn');
+  
+  // Check if popup has been shown before
+  const hasBeenShown = localStorage.getItem(popupKey);
+  
+  // Function to show popup
+  function showPopup() {
+    if (popupModal) {
+      popupModal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+  }
+  
+  // Function to close and remember
+  function closeAndRemember() {
+    if (popupModal) {
+      popupModal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+      // Store in localStorage - this prevents showing again
+      localStorage.setItem(popupKey, 'true');
+    }
+  }
+  
+  // Show popup only if it hasn't been shown before
+  if (!hasBeenShown) {
+    // Small delay to ensure page loads first
+    setTimeout(showPopup, 500);
+  }
+  
+  // Close button only - NO outside click
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeAndRemember);
+  }
+  
+  // REMOVED: Click outside to close (no longer closes)
+  // REMOVED: Escape key to close (optional - can keep or remove)
+  
+  // Optional: Keep Escape key to close (comment out if you want to remove)
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && popupModal && popupModal.style.display === 'flex') {
+      closeAndRemember();
+    }
+  });
+})();
