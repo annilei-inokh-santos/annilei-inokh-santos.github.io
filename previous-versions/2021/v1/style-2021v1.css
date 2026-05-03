@@ -1,0 +1,665 @@
+/* ============================================ */
+/* GLOBAL RESET & BASE STYLES
+/* ============================================ */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Baskerville Old", "Century Schoolbook", Georgia, Garamond, Times, Serif;
+    background-color: #f1f1f1;
+    margin: 0;
+    padding-bottom: 0;
+}
+
+/* ============================================ */
+/* HERO SECTION - FULL SCREEN LANDING
+/* ============================================ */
+.hero {
+    background-color: #f5f0e0;
+    background-image: 
+        linear-gradient(to right, rgba(10, 10, 10, 0.25) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(10, 10, 10, 0.25) 1px, transparent 1px);
+    background-size: 40px 40px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    border-bottom: 2px solid #d4c9a8;
+}
+
+.hero-content {
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.hero-content h1 {
+    font-size: clamp(32px, 8vw, 64px);
+    margin: 0;
+    color: #1a1a1a;
+    letter-spacing: 2px;
+    font-weight: normal;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: clamp(16px, 4vw, 24px);
+    color: #1a1a1a;
+    margin-top: 16px;
+    letter-spacing: 1px;
+}
+
+/* ============================================ */
+/* DESKTOP NAVIGATION BAR
+/* ============================================ */
+.desktop-nav {
+    overflow: hidden;
+    background-color: #1a1a1a;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.desktop-nav a {
+    float: left;
+    display: block;
+    color: #f0f4f8;
+    text-align: center;
+    padding: 14px 24px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.desktop-nav a.right {
+    float: right;
+}
+
+.desktop-nav a.logo {
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 1.1em;
+}
+
+.desktop-nav a.logo:hover,
+.desktop-nav a.logo.active {
+    background-color: transparent;
+    color: #f0f4f8;
+    cursor: default;
+}
+
+.desktop-nav a:not(.logo):hover {
+    background-color: transparent;
+    color: #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 13px;
+}
+
+.desktop-nav a:not(.logo).active {
+    background-color: transparent;
+    color: #cbd5e1;
+    border-bottom: 1px solid #cbd5e1;
+    padding-bottom: 13px;
+}
+
+.desktop-nav a:not(.logo) {
+    margin: 0;
+    padding: 14px 24px;
+    border-radius: 0;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+
+section {
+    scroll-margin-top: 70px;
+}
+
+/* ============================================ */
+/* MAIN CONTENT WRAPPER
+/* ============================================ */
+.article1 {
+    padding-left: 8em;
+    padding-right: 8em;
+    width: 100%;
+    background-image: url("/previous-versions/2021/v1/assets/newspaper.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+.article1::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(4px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.main {
+    background-image: url("/previous-versions/2021/v1/assets/paper-texture.jpg");
+    background-color: #f5f7fc;
+    background-repeat: repeat;
+    position: relative;
+    z-index: 1;
+    border-radius: 8px;
+}
+
+/* ============================================ */
+/* COMMON SECTION STYLES
+/* ============================================ */
+.section-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title {
+    font-size: 2em;
+    letter-spacing: 4px;
+    margin: 0 0 15px 0;
+    color: #1a1a1a;
+}
+
+.section-line {
+    width: 60px;
+    height: 2px;
+    background-color: #1a1a1a;
+    margin: 0 auto;
+}
+
+/* ============================================ */
+/* QUOTE CARD
+/* ============================================ */
+.quote-card {
+    background-color: rgba(26, 26, 26, 0.05);
+    padding: 40px;
+    text-align: center;
+    margin-bottom: 60px;
+    border-radius: 12px;
+}
+
+.quote-card h3 {
+    margin: 0;
+    font-size: 1.4em;
+    font-weight: normal;
+    line-height: 1.5;
+}
+
+/* ============================================ */
+/* DESKTOP LAYOUT (min-width: 769px)
+/* ============================================ */
+@media (min-width: 769px) {
+    .main {
+        padding: 50px;
+    }
+    
+    /* Hide mobile-only elements */
+    .mobile-name-tag,
+    .mobile-bottom-nav {
+        display: none;
+    }
+    
+    /* About Section - Desktop: Grid 1fr 2fr */
+    .about-content {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 50px;
+        align-items: center;
+        margin-bottom: 60px;
+    }
+    
+    .profile-img {
+        width: 100%;
+        max-width: 280px;
+        border-radius: 20%;
+        border: 3px solid #1a1a1a;
+        box-shadow: 15px 15px 0 rgba(0, 0, 0, 0.05);
+        display: block;
+        margin: 0 auto;
+    }
+    
+    .about-text p {
+        margin: 20px 0;
+        line-height: 1.7;
+        font-size: 1.05em;
+    }
+    
+    /* Skills Section - Desktop: 3 column grid */
+    .skills-section {
+        margin-bottom: 60px;
+    }
+    
+    .skills-content {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+    
+    .skill-card {
+        background-color: rgba(255, 255, 255, 0.7);
+        padding: 30px 20px;
+        border-radius: 12px;
+        text-align: center;
+        transition: transform 0.2s ease;
+    }
+    
+    .skill-card:hover {
+        transform: translateY(-5px);
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .skill-icon {
+        font-size: 3em;
+        margin-bottom: 15px;
+    }
+    
+    .skill-info h3 {
+        margin: 0 0 10px 0;
+        font-size: 1.3em;
+    }
+    
+    .skill-info p {
+        margin: 0;
+        font-size: 0.9em;
+        color: #555;
+    }
+    
+    .skill-img {
+        display: none;
+    }
+    
+    /* Work Section - Desktop: Card layout */
+    .work-section {
+        margin-bottom: 60px;
+    }
+    
+    .project-card {
+        background-color: rgba(255, 255, 255, 0.7);
+        padding: 30px;
+        border-radius: 12px;
+        position: relative;
+        transition: transform 0.2s ease;
+    }
+    
+    .project-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .project-badge {
+        position: absolute;
+        top: -10px;
+        right: 20px;
+        background-color: #1a1a1a;
+        color: #f0f4f8;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.8em;
+    }
+    
+    .project-card h3 {
+        margin-top: 0;
+        font-size: 1.5em;
+    }
+    
+    .project-img {
+        width: 100%;
+        height: auto;
+        border: 1px solid #1a1a1a;
+        border-radius: 8px;
+        margin: 20px 0;
+    }
+    
+    .project-tags {
+        display: flex;
+        gap: 10px;
+        margin-top: 15px;
+    }
+    
+    .project-tags span {
+        background-color: rgba(26, 26, 26, 0.1);
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.8em;
+    }
+    
+    /* Contact Section - Desktop: 2 column grid */
+    .contact-section {
+        margin-bottom: 40px;
+    }
+    
+    .contact-content {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 50px;
+    }
+    
+    .contact-info p {
+        margin: 15px 0;
+        line-height: 1.7;
+        font-size: 1.05em;
+    }
+    
+    /* Form - Desktop */
+    .form-column input,
+    .form-column textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-family: inherit;
+        font-size: 1em;
+    }
+    
+    .submit {
+        background-color: #1a1a1a;
+        color: #f0f4f8;
+        border: none;
+        padding: 12px 30px;
+        cursor: pointer;
+        border-radius: 8px;
+        font-size: 1em;
+        transition: background-color 0.2s ease;
+    }
+    
+    .submit:hover {
+        background-color: #333;
+    }
+}
+
+/* ============================================ */
+/* MOBILE LAYOUT (max-width: 768px)
+/* ============================================ */
+@media (max-width: 768px) {
+    .main {
+        padding: 25px;
+    }
+    
+    .article1 {
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+    
+    /* Hide desktop navigation */
+    .desktop-nav {
+        display: none;
+    }
+    
+    /* Hide desktop-specific elements */
+    .skill-icon,
+    .project-badge {
+        display: none;
+    }
+    
+    /* Show mobile name tag */
+    .mobile-name-tag {
+        display: block;
+        text-align: center;
+        font-size: 1.2em;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+    
+    /* Mobile Bottom Navigation */
+    .mobile-bottom-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: #1a1a1a;
+        padding: 10px;
+        justify-content: space-around;
+        z-index: 100;
+        border-top: 1px solid #333;
+    }
+    
+    .mobile-nav-item {
+        color: #f0f4f8;
+        text-decoration: none;
+        padding: 8px 16px;
+        border-radius: 25px;
+        transition: all 0.2s ease;
+        font-size: 0.9em;
+    }
+    
+    .mobile-nav-item.active {
+        background-color: #e2e8f0;
+        color: #1a1a1a;
+    }
+    
+    body {
+        padding-bottom: 60px;
+    }
+    
+    /* Quote - Mobile: Side borders */
+    .quote-card {
+        padding: 25px;
+        margin-bottom: 40px;
+        border-left: 4px solid #1a1a1a;
+        border-right: 4px solid #1a1a1a;
+        border-radius: 0;
+    }
+    
+    .quote-card h3 {
+        font-size: 1.1em;
+    }
+    
+    /* About - Mobile: Floating image + text wrap */
+    .about-content {
+        display: block;
+        margin-bottom: 40px;
+    }
+    
+    .about-image-wrapper {
+        float: left;
+        margin-right: 20px;
+        margin-bottom: 15px;
+        width: 120px;
+    }
+    
+    .profile-img {
+        width: 100%;
+        border-radius: 50%;
+        border: 2px solid #1a1a1a;
+    }
+    
+    .about-text p {
+        margin: 10px 0;
+        line-height: 1.6;
+        font-size: 0.95em;
+    }
+    
+    /* Skills - Mobile: Horizontal scrollable row */
+    .skills-section {
+        margin-bottom: 40px;
+    }
+    
+    .skills-content {
+        display: flex;
+        overflow-x: auto;
+        gap: 15px;
+        padding-bottom: 10px;
+        scroll-snap-type: x mandatory;
+    }
+    
+    .skill-card {
+        flex: 0 0 140px;
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 15px;
+        border-radius: 12px;
+        text-align: center;
+        scroll-snap-align: start;
+    }
+    
+    .skill-info h3 {
+        margin: 10px 0 5px;
+        font-size: 1em;
+    }
+    
+    .skill-info p {
+        display: none;
+    }
+    
+    .skill-img {
+        width: 60px;
+        height: auto;
+        margin: 0 auto;
+        display: block;
+    }
+    
+    /* Work - Mobile: Full width card */
+    .work-section {
+        margin-bottom: 40px;
+    }
+    
+    .project-card {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        border-radius: 12px;
+    }
+    
+    .project-card h3 {
+        margin-top: 0;
+        font-size: 1.2em;
+    }
+    
+    .project-img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 15px 0;
+    }
+    
+    .project-tags {
+        display: flex;
+        gap: 8px;
+        margin-top: 12px;
+    }
+    
+    .project-tags span {
+        background-color: #1a1a1a;
+        color: #f0f4f8;
+        padding: 4px 10px;
+        border-radius: 15px;
+        font-size: 0.75em;
+    }
+    
+    /* Contact - Mobile: Stacked (no extra details) */
+    .contact-section {
+        margin-bottom: 30px;
+    }
+    
+    .contact-content {
+        display: block;
+    }
+    
+    .contact-info {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+    
+    .contact-info p {
+        margin: 10px 0;
+        line-height: 1.6;
+        font-size: 0.95em;
+    }
+    
+    /* Form - Mobile: Full width */
+    .form-column input,
+    .form-column textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-family: inherit;
+        font-size: 0.95em;
+    }
+    
+    .submit {
+        width: 100%;
+        background-color: #1a1a1a;
+        color: #f0f4f8;
+        border: none;
+        padding: 12px;
+        cursor: pointer;
+        border-radius: 8px;
+        font-size: 1em;
+    }
+    
+    .section-header {
+        margin-bottom: 25px;
+    }
+    
+    .section-title {
+        font-size: 1.5em;
+        letter-spacing: 3px;
+    }
+    
+    .section-line {
+        width: 40px;
+    }
+    
+    /* Fix scroll margin for mobile */
+    section {
+        scroll-margin-top: 20px;
+    }
+}
+
+/* ============================================ */
+/* SMALL MOBILE (max-width: 480px)
+/* ============================================ */
+@media (max-width: 480px) {
+    .main {
+        padding: 15px;
+    }
+    
+    .hero-content h1 {
+        font-size: clamp(24px, 7vw, 32px);
+    }
+    
+    .hero-subtitle {
+        font-size: clamp(12px, 3.5vw, 16px);
+    }
+    
+    .about-image-wrapper {
+        width: 90px;
+    }
+    
+    .skill-card {
+        flex: 0 0 120px;
+    }
+    
+    .project-card h3 {
+        font-size: 1.1em;
+    }
+    
+    .mobile-nav-item {
+        padding: 6px 12px;
+        font-size: 0.8em;
+    }
+}
+
+/* ============================================ */
+/* CONTEXT NOTE
+/* ============================================ */
+.context-note {
+    font-size: 0.75em;
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 40px;
+}
+
+.context-note hr {
+    margin: 10px 0;
+}
