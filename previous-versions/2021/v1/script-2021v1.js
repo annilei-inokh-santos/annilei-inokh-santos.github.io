@@ -2,29 +2,6 @@
 // DOM CONTENT LOADED - INITIALIZE ALL FUNCTIONS
 // ============================================
 document.addEventListener('DOMContentLoaded', function() {
-    
-    // ============================================
-    // CONTACT FORM HANDLER
-    // ============================================
-    const form = document.getElementById('contactForm');
-    
-    if (form) {
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            const name = document.getElementById('name')?.value || '';
-            const email = document.getElementById('email')?.value || '';
-            const contacts = document.getElementById('contacts')?.value || '';
-            const message = document.getElementById('message')?.value || '';
-            
-            if (name.trim() === '' || email.trim() === '' || contacts.trim() === '' || message.trim() === '') {
-                alert('Please fill in all fields before sending.');
-            } else {
-                alert('Thank you for your message, ' + name + '! I will get back to you soon.\n\n(This is a demo form from my Jan 2021 portfolio.)');
-                form.reset();
-            }
-        });
-    }
 
     // ============================================
     // ACTIVE NAVIGATION HIGHLIGHT ON SCROLL
@@ -68,4 +45,29 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', updateActiveNav);
     window.addEventListener('resize', updateActiveNav);
     updateActiveNav();
+    
+    // ============================================
+    // CAROUSEL CONTINUOUS SCROLL (ensures smooth loop)
+    // ============================================
+    const carouselTrack = document.getElementById('skillsCarouselTrack');
+    
+    if (carouselTrack) {
+        // Pause animation on user interaction
+        carouselTrack.addEventListener('mouseenter', () => {
+            carouselTrack.style.animationPlayState = 'paused';
+        });
+        
+        carouselTrack.addEventListener('mouseleave', () => {
+            carouselTrack.style.animationPlayState = 'running';
+        });
+        
+        // For touch devices
+        carouselTrack.addEventListener('touchstart', () => {
+            carouselTrack.style.animationPlayState = 'paused';
+        });
+        
+        carouselTrack.addEventListener('touchend', () => {
+            carouselTrack.style.animationPlayState = 'running';
+        });
+    }
 });

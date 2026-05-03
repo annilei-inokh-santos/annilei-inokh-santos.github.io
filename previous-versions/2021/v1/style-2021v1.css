@@ -118,17 +118,19 @@ section {
 }
 
 /* ============================================ */
-/* MAIN CONTENT WRAPPER
+/* MAIN CONTENT WRAPPER - CONTAINED LAYOUT
 /* ============================================ */
 .article1 {
-    padding-left: 8em;
-    padding-right: 8em;
+    padding-left: 2em;
+    padding-right: 2em;
     width: 100%;
     background-image: url("/previous-versions/2021/v1/assets/newspaper.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     position: relative;
+    display: flex;
+    justify-content: center;
 }
 
 .article1::before {
@@ -150,6 +152,9 @@ section {
     position: relative;
     z-index: 1;
     border-radius: 8px;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
 }
 
 /* ============================================ */
@@ -192,6 +197,161 @@ section {
     line-height: 1.5;
 }
 
+.quote-card i {
+    color: #1a1a1a;
+    opacity: 0.5;
+    margin: 0 10px;
+}
+
+/* ============================================ */
+/* CLICKABLE SKILL CARDS
+/* ============================================ */
+.skill-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    cursor: pointer;
+}
+
+.skill-card-link .skill-card {
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    height: 100%;
+}
+
+.skill-card-link:hover .skill-card {
+    transform: translateY(-5px);
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Brand colors for icons on hover */
+.skill-card-link:hover .fa-cat {
+    color: #F97316;
+}
+
+.skill-card-link:hover .fa-html5 {
+    color: #E34F26;
+}
+
+.skill-card-link:hover .fa-css3-alt {
+    color: #1572B6;
+}
+
+.skill-card-link:hover .fa-js {
+    color: #F7DF1E;
+}
+
+/* ============================================ */
+/* DESKTOP SKILLS (visible on desktop only)
+/* ============================================ */
+.desktop-skills {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.skill-card {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 30px 20px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.skill-icon {
+    font-size: 3.5em;
+    margin-bottom: 15px;
+}
+
+.skill-icon i {
+    color: #1a1a1a;
+    transition: color 0.2s ease;
+}
+
+.skill-info h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.3em;
+}
+
+.skill-info p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.skill-img {
+    display: none;
+}
+
+/* ============================================ */
+/* MOBILE CAROUSEL (hidden on desktop)
+/* ============================================ */
+.mobile-carousel-container {
+    display: none;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.mobile-carousel-track {
+    display: flex;
+    gap: 15px;
+    animation: scrollSkills 20s linear infinite;
+    width: fit-content;
+}
+
+.mobile-carousel-track:hover {
+    animation-play-state: paused;
+}
+
+.carousel-item {
+    flex: 0 0 140px;
+    cursor: pointer;
+}
+
+.carousel-item .skill-card {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px 15px;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    height: 100%;
+}
+
+.carousel-item:active .skill-card {
+    transform: scale(0.98);
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+.carousel-item .skill-icon {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.carousel-item .skill-info h3 {
+    margin: 0;
+    font-size: 1em;
+}
+
+@keyframes scrollSkills {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* ============================================ */
+/* ULTRA-WIDE SCREEN CONTAINMENT (1600px+)
+/* ============================================ */
+@media (min-width: 1600px) {
+    .article1 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
 /* ============================================ */
 /* DESKTOP LAYOUT (min-width: 769px)
 /* ============================================ */
@@ -201,7 +361,6 @@ section {
     }
     
     /* Hide mobile-only elements */
-    .mobile-name-tag,
     .mobile-bottom-nav {
         display: none;
     }
@@ -229,50 +388,6 @@ section {
         margin: 20px 0;
         line-height: 1.7;
         font-size: 1.05em;
-    }
-    
-    /* Skills Section - Desktop: 3 column grid */
-    .skills-section {
-        margin-bottom: 60px;
-    }
-    
-    .skills-content {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
-    }
-    
-    .skill-card {
-        background-color: rgba(255, 255, 255, 0.7);
-        padding: 30px 20px;
-        border-radius: 12px;
-        text-align: center;
-        transition: transform 0.2s ease;
-    }
-    
-    .skill-card:hover {
-        transform: translateY(-5px);
-        background-color: rgba(255, 255, 255, 0.9);
-    }
-    
-    .skill-icon {
-        font-size: 3em;
-        margin-bottom: 15px;
-    }
-    
-    .skill-info h3 {
-        margin: 0 0 10px 0;
-        font-size: 1.3em;
-    }
-    
-    .skill-info p {
-        margin: 0;
-        font-size: 0.9em;
-        color: #555;
-    }
-    
-    .skill-img {
-        display: none;
     }
     
     /* Work Section - Desktop: Card layout */
@@ -303,9 +418,19 @@ section {
         font-size: 0.8em;
     }
     
+    .project-badge i {
+        margin-right: 5px;
+    }
+    
     .project-card h3 {
         margin-top: 0;
         font-size: 1.5em;
+    }
+    
+    .project-card h3 i {
+        margin-right: 10px;
+        color: #1a1a1a;
+        opacity: 0.7;
     }
     
     .project-img {
@@ -329,6 +454,10 @@ section {
         font-size: 0.8em;
     }
     
+    .project-tags span i {
+        margin-right: 5px;
+    }
+    
     /* Contact Section - Desktop: 2 column grid */
     .contact-section {
         margin-bottom: 40px;
@@ -344,6 +473,12 @@ section {
         margin: 15px 0;
         line-height: 1.7;
         font-size: 1.05em;
+    }
+    
+    .contact-info i {
+        margin-right: 10px;
+        color: #1a1a1a;
+        opacity: 0.7;
     }
     
     /* Form - Desktop */
@@ -387,24 +522,23 @@ section {
         padding-right: 1em;
     }
     
-    /* Hide desktop navigation */
+    /* Hide desktop navigation and desktop skills */
     .desktop-nav {
         display: none;
     }
     
-    /* Hide desktop-specific elements */
-    .skill-icon,
-    .project-badge {
+    .desktop-skills {
         display: none;
     }
     
-    /* Show mobile name tag */
-    .mobile-name-tag {
+    /* Show mobile carousel */
+    .mobile-carousel-container {
         display: block;
-        text-align: center;
-        font-size: 1.2em;
-        font-weight: bold;
-        margin-top: 10px;
+    }
+    
+    /* Hide desktop-specific elements */
+    .project-badge {
+        display: none;
     }
     
     /* Mobile Bottom Navigation */
@@ -428,6 +562,13 @@ section {
         border-radius: 25px;
         transition: all 0.2s ease;
         font-size: 0.9em;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .mobile-nav-item i {
+        font-size: 1.1em;
     }
     
     .mobile-nav-item.active {
@@ -452,67 +593,41 @@ section {
         font-size: 1.1em;
     }
     
-    /* About - Mobile: Floating image + text wrap */
+    .quote-card i {
+        margin: 0 5px;
+    }
+    
+    /* About - Mobile: Clean stacked layout */
     .about-content {
-        display: block;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
         margin-bottom: 40px;
     }
     
     .about-image-wrapper {
-        float: left;
-        margin-right: 20px;
-        margin-bottom: 15px;
-        width: 120px;
+        width: 160px;
+        margin: 0 auto;
     }
     
     .profile-img {
         width: 100%;
         border-radius: 50%;
-        border: 2px solid #1a1a1a;
+        border: 3px solid #1a1a1a;
+        display: block;
+    }
+    
+    .about-text {
+        text-align: center;
+        width: 100%;
     }
     
     .about-text p {
-        margin: 10px 0;
+        margin: 12px 0;
         line-height: 1.6;
         font-size: 0.95em;
-    }
-    
-    /* Skills - Mobile: Horizontal scrollable row */
-    .skills-section {
-        margin-bottom: 40px;
-    }
-    
-    .skills-content {
-        display: flex;
-        overflow-x: auto;
-        gap: 15px;
-        padding-bottom: 10px;
-        scroll-snap-type: x mandatory;
-    }
-    
-    .skill-card {
-        flex: 0 0 140px;
-        background-color: rgba(255, 255, 255, 0.8);
-        padding: 15px;
-        border-radius: 12px;
-        text-align: center;
-        scroll-snap-align: start;
-    }
-    
-    .skill-info h3 {
-        margin: 10px 0 5px;
-        font-size: 1em;
-    }
-    
-    .skill-info p {
-        display: none;
-    }
-    
-    .skill-img {
-        width: 60px;
-        height: auto;
-        margin: 0 auto;
-        display: block;
+        text-align: left;
     }
     
     /* Work - Mobile: Full width card */
@@ -531,6 +646,10 @@ section {
         font-size: 1.2em;
     }
     
+    .project-card h3 i {
+        margin-right: 8px;
+    }
+    
     .project-img {
         width: 100%;
         height: auto;
@@ -542,6 +661,7 @@ section {
         display: flex;
         gap: 8px;
         margin-top: 12px;
+        flex-wrap: wrap;
     }
     
     .project-tags span {
@@ -552,7 +672,11 @@ section {
         font-size: 0.75em;
     }
     
-    /* Contact - Mobile: Stacked (no extra details) */
+    .project-tags span i {
+        margin-right: 5px;
+    }
+    
+    /* Contact - Mobile: Stacked */
     .contact-section {
         margin-bottom: 30px;
     }
@@ -570,6 +694,10 @@ section {
         margin: 10px 0;
         line-height: 1.6;
         font-size: 0.95em;
+    }
+    
+    .contact-info i {
+        margin-right: 8px;
     }
     
     /* Form - Mobile: Full width */
@@ -631,11 +759,15 @@ section {
     }
     
     .about-image-wrapper {
-        width: 90px;
+        width: 120px;
     }
     
-    .skill-card {
+    .carousel-item {
         flex: 0 0 120px;
+    }
+    
+    .carousel-item .skill-icon {
+        font-size: 2em;
     }
     
     .project-card h3 {
@@ -646,20 +778,81 @@ section {
         padding: 6px 12px;
         font-size: 0.8em;
     }
+    
+    .mobile-nav-item i {
+        font-size: 1em;
+    }
+    
+    .about-text p {
+        font-size: 0.9em;
+    }
 }
 
 /* ============================================ */
-/* CONTEXT NOTE
+/* DISABLED FORM STYLES (ARCHIVE PORTFOLIO)
 /* ============================================ */
-.context-note {
-    font-size: 0.75em;
-    text-align: left;
-    background-color: rgba(255, 255, 255, 0.85);
-    padding: 15px;
+.form-column textarea {
+    resize: none;
+}
+
+.form-column input:disabled,
+.form-column textarea:disabled {
+    background-color: #e8e8e8;
+    color: #888;
+    cursor: not-allowed;
+    border-color: #ddd;
+}
+
+.submit.disabled-submit {
+    background-color: #999;
+    color: #ccc;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.submit.disabled-submit:hover {
+    background-color: #999;
+    color: #ccc;
+    transform: none;
+}
+
+.form-disabled-note {
+    font-size: 0.85em;
+    text-align: center;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.05);
     border-radius: 8px;
-    margin-top: 40px;
+    color: #666;
 }
 
-.context-note hr {
-    margin: 10px 0;
+.form-disabled-note i {
+    margin-right: 5px;
+    color: #888;
+}
+
+/* ============================================ */
+/* FOOTER - SIMPLE, MINIMAL, COZY
+/* ============================================ */
+.footer {
+    margin-top: 70px;
+    padding: 30px 20px;
+    text-align: center;
+    background: rgba(245, 240, 224, 0.3);
+    border-radius: 20px;
+    font-size: 0.85em;
+    color: #6a6a6a;
+}
+
+.footer-archive {
+    margin: 0 0 12px 0;
+    font-weight: 450;
+    letter-spacing: 0.8px;
+}
+
+.footer-copyright {
+    margin: 0;
+    font-size: 0.7em;
+    opacity: 0.55;
+    letter-spacing: 0.5px;
 }
