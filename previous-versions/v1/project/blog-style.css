@@ -147,81 +147,50 @@ body {
   color: #ED580F;
 }
 
-/* Footer */
+/* ============================================ */
+/* FOOTER / CREDITS SECTION - SIMPLE & PROJECT-FOCUSED */
+/* ============================================ */
+
 .site-footer {
   text-align: center;
-  padding: 2rem;
-  border-top: 1px solid #e0e0e0;
-  font-size: 0.75rem;
-  color: #888;
+  padding: 1.5rem;
   margin-top: 2rem;
-  clear: both;
+  border-top: 1px solid #e0e0e0;
+  font-size: 0.7rem;
+  color: #888;
+  background: #fafafa;
+}
+
+.footer-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.footer-text p {
+  margin-bottom: 0.25rem;
+}
+
+.footer-highlight {
+  color: #ED580F;
+  font-weight: 500;
 }
 
 /* Responsive */
-@media screen and (max-width: 768px) {
-  .content-container {
-    padding: 0 1rem;
-  }
-  
-  .site-title {
-    font-size: 1.8rem;
-  }
-  
-  .section-title {
-    font-size: 1.3rem;
-  }
-  
-  .intro-section {
-    font-size: 0.85rem;
-  }
-  
-  .content-section:nth-child(odd) .section-image,
-  .content-section:nth-child(even) .section-image {
-    float: none;
-    display: block;
-    margin: 1rem auto;
-  }
-  
-  .section-image {
-    max-width: 100%;
-  }
-  
-  .intro-section p:first-child::first-letter {
-    font-size: 2.5rem;
-  }
-  
-  .border {
-    border-width: 1px;
-  }
-  
-  .info-text {
-    text-align: center;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .site-title {
-    font-size: 1.4rem;
-  }
-  
-  .section-title {
-    font-size: 1.1rem;
-  }
-  
-  .intro-section p:first-child::first-letter {
-    font-size: 2rem;
+@media screen and (max-width: 550px) {
+  .site-footer {
+    padding: 1rem;
+    font-size: 0.65rem;
   }
 }
 
 /* ============================================ */
-/* VERSION NOTICE HEADER - REVISED EDITION */
+/* VERSION NOTICE HEADER - SINGLE LINE COMPACT */
 /* ============================================ */
 
 .version-notice {
   background: #D4D4D4;
   border-bottom: 1px solid #B0B0B0;
-  padding: 10px 20px;
+  padding: 8px 20px;
   margin-bottom: 1rem;
 }
 
@@ -231,16 +200,17 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  flex-wrap: nowrap;
+  gap: 1rem;
 }
 
 .notice-left,
 .notice-right {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
+  gap: 0.75rem;
+  flex-wrap: nowrap;
+  white-space: nowrap;
 }
 
 .notice-badge {
@@ -252,6 +222,7 @@ body {
   color: #555555;
   border: 1px solid #B0B0B0;
   font-size: 0.7rem;
+  white-space: nowrap;
 }
 
 .notice-badge::after {
@@ -265,12 +236,14 @@ body {
   color: #444444;
   margin: 0;
   font-size: 0.75rem;
+  white-space: nowrap;
 }
 
 .notice-date {
   color: #555555;
   font-size: 0.7rem;
   opacity: 0.8;
+  white-space: nowrap;
 }
 
 .notice-revision {
@@ -278,6 +251,7 @@ body {
   opacity: 1;
   font-weight: 500;
   font-size: 0.7rem;
+  white-space: nowrap;
 }
 
 .version-notice:hover {
@@ -288,6 +262,78 @@ body {
 .version-notice:hover .notice-badge {
   background: rgba(0, 0, 0, 0.12);
   border-color: #999999;
+}
+
+/* Responsive - Keep single line on all screens */
+@media screen and (max-width: 768px) {
+  .version-notice {
+    padding: 6px 12px;
+  }
+  
+  .notice-container {
+    gap: 0.5rem;
+  }
+  
+  .notice-left,
+  .notice-right {
+    gap: 0.5rem;
+  }
+  
+  .notice-badge {
+    padding: 3px 7px;
+    font-size: 0.65rem;
+  }
+  
+  .notice-text {
+    font-size: 0.65rem;
+  }
+  
+  .notice-date {
+    font-size: 0.6rem;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .version-notice {
+    padding: 5px 10px;
+  }
+  
+  .notice-container {
+    gap: 0.35rem;
+  }
+  
+  .notice-left,
+  .notice-right {
+    gap: 0.35rem;
+  }
+  
+  .notice-badge {
+    padding: 2px 6px;
+    font-size: 0.6rem;
+  }
+  
+  .notice-text {
+    font-size: 0.6rem;
+  }
+  
+  .notice-date {
+    font-size: 0.55rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .notice-badge {
+    padding: 2px 5px;
+    font-size: 0.55rem;
+  }
+  
+  .notice-text {
+    font-size: 0.55rem;
+  }
+  
+  .notice-date {
+    font-size: 0.5rem;
+  }
 }
 
 /* ============================================ */
