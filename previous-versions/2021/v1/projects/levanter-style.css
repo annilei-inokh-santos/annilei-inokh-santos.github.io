@@ -1,0 +1,315 @@
+/* ============================================ */
+/* GLOBAL RESET & BASE STYLES
+/* ============================================ */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Century Schoolbook", Georgia, Garamond, Times, serif;
+    background-color: #0a0a0a;
+    margin: 0;
+    padding: 0;
+}
+
+/* ============================================ */
+/* HERO SECTION - FULL SCREEN, NO CROP
+/* ============================================ */
+.hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #0a0a0a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-image {
+    width: 100%;
+    height: auto;
+    max-height: 100vh;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+}
+
+.hero-overlay {
+    position: absolute;
+    bottom: 15%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: white;
+    background: linear-gradient(90deg, rgba(0,0,0,0.6), rgba(0,0,0,0.3), rgba(0,0,0,0.6));
+    padding: 20px;
+    backdrop-filter: blur(2px);
+}
+
+.hero-overlay h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    letter-spacing: 4px;
+}
+
+.hero-overlay p {
+    margin: 8px 0 0;
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+/* ============================================ */
+/* NAVIGATION BAR
+/* ============================================ */
+.navbar {
+    background-color: #0a0a0a;
+    overflow: hidden;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: #e0d6e8;
+    text-align: center;
+    padding: 20px 28px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.navbar a.right {
+    float: right;
+}
+
+.navbar a.active {
+    background-color: #4D3377;
+    color: white;
+}
+
+.navbar a:hover {
+    background-color: #5E4783;
+    color: white;
+}
+
+/* ============================================ */
+/* MAIN CONTAINER
+/* ============================================ */
+.main-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 50px 20px;
+}
+
+/* ============================================ */
+/* TAB BUTTONS
+/* ============================================ */
+.tab-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 35px;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    background: #1e1a2f;
+    border: none;
+    padding: 12px 32px;
+    font-family: inherit;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #c4b5e0;
+    cursor: pointer;
+    border-radius: 40px;
+    transition: all 0.25s ease;
+    letter-spacing: 1px;
+}
+
+.tab-btn:hover {
+    background: #4D3377;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.tab-btn.active {
+    background: #7b2cbf;
+    color: white;
+    box-shadow: 0 4px 12px rgba(123, 44, 191, 0.3);
+}
+
+/* ============================================ */
+/* LYRICS CARD
+/* ============================================ */
+.lyrics-card {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-radius: 24px;
+    padding: 40px 35px;
+    box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(123, 44, 191, 0.3);
+}
+
+.song-title {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgba(123, 44, 191, 0.5);
+}
+
+.song-title h1 {
+    margin: 0;
+    font-size: 2rem;
+    letter-spacing: 2px;
+}
+
+.song-title a {
+    color: #c084fc;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.song-title a:hover {
+    color: #e9b0ff;
+    text-decoration: underline;
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.35s ease;
+}
+
+.tab-content.active-content {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.lyrics-text {
+    font-family: "Century Schoolbook", Georgia, Garamond, Times, serif;
+    font-size: 1.1rem;
+    line-height: 1.85;
+    color: #e0d6e8;
+    white-space: pre-line;
+    text-align: left;
+    max-height: 550px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+/* Custom scrollbar */
+.lyrics-text::-webkit-scrollbar {
+    width: 5px;
+}
+
+.lyrics-text::-webkit-scrollbar-track {
+    background: #2a2a3e;
+    border-radius: 10px;
+}
+
+.lyrics-text::-webkit-scrollbar-thumb {
+    background: #7b2cbf;
+    border-radius: 10px;
+}
+
+/* ============================================ */
+/* FOOTER
+/* ============================================ */
+.footer {
+    background-color: #0a0a0a;
+    padding: 30px 20px;
+    text-align: center;
+    border-top: 1px solid #2a2a2a;
+}
+
+.footer p {
+    margin: 8px 0;
+    color: #a0a0b0;
+    font-size: 0.85rem;
+}
+
+.footer-tagline {
+    font-weight: bold;
+    font-size: 1rem !important;
+    color: #c4b5e0 !important;
+}
+
+.footer-tagline span {
+    color: #a855f7;
+}
+
+/* ============================================ */
+/* RESPONSIVE DESIGN
+/* ============================================ */
+@media (max-width: 768px) {
+    .navbar a {
+        padding: 14px 16px;
+        font-size: 0.9rem;
+    }
+    
+    .navbar a.right {
+        float: left;
+    }
+    
+    .main-container {
+        padding: 30px 16px;
+    }
+    
+    .tab-btn {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .lyrics-card {
+        padding: 25px 20px;
+    }
+    
+    .song-title h1 {
+        font-size: 1.5rem;
+    }
+    
+    .lyrics-text {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        max-height: 450px;
+    }
+    
+    .hero-overlay h1 {
+        font-size: 1.5rem;
+    }
+    
+    .hero-overlay p {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .tab-buttons {
+        gap: 8px;
+    }
+    
+    .tab-btn {
+        padding: 6px 16px;
+        font-size: 0.8rem;
+    }
+    
+    .lyrics-card {
+        padding: 20px 15px;
+    }
+    
+    .lyrics-text {
+        font-size: 0.85rem;
+        line-height: 1.65;
+    }
+    
+    .hero-overlay {
+        bottom: 10%;
+        padding: 12px;
+    }
+    
+    .hero-overlay h1 {
+        font-size: 1.2rem;
+    }
+}
