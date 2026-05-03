@@ -343,7 +343,7 @@ function prevSlide() {
 // Card click handlers - opens actual portfolio version
 function openPortfolioVersion(version, month, day, year) {
   const portfolioUrls = {
-    'v1': './previous-versions/v1.html',
+    'v1': './previous-versions/2020.html',
     'v2': './previous-versions/v2.html',
     'v3': './previous-versions/v3.html',
     'v4': './previous-versions/v4.html',
