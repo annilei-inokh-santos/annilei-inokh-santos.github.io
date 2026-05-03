@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
       id: "bangchan",
       name: "Bang Chan",
       colorClass: "bangchan-color",
-      image: "/previous-versions/v1/project/blog-assets/bang-chan.jpg",
+      image: "/previous-versions/2020/project/blog-assets/bang-chan.jpg",
       info: `<p><span class="info-label bangchan-color">Stage Name:</span> Bang Chan (방찬)<br>
       <span class="info-label bangchan-color">Birth Name:</span> Christopher Bang<br>
       <span class="info-label bangchan-color">Korean Name:</span> Bang Chan (방찬)<br>
@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
       id: "leeknow",
       name: "Lee Know",
       colorClass: "leeknow-color",
-      image: "/previous-versions/v1/project/blog-assets/lee-know.jpg",
+      image: "/previous-versions/2020/project/blog-assets/lee-know.jpg",
       info: `<p><span class="info-label leeknow-color">Stage Name:</span> Lee Know (리노)<br>
       <span class="info-label leeknow-color">Birth Name:</span> Lee Min Ho (이민호)<br>
       <span class="info-label leeknow-color">Position:</span> Main Dancer, Sub Vocalist, Sub Rapper<br>
@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
       id: "changbin",
       name: "Changbin",
       colorClass: "changbin-color",
-      image: "/previous-versions/v1/project/blog-assets/chang-bin.jpg",
+      image: "/previous-versions/2020/project/blog-assets/chang-bin.jpg",
       info: `<p><span class="info-label changbin-color">Stage Name:</span> Changbin (창빈)<br>
       <span class="info-label changbin-color">Birth Name:</span> Seo Chang Bin (서창빈)<br>
       <span class="info-label changbin-color">Position:</span> Main Rapper, Sub Vocalist, Producer<br>
@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', function() {
       id: "hyunjin",
       name: "Hyunjin",
       colorClass: "hyunjin-color",
-      image: "/previous-versions/v1/project/blog-assets/hyun-jin.jpg",
+      image: "/previous-versions/2020/project/blog-assets/hyun-jin.jpg",
       info: `<p><span class="info-label hyunjin-color">Stage Name:</span> Hyunjin (현진)<br>
       <span class="info-label hyunjin-color">Birth Name:</span> Hwang Hyun Jin (황현진)<br>
       <span class="info-label hyunjin-color">Position:</span> Main Dancer, Lead Rapper, Sub Vocalist, Visual<br>
@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', function() {
       id: "han",
       name: "Han",
       colorClass: "han-color",
-      image: "/previous-versions/v1/project/blog-assets/han.jpg",
+      image: "/previous-versions/2020/project/blog-assets/han.jpg",
       info: `<p><span class="info-label han-color">Stage Name:</span> Han (한)<br>
       <span class="info-label han-color">Birth Name:</span> Han Ji Sung (한지성)<br>
       <span class="info-label han-color">English Name:</span> Peter Han<br>
@@ -253,7 +253,7 @@ document.addEventListener('DOMContentLoaded', function() {
       id: "felix",
       name: "Felix",
       colorClass: "felix-color",
-      image: "/previous-versions/v1/project/blog-assets/felix.jpg",
+      image: "/previous-versions/2020/project/blog-assets/felix.jpg",
       info: `<p><span class="info-label felix-color">Stage Name:</span> Felix (필릭스)<br>
       <span class="info-label felix-color">Birth Name:</span> Felix Lee<br>
       <span class="info-label felix-color">Korean Name:</span> Lee Yong Bok<br>
@@ -276,7 +276,7 @@ document.addEventListener('DOMContentLoaded', function() {
       id: "seungmin",
       name: "Seungmin",
       colorClass: "seungmin-color",
-      image: "/previous-versions/v1/project/blog-assets/seung-min.jpg",
+      image: "/previous-versions/2020/project/blog-assets/seung-min.jpg",
       info: `<p><span class="info-label seungmin-color">Stage Name:</span> Seungmin (승민)<br>
       <span class="info-label seungmin-color">Birth Name:</span> Kim Seung Min<br>
       <span class="info-label seungmin-color">Position:</span> Main Vocalist<br>
@@ -298,7 +298,7 @@ document.addEventListener('DOMContentLoaded', function() {
       id: "jeongin",
       name: "I.N",
       colorClass: "jeongin-color",
-      image: "/previous-versions/v1/project/blog-assets/yang-jeong-in.jpg",
+      image: "/previous-versions/2020/project/blog-assets/yang-jeong-in.jpg",
       info: `<p><span class="info-label jeongin-color">Stage Name:</span> I.N (아이엔)<br>
       <span class="info-label jeongin-color">Birth Name:</span> Yang Jeong In<br>
       <span class="info-label jeongin-color">Position:</span> Sub Vocalist, Maknae<br>
@@ -320,7 +320,7 @@ document.addEventListener('DOMContentLoaded', function() {
       id: "woojin",
       name: "Woojin (Former Member)",
       colorClass: "woojin-color",
-      image: "/previous-versions/v1/project/blog-assets/kim-woo-jin.jpg",
+      image: "/previous-versions/2020/project/blog-assets/kim-woo-jin.jpg",
       info: `<p><span class="info-label woojin-color">Stage Name:</span> Woojin (우진)<br>
       <span class="info-label woojin-color">Birth Name:</span> Kim Woo Jin (김우진)<br>
       <span class="info-label woojin-color">Birthday:</span> April 8, 1997<br>
@@ -445,7 +445,7 @@ document.addEventListener('DOMContentLoaded', function() {
       name: "Bang Chan",
       subtitle: "GENIUS BANG",
       desc: "Leader Energy 🐺",
-      image: "/previous-versions/v1/project/blog-assets/bang-chan-01.jpg",
+      image: "/previous-versions/2020/project/blog-assets/bang-chan-01.jpg",
       links: [
         { text: "His BODY", url: "https://www.youtube.com/watch?v=m_TZbk9ReqY" },
         { text: '"Oi FeLiX"', url: "https://www.youtube.com/watch?v=0obLZ5rr7-8" },
@@ -458,7 +458,7 @@ document.addEventListener('DOMContentLoaded', function() {
       name: "Lee Know",
       subtitle: "LEEKNOW IS CUTE",
       desc: "Cat Dad Energy 🐱",
-      image: "/previous-versions/v1/project/blog-assets/lee-know-01.jpg",
+      image: "/previous-versions/2020/project/blog-assets/lee-know-01.jpg",
       links: [
         { text: '"You know? I know? LEE KNOW! YEAHHHHH!!"', url: "https://www.youtube.com/watch?v=bNfaSn288kE" },
         { text: "Dancing Gem", url: "https://www.youtube.com/watch?v=OuyAyqSEcXg" },
@@ -471,7 +471,7 @@ document.addEventListener('DOMContentLoaded', function() {
       name: "Changbin",
       subtitle: "DWAEKKI",
       desc: "Dark Rapper Energy 🔥",
-      image: "/previous-versions/v1/project/blog-assets/chang-bin-01.jpg",
+      image: "/previous-versions/2020/project/blog-assets/chang-bin-01.jpg",
       links: [
         { text: "Changbin v.s. Binnie", url: "https://www.youtube.com/watch?v=bJ5wylcxT-s" },
         { text: "Binsual", url: "https://www.youtube.com/watch?v=zTM2NK8AO2I" },
@@ -484,7 +484,7 @@ document.addEventListener('DOMContentLoaded', function() {
       name: "Hyunjin",
       subtitle: "HYUN.E",
       desc: "Drama Queen Energy 💃",
-      image: "/previous-versions/v1/project/blog-assets/hyun-jin-01.jpg",
+      image: "/previous-versions/2020/project/blog-assets/hyun-jin-01.jpg",
       links: [
         { text: "Got7 Jinyoung's BIGGEST Fanboy", url: "https://www.youtube.com/watch?v=mzXFvKph4j4" },
         { text: "YoUr BeHaViOur Is sO-", url: "https://www.youtube.com/watch?v=oi9PiBPzbCc" },
@@ -497,7 +497,7 @@ document.addEventListener('DOMContentLoaded', function() {
       name: "Han",
       subtitle: "QUOKKA",
       desc: "Ace Energy ⚡",
-      image: "/previous-versions/v1/project/blog-assets/han-01.jpg",
+      image: "/previous-versions/2020/project/blog-assets/han-01.jpg",
       links: [
         { text: "Squirrel", url: "https://www.youtube.com/watch?v=hW4jxR5e_xM" },
         { text: "JiKiLgE *heavy breathing*", url: "https://www.youtube.com/watch?v=_w0Rcj8biA0" },
@@ -510,7 +510,7 @@ document.addEventListener('DOMContentLoaded', function() {
       name: "Felix",
       subtitle: "HAENGBOK",
       desc: "Sunshine Energy ☀️",
-      image: "/previous-versions/v1/project/blog-assets/felix-01.jpg",
+      image: "/previous-versions/2020/project/blog-assets/felix-01.jpg",
       links: [
         { text: "Sunshine", url: "https://www.youtube.com/watch?v=9_wJHksWjno" },
         { text: "a mosquito", url: "https://www.youtube.com/watch?v=9_MMMERPvtQ" },
@@ -523,7 +523,7 @@ document.addEventListener('DOMContentLoaded', function() {
       name: "Seungmin",
       subtitle: "SEUNGMO",
       desc: "Puppy Energy 🐶",
-      image: "/previous-versions/v1/project/blog-assets/seung-min-01.jpg",
+      image: "/previous-versions/2020/project/blog-assets/seung-min-01.jpg",
       links: [
         { text: "SEUNGMIN IN THE BUILDING", url: "https://www.youtube.com/watch?v=Np_azGXMNaU" },
         { text: "Day6 Fan President", url: "https://www.youtube.com/watch?v=O80unzjHcq8" },
@@ -536,7 +536,7 @@ document.addEventListener('DOMContentLoaded', function() {
       name: "I.N",
       subtitle: "AGIBBANG",
       desc: "Baby Bread Energy 🍞",
-      image: "/previous-versions/v1/project/blog-assets/yang-jeong-in-01.jpg",
+      image: "/previous-versions/2020/project/blog-assets/yang-jeong-in-01.jpg",
       links: [
         { text: "cute smile", url: "https://www.youtube.com/watch?v=0jFk8JUAQoE" },
         { text: "baby shark uwu", url: "https://www.youtube.com/watch?v=JWhZlDuFyVI" },
