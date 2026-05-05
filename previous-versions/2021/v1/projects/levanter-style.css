@@ -113,6 +113,8 @@ body {
     top: 0;
     height: 100vh;
     padding: 25px 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .sidebar-nav {
@@ -159,6 +161,50 @@ body {
 
 .sidebar-link.active i {
     color: #4a8eff;
+}
+
+/* ============================================ */
+/* DESKTOP WIKI LINKS (visible only on desktop)
+/* ============================================ */
+.desktop-wiki-links {
+    margin-top: auto;
+    padding: 20px 0 20px 0;
+    display: none;
+}
+
+.desktop-wiki-links.show {
+    display: block;
+}
+
+.wiki-divider {
+    height: 1px;
+    background: rgba(74, 142, 255, 0.2);
+    margin: 0 20px 15px 20px;
+}
+
+.wiki-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 20px;
+    color: #a0a0c0;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+}
+
+.wiki-link i {
+    width: 22px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.wiki-link:hover {
+    color: #4a8eff;
+    background-color: rgba(74, 142, 255, 0.1);
+    border-left-color: #4a8eff;
 }
 
 /* ============================================ */
@@ -371,29 +417,57 @@ body {
     color: #e0e0f0;
 }
 
-.note-box {
+/* ============================================ */
+/* MOBILE WIKI LINKS (visible only on mobile)
+/* ============================================ */
+.mobile-wiki-links {
+    display: none;
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(74, 142, 255, 0.2);
+}
+
+.wiki-divider-mobile {
+    display: none;
+}
+
+.mobile-wiki-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: nowrap;
+}
+
+.wiki-link-mobile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 20px;
     background: rgba(74, 142, 255, 0.12);
-    border-radius: 12px;
-    padding: 15px;
-    text-align: center;
-    margin-top: 20px;
-    border: 1px solid rgba(74, 142, 255, 0.2);
-}
-
-.note-box i {
-    color: #4a8eff;
-    font-size: 1.2rem;
-    margin-right: 8px;
-}
-
-.note-box p {
-    margin: 0;
+    border-radius: 40px;
+    color: #c0c0d8;
+    text-decoration: none;
+    font-size: 0.8rem;
     font-weight: 500;
-    color: #f0f0f8;
+    transition: all 0.2s ease;
+    flex: 1;
+    max-width: 160px;
+    white-space: nowrap;
+}
+
+.wiki-link-mobile i {
+    font-size: 0.9rem;
+}
+
+.wiki-link-mobile:hover {
+    background: rgba(74, 142, 255, 0.25);
+    color: #4a8eff;
 }
 
 /* ============================================ */
-/* FOOTER - SPLIT LAYOUT (Desktop)
+/* FOOTER
 /* ============================================ */
 .footer {
     background-color: #0a0a0a;
@@ -462,7 +536,7 @@ body {
 }
 
 /* ============================================ */
-/* RESPONSIVE - TABLET & MOBILE (Evenly Spaced Navbar)
+/* RESPONSIVE - TABLET & MOBILE
 /* ============================================ */
 @media (max-width: 768px) {
     .content-wrapper {
@@ -480,6 +554,7 @@ body {
         padding: 0;
         backdrop-filter: blur(8px);
         background-color: rgba(10, 10, 10, 0.95);
+        display: block;
     }
     
     .sidebar-nav {
@@ -529,6 +604,11 @@ body {
         background-color: rgba(74, 142, 255, 0.15);
     }
     
+    /* Hide desktop wiki links on mobile */
+    .desktop-wiki-links {
+        display: none !important;
+    }
+    
     .main-container {
         padding: 20px 16px;
         max-width: 100%;
@@ -572,10 +652,15 @@ body {
     html {
         scroll-padding-top: 60px;
     }
+    
+    /* Show mobile wiki links */
+    .mobile-wiki-links {
+        display: block;
+    }
 }
 
 /* ============================================ */
-/* RESPONSIVE - SMALL MOBILE (Minimal Footer)
+/* RESPONSIVE - SMALL MOBILE
 /* ============================================ */
 @media (max-width: 480px) {
     .sidebar-link {
@@ -659,7 +744,23 @@ body {
         font-size: 0.9rem;
     }
     
-    /* ===== MINIMAL MOBILE FOOTER - CENTERED ===== */
+    /* Mobile wiki buttons - side by side, smaller padding */
+    .mobile-wiki-buttons {
+        gap: 10px;
+    }
+    
+    .wiki-link-mobile {
+        padding: 8px 12px;
+        font-size: 0.7rem;
+        gap: 6px;
+        max-width: 140px;
+    }
+    
+    .wiki-link-mobile i {
+        font-size: 0.8rem;
+    }
+    
+    /* Mobile footer */
     .footer {
         display: block;
         text-align: center;
@@ -672,13 +773,11 @@ body {
         display: block;
     }
     
-    /* Hide all Stray Kids quote messages */
     .footer-left p,
     .footer-left .footer-tagline {
         display: none;
     }
     
-    /* Display only the archive info centered */
     .footer-right {
         width: 100%;
     }

@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
         about: document.getElementById('about-page'),
         credits: document.getElementById('credits-page')
     };
+    const desktopWikiLinks = document.getElementById('desktopWikiLinks');
     
     function switchPage(pageId) {
         // Hide all pages
@@ -32,6 +33,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 link.classList.remove('active');
             }
         });
+        
+        // Show desktop wiki links only when Credits page is active
+        if (desktopWikiLinks) {
+            if (pageId === 'credits') {
+                desktopWikiLinks.classList.add('show');
+            } else {
+                desktopWikiLinks.classList.remove('show');
+            }
+        }
     }
     
     // Add click event to sidebar links
