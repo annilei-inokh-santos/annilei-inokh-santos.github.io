@@ -340,18 +340,33 @@ function prevSlide() {
   }
 }
 
-// Card click handlers - opens actual portfolio version
+/* ============================================================
+   UPDATED: openPortfolioVersion with Time Travel Animation
+   ============================================================ */
+
+// Store the pending navigation data
+let pendingNavigation = null;
+
+/**
+ * Opens portfolio version with time travel animation
+ * @param {string} version - Portfolio version identifier
+ * @param {string} month - Creation month
+ * @param {string} day - Creation day
+ * @param {string} year - Creation year
+ */
 function openPortfolioVersion(version, month, day, year) {
   const portfolioUrls = {
     'v1': './previous-versions/2020.html',
-    'v2': './previous-versions/v2.html',
+    'v2': './previous-versions/2021-v1.html',
     'v3': './previous-versions/v3.html',
     'v4': './previous-versions/v4.html',
     'v5': './previous-versions/v5.html'
   };
   
+  // Save to localStorage
   saveLastVisitedPortfolio(version, month, day, year);
   
+  // Update last departed tracking
   lastSelectedVersion = version;
   lastSelectedMonth = month;
   lastSelectedDay = day;
@@ -360,11 +375,35 @@ function openPortfolioVersion(version, month, day, year) {
   
   updateLastDeparted();
   
+  // Get the URL
   const url = portfolioUrls[version];
+  
   if (url && url !== 'https://portfolio-v1.example.com') {
-    window.open(url, '_blank');
+    // Store navigation data for after animation
+    pendingNavigation = () => {
+      window.open(url, '_blank');
+    };
+    
+    // Create destination object for time travel
+    const destination = {
+      month: month,
+      day: day,
+      year: year
+    };
+    
+    // Trigger time travel animation
+    timeTravel.travelToTime(destination, () => {
+      if (pendingNavigation) {
+        pendingNavigation();
+        pendingNavigation = null;
+      }
+    });
   } else {
     console.log(`Portfolio ${version} - Replace with actual URL`);
+    // Fallback: direct open without animation
+    if (url) {
+      window.open(url, '_blank');
+    }
   }
 }
 

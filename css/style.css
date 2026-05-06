@@ -1,5 +1,5 @@
 /* ============================================================
-   STYLE.CSS — Annilei Inokh C. Santos Portfolio
+   STYLE.CSS — Annilei Inokh C. Santos Portfolio (Main & Priority)
    ============================================================ */
 
 
@@ -15,7 +15,7 @@
    1.5 ROOT FONT SIZE SCALING (+15%)
    ============================================================ */
 html {
-  font-size: 115%; /* 16px * 1.15 = 18.4px base */
+  font-size: 115%;
 }
 
 
@@ -28,7 +28,6 @@ html {
   padding: 0;
 }
 
-/* Smooth scrolling on both — browser picks whichever is the scroll container */
 html, body {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
@@ -38,19 +37,16 @@ html, body {
 /* ============================================================
    2.1 TEXT SIZE SCALING
    ============================================================ */
-/* Global +30% text size increase */
 html {
   font-size: 130%;
 }
 
-/* Mobile devices - additional +15% (total +45% from original) */
 @media (max-width: 768px) {
   html {
     font-size: 145%;
   }
 }
 
-/* Extra small devices - maintain readability */
 @media (max-width: 480px) {
   html {
     font-size: 145%;
@@ -125,7 +121,6 @@ html {
   color: var(--txt);
 }
 
-/* Montserrat for bold elements */
 h1, .exp-role, .proj-name, .cta, .exp-place, .c-big, .logo b {
   font-family: 'Montserrat', sans-serif;
 }
@@ -135,7 +130,6 @@ h1         { font-weight: 700; }
 .cta       { font-weight: 600; }
 .c-big     { font-weight: 700; }
 
-/* Distinct clickable link styles */
 a {
   color: var(--link);
   text-decoration: none;
@@ -244,7 +238,7 @@ nav {
 
 .logo {
   font-family: 'Montserrat', sans-serif;
-  font-size: 1.125rem; /* 18px */
+  font-size: 1.125rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   position: relative;
@@ -267,14 +261,13 @@ nav {
   flex-shrink: 0;
 }
 
-/* Status pill inside .logo must opt out of the shimmer text clip */
 .logo .status-pill {
   background-clip: unset;
   -webkit-background-clip: unset;
   color: var(--blue);
   animation: none;
   text-shadow: none;
-  font-size: 0.5625rem; /* 9px */
+  font-size: 0.5625rem;
   vertical-align: middle;
 }
 
@@ -285,7 +278,7 @@ nav {
   flex-shrink: 0;
 }
 .nav-r a {
-  font-size: 0.75rem; /* 12px */
+  font-size: 0.75rem;
   color: var(--txt3);
   text-decoration: none;
   font-weight: 300;
@@ -304,7 +297,7 @@ nav {
   align-items: center;
   gap: 5px;
   font-family: 'DM Mono', monospace;
-  font-size: 0.5625rem; /* 9px */
+  font-size: 0.5625rem;
   padding: 3px 10px;
   border-radius: 20px;
   border: 0.5px solid var(--blue-bd);
@@ -335,7 +328,7 @@ nav {
   background: transparent;
   color: var(--txt2);
   font-family: 'DM Mono', monospace;
-  font-size: 0.6875rem; /* 11px */
+  font-size: 0.6875rem;
   font-weight: 400;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -349,7 +342,7 @@ nav {
 }
 
 .t-icon {
-  font-size: 1rem; /* 16px */
+  font-size: 1rem;
   line-height: 1;
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -369,7 +362,7 @@ nav {
 
 .eyebrow {
   font-family: 'DM Mono', monospace;
-  font-size: 0.625rem; /* 10px */
+  font-size: 0.625rem;
   color: var(--blue);
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -379,7 +372,7 @@ nav {
 
 h1 {
   font-family: 'Montserrat', sans-serif;
-  font-size: 2.625rem; /* 42px */
+  font-size: 2.625rem;
   line-height: 1.08;
   letter-spacing: -0.025em;
   color: var(--head);
@@ -408,7 +401,7 @@ h1 em {
 }
 
 .hero-desc {
-  font-size: 0.875rem; /* 14px */
+  font-size: 0.875rem;
   color: var(--txt2);
   font-weight: 350;
   line-height: 1.65;
@@ -429,7 +422,7 @@ h1 em {
 
 .cta-hint {
   font-family: 'DM Mono', monospace;
-  font-size: 0.5625rem; /* 9px */
+  font-size: 0.5625rem;
   color: var(--txt3);
   text-align: right;
   margin-top: 6px;
@@ -450,7 +443,7 @@ h1 em {
   background: transparent;
   color: var(--violet);
   font-family: 'Montserrat', sans-serif;
-  font-size: 0.8125rem; /* 13px */
+  font-size: 0.8125rem;
   font-weight: 600;
   cursor: pointer;
   text-decoration: none;
@@ -474,7 +467,7 @@ h1 em {
 
 
 /* ============================================================
-   13. COMPONENTS — GIF Interactive Button (FIXED: Lordicon fallback with theme colors)
+   13. COMPONENTS — GIF Interactive Button
    ============================================================ */
 .gif-button {
   display: inline-block;
@@ -495,7 +488,6 @@ h1 em {
   overflow: hidden;
 }
 
-/* Fallback Lordicon - hidden by default, shows when images fail */
 .gif-button .fallback-icon {
   position: absolute;
   top: 50%;
@@ -508,7 +500,6 @@ h1 em {
   transition: all 0.3s ease;
 }
 
-/* When image fails to load, hide background image and show icon */
 .gif-button.image-failed {
   background-image: none !important;
   background-color: transparent !important;
@@ -522,17 +513,14 @@ h1 em {
   background-image: url('../assets/delorean.gif');
 }
 
-/* On hover when image failed, animate the icon */
 .gif-button.image-failed:hover .fallback-icon {
   transform: translate(-50%, -50%) scale(1.15);
 }
 
-/* Dark mode icon colors */
 .p.dark .gif-button.image-failed .fallback-icon {
   color: var(--blue);
 }
 
-/* Light mode icon colors - MUCH DARKER for visibility */
 .p.light .gif-button.image-failed .fallback-icon {
   color: #5a3e7a;
 }
@@ -568,19 +556,16 @@ h1 em {
 }
 .social-btn:active { transform: translateY(0); }
 
-/* GitHub Lordicon specific */
 .social-btn.github-lordicon { background: rgba(184,212,255,0.08); backdrop-filter: blur(8px); }
 .social-btn.github-lordicon:hover { background: rgba(184,212,255,0.25); box-shadow: 0 8px 20px rgba(184,212,255,0.2); }
 .social-btn.github-lordicon lord-icon { width: 28px; height: 28px; transition: all 0.3s ease; }
 .social-btn.github-lordicon:hover lord-icon { transform: scale(1.1); }
 
-/* LinkedIn Lordicon specific */
 .social-btn.linkedin-lordicon { background: rgba(212,200,255,0.08); backdrop-filter: blur(8px); }
 .social-btn.linkedin-lordicon:hover { background: rgba(212,200,255,0.25); box-shadow: 0 8px 20px rgba(212,200,255,0.2); }
 .social-btn.linkedin-lordicon lord-icon { width: 28px; height: 28px; transition: all 0.3s ease; }
 .social-btn.linkedin-lordicon:hover lord-icon { transform: scale(1.1); }
 
-/* Light mode adjustments */
 .p.light .social-btn.github-lordicon        { background: rgba(74,111,165,0.1); }
 .p.light .social-btn.github-lordicon:hover  { background: rgba(74,111,165,0.2); }
 .p.light .social-btn.linkedin-lordicon       { background: rgba(124,58,237,0.08); }
@@ -601,10 +586,9 @@ h1 em {
 .col-l { padding: 40px 36px; border-right: 0.5px solid var(--border); }
 .col-r { padding: 40px 36px; }
 
-/* Section Label */
 .sec-label {
   font-family: 'DM Mono', monospace;
-  font-size: 0.625rem; /* 10px */
+  font-size: 0.625rem;
   color: var(--blue);
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -635,7 +619,7 @@ h1 em {
 }
 
 .exp-role {
-  font-size: 0.75rem; /* 12px */
+  font-size: 0.75rem;
   color: var(--blue);
   margin-bottom: 8px;
   font-weight: 500;
@@ -645,7 +629,7 @@ h1 em {
 
 .exp-year {
   font-family: 'DM Mono', monospace;
-  font-size: 0.625rem; /* 10px */
+  font-size: 0.625rem;
   color: var(--txt3);
   background: var(--bg2);
   padding: 2px 8px;
@@ -653,7 +637,7 @@ h1 em {
 }
 
 .exp-place {
-  font-size: 0.875rem; /* 14px */
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--txt);
   font-family: 'Montserrat', sans-serif;
@@ -672,7 +656,7 @@ h1 em {
 }
 
 .exp-desc {
-  font-size: 0.78125rem; /* 12.5px */
+  font-size: 0.78125rem;
   color: var(--txt2);
   font-weight: 300;
   line-height: 1.7;
@@ -697,7 +681,7 @@ h1 em {
 }
 
 .proj-name {
-  font-size: 0.875rem; /* 14px */
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--head);
   font-family: 'Montserrat', sans-serif;
@@ -706,7 +690,7 @@ h1 em {
 
 .proj-tag {
   font-family: 'DM Mono', monospace;
-  font-size: 0.5625rem; /* 9px */
+  font-size: 0.5625rem;
   padding: 3px 10px;
   border-radius: 5px;
   border: 0.5px solid;
@@ -716,7 +700,7 @@ h1 em {
 .t-v { border-color: var(--violet-bd); color: var(--violet); background: var(--violet-bg); }
 
 .proj-desc {
-  font-size: 0.78125rem; /* 12.5px */
+  font-size: 0.78125rem;
   color: var(--txt2);
   font-weight: 300;
   line-height: 1.65;
@@ -745,7 +729,7 @@ h1 em {
 
 .c-big {
   font-family: 'Montserrat', sans-serif;
-  font-size: 2.625rem; /* 42px */
+  font-size: 2.625rem;
   color: var(--head);
   letter-spacing: -0.02em;
   line-height: 1;
@@ -762,7 +746,6 @@ h1 em {
   white-space: nowrap;
 }
 
-/* Shimmer effect for letters in c-big - Dark mode (mirroring light mode structure) */
 .c-big .shimmer-letter {
   display: inline-block;
   background: linear-gradient(
@@ -786,7 +769,6 @@ h1 em {
   z-index: 1;
 }
 
-/* Light mode - original working version */
 .p.light .c-big .shimmer-letter {
   background: linear-gradient(
     90deg,
@@ -814,11 +796,11 @@ h1 em {
   color: var(--blue);
   font-style: normal;
   font-family: 'DM Serif Display', serif;
-  font-size: 2.375rem; /* 38px */
+  font-size: 2.375rem;
 }
 
 .c-sub {
-  font-size: 0.875rem; /* 14px */
+  font-size: 0.875rem;
   color: var(--txt3);
   margin-top: 6px;
   font-weight: 350;
@@ -831,7 +813,6 @@ h1 em {
   font-weight: 500;
 }
 
-/* Mobile adjustments for name - prevents awkward line breaks */
 @media (max-width: 600px) {
   .name-first,
   .name-last {
@@ -872,7 +853,7 @@ h1 em {
 
 .sig {
   font-family: 'DM Mono', monospace;
-  font-size: 0.625rem; /* 10px */
+  font-size: 0.625rem;
   font-weight: 500;
   padding: 4px 10px;
   border-radius: 5px;
@@ -886,14 +867,13 @@ h1 em {
 
 .build-note {
   font-family: 'DM Mono', monospace;
-  font-size: 0.59375rem; /* 9.5px */
+  font-size: 0.59375rem;
   color: var(--txt3);
   letter-spacing: 0.2px;
   white-space: nowrap;
   flex-shrink: 0;
 }
 
-/* Mobile adjustments for footer - prevent stacking */
 @media (max-width: 768px) {
   .bottom {
     padding: 14px 20px;
@@ -901,7 +881,7 @@ h1 em {
   }
   
   .sig {
-    font-size: 0.5rem; /* 8px */
+    font-size: 0.5rem;
     padding: 3px 8px;
   }
   
@@ -910,11 +890,10 @@ h1 em {
   }
   
   .build-note {
-    font-size: 0.5rem; /* 8px */
+    font-size: 0.5rem;
   }
 }
 
-/* Extra small screens - ensure no stacking, just scroll */
 @media (max-width: 550px) {
   .bottom {
     justify-content: flex-start;
@@ -930,476 +909,25 @@ h1 em {
   }
 }
 
-/* ============================================================
-   20. MODAL / POPUP STYLES (Simplified centering)
-   ============================================================ */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(8px);
-}
-
-.modal.modal--visible {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.close-btn {
-  position: fixed;
-  top: 25px;
-  right: 35px;
-  font-size: 2.8125rem; /* 45px */
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  z-index: 1002;
-  background: rgba(255, 255, 255, 0.15);
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: #ffffff;
-}
-
-.close-btn:hover {
-  color: var(--violet);
-  transform: scale(1.1);
-  background: rgba(255, 255, 255, 0.25);
-}
-
-.modal-inner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90%;
-  max-width: 1000px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 25px;
-  background: transparent;
-  padding: 20px 0;
-}
-
-/* If content is too tall, allow scrolling within modal */
-@media (max-height: 700px) {
-  .modal-inner {
-    top: 30%;
-    transform: translate(-50%, -30%);
-  }
-}
-
 
 /* ============================================================
-   21. CAROUSEL STYLES (SINGLE CARD DISPLAY)
+   23. MEDIA QUERIES — Tablet & Mobile Optimization
    ============================================================ */
-.carousel-wrapper {
-  width: 100%;
-  background: transparent;
-  padding: 5px 0;
-}
-
-.carousel-container {
-  position: relative;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: transparent;
-}
-
-.carousel-track-container {
-  overflow: hidden;
-  width: 300px;
-  background: transparent;
-  position: relative;
-  padding: 5px 0;
-}
-
-.carousel-track {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-  gap: 0px;
-  padding: 5px 0;
-  margin: 0;
-  position: relative;
-}
-
-.carousel-card {
-  min-width: 280px;
-  width: 280px;
-  height: 170px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  flex-shrink: 0;
-  position: relative;
-  overflow: hidden;
-  background-color: #4a6fa5;
-  border: none;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  margin: 0 10px;
-}
-
-.card-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.3s ease;
-}
-
-.carousel-card:hover .card-image {
-  transform: scale(1.03);
-}
-
-.carousel-card:hover {
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
-}
-
-.carousel-card.active {
-  box-shadow: 0 0 0 2px var(--violet), 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.carousel-card.active .card-image {
-  transform: scale(1.01);
-}
-
-.version-label {
-  position: absolute;
-  bottom: 8px;
-  right: 12px;
-  font-family: 'DM Mono', monospace;
-  font-size: 0.6875rem; /* 11px */
-  font-weight: 600;
-  color: white;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 3px 8px;
-  letter-spacing: 0.5px;
-  backdrop-filter: blur(4px);
-}
-
-.p.light .version-label {
-  color: #1e1e2a;
-  background: rgba(255, 255, 255, 0.7);
-}
-
-.carousel-arrow {
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: #ffffff;
-  font-size: 1.75rem; /* 28px */
-  font-weight: bold;
-  cursor: pointer;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  margin: 0 12px;
-  flex-shrink: 0;
-  z-index: 10;
-}
-
-.carousel-arrow:hover {
-  background: var(--blue-bg);
-  color: var(--blue);
-  transform: scale(1.1);
-}
-
-
-/* ============================================================
-   22. BOTTOM RECTANGLE STYLES (FIXED: 8888 ghost background effect - Proper alignment)
-   ============================================================ */
-.bottom-rectangle {
-  width: 70%;
-  max-width: 540px;
-  height: auto;
-  min-height: 280px;
-  background-color: #1a1a1c;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-  padding: 14px 12px;
-}
-
-.rectangle-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-}
-
-/* Metallic Grey Texture for each time container */
-.time-container {
-  width: 100%;
-  background: linear-gradient(135deg, #3a3a3e 0%, #2a2a2e 50%, #3a3a3e 100%);
-  background-size: 200% 200%;
-  padding: 8px 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-/* Metallic texture effect */
-.time-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: repeating-linear-gradient(
-    45deg,
-    rgba(255, 255, 255, 0.03) 0px,
-    rgba(255, 255, 255, 0.03) 2px,
-    transparent 2px,
-    transparent 8px
-  );
-  pointer-events: none;
-}
-
-.time-values-wrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  position: relative;
-  z-index: 1;
-}
-
-/* Each time item contains label above and value box below */
-.time-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  position: relative;
-}
-
-/* Value container - Fixed width based on content type */
-.time-value-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #000000;
-  border: 1px solid #555;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Specific fixed widths for each box type */
-.time-value-box.month-box {
-  width: 70px;
-  padding: 6px 0;
-}
-
-.time-value-box.day-box {
-  width: 55px;
-  padding: 6px 0;
-}
-
-.time-value-box.year-box {
-  width: 85px;
-  padding: 6px 0;
-}
-
-/* Ghost background effect using absolute positioning */
-.time-value-box::before {
-  content: attr(data-ghost);
-  font-family: 'DS-Digital', 'Orbitron', 'Courier New', 'Monaco', monospace;
-  font-size: 1.25rem; /* 20px */
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 2px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: rgba(255, 255, 255, 0.08);
-  white-space: nowrap;
-  pointer-events: none;
-  z-index: 0;
-  width: 100%;
-}
-
-/* All values - positioned above ghost with exact same dimensions */
-.time-month,
-.time-day,
-.time-year {
-  font-family: 'DS-Digital', 'Orbitron', 'Courier New', 'Monaco', monospace;
-  font-size: 1.25rem; /* 20px */
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 2px;
-  position: relative;
-  z-index: 1;
-  background: transparent;
-  display: inline-block;
-}
-
-/* Specific widths for value text to match ghost */
-.time-month {
-  min-width: 55px;
-}
-
-.time-day {
-  min-width: 35px;
-}
-
-.time-year {
-  min-width: 75px;
-}
-
-/* Destination Time Values - RED */
-.destination-time .time-month,
-.destination-time .time-day,
-.destination-time .time-year {
-  color: #ff4444;
-}
-
-/* Present Time Values - GREEN */
-.present-time .time-month,
-.present-time .time-day,
-.present-time .time-year {
-  color: #4caf50;
-}
-
-/* Last Time Departed Values - GREEN */
-.last-departed .time-month,
-.last-departed .time-day,
-.last-departed .time-year {
-  color: #afaf4c;
-}
-
-/* Label container - RED theme, thick text */
-.time-label {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.5rem; /* 8px */
-  font-weight: 800;
-  letter-spacing: 1px;
-  color: #ffffff;
-  text-transform: uppercase;
-  background: #8b0000;
-  padding: 3px 8px;
-  display: inline-block;
-}
-
-/* Time Header */
-.time-header {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.5625rem; /* 9px */
-  font-weight: 800;
-  letter-spacing: 1.5px;
-  color: #ffffff;
-  text-align: center;
-  padding: 5px 12px;
-  background: #000000;
-  position: relative;
-  z-index: 1;
-  margin-top: 2px;
-  display: inline-block;
-  width: auto;
-  align-self: center;
-}
-
-/* Light mode adjustments */
-.p.light .bottom-rectangle {
-  background-color: #1a1a1c;
-}
-
-.p.light .time-container {
-  background: linear-gradient(135deg, #3a3a3e 0%, #2a2a2e 50%, #3a3a3e 100%);
-}
-
-.p.light .time-value-box {
-  background: #000000;
-  border-color: #555;
-}
-
-.p.light .time-label {
-  background: #8b0000;
-  color: #ffffff;
-}
-
-.p.light .time-header {
-  background: #000000;
-  color: #ffffff;
-}
-
-.p.light .destination-time .time-month,
-.p.light .destination-time .time-day,
-.p.light .destination-time .time-year {
-  color: #ff4444;
-}
-
-.p.light .present-time .time-month,
-.p.light .present-time .time-day,
-.p.light .present-time .time-year {
-  color: #4caf50;
-}
-
-.p.light .last-departed .time-month,
-.p.light .last-departed .time-day,
-.p.light .last-departed .time-year {
-  color: #4caf50;
-}
-
-.bottom-rectangle,
-.p.dark .bottom-rectangle,
-.p.light .bottom-rectangle {
-  background-color: #1a1a1c;
-}
-
-
-/* ============================================================
-   23. MEDIA QUERIES — Tablet & Mobile Optimization (RIGHT-ALIGNED CTA)
-   ============================================================ */
-
-/* Tablet Landscape (≤ 1024px) */
 @media (max-width: 1024px) {
   .hero {
     padding: 40px 30px 0;
   }
   
   h1 {
-    font-size: 2.25rem; /* 36px */
+    font-size: 2.25rem;
     max-width: 100%;
   }
   
   .c-big {
-    font-size: 2.25rem; /* 36px */
+    font-size: 2.25rem;
   }
 }
 
-/* Tablet Portrait & Large Mobile (≤ 900px) */
 @media (max-width: 900px) {
   .two-col {
     grid-template-columns: 1fr;
@@ -1416,18 +944,15 @@ h1 em {
     padding: 32px 30px;
   }
   
-  /* Keep CTA on the right side - maintain grid layout */
   .hero-body {
     grid-template-columns: 1fr auto;
     gap: 24px;
   }
   
-  /* Keep CTA right-aligned - DO NOT change to flex-start */
   .cta-wrap {
     align-items: flex-end;
   }
   
-  /* Keep hint text right-aligned */
   .cta-hint {
     text-align: right;
   }
@@ -1438,7 +963,6 @@ h1 em {
   }
 }
 
-/* Mobile (≤ 768px) - Consolidated - FIXED FOOTER STACKING */
 @media (max-width: 768px) {
   nav {
     padding: 14px 20px;
@@ -1447,12 +971,12 @@ h1 em {
   }
   
   .logo {
-    font-size: 0.875rem; /* 14px */
+    font-size: 0.875rem;
     flex-shrink: 0;
   }
   
   .logo .status-pill {
-    font-size: 0.4375rem; /* 7px */
+    font-size: 0.4375rem;
     padding: 2px 6px;
   }
   
@@ -1463,7 +987,6 @@ h1 em {
     -webkit-overflow-scrolling: touch;
   }
   
-  /* Shorten navigation text on mobile */
   .nav-r a {
     font-size: 0;
   }
@@ -1471,7 +994,7 @@ h1 em {
   .nav-r a[href="#exp"]::before,
   .nav-r a[href="#proj"]::before,
   .nav-r a[href="#connect"]::before {
-    font-size: 0.6875rem; /* 11px */
+    font-size: 0.6875rem;
   }
   
   .nav-r a[href="#exp"]::before {
@@ -1488,7 +1011,7 @@ h1 em {
   
   .toggle-btn {
     padding: 4px 10px 4px 8px;
-    font-size: 0.625rem; /* 10px */
+    font-size: 0.625rem;
     white-space: nowrap;
   }
   
@@ -1496,7 +1019,6 @@ h1 em {
     padding: 30px 20px 0;
   }
   
-  /* Keep grid layout with CTA on right */
   .hero-body {
     grid-template-columns: 1fr auto;
     gap: 20px;
@@ -1511,11 +1033,11 @@ h1 em {
   }
   
   h1 {
-    font-size: 1.75rem; /* 28px */
+    font-size: 1.75rem;
   }
   
   .c-big {
-    font-size: 1.75rem; /* 28px */
+    font-size: 1.75rem;
   }
   
   .contrib-inner {
@@ -1524,7 +1046,6 @@ h1 em {
     gap: 20px;
   }
   
-  /* FIXED: Footer stays horizontal, no stacking */
   .bottom {
     flex-direction: row;
     justify-content: space-between;
@@ -1539,69 +1060,22 @@ h1 em {
   }
   
   .sig {
-    font-size: 0.5rem; /* 8px */
+    font-size: 0.5rem;
     padding: 3px 8px;
     white-space: nowrap;
   }
   
   .build-note {
-    font-size: 0.5rem; /* 8px */
+    font-size: 0.5rem;
     white-space: nowrap;
     flex-shrink: 0;
   }
   
-  .carousel-track-container {
-    width: 220px;
-  }
-  
-  .carousel-card {
-    min-width: 200px;
-    width: 200px;
-    height: 125px;
-  }
-  
-  .carousel-track {
-    gap: 0px;
-    padding: 5px 0;
-  }
-  
-  .carousel-arrow {
-    width: 38px;
-    height: 38px;
-    font-size: 1.375rem; /* 22px */
-    margin: 0 6px;
-  }
-  
-  .bottom-rectangle {
-    width: 85%;
-    max-width: 480px;
-    min-height: 240px;
-  }
-  
-  .time-values-wrapper {
-    gap: 8px;
-  }
-  
-  .time-value-box.month-box {
-    width: 60px;
-  }
-  
-  .time-value-box.day-box {
-    width: 50px;
-  }
-  
-  .time-value-box.year-box {
-    width: 75px;
-  }
-  
-  /* Improve touch targets */
   .nav-r a,
   .toggle-btn,
   .cta-portfolio,
   .social-btn,
-  .gif-button,
-  .carousel-arrow,
-  .close-btn {
+  .gif-button {
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
   }
@@ -1613,7 +1087,6 @@ h1 em {
   }
 }
 
-/* Small Mobile (≤ 600px) - Allow wrapping but keep CTA right */
 @media (max-width: 600px) {
   .exp-top {
     flex-direction: column;
@@ -1628,36 +1101,35 @@ h1 em {
   }
   
   .logo {
-    font-size: 0.875rem; /* 14px */
+    font-size: 0.875rem;
   }
   
   .status-pill {
-    font-size: 0.4375rem; /* 7px */
+    font-size: 0.4375rem;
     padding: 2px 8px;
   }
   
   .toggle-btn {
     padding: 4px 10px 4px 8px;
-    font-size: 0.625rem; /* 10px */
+    font-size: 0.625rem;
   }
   
   .t-icon {
-    font-size: 0.875rem; /* 14px */
+    font-size: 0.875rem;
   }
   
-  /* Keep CTA right-aligned - let hero-desc shrink */
   .hero-body {
     grid-template-columns: minmax(150px, 1fr) auto;
     gap: 16px;
   }
   
   .hero-desc {
-    font-size: 0.75rem; /* 12px */
+    font-size: 0.75rem;
   }
   
   .cta-portfolio {
     padding: 8px 16px;
-    font-size: 0.6875rem; /* 11px */
+    font-size: 0.6875rem;
   }
   
   .cta-portfolio .portfolio-icon {
@@ -1670,47 +1142,20 @@ h1 em {
     height: 60px;
   }
   
-  /* Keep footer horizontal */
   .bottom {
     gap: 8px;
   }
   
   .sig {
-    font-size: 0.4375rem; /* 7px */
+    font-size: 0.4375rem;
     padding: 3px 6px;
   }
   
   .build-note {
-    font-size: 0.4375rem; /* 7px */
-  }
-  
-  .carousel-track-container {
-    width: 180px;
-  }
-  
-  .carousel-card {
-    min-width: 160px;
-    width: 160px;
-    height: 105px;
-  }
-  
-  .carousel-arrow {
-    width: 32px;
-    height: 32px;
-    font-size: 1.125rem; /* 18px */
-    margin: 0 4px;
-  }
-  
-  .close-btn {
-    width: 40px;
-    height: 40px;
-    font-size: 2rem; /* 32px */
-    top: 15px;
-    right: 20px;
+    font-size: 0.4375rem;
   }
 }
 
-/* Extra Small Mobile (≤ 480px) - Stack vertically but keep CTA right-aligned within its column */
 @media (max-width: 480px) {
   .col-l, .col-r {
     padding: 24px 18px;
@@ -1720,13 +1165,11 @@ h1 em {
     padding: 24px 16px 0;
   }
   
-  /* Stack into single column on very small screens to prevent squishing */
   .hero-body {
     grid-template-columns: 1fr;
     gap: 20px;
   }
   
-  /* CTA now has its own row, but stays right-aligned */
   .cta-wrap {
     align-items: flex-end;
     width: 100%;
@@ -1737,36 +1180,36 @@ h1 em {
   }
   
   h1 {
-    font-size: 1.5rem; /* 24px */
+    font-size: 1.5rem;
   }
   
   .c-big {
-    font-size: 1.5rem; /* 24px */
+    font-size: 1.5rem;
   }
   
   .c-sub {
-    font-size: 0.75rem; /* 12px */
+    font-size: 0.75rem;
   }
   
   .exp-role {
-    font-size: 0.6875rem; /* 11px */
+    font-size: 0.6875rem;
   }
   
   .exp-desc {
-    font-size: 0.6875rem; /* 11px */
+    font-size: 0.6875rem;
   }
   
   .proj-name {
-    font-size: 0.75rem; /* 12px */
+    font-size: 0.75rem;
   }
   
   .proj-desc {
-    font-size: 0.6875rem; /* 11px */
+    font-size: 0.6875rem;
   }
   
   .cta-portfolio {
     padding: 8px 18px;
-    font-size: 0.6875rem; /* 11px */
+    font-size: 0.6875rem;
   }
   
   .cta-portfolio .portfolio-icon {
@@ -1794,7 +1237,6 @@ h1 em {
     height: 22px !important;
   }
   
-  /* Keep footer horizontal on very small screens - allow scroll if needed */
   .bottom {
     flex-wrap: nowrap;
     overflow-x: auto;
@@ -1810,69 +1252,8 @@ h1 em {
   .build-note {
     flex-shrink: 0;
   }
-  
-  .bottom-rectangle {
-    width: 92%;
-    min-height: 220px;
-    padding: 10px 8px;
-  }
-  
-  .time-value-box.month-box {
-    width: 55px;
-  }
-  
-  .time-value-box.day-box {
-    width: 45px;
-  }
-  
-  .time-value-box.year-box {
-    width: 68px;
-  }
-  
-  .time-month, .time-day, .time-year {
-    font-size: 1rem; /* 16px */
-  }
-  
-  .time-value-box::before {
-    font-size: 1rem; /* 16px */
-  }
-  
-  .time-label {
-    font-size: 0.4375rem; /* 7px */
-    padding: 2px 6px;
-  }
-  
-  .time-header {
-    font-size: 0.5rem; /* 8px */
-    padding: 3px 10px;
-  }
-  
-  .carousel-track-container {
-    width: 180px;
-  }
-
-  .carousel-card {
-    min-width: 160px;
-    width: 160px;
-    height: 105px;
-  }
-  .carousel-track { 
-    gap: 0px;
-    padding: 5px 0;
-  }
-  .carousel-arrow {
-    width: 32px;
-    height: 32px;
-    font-size: 1.125rem; /* 18px */
-    margin: 0 4px;
-  }
-  .bottom-rectangle {
-    width: 90%;
-    max-width: 350px;
-  }
 }
 
-/* Add a flexible container improvement for all breakpoints */
 .content-wrapper {
   padding: 0;
 }
