@@ -94,18 +94,6 @@ img {
   scroll-margin-top: 60px;
 }
 
-.header {
-  padding: 50px 20px 30px;
-  text-align: center;
-}
-
-.header img {
-  max-width: 70%;
-  margin: 0 auto;
-  border-radius: 12px;
-  opacity: 0.9;
-}
-
 /* ============================================ */
 /* NAVIGATION BAR - NO ACTIVE STATE */
 /* ============================================ */
@@ -464,10 +452,6 @@ img {
     gap: 1.5rem;
   }
   
-  .header img {
-    max-width: 100%;
-  }
-  
   .quotation-card {
     min-height: auto;
   }
@@ -517,36 +501,10 @@ img {
   border: 3px solid var(--color-accent);
 }
 
+/* Quadrant 2 - Empty (social icons removed) */
 .quadrant-2 {
   justify-content: flex-end;
-}
-
-.social-icons {
-  display: flex;
-  gap: 1.25rem;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-}
-
-.social-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-  flex-shrink: 0;
-}
-
-.social-icon img {
-  width: 42px;
-  height: 42px;
-  min-width: 32px;
-  min-height: 32px;
-  transition: transform 0.2s ease;
-  object-fit: contain;
-}
-
-.social-icon:hover img {
-  transform: scale(1.1);
+  /* Empty quadrant - no content */
 }
 
 .quadrant-3 {
@@ -628,11 +586,6 @@ img {
     height: 85px;
   }
   
-  .social-icon img {
-    width: 32px;
-    height: 32px;
-  }
-  
   .contact-icon-btn {
     padding: 7px;
   }
@@ -654,10 +607,6 @@ img {
     font-size: 0.7rem;
     white-space: normal;
   }
-  
-  .social-icons {
-    gap: 0.75rem;
-  }
 }
 
 /* Small Mobile */
@@ -670,11 +619,6 @@ img {
   .about-avatar img {
     width: 65px;
     height: 65px;
-  }
-  
-  .social-icon img {
-    width: 28px;
-    height: 28px;
   }
   
   .contact-icon-btn {
@@ -692,10 +636,6 @@ img {
   
   .about-info p {
     font-size: 0.65rem;
-  }
-  
-  .social-icons {
-    gap: 0.5rem;
   }
 }
 
@@ -716,11 +656,6 @@ img {
     border-width: 2px;
   }
   
-  .social-icon img {
-    width: 24px;
-    height: 24px;
-  }
-  
   .contact-icon-btn {
     padding: 5px;
   }
@@ -736,10 +671,6 @@ img {
   
   .about-info p {
     font-size: 0.6rem;
-  }
-  
-  .social-icons {
-    gap: 0.4rem;
   }
 }
 
@@ -973,7 +904,7 @@ img {
   color: #F7DF1E;  /* JavaScript yellow */
 }
 
-.skill-pill .fa-code {
+.skill-pill .fa-clipboard {
   color: #80CBC4;  /* Notepad++ teal-green */
 }
 
