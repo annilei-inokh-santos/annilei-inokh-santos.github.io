@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Annilei Inokh • (2021 v2)</title>
+  <!-- Font Awesome 6 (free CDN) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/previous-versions/2021/v2/style-2021-v2.css">
+</head>
+<body>
+
+  <!-- FULLSCREEN HERO: gradient + text, responsive height -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>My Portfolio</h1>
+      <p>A website created by Annilei</p>
+    </div>
+  </section>
+
+  <!-- DIVIDER LINE BETWEEN HERO AND BODY -->
+  <div class="hero-divider"></div>
+
+  <!-- MAIN LAYOUT: SIDEBAR (30%) + MAIN CONTENT (70%) -->
+  <div class="app-wrapper">
+    <div class="app-layout">
+      <!-- SIDEBAR NAVIGATION - 30% width -->
+      <aside class="sidebar">
+        <div class="sidebar-content">
+          <h3 class="sidebar-title" id="aicsTitle">AICS</h3>
+          <nav class="sidebar-nav">
+            <a href="#about" id="aboutLink" class="active">About</a>
+            <a href="#skills" id="skillsLink">Skills & Tools</a>
+            <a href="#contact" id="contactLink">Contact</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- MAIN CONTENT - 70% width -->
+      <main class="main-content">
+        <!-- ABOUT SECTION -->
+        <div id="aboutSection" class="content-section active-section">
+          <div class="main-card" align="center">
+            <h2>About Me</h2>
+            <div class="about-divider"></div>
+
+            <div class="about-minimal">
+              <div class="about-header">
+                <div class="profile-image-mini">
+                  <img src="/previous-versions/2021/v2/assets/annilei-nov-2021.png" class="photo-square" alt="Annilei Inokh profile">
+                </div>
+                <div class="greeting">
+                  <p class="hi-text">Hi! I am</p>
+                  <h3 class="full-name">Annilei Inokh C. Santos</h3>
+                  <p class="student-role">Senior High Student @ STI College Ortigas-Cainta</p>
+                </div>
+              </div>
+
+              <div class="about-details-minimal">
+                <div class="detail-row">
+                  <span class="detail-icon-mini">🎓</span>
+                  <div class="detail-text">
+                    <strong>Strand</strong>
+                    <p>MAWD (IT in Mobile App & Web Development)</p>
+                  </div>
+                </div>
+
+                <div class="detail-row">
+                  <span class="detail-icon-mini">💡</span>
+                  <div class="detail-text">
+                    <strong>Goal</strong>
+                    <p>To become a full-stack developer and create meaningful digital designs</p>
+                  </div>
+                </div>
+
+                <div class="detail-row">
+                  <span class="detail-icon-mini">📍</span>
+                  <div class="detail-text">
+                    <strong>Location</strong>
+                    <p>Cainta, Rizal, Philippines</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SKILLS SECTION -->
+        <div id="skillsSection" class="content-section">
+          <div class="main-card" align="center">
+            <h2>Skills & Tools</h2>
+            <div class="skills-divider"></div>
+
+            <div class="skills-intro">
+              <p>Technologies and tools I work with</p>
+            </div>
+
+            <div class="skills-grid">
+              <div class="skill-item" data-color="#F7DF1E">
+                <i class="fab fa-js"></i>
+                <h3>JavaScript</h3>
+                <p>Intermediate</p>
+              </div>
+
+              <div class="skill-item" data-color="#E34F26">
+                <i class="fab fa-html5"></i>
+                <h3>HTML5</h3>
+                <p>Advanced</p>
+              </div>
+
+              <div class="skill-item" data-color="#1572B6">
+                <i class="fab fa-css3-alt"></i>
+                <h3>CSS3</h3>
+                <p>Advanced</p>
+              </div>
+
+              <div class="skill-item" data-color="#FFA500">
+                <i class="fas fa-cat"></i>
+                <h3>Scratch</h3>
+                <p>Advanced</p>
+              </div>
+
+              <div class="skill-item" data-color="#006586">
+                <i class="fas fa-clapperboard"></i>
+                <h3>Filmora Wondershare</h3>
+                <p>Intermediate</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONTACT SECTION - ID-Style Calling Card -->
+        <div id="contactSection" class="content-section">
+          <div class="main-card" align="center">
+            <h2>Contact</h2>
+            <div class="contact-divider"></div>
+
+            <!-- ID-Style Calling Card -->
+            <div class="id-card">
+              <div class="id-card-inner">
+                <!-- Card Header with badge -->
+                <div class="id-card-badge">
+                  <span>CONTACT CARD</span>
+                </div>
+                
+                <!-- Photo and basic info -->
+                <div class="id-card-photo">
+                  <img src="/previous-versions/2021/v2/assets/annilei-nov-2021.png" alt="Annilei Inokh">
+                </div>
+                
+                <h3 class="id-card-name">Annilei Inokh C. Santos</h3>
+                <p class="id-card-title">Student Developer</p>
+                
+                <!-- Divider -->
+                <div class="id-card-divider"></div>
+                
+                <!-- Contact details in ID card style -->
+                <div class="id-card-details">
+                  <div class="id-detail-row">
+                    <div class="id-detail-label">
+                      <i class="fas fa-envelope"></i>
+                      <span>EMAIL</span>
+                    </div>
+                    <div class="id-detail-value">
+                      <span>annilei.santos@example.com</span>
+                      <button class="id-copy-btn" onclick="copyIdEmail()">
+                        <i class="fas fa-copy"></i>
+                      </button>
+                    </div>
+                  </div>
+                  
+                  <div class="id-detail-row">
+                    <div class="id-detail-label">
+                      <i class="fas fa-phone-alt"></i>
+                      <span>PHONE</span>
+                    </div>
+                    <div class="id-detail-value">
+                      <span>+63 912 345 6789</span>
+                    </div>
+                  </div>
+                  
+                  <div class="id-detail-row">
+                    <div class="id-detail-label">
+                      <i class="fab fa-github"></i>
+                      <span>GITHUB</span>
+                    </div>
+                    <div class="id-detail-value">
+                      <span>github.com/annilei</span>
+                    </div>
+                  </div>
+                  
+                  <div class="id-detail-row">
+                    <div class="id-detail-label">
+                      <i class="fab fa-linkedin"></i>
+                      <span>LINKEDIN</span>
+                    </div>
+                    <div class="id-detail-value">
+                      <span>linkedin.com/in/annilei</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Card footer -->
+                <div class="id-card-footer">
+                  <p>✦ AICS · Student Portfolio ✦</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- FOOTER SECTION -->
+    <footer class="footer">
+      <div class="footer-content">
+        <p>✦ responsive portfolio · designed with minimal approach ✦</p>
+        <p class="footer-copyright">© 2021 Annilei Inokh</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="/previous-versions/2021/v2/script-2021-v2.js"></script>
+</body>
+</html>
