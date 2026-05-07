@@ -358,7 +358,7 @@ function openPortfolioVersion(version, month, day, year) {
   const portfolioUrls = {
     'v1': './previous-versions/2020.html',
     'v2': './previous-versions/2021-v1.html',
-    'v3': './previous-versions/v3.html',
+    'v3': './previous-versions/2021-v2.html',
     'v4': './previous-versions/v4.html',
     'v5': './previous-versions/v5.html'
   };
