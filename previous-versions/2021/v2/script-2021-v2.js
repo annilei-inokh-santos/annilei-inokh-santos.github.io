@@ -8,6 +8,12 @@
   const skillsLink = document.getElementById('skillsLink');
   const contactLink = document.getElementById('contactLink');
   
+  // Mobile navigation elements
+  const mobileAboutLink = document.getElementById('mobileAboutLink');
+  const mobileSkillsLink = document.getElementById('mobileSkillsLink');
+  const mobileContactLink = document.getElementById('mobileContactLink');
+  const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+  
   // Section elements
   const aboutSection = document.getElementById('aboutSection');
   const skillsSection = document.getElementById('skillsSection');
@@ -76,7 +82,7 @@
     return 'none';
   }
   
-  // Update active class on sidebar navigation links
+  // Update active class on sidebar navigation links (desktop)
   function setActiveLink(activeAnchor) {
     sidebarLinks.forEach(link => {
       link.classList.remove('active');
@@ -86,9 +92,28 @@
     }
   }
   
+  // Update active class on mobile navigation items
+  function setMobileActive(activeMobileItem) {
+    mobileNavItems.forEach(item => {
+      item.classList.remove('active');
+    });
+    if (activeMobileItem) {
+      activeMobileItem.classList.add('active');
+    }
+  }
+  
+  // Update both desktop and mobile active states
+  function updateActiveStates(sectionName, desktopLink, mobileItem) {
+    if (desktopLink) setActiveLink(desktopLink);
+    if (mobileItem) setMobileActive(mobileItem);
+  }
+  
   function removeAllActiveLinks() {
     sidebarLinks.forEach(link => {
       link.classList.remove('active');
+    });
+    mobileNavItems.forEach(item => {
+      item.classList.remove('active');
     });
   }
   
@@ -103,6 +128,15 @@
     });
   }
   
+  // Navigate to section function (used by both desktop and mobile)
+  function navigateToSection(sectionName, desktopLink, mobileItem) {
+    const direction = getNavigationDirection(sectionName);
+    showSectionWithAnimation(sectionName, direction);
+    updateActiveStates(sectionName, desktopLink, mobileItem);
+    const mainContent = document.querySelector('.main-content');
+    if (mainContent) smoothScrollToElement(mainContent, 20);
+  }
+  
   // AICS Title click handler
   if (aicsTitle) {
     aicsTitle.addEventListener('click', (e) => {
@@ -110,46 +144,59 @@
       smoothScrollToElement(heroSection, 0);
       if (currentSection !== 'about') {
         showSectionWithAnimation('about', 'none');
-        setActiveLink(aboutLink);
+        updateActiveStates('about', aboutLink, mobileAboutLink);
+      } else {
+        removeAllActiveLinks();
+        updateActiveStates('about', aboutLink, mobileAboutLink);
       }
     });
   }
   
-  // Navigation link handlers
+  // Desktop navigation link handlers
   if (aboutLink) {
     aboutLink.addEventListener('click', (e) => {
       e.preventDefault();
-      const direction = getNavigationDirection('about');
-      showSectionWithAnimation('about', direction);
-      setActiveLink(aboutLink);
-      const mainContent = document.querySelector('.main-content');
-      if (mainContent) smoothScrollToElement(mainContent, 20);
+      navigateToSection('about', aboutLink, mobileAboutLink);
     });
   }
   
   if (skillsLink) {
     skillsLink.addEventListener('click', (e) => {
       e.preventDefault();
-      const direction = getNavigationDirection('skills');
-      showSectionWithAnimation('skills', direction);
-      setActiveLink(skillsLink);
-      const mainContent = document.querySelector('.main-content');
-      if (mainContent) smoothScrollToElement(mainContent, 20);
+      navigateToSection('skills', skillsLink, mobileSkillsLink);
     });
   }
   
   if (contactLink) {
     contactLink.addEventListener('click', (e) => {
       e.preventDefault();
-      const direction = getNavigationDirection('contact');
-      showSectionWithAnimation('contact', direction);
-      setActiveLink(contactLink);
-      const mainContent = document.querySelector('.main-content');
-      if (mainContent) smoothScrollToElement(mainContent, 20);
+      navigateToSection('contact', contactLink, mobileContactLink);
     });
   }
   
-  // Scroll detection
+  // Mobile navigation link handlers
+  if (mobileAboutLink) {
+    mobileAboutLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      navigateToSection('about', aboutLink, mobileAboutLink);
+    });
+  }
+  
+  if (mobileSkillsLink) {
+    mobileSkillsLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      navigateToSection('skills', skillsLink, mobileSkillsLink);
+    });
+  }
+  
+  if (mobileContactLink) {
+    mobileContactLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      navigateToSection('contact', contactLink, mobileContactLink);
+    });
+  }
+  
+  // Scroll detection - updates active states only
   function updateScrollPosition() {
     const scrollPosition = window.scrollY + 200;
     
@@ -162,9 +209,14 @@
       }
     }
     
-    if (currentSection === 'about' && aboutLink) setActiveLink(aboutLink);
-    else if (currentSection === 'skills' && skillsLink) setActiveLink(skillsLink);
-    else if (currentSection === 'contact' && contactLink) setActiveLink(contactLink);
+    // Restore active states based on current visible section
+    if (currentSection === 'about') {
+      updateActiveStates('about', aboutLink, mobileAboutLink);
+    } else if (currentSection === 'skills') {
+      updateActiveStates('skills', skillsLink, mobileSkillsLink);
+    } else if (currentSection === 'contact') {
+      updateActiveStates('contact', contactLink, mobileContactLink);
+    }
   }
   
   let ticking = false;
@@ -191,14 +243,12 @@
       setTimeout(() => aboutSection.classList.remove('fade-in'), 300);
     }
     
-    setActiveLink(aboutLink);
+    updateActiveStates('about', aboutLink, mobileAboutLink);
     
     if (window.location.hash === '#skills') {
-      showSectionWithAnimation('skills', getNavigationDirection('skills'));
-      setActiveLink(skillsLink);
+      navigateToSection('skills', skillsLink, mobileSkillsLink);
     } else if (window.location.hash === '#contact') {
-      showSectionWithAnimation('contact', getNavigationDirection('contact'));
-      setActiveLink(contactLink);
+      navigateToSection('contact', contactLink, mobileContactLink);
     }
     
     updateScrollPosition();
@@ -217,18 +267,3 @@
     document.body.style.cursor = 'pointer';
   }
 })();
-
-// ===== COPY EMAIL FUNCTION (ID Card Version) =====
-function copyIdEmail() {
-  const email = "annilei.santos@example.com";
-  navigator.clipboard.writeText(email).then(() => {
-    const btn = document.querySelector('.id-copy-btn');
-    const originalIcon = btn.innerHTML;
-    btn.innerHTML = '<i class="fas fa-check"></i>';
-    setTimeout(() => {
-      btn.innerHTML = originalIcon;
-    }, 1500);
-  }).catch(err => {
-    console.error('Failed to copy: ', err);
-  });
-}

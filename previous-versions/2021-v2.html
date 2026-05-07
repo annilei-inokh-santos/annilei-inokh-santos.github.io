@@ -14,9 +14,22 @@
   <section class="hero">
     <div class="hero-content">
       <h1>My Portfolio</h1>
-      <p>A website created by Annilei</p>
+      <p>Created by Annilei Inokh</p>
     </div>
   </section>
+
+  <!-- STICKY VERSION BAR -->
+  <div class="version-bar">
+    <div class="version-left">
+      <i class="fas fa-code-branch"></i>
+      <span>Student Portfolio Website</span>
+    </div>
+    <div class="version-right">
+      <span>Original: 2021</span>
+      <span class="version-separator">|</span>
+      <span>Revised: 2026</span>
+    </div>
+  </div>
 
   <!-- DIVIDER LINE BETWEEN HERO AND BODY -->
   <div class="hero-divider"></div>
@@ -24,7 +37,7 @@
   <!-- MAIN LAYOUT: SIDEBAR (30%) + MAIN CONTENT (70%) -->
   <div class="app-wrapper">
     <div class="app-layout">
-      <!-- SIDEBAR NAVIGATION - 30% width -->
+      <!-- SIDEBAR NAVIGATION - DESKTOP VIEW -->
       <aside class="sidebar">
         <div class="sidebar-content">
           <h3 class="sidebar-title" id="aicsTitle">AICS</h3>
@@ -121,81 +134,55 @@
           </div>
         </div>
 
-        <!-- CONTACT SECTION - ID-Style Calling Card -->
+        <!-- CONTACT SECTION -->
         <div id="contactSection" class="content-section">
           <div class="main-card" align="center">
             <h2>Contact</h2>
             <div class="contact-divider"></div>
 
-            <!-- ID-Style Calling Card -->
-            <div class="id-card">
-              <div class="id-card-inner">
-                <!-- Card Header with badge -->
-                <div class="id-card-badge">
-                  <span>CONTACT CARD</span>
-                </div>
-                
-                <!-- Photo and basic info -->
-                <div class="id-card-photo">
+            <!-- Landscape ID Contact Form -->
+            <div class="landscape-id-card">
+              <div class="landscape-id-left">
+                <div class="id-badge">ARCHIVE MODE</div>
+                <div class="id-avatar">
                   <img src="/previous-versions/2021/v2/assets/annilei-nov-2021.png" alt="Annilei Inokh">
                 </div>
+                <h3 class="id-name">Annilei Inokh C. Santos</h3>
+                <p class="id-role">Student Developer</p>
+                <div class="id-location">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span>Cainta, Philippines</span>
+                </div>
+              </div>
+              
+              <div class="landscape-id-right">
+                <div class="form-disabled-notice">
+                  <i class="fas fa-archive"></i>
+                  <span>This contact form is archived. For inquiries, please use the latest portfolio website.</span>
+                </div>
                 
-                <h3 class="id-card-name">Annilei Inokh C. Santos</h3>
-                <p class="id-card-title">Student Developer</p>
-                
-                <!-- Divider -->
-                <div class="id-card-divider"></div>
-                
-                <!-- Contact details in ID card style -->
-                <div class="id-card-details">
-                  <div class="id-detail-row">
-                    <div class="id-detail-label">
+                <form class="contact-form" onsubmit="return false;">
+                  <div class="form-group">
+                    <label for="archive-email">Email Address</label>
+                    <div class="input-wrapper">
                       <i class="fas fa-envelope"></i>
-                      <span>EMAIL</span>
-                    </div>
-                    <div class="id-detail-value">
-                      <span>annilei.santos@example.com</span>
-                      <button class="id-copy-btn" onclick="copyIdEmail()">
-                        <i class="fas fa-copy"></i>
-                      </button>
+                      <input type="email" id="archive-email" placeholder="your@email.com" disabled>
                     </div>
                   </div>
                   
-                  <div class="id-detail-row">
-                    <div class="id-detail-label">
-                      <i class="fas fa-phone-alt"></i>
-                      <span>PHONE</span>
-                    </div>
-                    <div class="id-detail-value">
-                      <span>+63 912 345 6789</span>
+                  <div class="form-group">
+                    <label for="archive-message">Message</label>
+                    <div class="input-wrapper">
+                      <i class="fas fa-pencil-alt"></i>
+                      <textarea id="archive-message" rows="3" placeholder="Type your message here..." disabled></textarea>
                     </div>
                   </div>
                   
-                  <div class="id-detail-row">
-                    <div class="id-detail-label">
-                      <i class="fab fa-github"></i>
-                      <span>GITHUB</span>
-                    </div>
-                    <div class="id-detail-value">
-                      <span>github.com/annilei</span>
-                    </div>
-                  </div>
-                  
-                  <div class="id-detail-row">
-                    <div class="id-detail-label">
-                      <i class="fab fa-linkedin"></i>
-                      <span>LINKEDIN</span>
-                    </div>
-                    <div class="id-detail-value">
-                      <span>linkedin.com/in/annilei</span>
-                    </div>
-                  </div>
-                </div>
-                
-                <!-- Card footer -->
-                <div class="id-card-footer">
-                  <p>✦ AICS · Student Portfolio ✦</p>
-                </div>
+                  <button type="submit" class="submit-btn-disabled" disabled>
+                    <i class="fas fa-paper-plane"></i> Send Message
+                    <span class="disabled-badge">ARCHIVED</span>
+                  </button>
+                </form>
               </div>
             </div>
           </div>
@@ -203,13 +190,33 @@
       </main>
     </div>
 
-    <!-- FOOTER SECTION -->
+    <!-- REDESIGNED FOOTER WITH LEFT AND RIGHT TEXT -->
     <footer class="footer">
-      <div class="footer-content">
-        <p>✦ responsive portfolio · designed with minimal approach ✦</p>
-        <p class="footer-copyright">© 2021 Annilei Inokh</p>
+      <div class="footer-container">
+        <div class="footer-left">
+          <p>November 15, 2021 | MAWD202 Project</p>
+        </div>
+        <div class="footer-right">
+          <p>© 2021 AICS</p>
+        </div>
       </div>
     </footer>
+  </div>
+
+  <!-- MOBILE BOTTOM NAVIGATION BAR (visible only on mobile) -->
+  <div class="mobile-bottom-nav">
+    <a href="#about" id="mobileAboutLink" class="mobile-nav-item active">
+      <i class="fas fa-user"></i>
+      <span>About</span>
+    </a>
+    <a href="#skills" id="mobileSkillsLink" class="mobile-nav-item">
+      <i class="fas fa-code"></i>
+      <span>Skills</span>
+    </a>
+    <a href="#contact" id="mobileContactLink" class="mobile-nav-item">
+      <i class="fas fa-envelope"></i>
+      <span>Contact</span>
+    </a>
   </div>
 
   <script src="/previous-versions/2021/v2/script-2021-v2.js"></script>
