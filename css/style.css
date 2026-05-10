@@ -556,20 +556,33 @@ h1 em {
 }
 .social-btn:active { transform: translateY(0); }
 
-.social-btn.github-lordicon { background: rgba(184,212,255,0.08); backdrop-filter: blur(8px); }
-.social-btn.github-lordicon:hover { background: rgba(184,212,255,0.25); box-shadow: 0 8px 20px rgba(184,212,255,0.2); }
-.social-btn.github-lordicon lord-icon { width: 28px; height: 28px; transition: all 0.3s ease; }
-.social-btn.github-lordicon:hover lord-icon { transform: scale(1.1); }
+/* === DARK MODE === */
 
 .social-btn.linkedin-lordicon { background: rgba(212,200,255,0.08); backdrop-filter: blur(8px); }
 .social-btn.linkedin-lordicon:hover { background: rgba(212,200,255,0.25); box-shadow: 0 8px 20px rgba(212,200,255,0.2); }
 .social-btn.linkedin-lordicon lord-icon { width: 28px; height: 28px; transition: all 0.3s ease; }
 .social-btn.linkedin-lordicon:hover lord-icon { transform: scale(1.1); }
 
-.p.light .social-btn.github-lordicon        { background: rgba(74,111,165,0.1); }
-.p.light .social-btn.github-lordicon:hover  { background: rgba(74,111,165,0.2); }
-.p.light .social-btn.linkedin-lordicon       { background: rgba(124,58,237,0.08); }
-.p.light .social-btn.linkedin-lordicon:hover { background: rgba(124,58,237,0.18); }
+.social-btn.facebook-lordicon { background: rgba(173,210,255,0.08); backdrop-filter: blur(8px); }
+.social-btn.facebook-lordicon:hover { background: rgba(173,210,255,0.25); box-shadow: 0 8px 20px rgba(173,210,255,0.2); }
+.social-btn.facebook-lordicon lord-icon { width: 28px; height: 28px; transition: all 0.3s ease; }
+.social-btn.facebook-lordicon:hover lord-icon { transform: scale(1.1); }
+
+.social-btn.github-lordicon { background: rgba(184,212,255,0.08); backdrop-filter: blur(8px); }
+.social-btn.github-lordicon:hover { background: rgba(184,212,255,0.25); box-shadow: 0 8px 20px rgba(184,212,255,0.2); }
+.social-btn.github-lordicon lord-icon { width: 28px; height: 28px; transition: all 0.3s ease; }
+.social-btn.github-lordicon:hover lord-icon { transform: scale(1.1); }
+
+/* === LIGHT MODE === */
+
+.p.light .social-btn.linkedin-lordicon        { background: rgba(124,58,237,0.08); }
+.p.light .social-btn.linkedin-lordicon:hover  { background: rgba(124,58,237,0.18); }
+
+.p.light .social-btn.facebook-lordicon        { background: rgba(24,119,242,0.08); }
+.p.light .social-btn.facebook-lordicon:hover  { background: rgba(24,119,242,0.18); }
+
+.p.light .social-btn.github-lordicon          { background: rgba(74,111,165,0.1); }
+.p.light .social-btn.github-lordicon:hover    { background: rgba(74,111,165,0.2); }
 
 
 /* ============================================================
