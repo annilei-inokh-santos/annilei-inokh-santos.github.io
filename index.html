@@ -13,6 +13,65 @@
 
   <!-- Lordicon Web Component -->
   <script src="https://cdn.lordicon.com/lordicon.js"></script>
+
+<!-- Experience Logo Styles -->
+  <style>
+    .exp-item {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .exp-logo-wrap {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      border: 0.5px solid var(--border);
+      background: var(--bg2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .exp-logo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 4px;
+      filter: grayscale(20%);
+      transition: filter 0.2s ease;
+    }
+
+    .exp-item:hover .exp-logo-wrap img {
+      filter: grayscale(0%);
+    }
+
+    .exp-logo-wrap .exp-logo-fallback {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: var(--txt3);
+      text-align: center;
+      letter-spacing: 0.05em;
+      line-height: 1.1;
+      padding: 2px;
+    }
+
+    .exp-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    @media (max-width: 480px) {
+      .exp-logo-wrap {
+        width: 36px;
+        height: 36px;
+        border-radius: 6px;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -93,40 +152,80 @@
       <div class="col-l">
         <div class="sec-label">experience</div>
 
+        <!-- Accenture: Cloud Elite (Apr 2026 – Present) -->
         <div class="exp-item" id="exp">
-          <div class="exp-top">
-            <div class="exp-role">Academy Delegate: Cloud Elite</div>
-            <div class="proj-tag t-b">Apr 2026 – Present</div>
+          <div class="exp-logo-wrap">
+            <img
+              src="assets/logos/Accenture-2026.jpg"
+              alt="Accenture logo"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <span class="exp-logo-fallback" style="display:none;">ACC</span>
           </div>
-          <div class="exp-place"><a href="https://www.accenture.com/ph-en">Accenture · Mandaluyong City</a></div>
-          <div class="exp-desc">An Academy Delegate in the Cloud Elite program, focusing on cloud technologies and enterprise solutions.</div>
+          <div class="exp-body">
+            <div class="exp-top">
+              <div class="exp-role">Academy Delegate: Cloud Elite</div>
+              <div class="proj-tag t-b">Apr 2026 – Present</div>
+            </div>
+            <div class="exp-place"><a href="https://www.accenture.com/ph-en">Accenture · Mandaluyong City</a></div>
+            <div class="exp-desc">An Academy Delegate in the Cloud Elite program, focusing on cloud technologies and enterprise solutions.</div>
+          </div>
         </div>
 
+        <!-- Accenture: OJT Trainee (Feb 2026 – Apr 2026) -->
         <div class="exp-item">
-          <div class="exp-top">
-            <div class="exp-role">Microsoft AppDev OJT Trainee</div>
-            <div class="proj-tag t-v">Feb 2026 – Apr 2026</div>
+          <div class="exp-logo-wrap">
+            <img
+              src="assets/logos/Accenture-2026.jpg"
+              alt="Accenture logo"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <span class="exp-logo-fallback" style="display:none;">ACC</span>
           </div>
-          <div class="exp-place"><a href="https://www.accenture.com/ph-en">Accenture · Mandaluyong City</a></div>
-          <div class="exp-desc">On-the-job trainee specializing in Microsoft application development and enterprise software solutions.</div>
+          <div class="exp-body">
+            <div class="exp-top">
+              <div class="exp-role">Microsoft AppDev OJT Trainee</div>
+              <div class="proj-tag t-v">Feb 2026 – Apr 2026</div>
+            </div>
+            <div class="exp-place"><a href="https://www.accenture.com/ph-en">Accenture · Mandaluyong City</a></div>
+            <div class="exp-desc">On-the-job trainee specializing in Microsoft application development and enterprise software solutions.</div>
+          </div>
         </div>
 
+        <!-- Arduino Day Philippines (Nov 2025 – Mar 2026) -->
         <div class="exp-item">
-          <div class="exp-top">
-            <div class="exp-role">Volunteer Graphics Designer</div>
-            <div class="proj-tag t-b">Nov 2025 – Mar 2026</div>
+          <div class="exp-logo-wrap">
+            <img
+              src="assets/logos/ADPH-2026.jpg"
+              alt="Arduino Day Philippines logo"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <span class="exp-logo-fallback" style="display:none;">ADPH</span>
           </div>
-          <div class="exp-place"><a href="https://www.facebook.com/arduinodayph">Arduino Day Philippines (ADPH)</a></div>
-          <div class="exp-desc">Delivered 30+ promotional materials including social media pubmats and merchandise designs, while collaborating with the Creatives team on event planning and quality control.</div>
+          <div class="exp-body">
+            <div class="exp-top">
+              <div class="exp-role">Volunteer Graphics Designer</div>
+              <div class="proj-tag t-b">Nov 2025 – Mar 2026</div>
+            </div>
+            <div class="exp-place"><a href="https://www.facebook.com/arduinodayph">Arduino Day Philippines (ADPH)</a></div>
+            <div class="exp-desc">Delivered 30+ promotional materials including social media pubmats and merchandise designs, while collaborating with the Creatives team on event planning and quality control.</div>
+          </div>
         </div>
 
+        <!-- ALPHA (Aug 2024 – Nov 2024) -->
         <div class="exp-item">
-          <div class="exp-top">
-            <div class="exp-role">Creatives Officer</div>
-            <div class="proj-tag t-v">Aug 2024 – Nov 2024</div>
+          <div class="exp-logo-wrap">
+            <img
+              src="assets/logos/ALPHA-2024.jpg"
+              alt="ALPHA logo"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <span class="exp-logo-fallback" style="display:none;">ALPHA</span>
           </div>
-          <div class="exp-place"><a href="https://www.facebook.com/stiorca.alpha">Alliance of Leading Programmers through Heuristic Adaptation (ALPHA)</a></div>
-          <div class="exp-desc">Produced 15+ club promotional materials, managed design requests, and assisted with event logistics as a Creatives Officer.</div>
+          <div class="exp-body">
+            <div class="exp-top">
+              <div class="exp-role">Creatives Officer</div>
+              <div class="proj-tag t-v">Aug 2024 – Nov 2024</div>
+            </div>
+            <div class="exp-place"><a href="https://www.facebook.com/stiorca.alpha">Alliance of Leading Programmers through Heuristic Adaptation (ALPHA)</a></div>
+            <div class="exp-desc">Produced 15+ club promotional materials, managed design requests, and assisted with event logistics as a Creatives Officer.</div>
+          </div>
         </div>
       </div>
 
