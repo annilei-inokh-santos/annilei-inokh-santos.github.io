@@ -1,0 +1,64 @@
+/* ============================================================
+   THEME.CSS — Color tokens & design variables
+   Import this before main.css
+   ============================================================ */
+
+:root {
+
+  /* --------------------------------------------------
+     SURFACE LAYERS (off-black dark palette)
+     Layered from deepest background → raised card
+     -------------------------------------------------- */
+  --color-page-bg:        #0e0f11;   /* outermost page / html bg          */
+  --color-surface-sunken: #111316;   /* sidebar                            */
+  --color-surface-base:   #14161a;   /* main content column                */
+  --color-surface-raised: #1a1d22;   /* cards, text containers             */
+  --color-surface-overlay:#20242b;   /* dropdown menus                     */
+
+  /* --------------------------------------------------
+     CHROME (navbar, footer)
+     Slightly cooler/darker than surfaces to frame the page
+     -------------------------------------------------- */
+  --color-chrome:         #0c0d10;
+
+  /* --------------------------------------------------
+     BORDERS
+     -------------------------------------------------- */
+  --color-border-subtle:  rgba(255, 255, 255, 0.07);   /* default card borders   */
+  --color-border-default: rgba(255, 255, 255, 0.13);   /* hover / emphasis       */
+
+  /* --------------------------------------------------
+     TEXT
+     -------------------------------------------------- */
+  --color-text-primary:   #e8eaf0;   /* headings, body copy                */
+  --color-text-muted:     #8a8f9e;   /* secondary labels, footer info      */
+  --color-text-link:      #38bdf8;   /* anchor links                       */
+
+  /* --------------------------------------------------
+     INTERACTIVE — nav hover
+     Light wash on hover (not harsh white)
+     -------------------------------------------------- */
+  --color-nav-hover-bg:   #e8eaf0;
+  --color-nav-hover-text: #0c0d10;
+
+  /* --------------------------------------------------
+     ACCENT
+     -------------------------------------------------- */
+  --color-accent-glow:    rgba(255, 215, 0, 0.75);  /* gold hover glow on cards */
+
+  /* --------------------------------------------------
+     RADIUS
+     -------------------------------------------------- */
+  --radius-sm:  10px;
+  --radius-md:  16px;
+  --radius-lg:  20px;
+  --radius-full: 50%;
+
+  /* --------------------------------------------------
+     TRANSITIONS
+     -------------------------------------------------- */
+  --transition-fast:   0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-flip:   0.8s;
+
+}

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Annilei Inokh - Portfolio Website</title>
+  <link rel="stylesheet" href="/previous-versions/2024/assets/theme-stye-2024.css">
+  <link rel="stylesheet" href="/previous-versions/2024/assets/style-2024.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body id="portfolio">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>ANNILEI INOKH SANTOS</h1>
+  </div>
+
+  <!-- NAVBAR (sticky, icons only on mobile, bottom placement on mobile) -->
+  <nav class="navbar" id="mainNavbar">
+    <a href="https://github.com/leiixz" class="nav-home"><i class="fas fa-home"></i><span class="nav-text">Home</span></a>
+
+    <div class="dropdown">
+      <button class="dropbtn"><i class="fas fa-user-circle"></i><span class="nav-text"> About</span> <i class="fas fa-caret-down"></i></button>
+      <div class="dropdown-content">
+        <a href="#about">Personal Info</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills &amp; Tools</a>
+        <a href="#group-org">Groups / Organizations</a>
+        <a href="#socials">Socials</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropbtn"><i class="fas fa-folder-open"></i><span class="nav-text"> Projects</span> <i class="fas fa-caret-down"></i></button>
+      <div class="dropdown-content">
+        <a href="#personal-projects">Personal</a>
+        <a href="#school-projects">School</a>
+      </div>
+    </div>
+
+    <a href="#feedback" class="right"><i class="fas fa-envelope"></i><span class="nav-text"> Message</span></a>
+  </nav>
+
+  <div class="row">
+
+    <!-- SIDEBAR -->
+    <aside class="side">
+
+      <h1 id="about" align="center">About Me</h1>
+
+      <!-- Profile Image Flip Card -->
+      <div class="image-container">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="/previous-versions/2024/assets/images/annilei-inokh-santos-bscs-2.png" alt="ID Picture" class="centered-image">
+            </div>
+            <div class="flip-card-back">
+              <img src="https://cdn.discordapp.com/attachments/1250423146776100974/1254985616375021639/Santos-Annilei-Inokh.jpg?ex=667b7bef&is=667a2a6f&hm=2956a1c44042bc2a6cc01e217efb236193965626223d1877efbd57c4dd8d4fb8&" alt="New Picture" class="centered-image">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bio -->
+      <div class="text-container-side">
+        <p>I am Annilei Inokh C. Santos, a second-year Computer Science student.
+          I'm currently improving my skills in HTML, CSS, and JavaScript, focusing on web development.<br><br>
+          I enjoy creating random projects that catch my interest.
+          In my free time, I like playing Roblox and exploring Pokémon-inspired games,
+          dancing and listening to music, editing videos and music, watching musicals,
+          collecting merch, and reading webtoons.</p>
+      </div><br>
+
+      <!-- Education -->
+      <div align="center" id="education">
+        <h2>Education</h2>
+        <div class="text-container-side">
+          <p>
+            <b><a href="https://www.sti.edu/programs-details.asp?p=Mg==" target="_blank">Bachelor of Science in Computer Science</a></b><br>
+            Systems Technology Institute, <b>2022 – Present</b><br><br>
+            <b><a href="https://www.sti.edu/programs-shs-details.asp?p=OA==" target="_blank">IT in Mobile App and Web Development</a></b><br>
+            Systems Technology Institute, <b>2020 – 2022</b>
+          </p>
+        </div>
+      </div><br>
+
+      <!-- Skills -->
+      <div align="center">
+        <h2 id="skills">My Skills</h2>
+        <div class="icon-grid">
+          <div class="icon-item">
+            <img src="https://cdn.discordapp.com/attachments/1250423146776100974/1254998425322127451/csharp-icon.png?ex=667b87dd&is=667a365d&hm=2787df1c848e97b63d2259bc0d5aae2b4d684e5ce72acee9672a760503af01a4&" alt="C#">
+            <div class="icon-label">C#</div>
+          </div>
+          <div class="icon-item">
+            <img src="https://cdn.discordapp.com/attachments/1250423146776100974/1254998425636835429/css-icon.png?ex=667b87dd&is=667a365d&hm=c9966bc58499c6995cbfb9b8f7964cfac7d3f610410675a98c98d96d633d03db&" alt="CSS">
+            <div class="icon-label">CSS</div>
+          </div>
+          <div class="icon-item">
+            <img src="https://cdn.discordapp.com/attachments/1250423146776100974/1254998423942336543/html-icon.png?ex=667b87dd&is=667a365d&hm=89bfdc4f71402a6174626d67dfaf23294a69a96594d00b84ecbce9adde1882aa&" alt="HTML">
+            <div class="icon-label">HTML</div>
+          </div>
+          <div class="icon-item">
+            <img src="https://cdn.discordapp.com/attachments/1250423146776100974/1254998424164630548/js-icon.png?ex=667b87dd&is=667a365d&hm=5d65f9892d529f8017d14aa0e04e8417e5265d75036a9025d7bfd1d62d65b21e&" alt="JavaScript">
+            <div class="icon-label">JavaScript</div>
+          </div>
+          <div class="icon-item">
+            <img src="https://cdn.discordapp.com/attachments/1250423146776100974/1254998424458367007/lua-icon.png?ex=667b87dd&is=667a365d&hm=f7932d8e4b9590433a7f0b449fc04b6d10df4ae3334d880470e12505ce168188&" alt="Lua">
+            <div class="icon-label">Lua</div>
+          </div>
+          <div class="icon-item">
+            <img src="https://cdn.discordapp.com/attachments/1250423146776100974/1254998425053823117/python-icon.png?ex=667b87dd&is=667a365d&hm=28b842c71010252d571e35f04f23320e436539f59e2a236dc07490ff731da951&" alt="Python">
+            <div class="icon-label">Python</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tools -->
+      <div align="center">
+        <h2>Tools</h2>
+        <div class="icon-grid">
+          <div class="icon-item">
+            <a href="https://www.figma.com/" target="_blank">
+              <img src="https://cdn.discordapp.com/attachments/1250423146776100974/1254998618981793813/figma-icon.png?ex=667b880b&is=667a368b&hm=35099f86394107318ec5e548aa904e29590e05a8b8080ba5144cfbb4548b41eb&" alt="Figma">
+              <div class="icon-label">Figma</div>
+            </a>
+          </div>
+          <div class="icon-item">
+            <a href="https://filmora.wondershare.net/" target="_blank">
+              <img src="https://cdn.discordapp.com/attachments/1250423146776100974/1254998619354959902/filmora-icon.png?ex=667b880b&is=667a368b&hm=bac2bfa876a9c08d8f683244f355fb5ee40f0d6e1863abf24cd3ec43bca17eb2&" alt="Filmora">
+              <div class="icon-label">Filmora</div>
+            </a>
+          </div>
+          <div class="icon-item">
+            <a href="https://www.github.com/" target="_blank">
+              <img src="https://cdn.discordapp.com/attachments/1250423146776100974/1254998619661271120/github-icon.png?ex=667b880b&is=667a368b&hm=1b3fdb3258da6787d5032ecfb7e7408fc1413ef352d85daf716ff3566586822f&" alt="GitHub">
+              <div class="icon-label">Github</div>
+            </a>
+          </div>
+          <div class="icon-item">
+            <a href="https://create.roblox.com/" target="_blank">
+              <img src="https://cdn.discordapp.com/attachments/1250423146776100974/1254998778814140446/roblox-studio-icon.png?ex=667b8831&is=667a36b1&hm=ff3d0ca04bb43e2a1e3cbb3bd4e86d74756429acd429c559197f0170ddba7787&" alt="Roblox Studio">
+              <div class="icon-label">Roblox Studio</div>
+            </a>
+          </div>
+          <div class="icon-item">
+            <a href="https://visualstudio.microsoft.com/" target="_blank">
+              <img src="https://cdn.discordapp.com/attachments/1250423146776100974/1254998779258605742/visual-studio-icon.png?ex=667b8831&is=667a36b1&hm=cc0f07f57f5b178378d5c2883c838e9e512b7a2d0d839a277ffbb76d165ac06b&" alt="Visual Studio">
+              <div class="icon-label">Visual Studio</div>
+            </a>
+          </div>
+          <div class="icon-item">
+            <a href="https://code.visualstudio.com/" target="_blank">
+              <img src="https://cdn.discordapp.com/attachments/1250423146776100974/1254998779485229159/vscode-icon.png?ex=667b8831&is=667a36b1&hm=60ffdb669cecea9abdff14e3a56e5106568e6045fdb6c719fafb891bddffecba&" alt="VSCode">
+              <div class="icon-label">VSCode</div>
+            </a>
+          </div>
+          <div class="icon-item">
+            <a href="https://jcreator.en.softonic.com/" target="_blank">
+              <img src="https://cdn.discordapp.com/attachments/1250423146776100974/1254998620004941884/jcreator-icon.png?ex=667b880b&is=667a368b&hm=5d3c4baee7ccf0f74a9fc45cd80648ec8cd0f30ffced2ff4e4ed941a49ecf81c&" alt="JCreator">
+              <div class="icon-label">JCreator</div>
+            </a>
+          </div>
+          <div class="icon-item">
+            <a href="https://www.mysql.com/" target="_blank">
+              <img src="https://cdn.discordapp.com/attachments/1250423146776100974/1254998620357267556/mysql-icon.png?ex=667b880b&is=667a368b&hm=f84505f05570f9d10d56ede3c2b63a5559dd0716d57df2722869fa45d842b2a1&" alt="MySQL">
+              <div class="icon-label">MySQL</div>
+            </a>
+          </div>
+          <div class="icon-item">
+            <a href="https://netbeans.apache.org/front/main/index.html" target="_blank">
+              <img src="https://cdn.discordapp.com/attachments/1250423146776100974/1254998620634349588/netbeans-icon.png?ex=667b880b&is=667a368b&hm=50b99cea0b1aef73604062895f4219504437dd5a795db7c4b7c958052e393171&" alt="NetBeans">
+              <div class="icon-label">NetBeans</div>
+            </a>
+          </div>
+          <div class="icon-item">
+            <a href="https://notepad-plus-plus.org/downloads/" target="_blank">
+              <img src="https://cdn.discordapp.com/attachments/1250423146776100974/1254998778230865961/notepad-plus-plus-icon.png?ex=667b8831&is=667a36b1&hm=91dc9910ddc23d579f1919f7de77ee20f80de786b45b4dfbfc1e52b46c3b2318&" alt="Notepad++">
+              <div class="icon-label">Notepad++</div>
+            </a>
+          </div>
+          <div class="icon-item">
+            <a href="https://www.getpaint.net/index.html" target="_blank">
+              <img src="https://cdn.discordapp.com/attachments/1250423146776100974/1254998778537312306/paint-dot-net.png?ex=667b8831&is=667a36b1&hm=3158b98f4663bf887e0d06a9c038fead4472c0df6f38bc292556da9dbe43238a&" alt="Paint.net">
+              <div class="icon-label">Paint.net</div>
+            </a>
+          </div>
+          <div class="icon-item">
+            <a href="https://scratch.mit.edu/" target="_blank">
+              <img src="https://cdn.discordapp.com/attachments/1250423146776100974/1254998779032109107/scratch-icon.png?ex=667b8831&is=667a36b1&hm=6eb3f0f815aa56d02c74371bb37dde7b04dde3f3d159b662e265ec0ea0c82a1f&" alt="Scratch">
+              <div class="icon-label">Scratch</div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Groups / Organizations -->
+      <h2 id="group-org" align="center">Group / Organizations</h2>
+      <div class="profile-wrapper">
+        <div class="profile-container">
+          <a href="https://www.facebook.com/stiorca.alpha" target="_blank" class="profile-link">
+            <img src="https://cdn.discordapp.com/attachments/1250423146776100974/1254981002879701093/alpha-banner.jpg?ex=667b77a3&is=667a2623&hm=25692c761cd96f8666fda1130418660d197266243a57bd9c015b22820eb0956d&" alt="Alpha Banner" class="profile-image">
+            <div class="profile-overlay">ALPHA</div>
+          </a>
+        </div><br>
+        <div class="profile-container">
+          <a href="https://architech-bscs401.vercel.app" target="_blank" class="profile-link">
+            <img src="https://cdn.discordapp.com/attachments/1250423146776100974/1254981002548478003/architech-banner.jpg?ex=667b77a3&is=667a2623&hm=d55ca70ada981f57bcc56e17d8f3bfa83fc6c75523e9504cf83017a7254f3585&" alt="ArchiTech Banner" class="profile-image">
+            <div class="profile-overlay">ArchiTech</div>
+          </a>
+        </div><br>
+      </div>
+
+      <!-- Contact Form -->
+      <h2 id="feedback" align="center">Leave a Message</h2>
+      <div class="form-container">
+        <form>
+          <input type="email" placeholder="Enter your email" class="form-input" required>
+          <input type="tel" placeholder="Enter your phone number" class="form-input" required>
+          <textarea placeholder="Enter your message" class="form-textarea" rows="4" required></textarea>
+          <button type="button" class="form-button" disabled>Submit</button>
+        </form>
+      </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+      <h1 class="header-body" align="center"><u>PORTFOLIO WEBSITE</u></h1>
+      <div class="text-container-main">
+        <p>Welcome to my portfolio website.
+        This site serves as a comprehensive showcase of my skills, education, achievements,
+        and latest projects related to web development.
+        Whether you're here to learn more about my work or seeking inspiration for your own projects,
+        I hope you find what you are looking for.<br><br>
+
+        In this portfolio, you'll find examples of my work with various web technologies,
+        including HTML, CSS, JavaScript, and many others.
+        Each project is a testament to my dedication to creating high-quality, responsive,
+        and user-friendly web experiences.<br><br>
+
+        Feel free to explore my projects.
+        If you have any questions or opportunities for collaboration,
+        do not hesitate to contact me.
+        I'm always open to discussing new ideas and potential projects.<br><br>
+
+        Thank you for visiting my portfolio website!
+        I hope you enjoy exploring my work as much as I enjoyed creating it.
+        Your feedback and inquiries are always welcome.</p>
+      </div><br>
+
+      <!-- Personal Projects -->
+      <h1 class="header-body" align="center" id="personal-projects"><u>PERSONAL PROJECTS</u></h1>
+
+      <div class="text-container-main">
+        <h1>Roblox Game Blog</h1>
+        <div class="thumbnail-container">
+          <a href="https://leiixz.github.io/roblox-game-blog/">
+            <img src="https://cdn.discordapp.com/attachments/1250423146776100974/1254995160668966962/roblox-game-blog-thumbnail.jpg?ex=667b84d2&is=667a3352&hm=2a46dbf8d3b0424f619ea36db266a1082e6c99f57de8572e08cbb934fd5deecb&" alt="Roblox Game Blog Thumbnail">
+          </a>
+        </div>
+        <h3>Created on June 8, 2024</h3>
+        <p>I created this blog to serve as an archive showcasing the games I enjoy playing on Roblox.
+          Developed entirely using Visual Studio Code, this project reflects a personal effort where
+          I carefully selected and recorded each gaming experience.</p>
+        <div class="article-buttons">
+          <a href="#personal-projects">go to personal projects</a> | <a href="#portfolio">back to the top</a>
+        </div>
+      </div><br><br>
+
+      <!-- School Projects -->
+      <h1 class="header-body" align="center" id="school-projects"><u>SCHOOL PROJECTS</u></h1>
+
+      <div class="text-container-main">
+        <h1>Portfolio Website</h1>
+        <div class="thumbnail-container">
+          <a href="#portfolio">
+            <img src="https://cdn.discordapp.com/attachments/1250423146776100974/1254995160379429036/portfolio-website-thumbnail.jpg?ex=667b84d2&is=667a3352&hm=8e61e6adc7a5b412ba60044fe457da3e91e4ac7673288a7817c7d5e07bde711e&" alt="BSCS401 WebProg Final PT">
+          </a>
+        </div>
+        <h3>BSCS401 WebProg Finals Performance Task | June 15, 2024</h3>
+        <p>For this web programming task, I used Visual Studio Code to build a portfolio website.
+          I included my past projects in an organized way with clear navigation and categories.</p>
+        <div class="article-buttons">
+          <a href="#school-projects">go to school projects</a> | <a href="#portfolio">back to the top</a>
+        </div>
+      </div><br><br>
+
+      <div class="text-container-main">
+        <h1>Loop and Iteration Conditions</h1>
+        <div class="thumbnail-container">
+          <a href="https://leiixz.github.io/loop-n-iteration/" target="_blank">
+            <img src="https://cdn.discordapp.com/attachments/1250423146776100974/1254995159892885524/loop-n-iteration-thumbnail.jpg?ex=667b84d2&is=667a3352&hm=a212799b00b4b77404d1856c48c4b8676ff052345d28db77b7a92ad31f61cd75&" alt="BSCS401 WebProg Midterm PT">
+          </a>
+        </div>
+        <h3>BSCS401 WebProg Midterm Performance Task | April 17, 2024</h3>
+        <p>For this WebProg task, I created an HTML file with a JavaScript code
+          to demonstrate loops and conditional statements.
+          The requirements included displaying dialog boxes confirming if a user is 25 years old or older
+          and if a user entered a number less than 100.
+          Additionally, I implemented for loops to print numbers 0–30, even numbers from 0–40,
+          and numbers 40 to 10 in descending order if they are multiples of 3.</p>
+        <div class="article-buttons">
+          <a href="#school-projects">go to school projects</a> | <a href="#portfolio">back to the top</a>
+        </div>
+      </div><br><br>
+
+      <div class="text-container-main">
+        <h1>Wire-framing with Figma</h1>
+        <div class="thumbnail-container">
+          <a href="https://www.figma.com/proto/PEKH6ZqOxGMSjqmW2SHfat/HCIProject_SantosAnnilei?node-id=4-3&starting-point-node-id=4%3A3&scaling=scale-down&t=apTMKlM0JJFpbZhf-1" target="_blank">
+            <img src="https://cdn.discordapp.com/attachments/1250423146776100974/1254995161172148284/hci-design-thumbnail.jpg?ex=667b84d3&is=667a3353&hm=67d93f58f330b38b86d9c004b1fb8c870dbb58e2da53ef9e26f2f230293c6e46&" alt="HCI Design Thumbnail">
+          </a>
+        </div>
+        <h3>BSCS401 HCI Midterm Laboratory Exercise
+          (<i>Made from <a href="https://www.figma.com" target="_blank">Figma</a></i>) | March 30, 2024</h3>
+        <p>For this task, I designed the software interface for an online pet store.
+          I conceptualized the store's name, the variety of pet items being sold,
+          the specific modules of the interface, and the possible features.
+          The design includes a minimum of five pages, such as the login, homepage,
+          product listings, item details, and a menu window,
+          with a focus on user-friendly navigation and appealing aesthetics for users.</p>
+        <div class="article-buttons">
+          <a href="#school-projects">go to school projects</a> | <a href="#portfolio">back to the top</a>
+        </div>
+      </div><br><br>
+
+      <div class="text-container-main">
+        <h1>Files and Computers Animation</h1>
+        <div class="thumbnail-container">
+          <a href="https://scratch.mit.edu/projects/984138882/" target="_blank">
+            <img src="https://cdn.discordapp.com/attachments/1250423146776100974/1254995160937271317/scratch-animation-thumbnail.jpg?ex=667b84d3&is=667a3353&hm=2c63773fe7e7384ecb16e22a4436d5792d5b228d347ae8a060ee4fd411849281&" alt="Scratch Animation Thumbnail">
+          </a>
+        </div>
+        <h3>BSCS401 CSA Prelim Performance Task
+          (<i>Made from <a href="https://scratch.mit.edu/" target="_blank">Scratch</a></i>) | March 17, 2024</h3>
+        <p>Our group created this animation as part of our Task Performance for the Computer Systems Architecture (CSA)
+          course during the prelim period. The assignment required us to develop an animation,
+          preferably using Scratch, that explores a topic from the prelim curriculum.
+          This project allowed us to creatively apply our understanding of the subject matter
+          while honing our skills in animation and storytelling.</p>
+        <div class="article-buttons">
+          <a href="#school-projects">go to school projects</a> | <a href="#portfolio">back to the top</a>
+        </div>
+      </div><br><br>
+
+      <div class="text-container-main">
+        <h1>After Class: Hang-out</h1>
+        <div class="thumbnail-container">
+          <video poster="https://cdn.discordapp.com/attachments/1250423146776100974/1254988859469463662/after-class-poster.jpg?ex=667b7ef4&is=667a2d74&hm=3f9cdb24b0d9fc09e69e3948c3a0bb66bd741e669c9f02216c676f16fc6079b8&" width="720" height="405" controls>
+            <source src="after-class-video.mp4" type="video/mp4">
+          </video><br><br>
+        </div>
+        <h3>BSCS401 PPC Prelim Performance Task | March 2, 2024</h3>
+        <p>For this task, we were required to create a short video highlighting
+          various pop culture events, trends, and icons from our chosen generation.
+          We were encouraged to go beyond the examples provided, allowing for
+          creative freedom in showcasing our generation's unique cultural footprint.
+          I took on the role of editor and director, ensuring the video had a cohesive flow
+          and effectively captured the essence of our generation's pop culture.</p>
+        <div class="article-buttons">
+          <a href="#school-projects">go to school projects</a> | <a href="#portfolio">back to the top</a>
+        </div>
+      </div><br><br>
+
+      <div class="text-container-main">
+        <h1>Navigation and Borders</h1>
+        <div class="thumbnail-container">
+          <a href="https://leiixz.github.io/nav-n-borders" target="_blank">
+            <img src="https://cdn.discordapp.com/attachments/1250423146776100974/1254995160107057162/nav-n-borders-thumbnail.jpg?ex=667b84d2&is=667a3352&hm=4f6d0528adb836b9885c6d15981ea13b06da620e64fed94e4d6f72684eb1ef07&" alt="WebProg Prelim PT">
+          </a>
+        </div>
+        <h3>BSCS401 WebProg Prelim Performance Task | February 28, 2024</h3>
+        <p>For this WebProg task, I created a folder containing all necessary HTML files and images,
+          named Index1, Index2, Index3, Index4, Image1, Image2, Image3, and Image4.
+          Each HTML page features navigation and four categories: Item_1, Item_2, Item_3, and Item_4,
+          each with a unique border style.
+          Additionally, each item includes a description to provide detailed information.</p>
+        <div class="article-buttons">
+          <a href="#school-projects">go to school projects</a> | <a href="#portfolio">back to the top</a>
+        </div>
+      </div><br><br>
+
+      <div class="text-container-main">
+        <h1>Running Time Game Trailer</h1>
+        <div class="thumbnail-container">
+          <video poster="https://cdn.discordapp.com/attachments/1250423146776100974/1254988859192901743/running-time-poster.jpg?ex=667b7ef4&is=667a2d74&hm=3f3c039f86700b1e79d568f440d689c65171c5db5b58383392d7efc15ef6a809&" width="720" height="405" controls>
+            <source src="running-time-trailer.mp4" type="video/mp4">
+          </video><br><br>
+        </div>
+        <h3>MAWD402 SHS EXPO | June 17, 2022</h3>
+        <p>For our performance task, our group collaborated to create an engaging game for the upcoming SHS Expo.
+          Our team, TOP Technologies (TOP Tech) aimed to combat procrastination through a time attack game format.
+          As part of the development team, my role as a creative involved making videos,
+          designing visuals, and enhancing the overall visual appeal of our game.
+          My contributions focused on capturing and communicating the essence of our game
+          through compelling visual elements.</p>
+        <div class="article-buttons">
+          <a href="#school-projects">go to school projects</a> | <a href="#portfolio">back to the top</a>
+        </div>
+      </div><br><br>
+
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" id="socials">
+    <div class="footer-container">
+      <div class="footer-socials">
+        <h3>Connect with Me</h3>
+        <a href="https://discord.com/users/:ID1250420347186974868" target="_blank">
+          <img src="https://cdn.discordapp.com/attachments/1250423146776100974/1254995626890891297/discord-icon.png?ex=667b8542&is=667a33c2&hm=f28fce98f493cf9c12bb498939e26effb503bc7d5c52d7f83428c605af8fe266&" alt="Discord" style="height: 30px;">
+        </a>
+        <a href="https://github.com/leiixz" target="_blank">
+          <img src="https://cdn.discordapp.com/attachments/1250423146776100974/1254995627134419037/github-icon1.png?ex=667b8542&is=667a33c2&hm=2043e461e44381e476be0bbe8cd340a830d9912e3cc174088cb795befce73be8&" alt="GitHub" style="height: 30px;">
+        </a>
+        <a href="https://scratch.mit.edu/users/leiixz/" target="_blank">
+          <img src="https://cdn.discordapp.com/attachments/1250423146776100974/1254995626698080276/scratch-icon1.png?ex=667b8542&is=667a33c2&hm=b0631fb57446d802d8db8489199d72b8685b26fd66f8a3401304a222fbe98e6d&" alt="Scratch" style="height: 30px;">
+        </a>
+      </div>
+      <div class="footer-info">
+        <p><b>&copy; 2024 Annilei Inokh C. Santos. All rights reserved. Designed and developed by Annilei.</b></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/previous-versions/2024/assets/script-2024.js"></script>
+</body>
+</html>
