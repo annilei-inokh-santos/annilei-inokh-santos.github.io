@@ -38,25 +38,56 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
   text-align: center;
+  width: 100%;
+  /* Never taller than the viewport */
+  max-height: 100vh;
+  /* Letterbox: keeps the element at the image's own aspect ratio.
+     Change to match your image — 16:9 = 16/9, 4:3 = 4/3, etc. */
+  aspect-ratio: 16 / 9;
+  /* contain = full image always visible, no crop, letterboxed if screen is taller */
   background:
-    url('https://cdn.discordapp.com/attachments/1250423146776100974/1255072966891405322/header-banner.jpg?ex=667bcd49&is=667a7bc9&hm=9a0a5a3a60c85e40ed5480ec213124c0664cb1ba1a51868cd646ddaa3f77334e&')
-    no-repeat center center / cover;
+    url('/previous-versions/2024/assets/images/annilei-inokh-santos-hero.png')
+    no-repeat center center / contain;
+  background-color: var(--color-page-bg); /* letterbox fill matches page bg */
+  position: relative;
   color: var(--color-text-primary);
 }
 
-.header h1 {
-  font-size: 60px;
-  margin: 0;
-  text-shadow:
-    0 0 10px rgba(0, 0, 0, .7),  0 0 10px rgba(255, 255, 255, .7),
-    0 0 20px rgba(0, 0, 0, .5),  0 0 20px rgba(255, 255, 255, .5),
-    0 0 30px rgba(0, 0, 0, .3),  0 0 30px rgba(255, 255, 255, .3);
+/* Bottom fade — transitions the hero into the off-black page background */
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 28%;   /* how tall the fade band is — adjust freely */
+  background: linear-gradient(to bottom, transparent, var(--color-page-bg));
+  pointer-events: none;
 }
 
-@media (max-width: 768px) { .header h1 { font-size: 40px; } }
-@media (max-width: 480px) { .header h1 { font-size: 28px; } }
+/* The h1 is positioned over the image, centred */
+.header h1 {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  font-size: 96px;
+  letter-spacing: 0.04em;
+  /* Strong dark shadow for legibility over any photo, no white glow */
+  text-shadow:
+    0 2px  8px rgba(0, 0, 0, .85),
+    0 4px 24px rgba(0, 0, 0, .65),
+    0 8px 48px rgba(0, 0, 0, .45);
+  /* Keep text above the fade overlay */
+  z-index: 1;
+}
+
+@media (max-width: 1024px) { .header h1 { font-size: 72px; } }
+@media (max-width: 768px)  { .header h1 { font-size: 52px; } }
+@media (max-width: 480px)  { .header h1 { font-size: 36px; } }
 
 
 /* ============================================================
