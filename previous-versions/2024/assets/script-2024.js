@@ -16,11 +16,13 @@ class GlobalClickEffect {
     this.createCanvas();
     this.setupEventListeners();
     this.addStarsToHeroText();
+    this.addHeroBackgroundStars();
+    this.setupSidebarNavigation();
+    this.setupSmoothScroll();
     this.animate();
   }
   
   createCanvas() {
-    // Create a canvas that covers the entire viewport
     this.canvas = document.createElement('canvas');
     this.canvas.id = 'globalClickCanvas';
     this.canvas.style.position = 'fixed';
@@ -41,6 +43,108 @@ class GlobalClickEffect {
     this.height = window.innerHeight;
     this.canvas.width = this.width;
     this.canvas.height = this.height;
+    this.addHeroBackgroundStars();
+  }
+  
+  setupSidebarNavigation() {
+    const navHeadings = document.querySelectorAll('.nav-heading');
+    navHeadings.forEach(heading => {
+      heading.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const section = heading.closest('.nav-section');
+        section.classList.toggle('open');
+      });
+    });
+    
+    const firstSection = document.querySelector('.nav-section');
+    if (firstSection) firstSection.classList.add('open');
+  }
+  
+  setupSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', (e) => {
+        const href = anchor.getAttribute('href');
+        
+        if (href === '#' || href === '#portfolio') {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          return;
+        }
+        
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  }
+  
+  addHeroBackgroundStars() {
+    const heroSection = document.querySelector('.header');
+    if (!heroSection) return;
+    
+    const existingContainer = heroSection.querySelector('.hero-bg-stars');
+    if (existingContainer) existingContainer.remove();
+    
+    const starContainer = document.createElement('div');
+    starContainer.className = 'hero-bg-stars';
+    heroSection.appendChild(starContainer);
+    
+    const starCount = Math.floor(Math.random() * 40) + 80;
+    
+    for (let i = 0; i < starCount; i++) {
+      const star = document.createElement('div');
+      const sizeRand = Math.random();
+      let sizeClass = '';
+      if (sizeRand < 0.5) sizeClass = 'size-tiny';
+      else if (sizeRand < 0.75) sizeClass = 'size-small';
+      else if (sizeRand < 0.9) sizeClass = 'size-medium';
+      else sizeClass = 'size-large';
+      
+      star.className = `hero-bg-star ${sizeClass}`;
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.top = `${Math.random() * 100}%`;
+      
+      const animationRand = Math.random();
+      let animation = '';
+      let duration = 0;
+      
+      if (animationRand < 0.33) {
+        animation = 'twinkleFast';
+        duration = Math.random() * 1.5 + 0.8;
+      } else if (animationRand < 0.66) {
+        animation = 'twinkleMedium';
+        duration = Math.random() * 2.5 + 2;
+      } else {
+        animation = 'twinkleSlow';
+        duration = Math.random() * 4 + 3;
+      }
+      
+      star.style.animation = `${animation} ${duration}s ease-in-out infinite`;
+      star.style.animationDelay = `${Math.random() * 5}s`;
+      
+      if (Math.random() < 0.1) {
+        star.classList.add('sparkle');
+        star.style.backgroundColor = 'transparent';
+        star.textContent = '✦';
+      }
+      
+      starContainer.appendChild(star);
+    }
+    
+    for (let i = 0; i < 12; i++) {
+      const star = document.createElement('div');
+      star.className = 'hero-bg-star size-medium';
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.top = `${Math.random() * 100}%`;
+      star.style.animation = `twinklePulse ${Math.random() * 2 + 2}s ease-in-out infinite`;
+      star.style.animationDelay = `${Math.random() * 3}s`;
+      starContainer.appendChild(star);
+    }
   }
   
   addStarsToHeroText() {
@@ -50,7 +154,6 @@ class GlobalClickEffect {
     const existingStars = textElement.querySelectorAll('.letter-star, .fa-star, .fa-star-half-alt');
     existingStars.forEach(star => star.remove());
     
-    // Add 2 yellow stars for A and I
     const starChars = ['★', '☆', '✦', '✧'];
     
     const starA = document.createElement('span');
@@ -65,14 +168,9 @@ class GlobalClickEffect {
     starI.style.position = 'absolute';
     textElement.appendChild(starI);
     
-    // Add 8 background white stars
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 6; i++) {
       const star = document.createElement('i');
-      if (i % 3 === 0) {
-        star.className = 'fas fa-star-half-alt';
-      } else {
-        star.className = 'fas fa-star';
-      }
+      star.className = i % 3 === 0 ? 'fas fa-star-half-alt' : 'fas fa-star';
       textElement.appendChild(star);
     }
   }
@@ -99,7 +197,6 @@ class GlobalClickEffect {
     ctx.closePath();
     
     if (isBodyClick) {
-      // Off-white / silver for body section
       ctx.fillStyle = `rgba(200, 200, 210, ${alpha * 0.8})`;
       ctx.fill();
       
@@ -116,7 +213,6 @@ class GlobalClickEffect {
       ctx.fillStyle = `rgba(220, 220, 230, ${alpha * 0.7})`;
       ctx.fill();
     } else {
-      // Pure white for hero section
       ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
       ctx.fill();
       
@@ -148,8 +244,7 @@ class GlobalClickEffect {
       const size = isHeroClick ? (Math.random() * 5 + 3) : (Math.random() * 4 + 2);
       
       this.clickStars.push({
-        x: x,
-        y: y,
+        x: x, y: y,
         vx: Math.cos(angle) * speed,
         vy: Math.sin(angle) * speed,
         life: 1.0,
@@ -165,18 +260,10 @@ class GlobalClickEffect {
   setupEventListeners() {
     window.addEventListener('resize', () => this.resize());
     
-    // Listen for clicks on the entire document
     document.body.addEventListener('click', (e) => {
       const heroSection = document.querySelector('.header');
       const isHeroClick = heroSection && heroSection.contains(e.target);
-      
-      // Get click coordinates relative to viewport
-      const x = e.clientX;
-      const y = e.clientY;
-      
-      this.createClickBurst(x, y, isHeroClick);
-      
-      // NO FLASH EFFECT - removed entirely
+      this.createClickBurst(e.clientX, e.clientY, isHeroClick);
     });
   }
   
@@ -199,15 +286,12 @@ class GlobalClickEffect {
       
       this.drawStarShape(this.ctx, p.x, p.y, currentSize, p.rotation, alpha, !p.isHeroClick);
       
-      // Outer glow
       if (p.life > 0.5) {
         this.ctx.beginPath();
         this.ctx.arc(p.x, p.y, currentSize * 1.3, 0, Math.PI * 2);
-        if (p.isHeroClick) {
-          this.ctx.fillStyle = `rgba(255, 255, 255, ${alpha * 0.2})`;
-        } else {
-          this.ctx.fillStyle = `rgba(180, 180, 190, ${alpha * 0.15})`;
-        }
+        this.ctx.fillStyle = p.isHeroClick ? 
+          `rgba(255, 255, 255, ${alpha * 0.2})` : 
+          `rgba(180, 180, 190, ${alpha * 0.15})`;
         this.ctx.fill();
       }
     }
@@ -216,46 +300,18 @@ class GlobalClickEffect {
   animate() {
     this.ctx.clearRect(0, 0, this.width, this.height);
     this.drawClickStars();
-    
     this.animationId = requestAnimationFrame(() => this.animate());
   }
   
   destroy() {
-    if (this.animationId) {
-      cancelAnimationFrame(this.animationId);
-    }
-    if (this.canvas) {
-      this.canvas.remove();
-    }
+    if (this.animationId) cancelAnimationFrame(this.animationId);
+    if (this.canvas) this.canvas.remove();
+    const starContainer = document.querySelector('.hero-bg-stars');
+    if (starContainer) starContainer.remove();
   }
 }
 
-// ─── Smooth scroll ───────────────────────────────────────────
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    const target = document.querySelector(this.getAttribute('href'));
-    if (!target) return;
-    e.preventDefault();
-
-    const start = window.pageYOffset;
-    const delta = target.getBoundingClientRect().top - 50;
-    const duration = 1300;
-    let startTime = null;
-
-    const ease = t => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-
-    const step = ts => {
-      if (!startTime) startTime = ts;
-      const progress = Math.min((ts - startTime) / duration, 1);
-      window.scrollTo(0, start + delta * ease(progress));
-      if (progress < 1) requestAnimationFrame(step);
-    };
-
-    requestAnimationFrame(step);
-  });
-});
-
-// Initialize global click effect
+// Initialize
 document.addEventListener('DOMContentLoaded', () => {
   const globalEffect = new GlobalClickEffect();
   window.addEventListener('beforeunload', () => globalEffect.destroy());
