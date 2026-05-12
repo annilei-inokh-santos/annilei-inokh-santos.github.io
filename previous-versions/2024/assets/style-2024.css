@@ -1,16 +1,32 @@
-/* ============================================================
-   MAIN.CSS — Component styles
-   Requires: theme.css loaded first
-   ============================================================ */
+/* =========================
+   0. DISABLE SELECTION / HIGHLIGHTING
+   ========================= */
 
-
-/* ============================================================
-   1. BASE & RESET
-   ============================================================ */
-
-*, *::before, *::after {
-  box-sizing: border-box;
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
+
+/* Allow text selection only on form inputs (if needed) */
+input, textarea, [contenteditable="true"] {
+  -webkit-user-select: text;
+  -khtml-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+
+/* =========================
+   1. BASE
+   ========================= */
+
+*, *::before, *::after { box-sizing: border-box; }
 
 html {
   scroll-behavior: smooth;
@@ -18,10 +34,12 @@ html {
 }
 
 body {
-  font-family: Calibri, Daytona, sans-serif;
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-body);
   margin: 0;
   color: var(--color-text-primary);
-  text-align: justify;
+  position: relative;
 }
 
 a {
@@ -29,129 +47,270 @@ a {
   text-decoration: none;
 }
 
+/* Global click canvas overlay */
+#globalClickCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
 
-/* ============================================================
-   2. HEADER / HERO
-   ============================================================ */
+/* =========================
+   2. HERO
+   ========================= */
 
 .header {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
   width: 100%;
-  /* Never taller than the viewport */
-  max-height: 100vh;
-  /* Letterbox: keeps the element at the image's own aspect ratio.
-     Change to match your image — 16:9 = 16/9, 4:3 = 4/3, etc. */
   aspect-ratio: 16 / 9;
-  /* contain = full image always visible, no crop, letterboxed if screen is taller */
-  background:
-    url('/previous-versions/2024/assets/images/annilei-inokh-santos-hero.png')
-    no-repeat center center / contain;
-  background-color: var(--color-page-bg); /* letterbox fill matches page bg */
-  position: relative;
+  max-height: 100vh;
+  overflow: hidden;
+  background: #050508;
   color: var(--color-text-primary);
+  text-align: center;
 }
 
-/* Bottom fade — transitions the hero into the off-black page background */
+#starCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+  cursor: default;
+  z-index: 1;
+  opacity: 0.35;
+}
+
 .header::after {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 28%;   /* how tall the fade band is — adjust freely */
+  inset: auto 0 0;
+  height: 28%;
   background: linear-gradient(to bottom, transparent, var(--color-page-bg));
   pointer-events: none;
+  z-index: 3;
 }
 
-/* The h1 is positioned over the image, centred */
-.header h1 {
+/* Long white shine effect */
+.glint-text {
   position: absolute;
   inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0;
-  font-size: 96px;
-  letter-spacing: 0.04em;
-  /* Strong dark shadow for legibility over any photo, no white glow */
-  text-shadow:
-    0 2px  8px rgba(0, 0, 0, .85),
-    0 4px 24px rgba(0, 0, 0, .65),
-    0 8px 48px rgba(0, 0, 0, .45);
-  /* Keep text above the fade overlay */
-  z-index: 1;
+  z-index: 4;
+  font-size: clamp(32px, 8vw, 96px);
+  letter-spacing: 0.08em;
+  font-weight: 800;
+  background: linear-gradient(
+    90deg,
+    #333333 0%,
+    #555555 15%,
+    #ffffff 25%,
+    #ffffff 55%,
+    #ffffff 75%,
+    #555555 85%,
+    #333333 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: longShine 4s linear infinite;
+  pointer-events: none;
+  position: relative;
+  white-space: nowrap;
+  padding: 0 20px;
 }
 
-@media (max-width: 1024px) { .header h1 { font-size: 72px; } }
-@media (max-width: 768px)  { .header h1 { font-size: 52px; } }
-@media (max-width: 480px)  { .header h1 { font-size: 36px; } }
+@keyframes longShine {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
 
+@media (max-width: 1024px) { 
+  .glint-text { 
+    font-size: clamp(28px, 6vw, 72px);
+    letter-spacing: 0.06em;
+  }
+}
+@media (max-width: 768px) { 
+  .glint-text { 
+    font-size: clamp(20px, 5vw, 52px);
+    letter-spacing: 0.04em;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.2;
+    padding: 0 15px;
+  }
+}
+@media (max-width: 480px) { 
+  .glint-text { 
+    font-size: clamp(16px, 4vw, 32px);
+    letter-spacing: 0.03em;
+  }
+}
 
-/* ============================================================
-   3. NAVBAR
-   ============================================================ */
+/* Yellow stars - only 2 (one for A, one for I) */
+.glint-text .letter-star {
+  position: absolute;
+  font-size: 16px;
+  color: #ffd700;
+  opacity: 0;
+  pointer-events: none;
+  filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.8));
+  z-index: 5;
+  transition: none;
+}
 
-/* --- 3a. Base (desktop, sticky top) --- */
+.glint-text .letter-star:nth-child(1) { 
+  top: 20%; 
+  left: 4%; 
+  animation: starPulse 1.5s ease-in-out infinite 0s; 
+}
+
+.glint-text .letter-star:nth-child(2) { 
+  top: 45%; 
+  left: 35%; 
+  animation: starPulse 1.5s ease-in-out infinite 0.5s; 
+}
+
+@keyframes starPulse {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+}
+
+/* Background stars around text edges */
+.glint-text .fa-star,
+.glint-text .fa-star-half-alt {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.5);
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.3));
+}
+
+.glint-text .fa-star:nth-child(3) { top: -10px; left: 8%; animation: whiteStarPulse 2.5s ease-in-out infinite 0s; }
+.glint-text .fa-star:nth-child(4) { top: -8px; right: 12%; animation: whiteStarPulse 2.0s ease-in-out infinite 0.5s; }
+.glint-text .fa-star:nth-child(5) { bottom: -5px; left: 20%; animation: whiteStarPulse 2.8s ease-in-out infinite 0.2s; }
+.glint-text .fa-star:nth-child(6) { bottom: -10px; right: 25%; animation: whiteStarPulse 2.2s ease-in-out infinite 0.8s; }
+.glint-text .fa-star:nth-child(7) { top: 35px; left: -5px; animation: whiteStarPulse 2.6s ease-in-out infinite 0.4s; }
+.glint-text .fa-star:nth-child(8) { bottom: 20px; right: -3px; animation: whiteStarPulse 2.3s ease-in-out infinite 0.1s; }
+.glint-text .fa-star-half-alt:nth-child(9) { top: -12px; left: 40%; animation: whiteStarPulse 2.7s ease-in-out infinite 0.3s; }
+.glint-text .fa-star-half-alt:nth-child(10) { bottom: -8px; left: 60%; animation: whiteStarPulse 2.1s ease-in-out infinite 0.6s; }
+
+@keyframes whiteStarPulse {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 0.4; }
+}
+
+.glint-text::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 120%;
+  background: radial-gradient(ellipse at center, 
+    rgba(255, 255, 255, 0.08) 0%, 
+    rgba(255, 255, 255, 0.03) 40%,
+    transparent 70%);
+  pointer-events: none;
+  animation: breatheGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes breatheGlow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.5; }
+}
+
+/* =========================
+   3. NAVBAR - HOVER INSTEAD OF ACTIVE
+   ========================= */
 
 .navbar {
-  background-color: var(--color-chrome);
-  padding: 0 20px;
   position: sticky;
   top: 0;
   z-index: 1000;
   display: flex;
   align-items: stretch;
   height: 50px;
+  padding: 0 20px;
+  background-color: var(--color-chrome);
 }
 
 .navbar > a,
-.navbar > .dropdown {
-  display: flex;
-  align-items: center;
-}
+.navbar > .dropdown { display: flex; align-items: center; }
 
 .navbar > a {
-  color: var(--color-text-primary);
   padding: 0 20px;
-  font-size: 16px;
-  white-space: nowrap;
   gap: 7px;
+  font-size: 16px;
   line-height: 1;
+  white-space: nowrap;
+  color: var(--color-text-primary);
 }
 
-.navbar > a.right {
-  margin-left: auto;
-}
+.navbar > a.right { margin-left: auto; }
 
+/* Hover effect - subtle underline instead of opacity fade */
 .navbar > a:hover,
 .dropdown:hover .dropbtn {
-  background-color: var(--color-nav-hover-bg);
-  color: var(--color-nav-hover-text);
-}
-
-/* --- 3b. Dropdown --- */
-
-.dropdown {
+  opacity: 0.8;
   position: relative;
 }
+
+.navbar > a:hover::after,
+.dropdown:hover .dropbtn::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 6px;
+  width: 60%;
+  height: 2px;
+  border-radius: 1px;
+  background-color: var(--color-text-primary);
+}
+
+/* Dropdown */
+.dropdown { position: relative; }
 
 .dropdown .dropbtn {
   height: 100%;
   padding: 0 20px;
+  gap: 7px;
   font-size: 16px;
   font-family: inherit;
+  line-height: 1;
+  white-space: nowrap;
   background: transparent;
   border: none;
   color: var(--color-text-primary);
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 7px;
-  white-space: nowrap;
-  line-height: 1;
 }
 
 .dropdown-content {
@@ -159,185 +318,155 @@ a {
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: var(--color-surface-overlay);
   min-width: 160px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, .5);
   z-index: 100;
+  background-color: var(--color-surface-overlay);
+  box-shadow: 0 8px 16px rgba(0,0,0,.5);
 }
 
 .dropdown-content a {
   display: block;
-  color: var(--color-text-primary);
   padding: 12px 16px;
   font-size: 15px;
-  text-align: left;
   white-space: nowrap;
+  color: var(--color-text-primary);
 }
 
-.dropdown-content a:hover {
-  background-color: var(--color-nav-hover-bg);
-  color: var(--color-nav-hover-text);
-}
+.dropdown-content a:hover { opacity: 0.7; }
 
-.dropdown:hover .dropdown-content {
-  display: block;
-}
+.dropdown:hover .dropdown-content { display: block; }
 
-/* --- 3c. Medium screens (tablet landscape) --- */
-
-@media (max-width: 1024px) and (min-width: 769px) {
-  .navbar > a,
-  .dropdown .dropbtn {
-    font-size: 14px;
-    padding: 0 14px;
-  }
-}
-
-/* --- 3d. Mobile (fixed bottom bar, icons only) --- */
-
+/* Mobile navbar */
 @media (max-width: 768px) {
   .navbar {
     position: fixed;
-    bottom: 0;
-    top: auto;
-    left: 0;
-    right: 0;
-    padding: 0;
+    inset: auto 0 0;
     height: 56px;
+    padding: 0;
     justify-content: space-around;
-    align-items: stretch;
   }
 
   .navbar > a,
-  .navbar > .dropdown {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-  }
+  .navbar > .dropdown { flex: 1; justify-content: center; height: 100%; }
 
+  .navbar > a { padding: 0; font-size: 0; }
   .navbar > a.right { margin-left: 0; }
-
-  .navbar > a {
-    padding: 0;
-    font-size: 0;
-    line-height: 1;
-    height: 100%;
-  }
-
-  .navbar > a i,
-  .dropdown .dropbtn i {
-    font-size: 1.35rem;
-    display: block;
-  }
-
+  .navbar > a i, .dropdown .dropbtn i { font-size: 1.35rem; }
   .nav-text { display: none; }
 
+  .dropdown .dropbtn {
+    width: 100%; height: 100%;
+    padding: 0; gap: 0; font-size: 0;
+    justify-content: center;
+  }
   .dropdown .dropbtn .fa-caret-down { display: none; }
 
-  .dropdown .dropbtn {
-    height: 100%;
-    width: 100%;
-    padding: 0;
-    justify-content: center;
-    gap: 0;
-    font-size: 0;
-  }
-
   .dropdown-content {
-    bottom: 56px;
-    top: auto;
-    left: 0;
-    right: 0;
+    inset: auto 0 56px;
     width: 100%;
     text-align: center;
   }
-
-  .dropdown-content a {
-    text-align: center;
-    padding: 14px 16px;
+  .dropdown-content a { text-align: center; padding: 14px 16px; }
+  
+  /* Hover underline moves to top on mobile */
+  .navbar > a:hover::after,
+  .dropdown:hover .dropbtn::after {
+    bottom: auto;
+    top: 6px;
+    width: 40%;
   }
 }
 
-
-/* ============================================================
-   4. LAYOUT — two-column (sidebar + main)
-   ============================================================ */
-
-.row {
-  display: flex;
-  flex-wrap: wrap;
+@media (max-width: 1024px) and (min-width: 769px) {
+  .navbar > a,
+  .dropdown .dropbtn { font-size: 14px; padding: 0 14px; }
 }
+
+/* Remove active class styles - no longer needed */
+.navbar > a.active,
+.navbar > .dropdown.active .dropbtn {
+  opacity: 1;
+}
+
+
+/* =========================
+   4. LAYOUT
+   ========================= */
+
+.row { display: flex; flex-wrap: wrap; align-items: flex-start; }
 
 .side {
-  flex: 0 0 30%;
-  width: 30%;
+  flex: 0 0 28%;
+  position: sticky;
+  top: 50px;
+  max-height: calc(100vh - 50px);
+  overflow-y: auto;
+  scrollbar-width: none;
+  padding: var(--space-lg) var(--space-md);
   background-color: var(--color-surface-sunken);
-  padding: 20px;
 }
+.side::-webkit-scrollbar { display: none; }
 
 .main {
-  flex: 0 0 70%;
-  width: 70%;
+  flex: 0 0 72%;
+  padding: var(--space-lg) var(--space-xl);
   background-color: var(--color-surface-base);
-  padding: 20px;
 }
 
 @media (max-width: 1023px) {
-  .side {
+  .side, .main {
     flex: 0 0 100%;
-    width: 100%;
-    order: 1;
+    position: static;
+    max-height: none;
+    overflow-y: visible;
   }
-
-  .main {
-    flex: 0 0 100%;
-    width: 100%;
-    order: 2;
-    padding: 15px;
-    margin-bottom: 60px; /* clear mobile bottom navbar */
-  }
+  .side { order: 1; padding: var(--space-md); }
+  .main { order: 2; padding: var(--space-md); margin-bottom: 60px; }
 }
 
 
-/* ============================================================
-   5. FLIP CARD (profile photo)
-   ============================================================ */
+/* =========================
+   5. SIDEBAR
+   ========================= */
 
+.side h1, .side h2 {
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin: var(--space-lg) 0 var(--space-sm);
+  padding-bottom: var(--space-xs);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+.side h1:first-child, .side h2:first-child { margin-top: 0; }
+
+/* profile photo */
 .image-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 280px;
-  margin: 20px;
+  height: 220px;
+  margin: 0 0 var(--space-md);
   perspective: 1000px;
 }
 
-.flip-card {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
+.flip-card { width: 180px; height: 180px; position: relative; }
 
 .flip-card-inner {
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: 100%; height: 100%;
   text-align: center;
   transition: transform var(--transition-flip);
   transform-style: preserve-3d;
 }
 
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
+.flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
 
 .flip-card-front,
 .flip-card-back {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 100%; height: 100%;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
@@ -346,250 +475,242 @@ a {
 .flip-card-back  { transform: rotateY(180deg); }
 
 .centered-image {
-  max-height: 100%;
-  max-width: 100%;
-  border-radius: var(--radius-lg);
-  border: 3px solid var(--color-surface-overlay);
+  width: 100%; height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-border-default);
 }
 
-
-/* ============================================================
-   6. TEXT CONTAINERS
-   ============================================================ */
-
-.text-container-side,
-.text-container-main {
-  padding: 20px;
-  background-color: var(--color-surface-raised);
+/* bio / education */
+.text-container-side {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-body);
   color: var(--color-text-primary);
-  border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-lg);
-  margin: 0 auto;
+  margin: 0 0 var(--space-sm);
 }
+.text-container-side p { margin: 0; }
+.text-container-side p + p { margin-top: var(--space-sm); }
 
-.text-container-side { max-width: 500px; }
-.text-container-main { max-width: 890px; }
-
-
-/* ============================================================
-   7. ICON GRID (skills & tools)
-   ============================================================ */
-
+/* icon grid */
 .icon-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 50px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
   justify-items: center;
   align-items: center;
-  max-width: 350px;
-  padding: 45px;
-  background-color: var(--color-surface-raised);
-  border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-lg);
-  margin: 0 auto 10%;
+  margin: 0 0 var(--space-lg);
 }
 
-.icon-item {
-  text-align: center;
-  position: relative;
-}
+.icon-item { text-align: center; position: relative; }
 
 .icon-item img {
-  width: 50px;
-  height: 50px;
+  width: 36px; height: 36px;
   display: block;
   margin: 0 auto;
+  opacity: 0.8;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
 }
+
+.icon-item:hover img { opacity: 1; transform: translateY(-2px); }
 
 .icon-label {
-  margin-top: 10px;
-  color: var(--color-text-primary);
-  font-size: 15px;
-  text-shadow:
-    0 0 10px rgba(255, 255, 255, .7),
-    0 0 20px rgba(255, 255, 255, .5),
-    0 0 30px rgba(255, 255, 255, .3);
   display: none;
   position: absolute;
-  bottom: -30px;
+  bottom: -22px;
   left: 50%;
   transform: translateX(-50%);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
   white-space: nowrap;
 }
-
 .icon-item:hover .icon-label { display: block; }
 
-
-/* ============================================================
-   8. PROFILE / ORG CARDS
-   ============================================================ */
-
-.profile-wrapper { text-align: center; }
-
-.profile-container {
-  position: relative;
-  display: inline-block;
-  margin: 10px;
+/* org cards */
+.profile-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin: 0 0 var(--space-lg);
 }
 
+.profile-container { display: block; }
+
 .profile-link {
-  display: block;
-  position: relative;
-  font-size: 23px;
-  text-shadow:
-    0 0 10px rgba(0, 0, 0, .7),  0 0 10px rgba(255, 255, 255, .7),
-    0 0 20px rgba(0, 0, 0, .5),  0 0 20px rgba(255, 255, 255, .5),
-    0 0 30px rgba(0, 0, 0, .3),  0 0 30px rgba(255, 255, 255, .3);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-subtle);
+  background-color: var(--color-surface-raised);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+.profile-link:hover {
+  border-color: var(--color-border-default);
+  background-color: var(--color-surface-overlay);
 }
 
 .profile-image {
-  width: 150px;
-  height: 150px;
-  background-color: var(--color-surface-raised);
-  border: 5px solid var(--color-border-default);
-  border-radius: var(--radius-full);
-  transition: opacity var(--transition-normal);
+  width: 48px; height: 48px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-subtle);
+  object-fit: cover;
+  flex-shrink: 0;
 }
 
-.profile-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(0, 0, 0, .7);
-  color: var(--color-text-primary);
-  opacity: 0;
-  border-radius: var(--radius-full);
-  transition: opacity var(--transition-normal);
-}
+.profile-overlay { font-size: var(--font-size-base); font-weight: 600; }
 
-.profile-link:hover .profile-image {
-  opacity: 0.3;
-  transform: scale(1.05);
-}
-
+.profile-link:hover .profile-image { opacity: 1; transform: none; }
 .profile-link:hover .profile-overlay {
-  opacity: 1;
-  box-shadow: 0 0 15px 5px var(--color-accent-glow);
+  position: static; opacity: 1;
+  background: none; box-shadow: none;
+  border-radius: 0; width: auto; height: auto;
 }
 
-
-/* ============================================================
-   9. CONTACT FORM
-   ============================================================ */
-
-.form-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 auto;
-  width: 100%;
-  max-width: 360px;
-}
+/* contact form */
+.form-container { display: flex; flex-direction: column; gap: var(--space-xs); width: 100%; }
 
 .form-input,
 .form-textarea {
   width: 100%;
-  padding: 10px;
-  margin: 10px 0;
+  padding: 10px 12px;
+  background-color: var(--color-surface-raised);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  transition: border-color var(--transition-fast);
 }
-
+.form-input:focus, .form-textarea:focus {
+  outline: none;
+  border-color: var(--color-border-default);
+}
 .form-textarea { resize: vertical; }
 
 .form-button {
-  width: 35%;
-  padding: 10px;
-  margin: 10px 0;
-  background-color: grey;
-  color: #fff;
-  border: none;
+  align-self: flex-start;
+  padding: 10px 24px;
+  background-color: var(--color-surface-overlay);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
   cursor: not-allowed;
   opacity: 0.6;
 }
 
 
-/* ============================================================
-   10. THUMBNAILS & MEDIA
-   ============================================================ */
+/* =========================
+   6. MAIN BODY
+   ========================= */
 
+.header-body {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: none;
+  color: var(--color-text-muted);
+  margin: 0 0 var(--space-lg);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+/* project card */
+.text-container-main {
+  max-width: 860px;
+  margin: 0 auto var(--space-lg);
+  padding: var(--space-md);
+  background-color: var(--color-surface-raised);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.text-container-main h1 {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  line-height: var(--line-height-heading);
+  margin: 0 0 var(--space-xs);
+}
+
+.text-container-main h3 {
+  font-size: var(--font-size-sm);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: var(--color-text-muted);
+  margin: 0 0 var(--space-sm);
+}
+
+.text-container-main p {
+  line-height: var(--line-height-body);
+  margin: 0 0 var(--space-sm);
+}
+
+/* thumbnail */
 .thumbnail-container {
-  position: relative;
   width: 100%;
-  max-width: 720px;
-  margin: 0 auto;
+  margin: 0 0 var(--space-md);
+  overflow: hidden;
+  border-radius: var(--radius-sm);
 }
 
 .thumbnail-container video,
 .thumbnail-container img {
-  width: 100%;
-  height: auto;
-  border-radius: var(--radius-sm);
-  border: 1.8px solid var(--color-border-default);
+  width: 100%; height: auto;
   display: block;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-subtle);
   transition: transform var(--transition-normal), box-shadow var(--transition-normal);
 }
 
 .thumbnail-container img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px 5px var(--color-accent-glow);
+  transform: scale(1.02);
+  box-shadow: 0 0 20px 4px var(--color-accent-glow);
 }
 
-@media (max-width: 720px) {
-  .thumbnail-container { max-width: 100%; }
+@media (max-width: 720px) { .thumbnail-container { max-width: 100%; } }
+
+.article-buttons {
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  padding-top: var(--space-xs);
+  border-top: 1px solid var(--color-border-subtle);
 }
 
 
-/* ============================================================
-   11. PAGE SECTION HEADINGS
-   ============================================================ */
-
-.header-body {
-  font-size: 60px;
-  text-shadow:
-    0 0 10px rgba(255, 255, 255, .7),
-    0 0 20px rgba(255, 255, 255, .5),
-    0 0 30px rgba(255, 255, 255, .3);
-}
-
-.article-buttons { text-align: center; }
-
-
-/* ============================================================
-   12. FOOTER
-   ============================================================ */
+/* =========================
+   7. FOOTER
+   ========================= */
 
 .site-footer {
+  width: 100%;
+  padding: var(--space-md) 0;
+  text-align: center;
   background-color: var(--color-chrome);
   color: var(--color-text-primary);
-  padding: 20px 0;
-  text-align: center;
-  width: 100%;
 }
 
 .footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
 }
 
-.footer-socials { margin-bottom: 20px; }
-
-.footer-socials h3 { margin-bottom: 10px; }
-
-.footer-socials a {
-  margin: 0 10px;
-  display: inline-block;
-}
+.footer-socials { margin-bottom: var(--space-sm); }
+.footer-socials h3 { margin-bottom: var(--space-xs); }
+.footer-socials a { margin: 0 10px; display: inline-block; }
 
 .footer-info p {
-  margin: 5px 0;
-  font-size: 14px;
+  margin: 4px 0;
+  font-size: var(--font-size-sm);
   color: var(--color-text-muted);
 }

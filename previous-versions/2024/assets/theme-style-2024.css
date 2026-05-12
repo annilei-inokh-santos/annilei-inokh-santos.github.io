@@ -35,13 +35,6 @@
   --color-text-link:      #38bdf8;   /* anchor links                       */
 
   /* --------------------------------------------------
-     INTERACTIVE — nav hover
-     Light wash on hover (not harsh white)
-     -------------------------------------------------- */
-  --color-nav-hover-bg:   #e8eaf0;
-  --color-nav-hover-text: #0c0d10;
-
-  /* --------------------------------------------------
      ACCENT
      -------------------------------------------------- */
   --color-accent-glow:    rgba(255, 215, 0, 0.75);  /* gold hover glow on cards */
@@ -60,5 +53,26 @@
   --transition-fast:   0.2s ease;
   --transition-normal: 0.3s ease;
   --transition-flip:   0.8s;
+
+  /* --------------------------------------------------
+     SPACING SCALE
+     -------------------------------------------------- */
+  --space-xs:   8px;
+  --space-sm:  16px;
+  --space-md:  24px;
+  --space-lg:  40px;
+  --space-xl:  64px;
+
+  /* --------------------------------------------------
+     TYPOGRAPHY
+     -------------------------------------------------- */
+  --font-body:           Calibri, Daytona, sans-serif;
+  --font-size-sm:        13px;
+  --font-size-base:      16px;
+  --font-size-md:        20px;
+  --font-size-lg:        28px;
+  --font-size-xl:        40px;
+  --line-height-body:    1.7;
+  --line-height-heading: 1.2;
 
 }
