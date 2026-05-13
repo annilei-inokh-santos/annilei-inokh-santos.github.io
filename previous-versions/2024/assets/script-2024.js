@@ -17,10 +17,8 @@ class GlobalClickEffect {
     this.setupEventListeners();
     this.addStarsToHeroText();
     this.addHeroBackgroundStars();
-    this.setupSidebarNavigation();
-    this.setupSmoothScroll();
-    this.setupActiveLinkHighlight();
-    this.setupLinkClickHandler();
+    this.setupDesktopNavigation();
+    this.setupMobileSnackbar();
     this.setupCoinFlipEffect();
     this.animate();
   }
@@ -49,83 +47,150 @@ class GlobalClickEffect {
     this.addHeroBackgroundStars();
   }
   
-  setupSidebarNavigation() {
+  setupDesktopNavigation() {
+    const isDesktop = window.innerWidth >= 1024;
+    if (!isDesktop) return;
+    
+    const sectionGroups = document.querySelectorAll('.section-group');
     const navHeadings = document.querySelectorAll('.nav-heading');
+    
+    if (sectionGroups.length === 0) return;
+    
+    // Function to show a specific group
+    const showGroup = (groupName) => {
+      sectionGroups.forEach(group => {
+        if (group.getAttribute('data-group') === groupName) {
+          group.classList.add('active-group');
+        } else {
+          group.classList.remove('active-group');
+        }
+      });
+    };
+    
+    // Show About group by default
+    showGroup('about');
+    
+    // Handle navigation heading clicks
     navHeadings.forEach(heading => {
       heading.addEventListener('click', (e) => {
         e.stopPropagation();
-        const section = heading.closest('.nav-section');
-        section.classList.toggle('open');
+        const category = heading.getAttribute('data-category');
+        if (category) {
+          showGroup(category);
+        }
       });
     });
     
-    const firstSection = document.querySelector('.nav-section');
-    if (firstSection) firstSection.classList.add('open');
+    // Handle dropdown link clicks - prevent default scroll
+    const dropdownLinks = document.querySelectorAll('.nav-links a');
+    dropdownLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const category = link.getAttribute('data-category');
+        if (category) {
+          showGroup(category);
+        }
+      });
+    });
   }
   
-  setupActiveLinkHighlight() {
-    const sections = document.querySelectorAll('.content-section, section[id]');
-    const navLinks = document.querySelectorAll('.nav-links a');
+  setupMobileSnackbar() {
+    const isMobile = window.innerWidth < 1024;
     
-    if (sections.length === 0 || navLinks.length === 0) return;
+    // Remove existing snackbar if any
+    const existingSnackbar = document.querySelector('.mobile-snackbar');
+    if (existingSnackbar) existingSnackbar.remove();
     
-    const observerOptions = {
-      rootMargin: '-100px 0px -60% 0px',
-      threshold: 0
-    };
+    if (!isMobile) return;
     
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = entry.target.getAttribute('id');
-          navLinks.forEach(link => {
-            const href = link.getAttribute('href');
-            if (href === `#${id}`) {
-              link.classList.add('active');
-            } else {
-              link.classList.remove('active');
+    // Create mobile snackbar
+    const snackbar = document.createElement('div');
+    snackbar.className = 'mobile-snackbar';
+    snackbar.innerHTML = `
+      <div class="snackbar-item" data-group="about">
+        <button class="snackbar-btn">
+          <i class="fas fa-user-circle"></i>
+          <span>About</span>
+        </button>
+        <div class="snackbar-dropdown">
+          <a href="#about"><i class="fas fa-user"></i> Personal Info</a>
+          <a href="#education"><i class="fas fa-graduation-cap"></i> Education</a>
+          <a href="#skills"><i class="fas fa-code"></i> Skills & Tools</a>
+          <a href="#group-org"><i class="fas fa-users"></i> Affiliations</a>
+        </div>
+      </div>
+      <div class="snackbar-item" data-group="projects">
+        <button class="snackbar-btn">
+          <i class="fas fa-folder-open"></i>
+          <span>Projects</span>
+        </button>
+        <div class="snackbar-dropdown">
+          <a href="#personal-projects"><i class="fas fa-user-astronaut"></i> Personal</a>
+          <a href="#school-projects"><i class="fas fa-school"></i> School</a>
+        </div>
+      </div>
+      <div class="snackbar-item" data-group="message">
+        <button class="snackbar-btn">
+          <i class="fas fa-envelope"></i>
+          <span>Message</span>
+        </button>
+        <div class="snackbar-dropdown">
+          <a href="#feedback"><i class="fas fa-comment"></i> Contact Form</a>
+          <a href="#socials"><i class="fas fa-share-alt"></i> Socials</a>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(snackbar);
+    
+    // Handle dropdown toggles
+    const snackbarItems = document.querySelectorAll('.snackbar-item');
+    
+    snackbarItems.forEach(item => {
+      const btn = item.querySelector('.snackbar-btn');
+      const dropdown = item.querySelector('.snackbar-dropdown');
+      
+      if (btn && dropdown) {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          // Close other dropdowns
+          snackbarItems.forEach(other => {
+            if (other !== item && other.classList.contains('open')) {
+              other.classList.remove('open');
             }
           });
-        }
-      });
-    }, observerOptions);
-    
-    sections.forEach(section => {
-      if (section.getAttribute('id')) {
-        observer.observe(section);
+          item.classList.toggle('open');
+        });
       }
     });
-  }
-  
-  setupLinkClickHandler() {
-    const navLinks = document.querySelectorAll('.nav-links a');
     
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-      });
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.snackbar-item')) {
+        snackbarItems.forEach(item => {
+          item.classList.remove('open');
+        });
+      }
     });
-  }
-  
-  setupSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', (e) => {
-        const href = anchor.getAttribute('href');
-        
-        if (href === '#' || href === '#portfolio') {
-          e.preventDefault();
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-          return;
+    
+    // Handle dropdown link clicks for smooth scroll
+    const dropdownLinks = document.querySelectorAll('.snackbar-dropdown a');
+    dropdownLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const href = link.getAttribute('href');
+        if (href && href !== '#') {
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
         }
-        
-        const target = document.querySelector(href);
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
+        // Close dropdown after click
+        const parent = link.closest('.snackbar-item');
+        if (parent) {
+          parent.classList.remove('open');
         }
       });
     });
@@ -335,7 +400,14 @@ class GlobalClickEffect {
   }
   
   setupEventListeners() {
-    window.addEventListener('resize', () => this.resize());
+    window.addEventListener('resize', () => {
+      this.resize();
+      // Reinitialize navigation on resize
+      setTimeout(() => {
+        this.setupDesktopNavigation();
+        this.setupMobileSnackbar();
+      }, 100);
+    });
     
     document.body.addEventListener('click', (e) => {
       const heroSection = document.querySelector('.header');
@@ -385,6 +457,8 @@ class GlobalClickEffect {
     if (this.canvas) this.canvas.remove();
     const starContainer = document.querySelector('.hero-bg-stars');
     if (starContainer) starContainer.remove();
+    const snackbar = document.querySelector('.mobile-snackbar');
+    if (snackbar) snackbar.remove();
   }
 }
 
@@ -392,4 +466,4 @@ class GlobalClickEffect {
 document.addEventListener('DOMContentLoaded', () => {
   const globalEffect = new GlobalClickEffect();
   window.addEventListener('beforeunload', () => globalEffect.destroy());
-}); 
+});

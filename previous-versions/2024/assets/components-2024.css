@@ -1,0 +1,854 @@
+/* =========================
+   COMPONENTS-2024.CSS
+   Organization Cards & Responsive Design
+   ========================= */
+
+/* =========================
+   ORGANIZATION CARDS - Themed Banners with Icon Overlays
+   ========================= */
+
+.profile-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin: 0;
+}
+
+/* Card container - enhanced */
+.profile-link {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-raised);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+  transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  text-decoration: none;
+  overflow: hidden;
+  border: 1px solid var(--color-border-subtle);
+  position: relative;
+}
+
+/* Animated shimmer overlay on card hover */
+.profile-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.03), 
+    transparent);
+  transition: left 0.6s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.profile-link:hover::before {
+  left: 100%;
+}
+
+/* Banner container base */
+.profile-banner {
+  width: 85px;
+  height: 85px;
+  flex-shrink: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  overflow: hidden;
+}
+
+/* Animated shine on banner */
+.profile-banner::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background: linear-gradient(45deg, 
+    transparent 30%, 
+    rgba(255, 255, 255, 0.05) 50%, 
+    transparent 70%);
+  transition: transform 0.5s ease;
+  transform: rotate(45deg);
+  pointer-events: none;
+}
+
+.profile-link:hover .profile-banner::after {
+  transform: rotate(45deg) translate(30%, 30%);
+}
+
+/* ALPHA - Black & Gold Theme with Paw Print Icon */
+.profile-link[data-org="alpha"] .profile-banner {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  border-right: 2px solid rgba(212, 175, 55, 0.4);
+}
+
+.profile-link[data-org="alpha"] .profile-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  transition: all 0.5s ease;
+}
+
+.profile-link[data-org="alpha"]:hover .profile-banner {
+  background: #000000;
+  border-right-color: rgba(212, 175, 55, 0.9);
+  box-shadow: inset 0 0 30px rgba(212, 175, 55, 0.2);
+}
+
+.profile-link[data-org="alpha"]:hover .profile-banner::before {
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.25) 0%, transparent 70%);
+  transform: scale(1.1);
+}
+
+.profile-link[data-org="alpha"]:hover .profile-overlay {
+  background: linear-gradient(135deg, 
+    rgba(0, 0, 0, 0.95) 0%, 
+    rgba(212, 175, 55, 0.15) 100%),
+    repeating-linear-gradient(45deg, 
+      rgba(212, 175, 55, 0.12) 0px, 
+      rgba(212, 175, 55, 0.12) 1px, 
+      transparent 1px, 
+      transparent 16px);
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-link[data-org="alpha"]:hover .profile-overlay::after {
+  content: '\f1b0';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 55px;
+  color: #d4af37;
+  pointer-events: none;
+  z-index: 0;
+  filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.5));
+}
+
+.profile-link[data-org="alpha"] .profile-banner .sparkle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #d4af37;
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.profile-link[data-org="alpha"]:hover .sparkle {
+  animation: sparkleFloat 0.8s ease-out forwards;
+}
+
+@keyframes sparkleFloat {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0) translate(var(--tx, 20px), var(--ty, -20px));
+  }
+}
+
+.profile-link[data-org="alpha"] .profile-banner .corner-accent {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 25px;
+  height: 25px;
+  background: linear-gradient(135deg, transparent 50%, rgba(212, 175, 55, 0.3) 50%);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.profile-link[data-org="alpha"]:hover .corner-accent {
+  background: linear-gradient(135deg, transparent 50%, rgba(212, 175, 55, 0.8) 50%);
+  transform: scale(1.2);
+}
+
+.profile-link[data-org="alpha"] .profile-logo {
+  filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.2));
+  transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+.profile-link[data-org="alpha"]:hover .profile-logo {
+  filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.6));
+  transform: scale(1.08) rotate(2deg);
+}
+
+.profile-link[data-org="alpha"] .profile-overlay {
+  border-left: 1px solid rgba(212, 175, 55, 0.15);
+  transition: all 0.3s ease;
+}
+
+.profile-link[data-org="alpha"]:hover .profile-overlay {
+  border-left-color: rgba(212, 175, 55, 0.6);
+  padding-left: calc(var(--space-lg) + 4px);
+}
+
+.profile-link[data-org="alpha"]:hover .profile-overlay .org-name {
+  color: #d4af37;
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+}
+
+/* ArchiTech - Cream & Green Theme */
+.profile-link[data-org="architech"] .profile-banner {
+  background: linear-gradient(135deg, #1a3a2a 0%, #0f2a1a 100%);
+  border-right: 2px solid rgba(210, 180, 140, 0.4);
+}
+
+.profile-link[data-org="architech"] .profile-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(74, 222, 128, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  transition: all 0.5s ease;
+}
+
+.profile-link[data-org="architech"]:hover .profile-banner {
+  background: linear-gradient(135deg, #1a3a2a 0%, #0f2a1a 100%);
+  border-right-color: rgba(74, 222, 128, 0.7);
+  box-shadow: inset 0 0 30px rgba(74, 222, 128, 0.2);
+}
+
+.profile-link[data-org="architech"]:hover .profile-banner::before {
+  background: radial-gradient(circle, rgba(74, 222, 128, 0.2) 0%, transparent 70%);
+  transform: scale(1.1);
+}
+
+.profile-link[data-org="architech"]:hover .profile-overlay {
+  background: linear-gradient(135deg, 
+    #FAF6E9 0%, 
+    rgba(74, 222, 128, 0.15) 100%),
+    repeating-linear-gradient(45deg, 
+      rgba(74, 222, 128, 0.12) 0px, 
+      rgba(74, 222, 128, 0.12) 1px, 
+      transparent 1px, 
+      transparent 16px);
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-link[data-org="architech"]:hover .profile-overlay::after {
+  content: '\f2db';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 55px;
+  color: #4ade80;
+  pointer-events: none;
+  z-index: 0;
+  filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.5));
+}
+
+.profile-link[data-org="architech"] .profile-banner .sparkle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: #4ade80;
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.profile-link[data-org="architech"]:hover .sparkle {
+  animation: sparkleFloatGreen 0.8s ease-out forwards;
+}
+
+@keyframes sparkleFloatGreen {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0) translate(var(--tx, 20px), var(--ty, -20px));
+  }
+}
+
+.profile-link[data-org="architech"] .profile-banner .corner-accent {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 25px;
+  height: 25px;
+  background: linear-gradient(135deg, transparent 50%, rgba(74, 222, 128, 0.4) 50%);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.profile-link[data-org="architech"]:hover .corner-accent {
+  background: linear-gradient(135deg, transparent 50%, rgba(74, 222, 128, 0.8) 50%);
+  transform: scale(1.2);
+}
+
+.profile-link[data-org="architech"] .profile-logo {
+  filter: drop-shadow(0 2px 8px rgba(74, 222, 128, 0.2));
+  transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+.profile-link[data-org="architech"]:hover .profile-logo {
+  filter: drop-shadow(0 0 12px rgba(74, 222, 128, 0.6));
+  transform: scale(1.08) rotate(-2deg);
+}
+
+.profile-link[data-org="architech"] .profile-overlay {
+  border-left: 1px solid rgba(74, 222, 128, 0.15);
+  transition: all 0.3s ease;
+}
+
+.profile-link[data-org="architech"]:hover .profile-overlay {
+  border-left-color: rgba(74, 222, 128, 0.6);
+  padding-left: calc(var(--space-lg) + 4px);
+}
+
+.profile-link[data-org="architech"]:hover .profile-overlay .org-name {
+  color: #4ade80;
+  text-shadow: 0 0 8px rgba(74, 222, 128, 0.5);
+}
+
+/* Shared Organization Styles */
+.profile-logo {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  z-index: 1;
+}
+
+.profile-overlay {
+  padding: var(--space-sm) var(--space-lg);
+  font-weight: 600;
+  flex: 1;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  background: transparent;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.profile-overlay .org-name {
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.profile-overlay .org-subtitle {
+  display: block;
+  font-size: 11px;
+  color: var(--color-text-muted);
+  font-weight: normal;
+  margin-top: 4px;
+  transition: all 0.3s ease;
+}
+
+.profile-link:hover .profile-overlay .org-subtitle {
+  color: var(--color-text-primary);
+  letter-spacing: 0.3px;
+}
+
+.profile-link:hover {
+  background-color: var(--color-surface-overlay);
+  border-color: var(--color-border-default);
+  transform: translateX(8px);
+  box-shadow: -4px 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.profile-link:hover .profile-logo {
+  transform: scale(1.08);
+}
+
+.profile-link:hover .profile-banner {
+  filter: brightness(1.08);
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+   ========================= */
+
+/* DESKTOP VIEW (1024px and above) */
+@media (min-width: 1024px) {
+  /* Hide mobile snackbar */
+  .mobile-snackbar {
+    display: none !important;
+  }
+  
+  /* Show desktop sidebar */
+  .desktop-sidebar {
+    display: flex !important;
+  }
+  
+  /* Section Group Filtering */
+  .section-group {
+    display: none;
+  }
+  
+  .section-group.active-group {
+    display: block;
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* TABLET & MOBILE VIEW (below 1024px) */
+@media (max-width: 1023px) {
+  /* Hide desktop sidebar */
+  .desktop-sidebar {
+    display: none !important;
+  }
+  
+  /* Show all section groups */
+  .section-group {
+    display: block !important;
+  }
+  
+  /* Mobile Snackbar */
+  .mobile-snackbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: var(--color-chrome);
+    border-top: 1px solid var(--color-border-subtle);
+    padding: var(--space-xs) var(--space-sm);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    backdrop-filter: blur(10px);
+  }
+  
+  .snackbar-item {
+    position: relative;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .snackbar-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    font-size: 12px;
+    padding: var(--space-xs) var(--space-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    width: 100%;
+  }
+  
+  .snackbar-btn i {
+    font-size: 20px;
+  }
+  
+  .snackbar-btn:hover {
+    color: var(--color-text-primary);
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  .snackbar-btn.active {
+    color: var(--color-text-primary);
+  }
+  
+  .snackbar-dropdown {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-surface-overlay);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm);
+    min-width: 140px;
+    margin-bottom: var(--space-xs);
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 1001;
+    display: none;
+  }
+  
+  .snackbar-dropdown a {
+    display: block;
+    padding: var(--space-xs) var(--space-sm);
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-size: 13px;
+    text-align: center;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+  }
+  
+  .snackbar-dropdown a:hover {
+    color: var(--color-text-primary);
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  .snackbar-dropdown a i {
+    margin-right: 6px;
+    width: 16px;
+  }
+  
+  .snackbar-item.open .snackbar-dropdown {
+    display: block;
+  }
+  
+  /* Adjust main content for snackbar */
+  .main {
+    margin-bottom: 70px;
+    padding-bottom: var(--space-lg);
+  }
+  
+  /* Mobile organization cards - show only banners */
+  .profile-link .profile-overlay {
+    display: none;
+  }
+  
+  .profile-wrapper {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-md);
+  }
+  
+  .profile-link {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--space-sm);
+    min-width: 100px;
+    flex: 0 0 auto;
+  }
+  
+  .profile-banner {
+    width: 80px;
+    height: 80px;
+    padding: var(--space-sm);
+    border-right: none;
+    border-bottom: none;
+  }
+  
+  .profile-logo {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* Tablet Landscape (1024px - 1200px) - Desktop adjustments */
+@media (min-width: 1024px) and (max-width: 1200px) {
+  .main {
+    padding: var(--space-lg) var(--space-lg);
+  }
+  
+  .section-title {
+    font-size: var(--font-size-lg);
+  }
+  
+  .content-card {
+    padding: var(--space-md);
+  }
+}
+
+/* Mobile Landscape (480px - 767px) */
+@media (max-width: 767px) {
+  body {
+    font-size: 14px;
+  }
+  
+  .header {
+    aspect-ratio: 4 / 3;
+  }
+  
+  .glint-text {
+    font-size: clamp(24px, 6vw, 42px);
+    letter-spacing: 0.04em;
+  }
+  
+  .icon-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+  }
+  
+  .icon-item img,
+  .icon-item .iconify,
+  .icon-item i {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 28px !important;
+  }
+  
+  .icon-label {
+    font-size: 9px;
+    bottom: -22px;
+    padding: 2px 6px;
+  }
+  
+  .content-card {
+    padding: var(--space-sm);
+  }
+  
+  .content-card h2 {
+    font-size: var(--font-size-md);
+  }
+  
+  .content-card h3 {
+    font-size: 11px;
+  }
+  
+  .flip-card {
+    width: 130px;
+    height: 130px;
+  }
+  
+  .image-container {
+    height: 170px;
+  }
+  
+  .article-buttons {
+    font-size: 11px;
+  }
+  
+  .form-input,
+  .form-textarea,
+  .form-button {
+    font-size: 14px;
+  }
+  
+  .site-footer {
+    padding: var(--space-sm) 0;
+  }
+  
+  .footer-container p {
+    font-size: 11px;
+  }
+  
+  .snackbar-btn {
+    font-size: 10px;
+  }
+  
+  .snackbar-btn i {
+    font-size: 18px;
+  }
+  
+  /* Mobile organization cards */
+  .profile-banner {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .profile-logo {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+/* Mobile Portrait (320px - 479px) */
+@media (max-width: 479px) {
+  .header {
+    aspect-ratio: 1 / 1;
+  }
+  
+  .glint-text {
+    font-size: clamp(18px, 5vw, 28px);
+    letter-spacing: 0.03em;
+  }
+  
+  .icon-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+  
+  .section-title {
+    font-size: var(--font-size-sm);
+    letter-spacing: 0.04em;
+  }
+  
+  .content-card {
+    padding: var(--space-sm);
+  }
+  
+  .content-card h2 {
+    font-size: var(--font-size-md);
+  }
+  
+  .thumbnail-container {
+    margin-bottom: var(--space-sm);
+  }
+  
+  .flip-card {
+    width: 110px;
+    height: 110px;
+  }
+  
+  .image-container {
+    height: 150px;
+  }
+  
+  .socials-card a {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 12px;
+  }
+  
+  .socials-card a i {
+    font-size: 16px;
+  }
+  
+  .form-input,
+  .form-textarea {
+    padding: 8px 10px;
+  }
+  
+  .form-button {
+    padding: 8px 16px;
+  }
+  
+  .footer-container {
+    padding: 0 var(--space-sm);
+  }
+  
+  .snackbar-btn {
+    font-size: 9px;
+  }
+  
+  .snackbar-btn i {
+    font-size: 16px;
+  }
+  
+  /* Mobile organization cards */
+  .profile-banner {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .profile-logo {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+/* Small Mobile (under 320px) */
+@media (max-width: 319px) {
+  .icon-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
+  }
+  
+  .icon-item img,
+  .icon-item .iconify,
+  .icon-item i {
+    width: 24px !important;
+    height: 24px !important;
+    font-size: 24px !important;
+  }
+  
+  .glint-text {
+    font-size: 16px;
+  }
+  
+  .snackbar-btn {
+    font-size: 8px;
+  }
+  
+  .snackbar-btn i {
+    font-size: 14px;
+  }
+}
+
+/* Touch Device Fixes */
+@media (hover: none) and (pointer: coarse) {
+  .profile-link[data-org="alpha"]:hover .profile-overlay,
+  .profile-link[data-org="architech"]:hover .profile-overlay {
+    background: transparent;
+  }
+  
+  .profile-link[data-org="alpha"]:hover .profile-overlay::after,
+  .profile-link[data-org="architech"]:hover .profile-overlay::after {
+    display: none;
+  }
+  
+  .flip-card .flip-card-inner {
+    transition: none;
+  }
+  
+  .flip-card:active .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+}
+
+/* Print Styles */
+@media print {
+  .header,
+  .mobile-snackbar,
+  .desktop-sidebar,
+  .nav-footer,
+  .site-footer,
+  #globalClickCanvas,
+  .hero-bg-stars,
+  .flip-card-edge,
+  .profile-link::before,
+  .profile-banner::after {
+    display: none;
+  }
+  
+  .main {
+    padding: 0;
+    margin: 0;
+  }
+  
+  .content-card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  
+  a {
+    text-decoration: underline;
+  }
+}
