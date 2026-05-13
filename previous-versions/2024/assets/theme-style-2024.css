@@ -32,12 +32,12 @@
      -------------------------------------------------- */
   --color-text-primary:   #e8eaf0;   /* headings, body copy                */
   --color-text-muted:     #8a8f9e;   /* secondary labels, footer info      */
-  --color-text-link:      #38bdf8;   /* anchor links                       */
+  --color-text-link:      #e8eaf0;   /* anchor links - off-white to match theme */
 
   /* --------------------------------------------------
      ACCENT
      -------------------------------------------------- */
-  --color-accent-glow:    rgba(255, 215, 0, 0.75);  /* gold hover glow on cards */
+  --color-accent-glow:    rgba(255, 255, 255, 0.15);  /* subtle white glow */
 
   /* --------------------------------------------------
      RADIUS

@@ -19,6 +19,9 @@ class GlobalClickEffect {
     this.addHeroBackgroundStars();
     this.setupSidebarNavigation();
     this.setupSmoothScroll();
+    this.setupActiveLinkHighlight();
+    this.setupLinkClickHandler();
+    this.setupCoinFlipEffect();
     this.animate();
   }
   
@@ -60,6 +63,51 @@ class GlobalClickEffect {
     if (firstSection) firstSection.classList.add('open');
   }
   
+  setupActiveLinkHighlight() {
+    const sections = document.querySelectorAll('.content-section, section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    
+    if (sections.length === 0 || navLinks.length === 0) return;
+    
+    const observerOptions = {
+      rootMargin: '-100px 0px -60% 0px',
+      threshold: 0
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href === `#${id}`) {
+              link.classList.add('active');
+            } else {
+              link.classList.remove('active');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+    
+    sections.forEach(section => {
+      if (section.getAttribute('id')) {
+        observer.observe(section);
+      }
+    });
+  }
+  
+  setupLinkClickHandler() {
+    const navLinks = document.querySelectorAll('.nav-links a');
+    
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+  }
+  
   setupSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', (e) => {
@@ -80,6 +128,35 @@ class GlobalClickEffect {
           });
         }
       });
+    });
+  }
+  
+  setupCoinFlipEffect() {
+    const flipCard = document.querySelector('.flip-card');
+    if (!flipCard) return;
+    
+    let isFlipping = false;
+    
+    flipCard.addEventListener('click', (e) => {
+      if (isFlipping) return;
+      isFlipping = true;
+      
+      flipCard.style.transform = 'scale(0.95)';
+      setTimeout(() => {
+        flipCard.style.transform = '';
+      }, 100);
+      
+      setTimeout(() => {
+        isFlipping = false;
+      }, 800);
+    });
+    
+    flipCard.addEventListener('mouseenter', () => {
+      flipCard.style.transform = 'scale(1.02)';
+    });
+    
+    flipCard.addEventListener('mouseleave', () => {
+      flipCard.style.transform = '';
     });
   }
   
@@ -315,4 +392,4 @@ class GlobalClickEffect {
 document.addEventListener('DOMContentLoaded', () => {
   const globalEffect = new GlobalClickEffect();
   window.addEventListener('beforeunload', () => globalEffect.destroy());
-});
+}); 

@@ -282,7 +282,7 @@ a {
 }
 
 /* =========================
-   4. SIDEBAR NAVIGATION
+   4. SIDEBAR NAVIGATION (Minimal Off-Black/Off-White)
    ========================= */
 
 .sidebar-nav {
@@ -297,7 +297,7 @@ a {
   align-items: center;
   justify-content: center;
   gap: var(--space-sm);
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 700;
   padding-bottom: var(--space-lg);
   margin-bottom: var(--space-lg);
@@ -307,7 +307,7 @@ a {
 
 .nav-logo i {
   font-size: 32px;
-  color: var(--color-text-link);
+  color: var(--color-text-primary);
 }
 
 .nav-section {
@@ -325,16 +325,46 @@ a {
   color: var(--color-text-primary);
   font-weight: 600;
   font-size: 16px;
+  position: relative;
+  margin-left: 0;
 }
 
+/* Edge highlight effect for nav-heading hover - off-white */
 .nav-heading:hover {
-  background-color: var(--color-surface-raised);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-text-primary);
+}
+
+.nav-heading:hover::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background: var(--color-text-primary);
+  border-radius: 0;
+  animation: edgeGlow 0.3s ease-out;
+}
+
+@keyframes edgeGlow {
+  0% {
+    opacity: 0;
+    height: 0%;
+    top: 50%;
+  }
+  100% {
+    opacity: 1;
+    height: 100%;
+    top: 0;
+  }
 }
 
 .nav-heading .fa-chevron-down {
   margin-left: auto;
   font-size: 12px;
   transition: transform var(--transition-fast);
+  color: var(--color-text-muted);
 }
 
 .nav-section.open .nav-heading .fa-chevron-down {
@@ -358,12 +388,48 @@ a {
   font-size: 14px;
   transition: all var(--transition-fast);
   border-radius: var(--radius-sm);
+  position: relative;
+  margin: 1px 0;
+  margin-left: 0;
 }
 
+/* Edge highlight for nav-links hover - matches heading style */
 .nav-links a:hover {
   color: var(--color-text-primary);
-  background-color: var(--color-surface-raised);
-  padding-left: calc(var(--space-md) + 8px);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-links a:hover::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background: var(--color-text-primary);
+  border-radius: 0;
+  animation: edgeGlow 0.25s ease-out;
+}
+
+/* Active link style - persistent, matches hover */
+.nav-links a.active {
+  color: var(--color-text-primary);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-links a.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background: var(--color-text-primary);
+  border-radius: 0;
+}
+
+.nav-links a.active:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .nav-footer {
@@ -379,11 +445,55 @@ a {
   color: var(--color-text-muted);
   font-size: 20px;
   transition: all var(--transition-fast);
+  position: relative;
+  padding: 8px;
 }
 
 .nav-footer a:hover {
   color: var(--color-text-primary);
   transform: translateY(-2px);
+}
+
+.nav-footer a:hover::before {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 25%;
+  width: 50%;
+  height: 1px;
+  background: var(--color-text-primary);
+  border-radius: 0;
+  animation: bottomGlow 0.3s ease-out;
+}
+
+@keyframes bottomGlow {
+  0% {
+    width: 0%;
+    left: 50%;
+    opacity: 0;
+  }
+  100% {
+    width: 50%;
+    left: 25%;
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1023px) {
+  .sidebar-nav {
+    padding: var(--space-md);
+  }
+  
+  .nav-logo {
+    padding-bottom: var(--space-md);
+    margin-bottom: var(--space-md);
+  }
+  
+  .nav-heading,
+  .nav-links a {
+    padding-left: var(--space-sm);
+    padding-right: var(--space-sm);
+  }
 }
 
 /* =========================
@@ -428,7 +538,7 @@ a {
   margin: 0 0 var(--space-sm);
 }
 
-/* profile photo */
+/* profile photo - Coin Flip with Visible Thick Edge Rim */
 .image-container {
   display: flex;
   justify-content: center;
@@ -436,108 +546,349 @@ a {
   height: 220px;
   margin: 0 0 var(--space-md);
   perspective: 1000px;
+  perspective-origin: center;
 }
 
-.flip-card { width: 180px; height: 180px; position: relative; }
+.flip-card {
+  width: 180px;
+  height: 180px;
+  position: relative;
+  cursor: pointer;
+}
 
 .flip-card-inner {
   position: relative;
-  width: 100%; height: 100%;
-  text-align: center;
-  transition: transform var(--transition-flip);
+  width: 100%;
+  height: 100%;
   transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.3, 1.1);
+  border-radius: 50%;
 }
 
-.flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
 
-.flip-card-front,
+.flip-card-front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 50%;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--color-surface-raised) 0%, var(--color-surface-sunken) 100%);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+
 .flip-card-back {
   position: absolute;
-  width: 100%; height: 100%;
+  width: 100%;
+  height: 100%;
   backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
+  border-radius: 50%;
+  overflow: hidden;
+  background: linear-gradient(315deg, var(--color-surface-raised) 0%, var(--color-surface-sunken) 100%);
+  transform: rotateY(180deg);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
+  z-index: 2;
 }
 
-.flip-card-front { z-index: 2; }
-.flip-card-back  { transform: rotateY(180deg); }
+/* THICK EDGE RIM - Creates a visible border that looks like coin thickness */
+.flip-card-edge {
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%,
+    #3a3f48 0%,
+    #2a2f38 50%,
+    #1a1f28 100%);
+  z-index: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Serrated/ridged edge detail */
+.flip-card-edge::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  right: 3px;
+  bottom: 3px;
+  border-radius: 50%;
+  background: repeating-conic-gradient(
+    from 0deg,
+    rgba(255, 255, 255, 0.15) 0deg,
+    rgba(255, 255, 255, 0.05) 5deg,
+    transparent 10deg,
+    transparent 15deg
+  );
+  pointer-events: none;
+}
 
 .centered-image {
-  width: 100%; height: 100%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: var(--radius-full);
-  border: 2px solid var(--color-border-default);
+  border-radius: 50%;
 }
 
-/* icon grid */
+.flip-card:hover {
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.4));
+}
+
+/* icon grid - Simple Icons */
 .icon-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-md);
+  gap: var(--space-lg);
   justify-items: center;
   align-items: center;
   margin: 0 0 var(--space-lg);
 }
 
-.icon-item { text-align: center; position: relative; }
-
-.icon-item img {
-  width: 36px; height: 36px;
-  display: block;
-  margin: 0 auto;
-  opacity: 0.8;
-  transition: opacity var(--transition-fast), transform var(--transition-fast);
+.icon-item {
+  text-align: center;
+  position: relative;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
 }
 
-.icon-item:hover img { opacity: 1; transform: translateY(-2px); }
+.icon-item img {
+  display: block;
+  margin: 0 auto;
+  transition: all var(--transition-fast);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.icon-item:hover img {
+  transform: translateY(-6px) scale(1.1);
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.3));
+}
+
+.icon-item a {
+  display: block;
+  text-decoration: none;
+}
 
 .icon-label {
   display: none;
   position: absolute;
-  bottom: -22px;
+  bottom: -28px;
   left: 50%;
   transform: translateX(-50%);
   font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
+  color: var(--color-text-primary);
   white-space: nowrap;
+  background: var(--color-surface-overlay);
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--color-border-subtle);
+  z-index: 10;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
-.icon-item:hover .icon-label { display: block; }
 
-/* org cards */
+.icon-item:hover .icon-label {
+  display: block;
+  animation: labelFadeIn 0.2s ease-out;
+}
+
+@keyframes labelFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* =========================
+   ORGANIZATION CARDS - Themed Banners
+   ========================= */
+
 .profile-wrapper {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  gap: var(--space-md);
   margin: 0;
 }
 
-.profile-container { display: block; }
-
+/* Card container */
 .profile-link {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
-  padding: var(--space-sm);
+  gap: 0;
   border-radius: var(--radius-md);
-  border: 1px solid var(--color-border-subtle);
   background-color: var(--color-surface-raised);
   color: var(--color-text-primary);
   font-size: var(--font-size-base);
-  transition: border-color var(--transition-fast), background-color var(--transition-fast);
-}
-.profile-link:hover {
-  border-color: var(--color-border-default);
-  background-color: var(--color-surface-overlay);
-}
-
-.profile-image {
-  width: 48px; height: 48px;
-  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  overflow: hidden;
   border: 1px solid var(--color-border-subtle);
-  object-fit: cover;
-  flex-shrink: 0;
 }
 
-.profile-overlay { font-size: var(--font-size-base); font-weight: 600; }
+/* Banner container base */
+.profile-banner {
+  width: 85px;
+  height: 85px;
+  flex-shrink: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  overflow: hidden;
+}
+
+/* ========================================
+   ALPHA - Black & Gold Theme
+   ======================================== */
+.profile-link[data-org="alpha"] .profile-banner {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  border-right: 2px solid rgba(212, 175, 55, 0.4);
+}
+
+/* Gold accent overlay */
+.profile-link[data-org="alpha"] .profile-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Gold corner accent */
+.profile-link[data-org="alpha"] .profile-banner::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 25px;
+  height: 25px;
+  background: linear-gradient(135deg, transparent 50%, rgba(212, 175, 55, 0.3) 50%);
+  pointer-events: none;
+}
+
+/* ALPHA logo styling */
+.profile-link[data-org="alpha"] .profile-logo {
+  filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.2));
+}
+
+/* ALPHA text theme */
+.profile-link[data-org="alpha"] .profile-overlay {
+  border-left: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.profile-link[data-org="alpha"]:hover .profile-banner {
+  border-right-color: rgba(212, 175, 55, 0.7);
+  box-shadow: inset 0 0 20px rgba(212, 175, 55, 0.1);
+}
+
+/* ========================================
+   ArchiTech - Green & Cream Theme
+   ======================================== */
+.profile-link[data-org="architech"] .profile-banner {
+  background: linear-gradient(135deg, #1a3a2a 0%, #0f2a1a 100%);
+  border-right: 2px solid rgba(210, 180, 140, 0.4);
+}
+
+/* Cream accent overlay */
+.profile-link[data-org="architech"] .profile-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(210, 180, 140, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Cream corner accent */
+.profile-link[data-org="architech"] .profile-banner::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 25px;
+  height: 25px;
+  background: linear-gradient(135deg, transparent 50%, rgba(210, 180, 140, 0.3) 50%);
+  pointer-events: none;
+}
+
+/* ArchiTech logo styling */
+.profile-link[data-org="architech"] .profile-logo {
+  filter: drop-shadow(0 2px 8px rgba(210, 180, 140, 0.2));
+}
+
+/* ArchiTech text theme */
+.profile-link[data-org="architech"] .profile-overlay {
+  border-left: 1px solid rgba(210, 180, 140, 0.15);
+}
+
+.profile-link[data-org="architech"]:hover .profile-banner {
+  border-right-color: rgba(210, 180, 140, 0.7);
+  box-shadow: inset 0 0 20px rgba(210, 180, 140, 0.1);
+}
+
+/* ========================================
+   Shared Styles
+   ======================================== */
+
+/* Logo image styling */
+.profile-logo {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  transition: transform var(--transition-fast);
+  z-index: 1;
+}
+
+/* Text overlay */
+.profile-overlay {
+  padding: var(--space-sm) var(--space-lg);
+  font-weight: 600;
+  flex: 1;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  background: transparent;
+}
+
+.profile-overlay .org-subtitle {
+  display: block;
+  font-size: 11px;
+  color: var(--color-text-muted);
+  font-weight: normal;
+  margin-top: 4px;
+}
+
+/* Hover effects for both */
+.profile-link:hover {
+  background-color: var(--color-surface-overlay);
+  border-color: var(--color-border-default);
+  transform: translateX(4px);
+}
+
+.profile-link:hover .profile-logo {
+  transform: scale(1.05);
+}
+
+.profile-link:hover .profile-banner {
+  filter: brightness(1.05);
+}
 
 /* thumbnail */
 .thumbnail-container {
@@ -666,22 +1017,45 @@ a {
   color: var(--color-text-muted);
 }
 
-@media (max-width: 1023px) {
-  .sidebar-nav {
-    padding: var(--space-md);
-  }
-  
-  .nav-logo {
-    padding-bottom: var(--space-md);
-    margin-bottom: var(--space-md);
-  }
-  
-  .content-card {
-    padding: var(--space-md);
-  }
-  
-  .socials-card {
-    flex-wrap: wrap;
+/* Responsive adjustments for icons */
+@media (max-width: 768px) {
+  .icon-grid {
     gap: var(--space-md);
   }
+  
+  .icon-item img {
+    width: 28px !important;
+    height: 28px !important;
+  }
+  
+  .icon-label {
+    font-size: 10px;
+    bottom: -24px;
+    padding: 3px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .icon-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+}
+
+/* Iconify icon styling */
+.iconify {
+  display: block;
+  margin: 0 auto;
+  transition: all var(--transition-fast);
+}
+
+.icon-item:hover .iconify {
+  transform: translateY(-6px) scale(1.1);
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.3));
+}
+
+/* Ensure Iconify icons match the size of other icons */
+.icon-item .iconify {
+  width: 36px;
+  height: 36px;
 }
