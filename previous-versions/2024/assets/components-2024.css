@@ -4,7 +4,7 @@
    ========================= */
 
 /* =========================
-   ORGANIZATION CARDS - Themed Banners with Icon Overlays
+   ORGANIZATION CARDS
    ========================= */
 
 .profile-wrapper {
@@ -14,7 +14,6 @@
   margin: 0;
 }
 
-/* Card container - enhanced */
 .profile-link {
   display: flex;
   align-items: center;
@@ -30,7 +29,6 @@
   position: relative;
 }
 
-/* Animated shimmer overlay on card hover */
 .profile-link::before {
   content: '';
   position: absolute;
@@ -38,10 +36,7 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, 
-    transparent, 
-    rgba(255, 255, 255, 0.03), 
-    transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.03), transparent);
   transition: left 0.6s ease;
   pointer-events: none;
   z-index: 2;
@@ -51,7 +46,6 @@
   left: 100%;
 }
 
-/* Banner container base */
 .profile-banner {
   width: 85px;
   height: 85px;
@@ -64,7 +58,6 @@
   overflow: hidden;
 }
 
-/* Animated shine on banner */
 .profile-banner::after {
   content: '';
   position: absolute;
@@ -72,10 +65,7 @@
   left: -100%;
   width: 300%;
   height: 300%;
-  background: linear-gradient(45deg, 
-    transparent 30%, 
-    rgba(255, 255, 255, 0.05) 50%, 
-    transparent 70%);
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.05) 50%, transparent 70%);
   transition: transform 0.5s ease;
   transform: rotate(45deg);
   pointer-events: none;
@@ -85,7 +75,7 @@
   transform: rotate(45deg) translate(30%, 30%);
 }
 
-/* ALPHA - Black & Gold Theme with Paw Print Icon */
+/* ALPHA - Black & Gold Theme */
 .profile-link[data-org="alpha"] .profile-banner {
   background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
   border-right: 2px solid rgba(212, 175, 55, 0.4);
@@ -115,14 +105,8 @@
 }
 
 .profile-link[data-org="alpha"]:hover .profile-overlay {
-  background: linear-gradient(135deg, 
-    rgba(0, 0, 0, 0.95) 0%, 
-    rgba(212, 175, 55, 0.15) 100%),
-    repeating-linear-gradient(45deg, 
-      rgba(212, 175, 55, 0.12) 0px, 
-      rgba(212, 175, 55, 0.12) 1px, 
-      transparent 1px, 
-      transparent 16px);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(212, 175, 55, 0.15) 100%),
+    repeating-linear-gradient(45deg, rgba(212, 175, 55, 0.12) 0px, rgba(212, 175, 55, 0.12) 1px, transparent 1px, transparent 16px);
   position: relative;
   overflow: hidden;
 }
@@ -158,18 +142,9 @@
 }
 
 @keyframes sparkleFloat {
-  0% {
-    opacity: 0;
-    transform: scale(0);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.5);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0) translate(var(--tx, 20px), var(--ty, -20px));
-  }
+  0% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1.5); }
+  100% { opacity: 0; transform: scale(0) translate(var(--tx, 20px), var(--ty, -20px)); }
 }
 
 .profile-link[data-org="alpha"] .profile-banner .corner-accent {
@@ -243,14 +218,8 @@
 }
 
 .profile-link[data-org="architech"]:hover .profile-overlay {
-  background: linear-gradient(135deg, 
-    #FAF6E9 0%, 
-    rgba(74, 222, 128, 0.15) 100%),
-    repeating-linear-gradient(45deg, 
-      rgba(74, 222, 128, 0.12) 0px, 
-      rgba(74, 222, 128, 0.12) 1px, 
-      transparent 1px, 
-      transparent 16px);
+  background: linear-gradient(135deg, #FAF6E9 0%, rgba(74, 222, 128, 0.15) 100%),
+    repeating-linear-gradient(45deg, rgba(74, 222, 128, 0.12) 0px, rgba(74, 222, 128, 0.12) 1px, transparent 1px, transparent 16px);
   position: relative;
   overflow: hidden;
 }
@@ -286,18 +255,9 @@
 }
 
 @keyframes sparkleFloatGreen {
-  0% {
-    opacity: 0;
-    transform: scale(0);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.5);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0) translate(var(--tx, 20px), var(--ty, -20px));
-  }
+  0% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1.5); }
+  100% { opacity: 0; transform: scale(0) translate(var(--tx, 20px), var(--ty, -20px)); }
 }
 
 .profile-link[data-org="architech"] .profile-banner .corner-accent {
@@ -397,55 +357,50 @@
 }
 
 /* =========================
-   RESPONSIVE DESIGN
+   DESKTOP (>=1024px)
    ========================= */
 
-/* DESKTOP VIEW (1024px and above) */
 @media (min-width: 1024px) {
-  /* Hide mobile snackbar */
   .mobile-snackbar {
     display: none !important;
   }
-  
-  /* Show desktop sidebar */
+
   .desktop-sidebar {
     display: flex !important;
   }
-  
-  /* Section Group Filtering */
-  .section-group {
-    display: none;
-  }
-  
-  .section-group.active-group {
-    display: block;
-    animation: fadeIn 0.3s ease-out;
-  }
-  
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-}
 
-/* TABLET & MOBILE VIEW (below 1024px) */
-@media (max-width: 1023px) {
-  /* Hide desktop sidebar */
-  .desktop-sidebar {
-    display: none !important;
-  }
-  
-  /* Show all section groups */
   .section-group {
     display: block !important;
   }
-  
+}
+
+@media (min-width: 1024px) and (max-width: 1200px) {
+  .main {
+    padding: var(--space-lg) var(--space-lg);
+  }
+
+  .section-title {
+    font-size: var(--font-size-lg);
+  }
+
+  .content-card {
+    padding: var(--space-md);
+  }
+}
+
+/* =========================
+   MOBILE (< 1024px)
+   ========================= */
+
+@media (max-width: 1023px) {
+  .desktop-sidebar {
+    display: none !important;
+  }
+
+  .section-group {
+    display: block !important;
+  }
+
   /* Mobile Snackbar */
   .mobile-snackbar {
     position: fixed;
@@ -461,14 +416,14 @@
     align-items: center;
     backdrop-filter: blur(10px);
   }
-  
+
   .snackbar-item {
     position: relative;
     flex: 1;
     display: flex;
     justify-content: center;
   }
-  
+
   .snackbar-btn {
     display: flex;
     flex-direction: column;
@@ -485,20 +440,17 @@
     font-family: var(--font-body);
     width: 100%;
   }
-  
+
   .snackbar-btn i {
     font-size: 20px;
   }
-  
-  .snackbar-btn:hover {
+
+  .snackbar-btn:hover,
+  .snackbar-btn.active {
     color: var(--color-text-primary);
     background: rgba(255, 255, 255, 0.05);
   }
-  
-  .snackbar-btn.active {
-    color: var(--color-text-primary);
-  }
-  
+
   .snackbar-dropdown {
     position: absolute;
     bottom: 100%;
@@ -512,8 +464,9 @@
     box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
     z-index: 1001;
     display: none;
+    border: 1px solid var(--color-border-subtle);
   }
-  
+
   .snackbar-dropdown a {
     display: block;
     padding: var(--space-xs) var(--space-sm);
@@ -525,39 +478,29 @@
     transition: all var(--transition-fast);
     white-space: nowrap;
   }
-  
+
   .snackbar-dropdown a:hover {
     color: var(--color-text-primary);
     background: rgba(255, 255, 255, 0.05);
   }
-  
+
   .snackbar-dropdown a i {
     margin-right: 6px;
     width: 16px;
   }
-  
+
   .snackbar-item.open .snackbar-dropdown {
     display: block;
   }
-  
-  /* Adjust main content for snackbar */
-  .main {
-    margin-bottom: 70px;
-    padding-bottom: var(--space-lg);
-  }
-  
-  /* Mobile organization cards - show only banners */
-  .profile-link .profile-overlay {
-    display: none;
-  }
-  
+
+  /* Org cards on mobile — horizontal row of banners */
   .profile-wrapper {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     gap: var(--space-md);
   }
-  
+
   .profile-link {
     flex-direction: column;
     align-items: center;
@@ -566,208 +509,63 @@
     padding: var(--space-sm);
     min-width: 100px;
     flex: 0 0 auto;
+    transform: none !important;
   }
-  
+
+  .profile-link .profile-overlay {
+    display: none;
+  }
+
   .profile-banner {
     width: 80px;
     height: 80px;
     padding: var(--space-sm);
-    border-right: none;
+    border-right: none !important;
     border-bottom: none;
   }
-  
+
   .profile-logo {
     width: 50px;
     height: 50px;
   }
 }
 
-/* Tablet Landscape (1024px - 1200px) - Desktop adjustments */
-@media (min-width: 1024px) and (max-width: 1200px) {
-  .main {
-    padding: var(--space-lg) var(--space-lg);
-  }
-  
-  .section-title {
-    font-size: var(--font-size-lg);
-  }
-  
-  .content-card {
-    padding: var(--space-md);
-  }
-}
-
-/* Mobile Landscape (480px - 767px) */
+/* Mobile Landscape (480-767px) */
 @media (max-width: 767px) {
-  body {
-    font-size: 14px;
-  }
-  
-  .header {
-    aspect-ratio: 4 / 3;
-  }
-  
-  .glint-text {
-    font-size: clamp(24px, 6vw, 42px);
-    letter-spacing: 0.04em;
-  }
-  
-  .icon-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-md);
-  }
-  
-  .icon-item img,
-  .icon-item .iconify,
-  .icon-item i {
-    width: 28px !important;
-    height: 28px !important;
-    font-size: 28px !important;
-  }
-  
-  .icon-label {
-    font-size: 9px;
-    bottom: -22px;
-    padding: 2px 6px;
-  }
-  
-  .content-card {
-    padding: var(--space-sm);
-  }
-  
-  .content-card h2 {
-    font-size: var(--font-size-md);
-  }
-  
-  .content-card h3 {
-    font-size: 11px;
-  }
-  
-  .flip-card {
-    width: 130px;
-    height: 130px;
-  }
-  
-  .image-container {
-    height: 170px;
-  }
-  
-  .article-buttons {
-    font-size: 11px;
-  }
-  
-  .form-input,
-  .form-textarea,
-  .form-button {
-    font-size: 14px;
-  }
-  
-  .site-footer {
-    padding: var(--space-sm) 0;
-  }
-  
-  .footer-container p {
-    font-size: 11px;
-  }
-  
   .snackbar-btn {
     font-size: 10px;
   }
-  
+
   .snackbar-btn i {
     font-size: 18px;
   }
-  
-  /* Mobile organization cards */
+
   .profile-banner {
     width: 70px;
     height: 70px;
   }
-  
+
   .profile-logo {
     width: 42px;
     height: 42px;
   }
 }
 
-/* Mobile Portrait (320px - 479px) */
+/* Mobile Portrait (320-479px) */
 @media (max-width: 479px) {
-  .header {
-    aspect-ratio: 1 / 1;
-  }
-  
-  .glint-text {
-    font-size: clamp(18px, 5vw, 28px);
-    letter-spacing: 0.03em;
-  }
-  
-  .icon-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-lg);
-  }
-  
-  .section-title {
-    font-size: var(--font-size-sm);
-    letter-spacing: 0.04em;
-  }
-  
-  .content-card {
-    padding: var(--space-sm);
-  }
-  
-  .content-card h2 {
-    font-size: var(--font-size-md);
-  }
-  
-  .thumbnail-container {
-    margin-bottom: var(--space-sm);
-  }
-  
-  .flip-card {
-    width: 110px;
-    height: 110px;
-  }
-  
-  .image-container {
-    height: 150px;
-  }
-  
-  .socials-card a {
-    padding: var(--space-xs) var(--space-sm);
-    font-size: 12px;
-  }
-  
-  .socials-card a i {
-    font-size: 16px;
-  }
-  
-  .form-input,
-  .form-textarea {
-    padding: 8px 10px;
-  }
-  
-  .form-button {
-    padding: 8px 16px;
-  }
-  
-  .footer-container {
-    padding: 0 var(--space-sm);
-  }
-  
   .snackbar-btn {
     font-size: 9px;
   }
-  
+
   .snackbar-btn i {
     font-size: 16px;
   }
-  
-  /* Mobile organization cards */
+
   .profile-banner {
     width: 60px;
     height: 60px;
   }
-  
+
   .profile-logo {
     width: 35px;
     height: 35px;
@@ -776,27 +574,10 @@
 
 /* Small Mobile (under 320px) */
 @media (max-width: 319px) {
-  .icon-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-sm);
-  }
-  
-  .icon-item img,
-  .icon-item .iconify,
-  .icon-item i {
-    width: 24px !important;
-    height: 24px !important;
-    font-size: 24px !important;
-  }
-  
-  .glint-text {
-    font-size: 16px;
-  }
-  
   .snackbar-btn {
     font-size: 8px;
   }
-  
+
   .snackbar-btn i {
     font-size: 14px;
   }
@@ -808,22 +589,14 @@
   .profile-link[data-org="architech"]:hover .profile-overlay {
     background: transparent;
   }
-  
+
   .profile-link[data-org="alpha"]:hover .profile-overlay::after,
   .profile-link[data-org="architech"]:hover .profile-overlay::after {
     display: none;
   }
-  
-  .flip-card .flip-card-inner {
-    transition: none;
-  }
-  
-  .flip-card:active .flip-card-inner {
-    transform: rotateY(180deg);
-  }
 }
 
-/* Print Styles */
+/* Print */
 @media print {
   .header,
   .mobile-snackbar,
@@ -837,17 +610,17 @@
   .profile-banner::after {
     display: none;
   }
-  
+
   .main {
     padding: 0;
     margin: 0;
   }
-  
+
   .content-card {
     break-inside: avoid;
     page-break-inside: avoid;
   }
-  
+
   a {
     text-decoration: underline;
   }

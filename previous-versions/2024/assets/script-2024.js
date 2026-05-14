@@ -50,45 +50,17 @@ class GlobalClickEffect {
   setupDesktopNavigation() {
     const isDesktop = window.innerWidth >= 1024;
     if (!isDesktop) return;
-    
-    const sectionGroups = document.querySelectorAll('.section-group');
-    const navHeadings = document.querySelectorAll('.nav-heading');
-    
-    if (sectionGroups.length === 0) return;
-    
-    // Function to show a specific group
-    const showGroup = (groupName) => {
-      sectionGroups.forEach(group => {
-        if (group.getAttribute('data-group') === groupName) {
-          group.classList.add('active-group');
-        } else {
-          group.classList.remove('active-group');
-        }
-      });
-    };
-    
-    // Show About group by default
-    showGroup('about');
-    
-    // Handle navigation heading clicks
-    navHeadings.forEach(heading => {
-      heading.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const category = heading.getAttribute('data-category');
-        if (category) {
-          showGroup(category);
-        }
-      });
-    });
-    
-    // Handle dropdown link clicks - prevent default scroll
-    const dropdownLinks = document.querySelectorAll('.nav-links a');
-    dropdownLinks.forEach(link => {
+
+    const navLinks = document.querySelectorAll('.nav-links a');
+    navLinks.forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
-        const category = link.getAttribute('data-category');
-        if (category) {
-          showGroup(category);
+        const href = link.getAttribute('href');
+        if (!href || href === '#') return;
+        const target = document.querySelector(href);
+        if (target) {
+          const top = target.getBoundingClientRect().top + window.scrollY - 20;
+          window.scrollTo({ top, behavior: 'smooth' });
         }
       });
     });
@@ -97,13 +69,11 @@ class GlobalClickEffect {
   setupMobileSnackbar() {
     const isMobile = window.innerWidth < 1024;
     
-    // Remove existing snackbar if any
     const existingSnackbar = document.querySelector('.mobile-snackbar');
     if (existingSnackbar) existingSnackbar.remove();
     
     if (!isMobile) return;
     
-    // Create mobile snackbar
     const snackbar = document.createElement('div');
     snackbar.className = 'mobile-snackbar';
     snackbar.innerHTML = `
@@ -115,7 +85,7 @@ class GlobalClickEffect {
         <div class="snackbar-dropdown">
           <a href="#about"><i class="fas fa-user"></i> Personal Info</a>
           <a href="#education"><i class="fas fa-graduation-cap"></i> Education</a>
-          <a href="#skills"><i class="fas fa-code"></i> Skills & Tools</a>
+          <a href="#skills"><i class="fas fa-code"></i> Skills &amp; Tools</a>
           <a href="#group-org"><i class="fas fa-users"></i> Affiliations</a>
         </div>
       </div>
@@ -142,7 +112,6 @@ class GlobalClickEffect {
     `;
     document.body.appendChild(snackbar);
     
-    // Handle dropdown toggles
     const snackbarItems = document.querySelectorAll('.snackbar-item');
     
     snackbarItems.forEach(item => {
@@ -152,27 +121,20 @@ class GlobalClickEffect {
       if (btn && dropdown) {
         btn.addEventListener('click', (e) => {
           e.stopPropagation();
-          // Close other dropdowns
           snackbarItems.forEach(other => {
-            if (other !== item && other.classList.contains('open')) {
-              other.classList.remove('open');
-            }
+            if (other !== item) other.classList.remove('open');
           });
           item.classList.toggle('open');
         });
       }
     });
     
-    // Close dropdown when clicking outside
     document.addEventListener('click', (e) => {
       if (!e.target.closest('.snackbar-item')) {
-        snackbarItems.forEach(item => {
-          item.classList.remove('open');
-        });
+        snackbarItems.forEach(item => item.classList.remove('open'));
       }
     });
     
-    // Handle dropdown link clicks for smooth scroll
     const dropdownLinks = document.querySelectorAll('.snackbar-dropdown a');
     dropdownLinks.forEach(link => {
       link.addEventListener('click', (e) => {
@@ -181,17 +143,12 @@ class GlobalClickEffect {
         if (href && href !== '#') {
           const target = document.querySelector(href);
           if (target) {
-            target.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-            });
+            const top = target.getBoundingClientRect().top + window.scrollY - 20;
+            window.scrollTo({ top, behavior: 'smooth' });
           }
         }
-        // Close dropdown after click
         const parent = link.closest('.snackbar-item');
-        if (parent) {
-          parent.classList.remove('open');
-        }
+        if (parent) parent.classList.remove('open');
       });
     });
   }
@@ -205,15 +162,9 @@ class GlobalClickEffect {
     flipCard.addEventListener('click', (e) => {
       if (isFlipping) return;
       isFlipping = true;
-      
       flipCard.style.transform = 'scale(0.95)';
-      setTimeout(() => {
-        flipCard.style.transform = '';
-      }, 100);
-      
-      setTimeout(() => {
-        isFlipping = false;
-      }, 800);
+      setTimeout(() => { flipCard.style.transform = ''; }, 100);
+      setTimeout(() => { isFlipping = false; }, 800);
     });
     
     flipCard.addEventListener('mouseenter', () => {
@@ -341,7 +292,6 @@ class GlobalClickEffect {
     if (isBodyClick) {
       ctx.fillStyle = `rgba(200, 200, 210, ${alpha * 0.8})`;
       ctx.fill();
-      
       ctx.beginPath();
       for (let i = 0; i < points * 2; i++) {
         const radius = i % 2 === 0 ? size * 0.5 : size * 0.15;
@@ -357,7 +307,6 @@ class GlobalClickEffect {
     } else {
       ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
       ctx.fill();
-      
       ctx.beginPath();
       for (let i = 0; i < points * 2; i++) {
         const radius = i % 2 === 0 ? size * 0.5 : size * 0.15;
@@ -376,9 +325,9 @@ class GlobalClickEffect {
   }
   
   createClickBurst(x, y, isHeroClick = true) {
-    const particleCount = isHeroClick ? 
-      (Math.floor(Math.random() * 5) + 8) : 
-      (Math.floor(Math.random() * 4) + 5);
+    const particleCount = isHeroClick
+      ? (Math.floor(Math.random() * 5) + 8)
+      : (Math.floor(Math.random() * 4) + 5);
     
     for (let i = 0; i < particleCount; i++) {
       const angle = Math.random() * Math.PI * 2;
@@ -386,15 +335,15 @@ class GlobalClickEffect {
       const size = isHeroClick ? (Math.random() * 5 + 3) : (Math.random() * 4 + 2);
       
       this.clickStars.push({
-        x: x, y: y,
+        x, y,
         vx: Math.cos(angle) * speed,
         vy: Math.sin(angle) * speed,
         life: 1.0,
-        size: size,
+        size,
         originalSize: size,
         rotation: Math.random() * Math.PI * 2,
         rotationSpeed: (Math.random() - 0.5) * 0.1,
-        isHeroClick: isHeroClick
+        isHeroClick
       });
     }
   }
@@ -402,7 +351,6 @@ class GlobalClickEffect {
   setupEventListeners() {
     window.addEventListener('resize', () => {
       this.resize();
-      // Reinitialize navigation on resize
       setTimeout(() => {
         this.setupDesktopNavigation();
         this.setupMobileSnackbar();
@@ -424,8 +372,8 @@ class GlobalClickEffect {
       p.life -= 0.025;
       p.rotation += p.rotationSpeed;
       
-      if (p.life <= 0 || p.x < -100 || p.x > this.width + 100 || 
-          p.y < -100 || p.y > this.height + 100) {
+      if (p.life <= 0 || p.x < -100 || p.x > this.width + 100
+          || p.y < -100 || p.y > this.height + 100) {
         this.clickStars.splice(i, 1);
         continue;
       }
@@ -438,9 +386,9 @@ class GlobalClickEffect {
       if (p.life > 0.5) {
         this.ctx.beginPath();
         this.ctx.arc(p.x, p.y, currentSize * 1.3, 0, Math.PI * 2);
-        this.ctx.fillStyle = p.isHeroClick ? 
-          `rgba(255, 255, 255, ${alpha * 0.2})` : 
-          `rgba(180, 180, 190, ${alpha * 0.15})`;
+        this.ctx.fillStyle = p.isHeroClick
+          ? `rgba(255, 255, 255, ${alpha * 0.2})`
+          : `rgba(180, 180, 190, ${alpha * 0.15})`;
         this.ctx.fill();
       }
     }
@@ -462,7 +410,6 @@ class GlobalClickEffect {
   }
 }
 
-// Initialize
 document.addEventListener('DOMContentLoaded', () => {
   const globalEffect = new GlobalClickEffect();
   window.addEventListener('beforeunload', () => globalEffect.destroy());
