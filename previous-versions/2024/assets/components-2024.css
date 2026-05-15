@@ -493,34 +493,35 @@
     display: block;
   }
 
-  /* Org cards on mobile — horizontal row of banners */
+  /* Org cards on mobile — full horizontal card with banner + overlay */
   .profile-wrapper {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
     gap: var(--space-md);
   }
 
   .profile-link {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: var(--space-sm);
-    min-width: 100px;
-    flex: 0 0 auto;
+    justify-content: flex-start;
+    text-align: left;
+    padding: 0;
+    flex: 1 1 100%;
     transform: none !important;
   }
 
   .profile-link .profile-overlay {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--space-sm) var(--space-md);
   }
 
   .profile-banner {
     width: 80px;
     height: 80px;
-    padding: var(--space-sm);
-    border-right: none !important;
+    flex-shrink: 0;
+    padding: 0;
+    border-right: 2px solid rgba(255, 255, 255, 0.1) !important;
     border-bottom: none;
   }
 
@@ -580,6 +581,16 @@
 
   .snackbar-btn i {
     font-size: 14px;
+  }
+
+  .profile-banner {
+    width: 52px;
+    height: 52px;
+  }
+
+  .profile-logo {
+    width: 30px;
+    height: 30px;
   }
 }
 
