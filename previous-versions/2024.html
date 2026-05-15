@@ -71,6 +71,7 @@
     <!-- MAIN BODY - Content -->
     <main class="main">
       <div class="sections-container">
+        
         <!-- ABOUT GROUP -->
         <div class="section-group" data-group="about">
           <section id="about" class="content-section">
@@ -91,7 +92,7 @@
                   </div>
                 </div>
               </div>
-              
+
               <div class="about-right">
                 <h3>Connect with Me</h3>
                 <div class="socials-icons-only">
@@ -102,11 +103,11 @@
                     <i class="fab fa-github"></i>
                   </a>
                   <a href="https://scratch.mit.edu/users/leiixz/" target="_blank" class="social-icon" aria-label="Scratch">
-                    <i class="fab fa-scratch"></i>
+                    <img src="https://cdn.simpleicons.org/scratch/F7A81B" width="18" height="18" alt="Scratch">
                   </a>
                 </div>
               </div>
-              
+
               <div class="about-bottom">
                 <p>I am Annilei Inokh C. Santos, a second-year Computer Science student focused on web development with HTML, CSS, and JavaScript.</p>
                 <p>Outside of coding, I enjoy Roblox and Pokémon-inspired games, dancing, music editing, musicals, collecting merch, and reading webtoons.</p>
@@ -117,8 +118,14 @@
           <section id="education" class="content-section">
             <h1 class="section-title">Education</h1>
             <div class="content-card">
-              <p><b><a href="https://www.sti.edu/programs-details.asp?p=Mg==" target="_blank">BS Computer Science</a></b><br>Systems Technology Institute, 2022 – Present</p>
-              <p><b><a href="https://www.sti.edu/programs-shs-details.asp?p=OA==" target="_blank">IT in Mobile App and Web Development</a></b><br>Systems Technology Institute, 2020 – 2022</p>
+              <p>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKlKOgFVPOr0-cbz6pYrA9WrRO3oH2bQdN3A&s" alt="STI Logo" class="edu-logo">
+                <b><a href="https://www.sti.edu/programs-details.asp?p=Mg==" target="_blank">BS Computer Science</a></b><br>STI College Ortigas-Cainta, 2022 – Present
+              </p>
+              <p>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKlKOgFVPOr0-cbz6pYrA9WrRO3oH2bQdN3A&s" alt="STI Logo" class="edu-logo">
+                <b><a href="https://www.sti.edu/programs-shs-details.asp?p=OA==" target="_blank">IT in Mobile App and Web Development</a></b><br>STI College Ortigas-Cainta, 2020 – 2022
+              </p>
             </div>
           </section>
 
@@ -204,7 +211,7 @@
               </div>
               <h3>June 8, 2024</h3>
               <p>A personal archive of Roblox games I enjoy, built entirely in VS Code.</p>
-              <div class="article-buttons"><a href="#personal-projects">↑ Back to Top</a></div>
+              <!--<div class="article-buttons"><a href="#personal-projects">↑ Back to Top</a></div>-->
             </div>
           </section>
 
@@ -238,12 +245,13 @@
             <div class="content-card">
               <h2>Files and Computers Animation</h2>
               <div class="thumbnail-container">
-                <a href="https://scratch.mit.edu/projects/984138882/" target="_blank">
-                  <img src="https://cdn.discordapp.com/attachments/1250423146776100974/1254995160937271317/scratch-animation-thumbnail.jpg" alt="Scratch Animation">
-                </a>
+                <iframe src="https://scratch.mit.edu/projects/984138882/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
               </div>
               <h3>BSCS401 CSA Prelim Performance Task | March 17, 2024</h3>
               <p>A group animation made in Scratch for Computer Systems Architecture, exploring a topic from the prelim curriculum. Applied understanding of the subject through creative animation and storytelling.</p>
+              <a href="https://scratch.mit.edu/projects/984138882/" target="_blank" class="visit-link">
+                <i class="fas fa-external-link-alt"></i> View on Scratch
+              </a>
               <div class="article-buttons"><a href="#school-projects">↑ Back to Top</a></div>
             </div>
 
@@ -291,6 +299,10 @@
           <section id="feedback" class="content-section">
             <h1 class="section-title">Leave a Message</h1>
             <div class="content-card">
+              <div class="version-notice">
+                <i class="fas fa-archive"></i>
+                <p>This page is an archived version of the 2024 portfolio, revised in 2026. The contact form is disabled.</p>
+              </div>
               <div class="form-container">
                 <input type="email" placeholder="Email" class="form-input" required>
                 <input type="tel" placeholder="Phone number" class="form-input" required>
@@ -306,9 +318,15 @@
 
   <footer class="site-footer">
     <div class="footer-container">
-      <p>&copy; 2024 Annilei Inokh C. Santos. All rights reserved.</p>
+      <div class="version-bar">
+        <span>Viewing archived version: <b>2024</b></span>
+        <p>&copy; 2024 Annilei Inokh C. Santos. All rights reserved.</p>
+        <span>Revised <b>2026</b></span>
+      </div>
     </div>
   </footer>
+
+
 
   <script src="/previous-versions/2024/assets/script-2024.js"></script>
 </body>

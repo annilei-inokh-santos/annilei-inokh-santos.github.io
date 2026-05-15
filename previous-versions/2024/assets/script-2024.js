@@ -100,14 +100,10 @@ class GlobalClickEffect {
         </div>
       </div>
       <div class="snackbar-item" data-group="message">
-        <button class="snackbar-btn">
+        <a href="#feedback" class="snackbar-btn">
           <i class="fas fa-envelope"></i>
           <span>Message</span>
-        </button>
-        <div class="snackbar-dropdown">
-          <a href="#feedback"><i class="fas fa-comment"></i> Contact Form</a>
-          <a href="#socials"><i class="fas fa-share-alt"></i> Socials</a>
-        </div>
+        </a>
       </div>
     `;
     document.body.appendChild(snackbar);
