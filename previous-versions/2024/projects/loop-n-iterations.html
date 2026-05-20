@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Loop and Iteration Conditions</title>
+  <style>
+    @font-face {
+      font-family: 'Press Start 2P';
+      src: url('https://fonts.gstatic.com/s/pressstart2p/v8/e3t4euO8EMCYYnI9p0kkKCENTvIf-8HUdYQ-9VewZxD5wDbwDN4tUw.woff2') format('woff2');
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden; /* No scrollbars ever */
+    }
+
+    body {
+      background-color: #000000;
+      color: #FFFFFF;
+      font-family: 'Press Start 2P', Consolas, monospace;
+      font-weight: normal;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+    }
+
+    /* Centered wrapper — fills viewport, no overflow */
+    .centered-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      gap: clamp(80px, 22vh, 260px);
+      padding: clamp(16px, 4vw, 40px);
+    }
+
+    /* Title scales with viewport so it always fits */
+    .massive-title {
+      text-align: center;
+      font-family: 'Press Start 2P', Consolas, monospace;
+      font-size: clamp(14px, 4vw, 32px);
+      font-weight: normal;
+      color: #FFFFFF;
+      text-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+      letter-spacing: 2px;
+      line-height: 1.4;
+      white-space: nowrap;
+    }
+
+    /* If title is too wide, allow wrapping at smaller sizes */
+    @media (max-width: 520px) {
+      .massive-title {
+        white-space: normal;
+        font-size: clamp(12px, 3.5vw, 20px);
+      }
+    }
+
+    .container {
+      text-align: center;
+      background-color: #000000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .subtitle {
+      font-family: 'Press Start 2P', Consolas, monospace;
+      font-size: clamp(9px, 1.4vw, 14px);
+      color: #CCCCCC;
+      margin-bottom: clamp(16px, 3vh, 30px);
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
+      letter-spacing: 1px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0;
+    }
+
+    button {
+      background-color: #000000;
+      color: #FFFFFF;
+      padding: clamp(10px, 1.8vh, 15px) clamp(16px, 2.5vw, 30px);
+      margin: 8px;
+      font-size: clamp(12px, 1.6vw, 16px);
+      font-family: 'Press Start 2P', Consolas, monospace;
+      font-weight: normal;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+    }
+
+    button span {
+      position: relative;
+      z-index: 1;
+    }
+
+    button::after {
+      content: '♥';
+      font-family: 'Arial Unicode MS', sans-serif;
+      font-size: 24px;
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      color: #ff4d4d;
+      transform: translateY(-50%);
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    button:hover::after {
+      opacity: 1;
+    }
+
+    /* ===== DRAMATIC SMOOTH FADE-IN OVERLAY ===== */
+    .fade-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000000;
+      z-index: 9999;
+      opacity: 1;
+      transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+    }
+  </style>
+  <script>
+    function checkAge() {
+      var age;
+      while (true) {
+        age = prompt("Enter your age (a positive integer):");
+        if (age !== null && age.trim() !== "" && !isNaN(age) && Number.isInteger(Number(age)) && Number(age) > 0) {
+          age = parseInt(age);
+          break;
+        } else {
+          alert("Please enter a valid positive integer greater than zero.");
+        }
+      }
+      if (age >= 25) {
+        alert("You are 25 years old and above.");
+      } else {
+        alert("You are under 25 years old.");
+      }
+    }
+
+    function checkNumber() {
+      var number;
+      while (true) {
+        number = prompt("Please enter a number less than 100 (an integer):");
+        if (number !== null && number.trim() !== "" && !isNaN(number) && Number.isInteger(Number(number))) {
+          number = parseInt(number);
+          break;
+        } else {
+          alert("Please enter a valid integer.");
+        }
+      }
+      if (number < 100) {
+        alert("You entered a number less than 100.");
+      } else {
+        alert("The number you entered is 100 or greater.");
+      }
+    }
+
+    window.addEventListener('load', function() {
+      const overlay = document.createElement('div');
+      overlay.className = 'fade-overlay';
+      document.body.appendChild(overlay);
+      overlay.offsetHeight;
+      requestAnimationFrame(function() {
+        overlay.style.opacity = '0';
+      });
+      const removeOverlay = function() {
+        if (overlay && overlay.parentNode) {
+          overlay.parentNode.removeChild(overlay);
+        }
+      };
+      overlay.addEventListener('transitionend', removeOverlay, { once: true });
+      setTimeout(removeOverlay, 2000);
+    });
+  </script>
+</head>
+<body>
+
+  <div class="centered-wrapper">
+    <div class="massive-title">Loop and Iteration Conditions</div>
+
+    <div class="container">
+      <div class="subtitle">Select which one to check.</div>
+      <div class="buttons">
+        <button onclick="checkAge()"><span>Check Age</span></button>
+        <button onclick="checkNumber()"><span>Check Number</span></button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
