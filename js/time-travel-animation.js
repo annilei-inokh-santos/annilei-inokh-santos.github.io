@@ -48,7 +48,6 @@ class TimeTravelAnimation {
     
     if (this.overlay) {
       if (!isDark) {
-        // Light mode warp effects only - time circuit stays dark
         this.overlay.classList.add('light-theme');
         this.overlay.classList.remove('dark-theme');
       } else {
@@ -82,7 +81,6 @@ class TimeTravelAnimation {
       </div>
       <div class="time-circuit-animation" id="timeCircuitAnimation">
         <div class="time-circuit-wrapper">
-          <!-- Destination Time -->
           <div class="circuit-time-container destination">
             <div class="circuit-header">DESTINATION TIME</div>
             <div class="circuit-time-wrapper">
@@ -106,8 +104,6 @@ class TimeTravelAnimation {
               </div>
             </div>
           </div>
-          
-          <!-- Present Time -->
           <div class="circuit-time-container present">
             <div class="circuit-header">PRESENT TIME</div>
             <div class="circuit-time-wrapper">
@@ -131,8 +127,6 @@ class TimeTravelAnimation {
               </div>
             </div>
           </div>
-          
-          <!-- Last Departed -->
           <div class="circuit-time-container last">
             <div class="circuit-header">LAST TIME DEPARTED</div>
             <div class="circuit-time-wrapper">
@@ -157,8 +151,6 @@ class TimeTravelAnimation {
             </div>
           </div>
         </div>
-        
-        <!-- Status Row -->
         <div class="circuit-status-row">
           <div class="circuit-status-item">FLUX CAPACITOR: <span id="animFluxStatus">INITIALIZING</span></div>
           <div class="circuit-status-item">1.21 GW: <span id="animGWStatus">0%</span></div>
@@ -179,7 +171,6 @@ class TimeTravelAnimation {
     const circuitEl = document.getElementById('timeCircuitAnimation');
     if (!circuitEl) return;
     
-    // Update destination time
     const destMonthEl = document.getElementById('animDestMonth');
     const destDayEl = document.getElementById('animDestDay');
     const destYearEl = document.getElementById('animDestYear');
@@ -187,7 +178,6 @@ class TimeTravelAnimation {
     if (destDayEl) destDayEl.textContent = destination.day;
     if (destYearEl) destYearEl.textContent = destination.year;
     
-    // Update present time
     const presentMonthEl = document.getElementById('animPresentMonth');
     const presentDayEl = document.getElementById('animPresentDay');
     const presentYearEl = document.getElementById('animPresentYear');
@@ -197,7 +187,6 @@ class TimeTravelAnimation {
       presentYearEl.textContent = currentPresent.year;
     }
     
-    // Update last departed
     const lastMonthEl = document.getElementById('animLastMonth');
     const lastDayEl = document.getElementById('animLastDay');
     const lastYearEl = document.getElementById('animLastYear');
@@ -207,7 +196,6 @@ class TimeTravelAnimation {
       lastYearEl.textContent = currentLast.year;
     }
     
-    // Fast animation - 0.5 seconds
     circuitEl.style.display = 'block';
     circuitEl.style.animation = 'circuitMorphIn 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards';
   }
@@ -278,7 +266,6 @@ class TimeTravelAnimation {
     const width = window.innerWidth;
     const height = window.innerHeight;
     
-    // Horizontal left lines
     for (let i = 0; i < 30; i++) {
       const line = document.createElement('div');
       line.className = 'warp-line-left';
@@ -293,7 +280,6 @@ class TimeTravelAnimation {
       container.appendChild(line);
     }
     
-    // Horizontal right lines
     for (let i = 0; i < 30; i++) {
       const line = document.createElement('div');
       line.className = 'warp-line-right';
@@ -308,7 +294,6 @@ class TimeTravelAnimation {
       container.appendChild(line);
     }
     
-    // Vertical top lines
     for (let i = 0; i < 25; i++) {
       const line = document.createElement('div');
       line.className = 'warp-line-top';
@@ -323,7 +308,6 @@ class TimeTravelAnimation {
       container.appendChild(line);
     }
     
-    // Vertical bottom lines
     for (let i = 0; i < 25; i++) {
       const line = document.createElement('div');
       line.className = 'warp-line-bottom';
@@ -338,7 +322,6 @@ class TimeTravelAnimation {
       container.appendChild(line);
     }
     
-    // Diagonal lines
     const diagonalDirections = ['diag-tl', 'diag-tr', 'diag-bl', 'diag-br'];
     for (let i = 0; i < 60; i++) {
       const direction = diagonalDirections[Math.floor(Math.random() * 4)];

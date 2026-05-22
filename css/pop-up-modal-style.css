@@ -5,7 +5,7 @@
 
 
 /* ============================================================
-   20. MODAL / POPUP STYLES - FIXED FOR MOBILE
+   1. MODAL / POPUP STYLES - FIXED FOR MOBILE
    ============================================================ */
 .modal {
   display: none;
@@ -131,11 +131,19 @@
   .bottom-rectangle {
     padding: 10px 6px;
   }
+  
+  .close-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 2rem;
+    top: 15px;
+    right: 20px;
+  }
 }
 
 
 /* ============================================================
-   21. CAROUSEL STYLES (SINGLE CARD DISPLAY) - HIDDEN SCROLLBAR
+   2. CAROUSEL STYLES (SINGLE CARD DISPLAY) - HIDDEN SCROLLBAR
    ============================================================ */
 .carousel-wrapper {
   padding: 5px 0;
@@ -469,7 +477,7 @@
 
 
 /* ============================================================
-   22. BOTTOM RECTANGLE STYLES (TIME CIRCUIT)
+   3. BOTTOM RECTANGLE STYLES (TIME CIRCUIT)
    ============================================================ */
 .rectangle-content {
   display: flex;
@@ -867,14 +875,6 @@
 }
 
 @media (max-width: 480px) {
-  .close-btn {
-    width: 40px;
-    height: 40px;
-    font-size: 2rem;
-    top: 15px;
-    right: 20px;
-  }
-  
   .bottom-rectangle {
     width: 90%;
     max-width: 350px;

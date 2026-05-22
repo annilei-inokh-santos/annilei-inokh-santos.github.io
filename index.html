@@ -5,19 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Annilei Inokh C. Santos</title>
 
-  <!-- External Stylesheet -->
+  <!-- External Stylesheets -->
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/orb.css">
+  <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/pop-up-modal-style.css">
-  <!-- Time Travel Animation Styles -->
   <link rel="stylesheet" href="css/time-travel-animation.css">
 
   <!-- Font Awesome 6 (Free) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- Lordicon Web Component (keep for existing social buttons) -->
-  <script src="https://cdn.lordicon.com/lordicon.js"></script>
-
-<!-- Experience Logo Styles -->
+  <!-- Experience Logo Styles -->
   <style>
     .exp-item {
       display: flex;
@@ -114,7 +112,6 @@
     <div class="hero">
       <div class="eyebrow">
         <span>frontend developer · visual designer</span>
-        <div class="status-pill-nav"><div class="sdot-nav"></div>busy</div>
       </div>
       <h1>Technical by curriculum.<br><em>Creative by nature.</em></h1>
 
@@ -178,7 +175,7 @@
           <div class="exp-body">
             <div class="exp-top">
               <div class="exp-role">Academy Delegate: Cloud Elite</div>
-              <div class="proj-tag t-b">Apr 2026 – Present</div>
+              <div class="exp-date-tag exp-date-blue">Apr 2026 – Present</div>
             </div>
             <div class="exp-place"><a href="https://www.accenture.com/ph-en">Accenture · Mandaluyong City</a></div>
             <div class="exp-desc">An Academy Delegate in the Cloud Elite program, focusing on cloud technologies and enterprise solutions.</div>
@@ -197,7 +194,7 @@
           <div class="exp-body">
             <div class="exp-top">
               <div class="exp-role">Microsoft AppDev OJT Trainee</div>
-              <div class="proj-tag t-v">Feb 2026 – Apr 2026</div>
+              <div class="exp-date-tag exp-date-violet">Feb 2026 – Apr 2026</div>
             </div>
             <div class="exp-place"><a href="https://www.accenture.com/ph-en">Accenture · Mandaluyong City</a></div>
             <div class="exp-desc">On-the-job trainee specializing in Microsoft application development and enterprise software solutions.</div>
@@ -216,7 +213,7 @@
           <div class="exp-body">
             <div class="exp-top">
               <div class="exp-role">Volunteer Graphics Designer</div>
-              <div class="proj-tag t-b">Nov 2025 – Mar 2026</div>
+              <div class="exp-date-tag exp-date-blue">Nov 2025 – Mar 2026</div>
             </div>
             <div class="exp-place"><a href="https://www.facebook.com/arduinodayph">Arduino Day Philippines (ADPH)</a></div>
             <div class="exp-desc">Delivered 30+ promotional materials including social media pubmats and merchandise designs, while collaborating with the Creatives team on event planning and quality control.</div>
@@ -235,7 +232,7 @@
           <div class="exp-body">
             <div class="exp-top">
               <div class="exp-role">Creatives Officer</div>
-              <div class="proj-tag t-v">Aug 2024 – Nov 2024</div>
+              <div class="exp-date-tag exp-date-violet">Aug 2024 – Nov 2024</div>
             </div>
             <div class="exp-place"><a href="https://www.facebook.com/stiorca.alpha">Alliance of Leading Programmers through Heuristic Adaptation (ALPHA)</a></div>
             <div class="exp-desc">Produced 15+ club promotional materials, managed design requests, and assisted with event logistics as a Creatives Officer.</div>
@@ -246,53 +243,131 @@
       <!-- Projects -->
       <div class="col-r">
         <div class="sec-label" id="proj">projects</div>
-
+        
+        <!-- Project 1: Blue theme -->
         <div class="proj-item">
           <div class="proj-top">
             <div class="proj-name">project alpha</div>
-            <div class="proj-tag t-b">2026 · _jsx_</div>
+            <div class="proj-tags">
+              <span class="proj-tag t-date-blue">2026</span>
+              <span class="proj-tag t-tech-blue">React · TypeScript</span>
+            </div>
           </div>
           <div class="proj-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+          <div class="proj-links">
+            <a href="#" class="proj-link t-blue-link">Live Demo</a>
+            <span class="link-separator">|</span>
+            <a href="#" class="proj-link t-blue-link">Wireframe</a>
+            <span class="link-separator">|</span>
+            <a href="#" class="proj-link t-blue-link">View Page</a>
+            <span class="link-separator">|</span>
+            <a href="#" class="proj-link t-blue-link">Watch Video</a>
+          </div>
         </div>
 
+        <!-- Project 2: Violet theme -->
         <div class="proj-item">
           <div class="proj-top">
             <div class="proj-name">project beta</div>
-            <div class="proj-tag t-v">2026 · _csx_</div>
+            <div class="proj-tags">
+              <span class="proj-tag t-date-violet">2025</span>
+              <span class="proj-tag t-tech-violet">Python · Django</span>
+            </div>
           </div>
           <div class="proj-desc">Ut enim ad minim veniam, quis nostrud exercitation.</div>
+          <div class="proj-links">
+            <a href="#" class="proj-link t-violet-link">Live Demo</a>
+            <span class="link-separator">|</span>
+            <a href="#" class="proj-link t-violet-link">Wireframe</a>
+            <span class="link-separator">|</span>
+            <a href="#" class="proj-link t-violet-link">View Page</a>
+            <span class="link-separator">|</span>
+            <a href="#" class="proj-link t-violet-link">Watch Video</a>
+          </div>
         </div>
 
+        <!-- Project 3: Blue theme -->
         <div class="proj-item">
           <div class="proj-top">
             <div class="proj-name">project gamma</div>
-            <div class="proj-tag t-b">2026 · _htx_</div>
+            <div class="proj-tags">
+              <span class="proj-tag t-date-blue">2024</span>
+              <span class="proj-tag t-tech-blue">Vue.js · Node.js</span>
+            </div>
           </div>
           <div class="proj-desc">Duis aute irure dolor in reprehenderit.</div>
+          <div class="proj-links">
+            <a href="#" class="proj-link t-blue-link">Live Demo</a>
+            <span class="link-separator">|</span>
+            <a href="#" class="proj-link t-blue-link">Wireframe</a>
+            <span class="link-separator">|</span>
+            <a href="#" class="proj-link t-blue-link">View Page</a>
+            <span class="link-separator">|</span>
+            <a href="#" class="proj-link t-blue-link">Watch Video</a>
+          </div>
         </div>
 
+        <!-- Project 4: Violet theme -->
         <div class="proj-item">
           <div class="proj-top">
             <div class="proj-name">project delta</div>
-            <div class="proj-tag t-v">2026 · _jsx_</div>
+            <div class="proj-tags">
+              <span class="proj-tag t-date-violet">2024</span>
+              <span class="proj-tag t-tech-violet">Flutter · Firebase</span>
+            </div>
           </div>
           <div class="proj-desc">Excepteur sint occaecat cupidatat non proident.</div>
+          <div class="proj-links">
+            <a href="#" class="proj-link t-violet-link">Live Demo</a>
+            <span class="link-separator">|</span>
+            <a href="#" class="proj-link t-violet-link">Wireframe</a>
+            <span class="link-separator">|</span>
+            <a href="#" class="proj-link t-violet-link">View Page</a>
+            <span class="link-separator">|</span>
+            <a href="#" class="proj-link t-violet-link">Watch Video</a>
+          </div>
         </div>
 
+        <!-- Project 5: Blue theme -->
         <div class="proj-item">
           <div class="proj-top">
             <div class="proj-name">project epsilon</div>
-            <div class="proj-tag t-b">2026 · _jsx_</div>
+            <div class="proj-tags">
+              <span class="proj-tag t-date-blue">2023</span>
+              <span class="proj-tag t-tech-blue">Tailwind · Alpine.js</span>
+            </div>
           </div>
           <div class="proj-desc">Sed ut perspiciatis unde omnis iste natus error.</div>
+          <div class="proj-links">
+            <a href="#" class="proj-link t-blue-link">Live Demo</a>
+            <span class="link-separator">|</span>
+            <a href="#" class="proj-link t-blue-link">Wireframe</a>
+            <span class="link-separator">|</span>
+            <a href="#" class="proj-link t-blue-link">View Page</a>
+            <span class="link-separator">|</span>
+            <a href="#" class="proj-link t-blue-link">Watch Video</a>
+          </div>
         </div>
 
+        <!-- Project 6: Violet theme -->
         <div class="proj-item">
           <div class="proj-top">
             <div class="proj-name">project legacy</div>
-            <div class="proj-tag t-v">2020 · _legacy_</div>
+            <div class="proj-tags">
+              <span class="proj-tag t-date-violet">2020</span>
+              <span class="proj-tag t-tech-violet">jQuery · PHP</span>
+            </div>
           </div>
           <div class="proj-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+          <div class="proj-links">
+            <a href="#" class="proj-link t-violet-link">Live Demo</a>
+            <span class="link-separator">|</span>
+            <a href="#" class="proj-link t-violet-link">Wireframe</a>
+            <span class="link-separator">|</span>
+            <a href="#" class="proj-link t-violet-link">View Page</a>
+            <span class="link-separator">|</span>
+            <a href="#" class="proj-link t-violet-link">Watch Video</a>
+          </div>
         </div>
       </div>
 
@@ -380,12 +455,6 @@
               <img src="/assets/portfolio-versions/2024-thumbnail.png" alt="Portfolio Version 4" class="card-image">
               <span class="version-label">2024</span>
             </div>
-            <!--
-            <div class="carousel-card" data-version="v" data-number="5" data-created-month="XXX" data-created-day="XX" data-created-year="XXXX">
-              <img src="/assets/portfolio-versions/year-thumbnail.png" alt="Portfolio Version 5" class="card-image">
-              <span class="version-label">v</span>
-            </div>
-            -->
           </div>
         </div>
         <button class="carousel-arrow right-arrow" aria-label="Next portfolio">&#10095;</button>
@@ -474,10 +543,14 @@
   </div>
 </div>
 
-<!-- External Script — loaded at end of body for DOM availability -->
-<!-- Time Travel Animation Script -->
+<!-- External Scripts — loaded at end of body for DOM availability -->
+<script src="js/theme.js"></script>
+<script src="js/orb.js"></script>
+<script src="js/scroll.js"></script>
+<script src="js/modal.js"></script>
+<script src="js/sparkle.js"></script>
+<script src="js/gif-button.js"></script>
 <script src="js/time-travel-animation.js"></script>
-<!-- Main Script -->
 <script src="js/script.js"></script>
 
 </body>

@@ -1,0 +1,490 @@
+/* ============================================================
+   COMPONENTS.CSS — Nav, Toggle Btn, Social Buttons, GIF Button, CTA Portfolio Btn
+   ============================================================ */
+
+/* ============================================================
+   1. NAVIGATION
+   ============================================================ */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 36px;
+  border-bottom: 0.5px solid var(--border);
+  position: relative;
+  z-index: 3;
+  background: transparent;
+  backdrop-filter: blur(2px);
+  gap: 16px;
+}
+
+.logo {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  background: linear-gradient(
+    90deg,
+    var(--txt3) 0%,
+    var(--txt3) 30%,
+    var(--blue) 50%,
+    var(--txt3) 70%,
+    var(--txt3) 100%
+  );
+  background-size: 250% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: shimmerMove 8s ease-in-out infinite, pulseGlow 4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.nav-r { 
+  display: flex; 
+  gap: 24px; 
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  color: var(--txt2);
+  text-decoration: none;
+  font-weight: 400;
+  cursor: pointer;
+  transition: color 0.2s;
+  white-space: nowrap;
+  padding: 6px 0;
+}
+
+.nav-link:hover {
+  color: var(--txt);
+  text-decoration: none;
+}
+
+.nav-link:hover i {
+  transform: scale(1.1);
+}
+
+.nav-link i {
+  transition: transform 0.2s ease;
+  font-size: 1rem;
+}
+
+.nav-text {
+  font-size: 0.875rem;
+}
+
+/* Mobile-only icon - hidden by default */
+.nav-icon-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  nav {
+    padding: 14px 20px;
+  }
+  
+  .logo {
+    font-size: 1rem;
+  }
+  
+  .nav-r {
+    gap: 16px;
+  }
+  
+  /* On mobile, hide text, show icons */
+  .nav-text {
+    display: none;
+  }
+  
+  .nav-icon-mobile {
+    display: block;
+    font-size: 1.125rem;
+  }
+  
+  .nav-link {
+    padding: 6px;
+    gap: 0;
+  }
+  
+  .nav-link i {
+    font-size: 1.125rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-text {
+    display: none;
+  }
+  
+  .nav-icon-mobile {
+    display: block;
+  }
+  
+  .nav-link i {
+    font-size: 1rem;
+  }
+  
+  .nav-r {
+    gap: 10px;
+  }
+}
+
+
+/* ============================================================
+   2. TOGGLE BUTTON
+   ============================================================ */
+.toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px 6px 12px;
+  border-radius: 40px;
+  border: 2.5px solid var(--border);
+  background: transparent;
+  color: var(--txt2);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 0.06em;
+}
+
+.toggle-btn:hover {
+  color: var(--blue);
+  background: var(--blue-bg);
+  border-color: var(--blue-bd);
+}
+
+.t-icon {
+  font-size: 1rem;
+  line-height: 1;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-style: normal;
+}
+
+.toggle-btn:hover .t-icon {
+  transform: rotate(25deg);
+}
+
+#modeTxt {
+  font-size: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .toggle-btn {
+    padding: 4px 10px;
+  }
+  
+  .t-icon {
+    font-size: 0.875rem;
+  }
+  
+  #modeTxt {
+    font-size: 0.625rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .toggle-btn {
+    padding: 4px 8px;
+  }
+  
+  .t-icon {
+    font-size: 0.75rem;
+  }
+  
+  #modeTxt {
+    font-size: 0.5rem;
+  }
+}
+
+
+/* ============================================================
+   3. CTA PORTFOLIO BUTTON
+   ============================================================ */
+.cta-portfolio {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 28px;
+  border-radius: 0;
+  border: 2px dashed var(--violet);
+  background: transparent;
+  color: var(--violet);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  position: relative;
+  backdrop-filter: blur(2px);
+}
+.cta-portfolio:hover {
+  border: 2px solid var(--violet);
+  background: var(--violet-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 0 12px rgba(124,58,237,0.3);
+}
+.cta-portfolio .portfolio-icon {
+  width: 32px;
+  height: 32px;
+  transition: transform 0.3s ease;
+  stroke: var(--violet);
+}
+
+@media (max-width: 600px) {
+  .cta-portfolio {
+    padding: 8px 16px;
+    font-size: 0.6875rem;
+  }
+  
+  .cta-portfolio .portfolio-icon {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta-portfolio {
+    padding: 8px 18px;
+    font-size: 0.6875rem;
+  }
+}
+
+
+/* ============================================================
+   4. GIF INTERACTIVE BUTTON
+   ============================================================ */
+.gif-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.gif-button .gif-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+  pointer-events: none;
+  transition: transform 0.3s ease;
+}
+
+.gif-button:hover .gif-img {
+  transform: scale(1.08);
+}
+
+.gif-button .fallback-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.5rem;
+  pointer-events: none;
+  display: none;
+  transition: transform 0.3s ease;
+  color: var(--blue);
+}
+
+.gif-button.image-failed .gif-img {
+  display: none;
+}
+
+.gif-button.image-failed .fallback-icon {
+  display: block;
+}
+
+.gif-button.image-failed:hover .fallback-icon {
+  transform: translate(-50%, -50%) scale(1.15);
+}
+
+@media (max-width: 600px) {
+  .gif-button {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .gif-button .fallback-icon {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .gif-button {
+    width: 60px;
+    height: 60px;
+  }
+
+  .gif-button .fallback-icon {
+    font-size: 1.75rem;
+  }
+}
+
+
+/* ============================================================
+   5. SOCIAL BUTTONS (Font Awesome)
+   ============================================================ */
+.social-links {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg2);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  font-size: 1.35rem;
+}
+
+.social-btn i {
+  transition: transform 0.3s ease;
+}
+
+.social-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  text-decoration: none;
+}
+
+.social-btn:hover i {
+  transform: scale(1.1);
+}
+
+.social-btn:active { 
+  transform: translateY(0); 
+}
+
+/* Dark Mode Social Buttons */
+.p.dark .social-btn.linkedin { 
+  background: rgba(212,200,255,0.1); 
+  color: #d4c8ff; 
+  text-decoration: none; 
+}
+.p.dark .social-btn.linkedin:hover { 
+  background: rgba(212,200,255,0.25); 
+  color: #d4c8ff; 
+  text-decoration: none; 
+}
+.p.dark .social-btn.facebook { 
+  background: rgba(173,210,255,0.1); 
+  color: #add2ff; 
+  text-decoration: none; 
+}
+.p.dark .social-btn.facebook:hover { 
+  background: rgba(173,210,255,0.25); 
+  color: #add2ff; 
+  text-decoration: none; 
+}
+.p.dark .social-btn.github { 
+  background: rgba(184,212,255,0.1); 
+  color: #b8d4ff; 
+  text-decoration: none; 
+}
+.p.dark .social-btn.github:hover { 
+  background: rgba(184,212,255,0.25); 
+  color: #b8d4ff; 
+  text-decoration: none; 
+}
+
+/* Light Mode Social Buttons */
+.p.light .social-btn.linkedin { 
+  background: rgba(124,58,237,0.08); 
+  color: #7c3aed; 
+  text-decoration: none; 
+  border-color: rgba(124,58,237,0.2);
+}
+.p.light .social-btn.linkedin:hover { 
+  background: rgba(124,58,237,0.18); 
+  color: #7c3aed; 
+  text-decoration: none; 
+}
+.p.light .social-btn.facebook { 
+  background: rgba(24,119,242,0.08); 
+  color: #1877f2; 
+  text-decoration: none; 
+  border-color: rgba(24,119,242,0.2);
+}
+.p.light .social-btn.facebook:hover { 
+  background: rgba(24,119,242,0.18); 
+  color: #1877f2; 
+  text-decoration: none; 
+}
+.p.light .social-btn.github { 
+  background: rgba(74,111,165,0.08); 
+  color: #4a6fa5; 
+  text-decoration: none; 
+  border-color: rgba(74,111,165,0.2);
+}
+.p.light .social-btn.github:hover { 
+  background: rgba(74,111,165,0.18); 
+  color: #4a6fa5; 
+  text-decoration: none; 
+}
+
+@media (max-width: 768px) {
+  .social-links {
+    gap: 12px;
+  }
+  
+  .social-btn {
+    width: 42px;
+    height: 42px;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .social-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+  }
+  
+  .social-links {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .social-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+  }
+  
+  .social-links {
+    gap: 8px;
+  }
+}

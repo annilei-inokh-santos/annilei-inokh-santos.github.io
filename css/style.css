@@ -1,7 +1,6 @@
 /* ============================================================
-   STYLE.CSS — Annilei Inokh C. Santos Portfolio (Main & Priority)
+   STYLE.CSS — Annilei Inokh C. Santos Portfolio (Core Design, Themes, Layout)
    ============================================================ */
-
 
 /* ============================================================
    1. IMPORTS
@@ -166,48 +165,7 @@ a:hover {
 
 
 /* ============================================================
-   6. COMPONENTS — Orbs / Background
-   ============================================================ */
-.orb-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
-
-.orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(60px);
-  opacity: 0.4;
-  transition: transform 0.3s ease-out, opacity 0.2s ease, left 3s linear, top 3s linear;
-  pointer-events: none;
-  will-change: transform;
-}
-.p.dark .orb  { opacity: 0.25; }
-.p.light .orb { opacity: 0.15; }
-
-.interactive-orb {
-  position: fixed;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  filter: blur(80px);
-  pointer-events: none;
-  transition: transform 0.05s linear;
-  z-index: 0;
-  opacity: 0.5;
-}
-.p.dark .interactive-orb  { opacity: 0.35; }
-.p.light .interactive-orb { opacity: 0.2; }
-
-
-/* ============================================================
-   7. COMPONENTS — Content Wrapper
+   6. COMPONENTS — Content Wrapper
    ============================================================ */
 .content-wrapper {
   position: relative;
@@ -220,154 +178,7 @@ a:hover {
 
 
 /* ============================================================
-   8. COMPONENTS — Navigation
-   ============================================================ */
-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 18px 36px;
-  border-bottom: 0.5px solid var(--border);
-  position: relative;
-  z-index: 3;
-  background: transparent;
-  backdrop-filter: blur(2px);
-  gap: 16px;
-}
-
-.logo {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.125rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  background: linear-gradient(
-    90deg,
-    var(--txt3) 0%,
-    var(--txt3) 30%,
-    var(--blue) 50%,
-    var(--txt3) 70%,
-    var(--txt3) 100%
-  );
-  background-size: 250% 100%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  animation: shimmerMove 8s ease-in-out infinite, pulseGlow 4s ease-in-out infinite;
-  flex-shrink: 0;
-}
-
-.nav-r { 
-  display: flex; 
-  gap: 24px; 
-  align-items: center;
-  flex-shrink: 0;
-}
-
-.nav-link {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.875rem;
-  color: var(--txt2);
-  text-decoration: none;
-  font-weight: 400;
-  cursor: pointer;
-  transition: color 0.2s;
-  white-space: nowrap;
-  padding: 6px 0;
-}
-
-.nav-link:hover {
-  color: var(--txt);
-}
-
-.nav-link:hover lord-icon {
-  transform: scale(1.1);
-}
-
-.nav-link lord-icon {
-  transition: transform 0.2s ease;
-  width: 22px;
-  height: 22px;
-}
-
-.nav-text {
-  font-size: 0.875rem;
-}
-
-/* Mobile-only icon - hidden by default */
-.nav-icon-mobile {
-  display: none;
-}
-
-/* Status Pill in Eyebrow */
-.status-pill-nav {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-family: 'DM Mono', monospace;
-  font-size: 0.5625rem;
-  padding: 3px 10px;
-  border-radius: 20px;
-  border: 0.5px solid var(--blue-bd);
-  color: var(--blue);
-  letter-spacing: 0.1em;
-  background: var(--bg2);
-  margin-left: 12px;
-}
-
-.sdot-nav {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--blue);
-  animation: bl 2s infinite;
-}
-
-
-/* ============================================================
-   9. COMPONENTS — Toggle Button
-   ============================================================ */
-.toggle-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 14px 6px 12px;
-  border-radius: 40px;
-  border: 2.5px solid var(--border);
-  background: transparent;
-  color: var(--txt2);
-  font-family: 'DM Mono', monospace;
-  font-size: 0.75rem;
-  font-weight: 400;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  letter-spacing: 0.06em;
-}
-
-.toggle-btn:hover {
-  color: var(--blue);
-  background: var(--blue-bg);
-  border-color: var(--blue-bd);
-}
-
-.t-icon {
-  font-size: 1rem;
-  line-height: 1;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.toggle-btn:hover .t-icon {
-  transform: rotate(25deg);
-}
-
-#modeTxt {
-  font-size: 0.75rem;
-}
-
-
-/* ============================================================
-   10. SECTIONS — Hero
+   7. SECTIONS — Hero
    ============================================================ */
 .hero {
   padding: 56px 36px 0;
@@ -451,163 +262,7 @@ h1 em {
 
 
 /* ============================================================
-   11. COMPONENTS — CTA Portfolio Button
-   ============================================================ */
-.cta-portfolio {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 12px 28px;
-  border-radius: 0;
-  border: 2px dashed var(--violet);
-  background: transparent;
-  color: var(--violet);
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  letter-spacing: 0.5px;
-  position: relative;
-  backdrop-filter: blur(2px);
-}
-.cta-portfolio:hover {
-  border: 2px solid var(--violet);
-  background: var(--violet-bg);
-  transform: translateY(-2px);
-  box-shadow: 0 0 12px rgba(124,58,237,0.3);
-}
-.cta-portfolio .portfolio-icon {
-  width: 32px;
-  height: 32px;
-  transition: transform 0.3s ease;
-  stroke: var(--violet);
-}
-
-
-/* ============================================================
-   12. COMPONENTS — GIF Interactive Button
-   ============================================================ */
-.gif-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  border: none;
-  background: none;
-  padding: 0;
-  margin: 0;
-  width: 80px;
-  height: 80px;
-  border-radius: 12px;
-  position: relative;
-  overflow: hidden;
-}
-
-.gif-button .gif-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 12px;
-  display: block;
-  pointer-events: none;
-  transition: transform 0.3s ease;
-}
-
-.gif-button:hover .gif-img {
-  transform: scale(1.08);
-}
-
-.gif-button .fallback-icon {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 60px;
-  height: 60px;
-  pointer-events: none;
-  display: none;
-  transition: transform 0.3s ease;
-}
-
-.gif-button.image-failed .gif-img {
-  display: none;
-}
-
-.gif-button.image-failed .fallback-icon {
-  display: block;
-}
-
-.gif-button.image-failed:hover .fallback-icon {
-  transform: translate(-50%, -50%) scale(1.15);
-}
-
-.p.dark .gif-button .fallback-icon {
-  color: var(--blue);
-}
-
-.p.light .gif-button .fallback-icon {
-  color: #5a3e7a;
-}
-
-
-/* ============================================================
-   13. COMPONENTS — Social Buttons
-   ============================================================ */
-.social-links {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.social-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(255,255,255,0.03);
-  backdrop-filter: blur(8px);
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-.social-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-.social-btn:active { transform: translateY(0); }
-
-.social-btn.linkedin-lordicon { background: rgba(212,200,255,0.08); backdrop-filter: blur(8px); }
-.social-btn.linkedin-lordicon:hover { background: rgba(212,200,255,0.25); box-shadow: 0 8px 20px rgba(212,200,255,0.2); }
-.social-btn.linkedin-lordicon lord-icon { width: 28px; height: 28px; transition: all 0.3s ease; }
-.social-btn.linkedin-lordicon:hover lord-icon { transform: scale(1.1); }
-
-.social-btn.facebook-lordicon { background: rgba(173,210,255,0.08); backdrop-filter: blur(8px); }
-.social-btn.facebook-lordicon:hover { background: rgba(173,210,255,0.25); box-shadow: 0 8px 20px rgba(173,210,255,0.2); }
-.social-btn.facebook-lordicon lord-icon { width: 28px; height: 28px; transition: all 0.3s ease; }
-.social-btn.facebook-lordicon:hover lord-icon { transform: scale(1.1); }
-
-.social-btn.github-lordicon { background: rgba(184,212,255,0.08); backdrop-filter: blur(8px); }
-.social-btn.github-lordicon:hover { background: rgba(184,212,255,0.25); box-shadow: 0 8px 20px rgba(184,212,255,0.2); }
-.social-btn.github-lordicon lord-icon { width: 28px; height: 28px; transition: all 0.3s ease; }
-.social-btn.github-lordicon:hover lord-icon { transform: scale(1.1); }
-
-.p.light .social-btn.linkedin-lordicon        { background: rgba(124,58,237,0.08); }
-.p.light .social-btn.linkedin-lordicon:hover  { background: rgba(124,58,237,0.18); }
-.p.light .social-btn.facebook-lordicon        { background: rgba(24,119,242,0.08); }
-.p.light .social-btn.facebook-lordicon:hover  { background: rgba(24,119,242,0.18); }
-.p.light .social-btn.github-lordicon          { background: rgba(74,111,165,0.1); }
-.p.light .social-btn.github-lordicon:hover    { background: rgba(74,111,165,0.2); }
-
-
-/* ============================================================
-   14. SECTIONS — Two-Column Layout
+   8. SECTIONS — Two-Column Layout
    ============================================================ */
 .two-col {
   display: grid;
@@ -640,7 +295,7 @@ h1 em {
 
 
 /* ============================================================
-   15. COMPONENTS — Experience Items
+   9. COMPONENTS — Experience Items
    ============================================================ */
 .exp-item { margin-bottom: 32px; }
 .exp-item:last-child { margin-bottom: 0; }
@@ -648,8 +303,10 @@ h1 em {
 .exp-top {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: flex-start;
   margin-bottom: 6px;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .exp-role {
@@ -696,9 +353,62 @@ h1 em {
   line-height: 1.7;
 }
 
+/* Experience Date Tags */
+.exp-date-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5625rem;
+  padding: 3px 10px;
+  border-radius: 5px;
+  border: 0.5px solid;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Blue theme for experience dates */
+.exp-date-blue {
+  border-color: var(--blue-bd);
+  color: var(--blue);
+  background: var(--blue-bg);
+}
+
+/* Violet theme for experience dates */
+.exp-date-violet {
+  border-color: var(--violet-bd);
+  color: var(--violet);
+  background: var(--violet-bg);
+}
+
+/* Light mode adjustments for experience dates */
+.p.light .exp-date-blue {
+  border-color: rgba(123,138,158,0.3);
+  color: #7b8a9e;
+  background: rgba(123,138,158,0.08);
+}
+
+.p.light .exp-date-violet {
+  border-color: rgba(155,123,181,0.25);
+  color: #9b7bb5;
+  background: rgba(155,123,181,0.06);
+}
+
+/* Responsive experience date tags */
+@media (max-width: 600px) {
+  .exp-date-tag {
+    font-size: 0.5rem;
+    padding: 2px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .exp-date-tag {
+    font-size: 0.4375rem;
+    padding: 2px 6px;
+  }
+}
+
 
 /* ============================================================
-   16. COMPONENTS — Project Items
+   10. COMPONENTS — Project Items
    ============================================================ */
 .proj-item {
   padding: 16px 0;
@@ -710,8 +420,10 @@ h1 em {
 .proj-top {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .proj-name {
@@ -722,6 +434,15 @@ h1 em {
   letter-spacing: -0.2px;
 }
 
+/* Project Tags Container */
+.proj-tags {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Base tag styles */
 .proj-tag {
   font-family: 'DM Mono', monospace;
   font-size: 0.5625rem;
@@ -729,9 +450,49 @@ h1 em {
   border-radius: 5px;
   border: 0.5px solid;
   font-weight: 500;
+  white-space: nowrap;
 }
-.t-b { border-color: var(--blue-bd);   color: var(--blue);   background: var(--blue-bg); }
-.t-v { border-color: var(--violet-bd); color: var(--violet); background: var(--violet-bg); }
+
+/* Blue theme tags */
+.t-date-blue {
+  border-color: var(--blue-bd);
+  color: var(--blue);
+  background: var(--blue-bg);
+}
+
+.t-tech-blue {
+  border-color: var(--blue-bd);
+  color: var(--blue);
+  background: var(--blue-bg);
+}
+
+/* Violet theme tags */
+.t-date-violet {
+  border-color: var(--violet-bd);
+  color: var(--violet);
+  background: var(--violet-bg);
+}
+
+.t-tech-violet {
+  border-color: var(--violet-bd);
+  color: var(--violet);
+  background: var(--violet-bg);
+}
+
+/* Light mode adjustments for tags */
+.p.light .t-date-blue,
+.p.light .t-tech-blue {
+  border-color: rgba(123,138,158,0.3);
+  color: #7b8a9e;
+  background: rgba(123,138,158,0.08);
+}
+
+.p.light .t-date-violet,
+.p.light .t-tech-violet {
+  border-color: rgba(155,123,181,0.25);
+  color: #9b7bb5;
+  background: rgba(155,123,181,0.06);
+}
 
 .proj-desc {
   font-size: 0.78125rem;
@@ -740,9 +501,217 @@ h1 em {
   line-height: 1.65;
 }
 
+/* Project Thumbnails */
+.proj-thumbnails {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.proj-thumbnail-link {
+  text-decoration: none;
+}
+
+.proj-thumbnail {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.proj-thumbnail i {
+  font-size: 0.75rem;
+  transition: transform 0.2s ease;
+}
+
+.proj-thumbnail:hover {
+  transform: translateY(-2px);
+}
+
+.proj-thumbnail:hover i {
+  transform: scale(1.1);
+}
+
+/* Blue theme thumbnails */
+.t-blue-thumb {
+  background: var(--blue-bg);
+  border-color: var(--blue-bd);
+  color: var(--blue);
+}
+
+.t-blue-thumb:hover {
+  background: rgba(184,212,255,0.2);
+  border-color: var(--blue);
+  color: var(--blue);
+  box-shadow: 0 0 8px rgba(184,212,255,0.3);
+}
+
+/* Violet theme thumbnails */
+.t-violet-thumb {
+  background: var(--violet-bg);
+  border-color: var(--violet-bd);
+  color: var(--violet);
+}
+
+.t-violet-thumb:hover {
+  background: rgba(212,200,255,0.2);
+  border-color: var(--violet);
+  color: var(--violet);
+  box-shadow: 0 0 8px rgba(212,200,255,0.3);
+}
+
+/* Light mode adjustments for thumbnails */
+.p.light .t-blue-thumb {
+  background: rgba(123,138,158,0.1);
+  border-color: rgba(123,138,158,0.3);
+  color: #7b8a9e;
+}
+
+.p.light .t-blue-thumb:hover {
+  background: rgba(123,138,158,0.2);
+  border-color: #7b8a9e;
+  color: #7b8a9e;
+}
+
+.p.light .t-violet-thumb {
+  background: rgba(155,123,181,0.1);
+  border-color: rgba(155,123,181,0.3);
+  color: #9b7bb5;
+}
+
+.p.light .t-violet-thumb:hover {
+  background: rgba(155,123,181,0.2);
+  border-color: #9b7bb5;
+  color: #9b7bb5;
+}
+
+/* Project Links - Minimal Text Links */
+.proj-links {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.proj-link {
+  text-decoration: none;
+  font-size: 0.6875rem;
+  font-weight: 400;
+  transition: opacity 0.2s ease;
+  font-family: 'DM Mono', monospace;
+}
+
+.proj-link:hover {
+  text-decoration: underline;
+  opacity: 0.7;
+}
+
+.link-separator {
+  color: var(--txt3);
+  font-size: 0.625rem;
+}
+
+/* Blue theme links */
+.t-blue-link {
+  color: var(--blue);
+}
+
+/* Violet theme links */
+.t-violet-link {
+  color: var(--violet);
+}
+
+/* Light mode adjustments */
+.p.light .t-blue-link {
+  color: #7b8a9e;
+}
+
+.p.light .t-violet-link {
+  color: #9b7bb5;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .proj-links {
+    gap: 6px;
+  }
+  
+  .proj-link {
+    font-size: 0.625rem;
+  }
+  
+  .link-separator {
+    font-size: 0.5625rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .proj-links {
+    gap: 5px;
+  }
+  
+  .proj-link {
+    font-size: 0.5625rem;
+  }
+  
+  .link-separator {
+    font-size: 0.5rem;
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+  .proj-tag {
+    font-size: 0.5rem;
+    padding: 2px 8px;
+  }
+  
+  .proj-tags {
+    gap: 6px;
+  }
+  
+  .proj-thumbnails {
+    gap: 6px;
+  }
+  
+  .proj-thumbnail {
+    padding: 3px 8px;
+    font-size: 0.625rem;
+  }
+  
+  .proj-thumbnail i {
+    font-size: 0.6875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .proj-tag {
+    font-size: 0.4375rem;
+    padding: 2px 6px;
+  }
+  
+  .proj-thumbnail {
+    padding: 3px 6px;
+    font-size: 0.5625rem;
+  }
+  
+  .proj-thumbnail i {
+    font-size: 0.625rem;
+  }
+}
+
 
 /* ============================================================
-   17. SECTIONS — Connect / Contributions Band
+   11. SECTIONS — Connect / Contributions Band
    ============================================================ */
 .contrib-band {
   padding: 36px 36px 32px;
@@ -861,7 +830,7 @@ h1 em {
 
 
 /* ============================================================
-   18. SECTIONS — Footer / Bottom Bar
+   12. SECTIONS — Footer / Bottom Bar
    ============================================================ */
 .bottom {
   display: flex;
@@ -945,7 +914,7 @@ h1 em {
 
 
 /* ============================================================
-   19. MEDIA QUERIES — Tablet & Mobile Optimization
+   13. MEDIA QUERIES — Tablet & Mobile Optimization
    ============================================================ */
 @media (max-width: 1024px) {
   .hero {
@@ -998,61 +967,8 @@ h1 em {
 }
 
 @media (max-width: 768px) {
-  nav {
-    padding: 14px 20px;
-  }
-  
-  .logo {
-    font-size: 1rem;
-  }
-  
-  .nav-r {
-    gap: 16px;
-  }
-  
-  /* On mobile, hide text, show icons */
-  .nav-text {
-    display: none;
-  }
-  
-  .nav-icon-mobile {
-    display: block;
-  }
-  
-  .nav-link {
-    padding: 6px;
-    gap: 0;
-  }
-  
-  .nav-link lord-icon {
-    width: 24px !important;
-    height: 24px !important;
-  }
-  
-  .toggle-btn {
-    padding: 4px 10px;
-  }
-  
-  .t-icon {
-    font-size: 0.875rem;
-  }
-  
-  #modeTxt {
-    font-size: 0.625rem;
-  }
-  
   .eyebrow {
     font-size: 0.5rem;
-  }
-  
-  .status-pill-nav {
-    font-size: 0.4375rem;
-    padding: 2px 8px;
-  }
-  
-  .sdot-nav {
-    width: 4px;
-    height: 4px;
   }
   
   .hero {
@@ -1096,22 +1012,6 @@ h1 em {
     gap: 6px;
   }
   
-  .nav-r {
-    gap: 12px;
-  }
-  
-  .toggle-btn {
-    padding: 4px 8px;
-  }
-  
-  .t-icon {
-    font-size: 0.75rem;
-  }
-  
-  #modeTxt {
-    font-size: 0.5rem;
-  }
-  
   .hero-body {
     grid-template-columns: minmax(150px, 1fr) auto;
     gap: 16px;
@@ -1121,33 +1021,8 @@ h1 em {
     font-size: 0.75rem;
   }
   
-  .cta-portfolio {
-    padding: 8px 16px;
-    font-size: 0.6875rem;
-  }
-  
-  .cta-portfolio .portfolio-icon {
-    width: 24px;
-    height: 24px;
-  }
-  
-  .gif-button {
-    width: 60px;
-    height: 60px;
-  }
-  
   .eyebrow {
     font-size: 0.4375rem;
-  }
-  
-  .status-pill-nav {
-    font-size: 0.375rem;
-    padding: 2px 6px;
-  }
-  
-  .sdot-nav {
-    width: 3px;
-    height: 3px;
   }
   
   .bottom {
@@ -1215,31 +1090,6 @@ h1 em {
     font-size: 0.6875rem;
   }
   
-  .cta-portfolio {
-    padding: 8px 18px;
-    font-size: 0.6875rem;
-  }
-  
-  .gif-button {
-    width: 60px;
-    height: 60px;
-  }
-
-  .gif-button .fallback-icon {
-    width: 45px;
-    height: 45px;
-  }
-  
-  .social-btn {
-    width: 38px;
-    height: 38px;
-  }
-  
-  .social-btn lord-icon {
-    width: 22px !important;
-    height: 22px !important;
-  }
-  
   .bottom {
     flex-wrap: nowrap;
     overflow-x: auto;
@@ -1254,23 +1104,6 @@ h1 em {
   
   .build-note {
     flex-shrink: 0;
-  }
-  
-  .nav-text {
-    display: none;
-  }
-  
-  .nav-icon-mobile {
-    display: block;
-  }
-  
-  .nav-link lord-icon {
-    width: 20px !important;
-    height: 20px !important;
-  }
-  
-  .nav-r {
-    gap: 10px;
   }
 }
 
