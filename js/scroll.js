@@ -1,10 +1,11 @@
-/* ============================================================
-   SCROLL.JS — Smooth Scroll + Fixed Nav Shadow Effect
-   ============================================================ */
+// js/scroll.js — Smooth Scroll + Fixed Nav Shadow Effect + Logo Click Handler
 
 (function() {
   const navLinks = document.querySelectorAll('.nav-r a[href^="#"]');
   const nav = document.querySelector('nav');
+  
+  // ALSO get the logo link (first nav-link with #hero)
+  const logoLink = document.querySelector('nav a[href="#hero"]');
   
   function smoothScrollTo(targetY, duration) {
     const startY = window.scrollY;
@@ -44,17 +45,40 @@
   window.addEventListener('scroll', handleNavScroll);
   handleNavScroll();
   
-  // Smooth scroll with offset for fixed nav
+  // Helper to get dynamic nav height
+  function getNavHeight() {
+    return nav ? nav.offsetHeight : 75;
+  }
+  
+  // Smooth scroll for existing nav links (experience, projects, connect)
   navLinks.forEach(function(link) {
     link.addEventListener('click', function(e) {
       e.preventDefault();
       const id = this.getAttribute('href').slice(1);
       const target = document.getElementById(id);
       if (!target) return;
-      // Get the navbar height dynamically
-      const navHeight = nav ? nav.offsetHeight : 75;
+      const navHeight = getNavHeight();
       const top = target.getBoundingClientRect().top + window.scrollY - navHeight;
       smoothScrollTo(top, 700);
     });
   });
+  
+  // NEW: Logo click handler — smooth scroll to hero section
+  if (logoLink) {
+    logoLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      const heroSection = document.getElementById('hero');
+      if (heroSection) {
+        const navHeight = getNavHeight();
+        const top = heroSection.getBoundingClientRect().top + window.scrollY - navHeight;
+        smoothScrollTo(top, 700);
+        // Update URL hash without jumping
+        if (history.pushState) {
+          history.pushState(null, null, '#hero');
+        } else {
+          location.hash = '#hero';
+        }
+      }
+    });
+  }
 })();

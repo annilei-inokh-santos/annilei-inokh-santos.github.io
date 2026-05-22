@@ -376,6 +376,16 @@ nav {
   .logo {
     font-size: 1rem;
   }
+
+    /* Logo link cursor style */
+  .logo-link {
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .logo-link:hover .logo {
+    opacity: 0.85;
+  }
   
   .nav-r {
     gap: 16px;
