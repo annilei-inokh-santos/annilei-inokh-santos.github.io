@@ -359,8 +359,8 @@ function openPortfolioVersion(version, month, day, year) {
     'v1': './previous-versions/2020.html',
     'v2': './previous-versions/2021-v1.html',
     'v3': './previous-versions/2021-v2.html',
-    //'v4': './previous-versions/v4.html',
-    //'v5': './previous-versions/v5.html'
+    'v4': './previous-versions/2024.html'
+    //'v5': './previous-versions/year.html'
   };
   
   // Save to localStorage
