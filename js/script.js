@@ -392,12 +392,17 @@ function openPortfolioVersion(version, month, day, year) {
     };
     
     // Trigger time travel animation
-    timeTravel.travelToTime(destination, () => {
-      if (pendingNavigation) {
-        pendingNavigation();
-        pendingNavigation = null;
-      }
-    });
+    if (typeof timeTravel !== 'undefined' && timeTravel.travelToTime) {
+      timeTravel.travelToTime(destination, () => {
+        if (pendingNavigation) {
+          pendingNavigation();
+          pendingNavigation = null;
+        }
+      });
+    } else if (pendingNavigation) {
+      pendingNavigation();
+      pendingNavigation = null;
+    }
   } else {
     console.log(`Portfolio ${version} - Replace with actual URL`);
     // Fallback: direct open without animation
@@ -558,61 +563,36 @@ navLinks.forEach(function (link) {
   });
 });
 
+
 /* ============================================================
-   8. GIF BUTTON IMAGE FALLBACK HANDLER WITH THEME SUPPORT
+   8. GIF BUTTON — Image display with fontawesome fallback (GIF PRIMARY)
    ============================================================ */
-function setupGifButtonFallback() {
+function setupGifButton() {
   const gifButton = document.getElementById('gifBtn');
   if (!gifButton) return;
-  
-  function updateIconColors() {
-    const icon = gifButton.querySelector('.fallback-icon');
-    if (!icon) return;
-    
-    const isDark = document.getElementById('site').classList.contains('dark');
-    
-    if (isDark) {
-      icon.setAttribute('colors', 'primary:#b8d4ff,secondary:#d4c8ff');
-    } else {
-      icon.setAttribute('colors', 'primary:#6b4e8a,secondary:#4a6fa5');
-    }
-  }
-  
-  const testImg = new Image();
-  
-  testImg.onerror = function() {
+
+  const img  = gifButton.querySelector('.gif-img');
+  const icon = gifButton.querySelector('.fallback-icon');
+  if (!img) return;
+
+  const GIF_SRC    = '../assets/delorean.gif';
+
+  // Mark button as failed — hides img, reveals fontawesome icon
+  function markFailed() {
     gifButton.classList.add('image-failed');
-    updateIconColors();
-  };
-  
-  testImg.onload = function() {
-    gifButton.classList.remove('image-failed');
-  };
-  
-  testImg.src = '../assets/delorean-static.png';
-  
-  let gifTested = false;
-  gifButton.addEventListener('mouseenter', function() {
-    if (!gifTested) {
-      const testGif = new Image();
-      testGif.onerror = function() {
-        gifButton.classList.add('image-failed');
-        updateIconColors();
-      };
-      testGif.src = '../assets/delorean.gif';
-      gifTested = true;
-    }
-  });
-  
-  const modeBtn = document.getElementById('modeBtn');
-  if (modeBtn) {
-    modeBtn.addEventListener('click', function() {
-      setTimeout(updateIconColors, 50);
-    });
   }
+
+  // Test GIF on load
+  const testGif = new Image();
+  testGif.onload  = () => { img.src = GIF_SRC; };
+  testGif.onerror = markFailed;
+  testGif.src     = GIF_SRC;
+
+  img.onerror = markFailed;
 }
 
-setupGifButtonFallback();
+setupGifButton();
+
 
 /* ============================================================
    9. CLICK SPARKLE EFFECT - 4-Pointed Star Shimmer on click (Theme Compatible)

@@ -232,7 +232,6 @@ nav {
   z-index: 3;
   background: transparent;
   backdrop-filter: blur(2px);
-  flex-wrap: nowrap;
   gap: 16px;
 }
 
@@ -241,10 +240,6 @@ nav {
   font-size: 1.125rem;
   font-weight: 700;
   letter-spacing: 0.14em;
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
   background: linear-gradient(
     90deg,
     var(--txt3) 0%,
@@ -261,39 +256,53 @@ nav {
   flex-shrink: 0;
 }
 
-.logo .status-pill {
-  background-clip: unset;
-  -webkit-background-clip: unset;
-  color: var(--blue);
-  animation: none;
-  text-shadow: none;
-  font-size: 0.5625rem;
-  vertical-align: middle;
-}
-
 .nav-r { 
   display: flex; 
-  gap: 20px; 
+  gap: 24px; 
   align-items: center;
   flex-shrink: 0;
 }
-.nav-r a {
-  font-size: 0.75rem;
-  color: var(--txt3);
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  color: var(--txt2);
   text-decoration: none;
-  font-weight: 300;
+  font-weight: 400;
   cursor: pointer;
   transition: color 0.2s;
   white-space: nowrap;
+  padding: 6px 0;
 }
-.nav-r a:hover { color: var(--txt); text-decoration: underline; }
 
+.nav-link:hover {
+  color: var(--txt);
+}
 
-/* ============================================================
-   9. COMPONENTS — Status Pill
-   ============================================================ */
-.status-pill {
-  display: flex;
+.nav-link:hover lord-icon {
+  transform: scale(1.1);
+}
+
+.nav-link lord-icon {
+  transition: transform 0.2s ease;
+  width: 22px;
+  height: 22px;
+}
+
+.nav-text {
+  font-size: 0.875rem;
+}
+
+/* Mobile-only icon - hidden by default */
+.nav-icon-mobile {
+  display: none;
+}
+
+/* Status Pill in Eyebrow */
+.status-pill-nav {
+  display: inline-flex;
   align-items: center;
   gap: 5px;
   font-family: 'DM Mono', monospace;
@@ -304,9 +313,10 @@ nav {
   color: var(--blue);
   letter-spacing: 0.1em;
   background: var(--bg2);
+  margin-left: 12px;
 }
 
-.sdot {
+.sdot-nav {
   width: 5px;
   height: 5px;
   border-radius: 50%;
@@ -316,7 +326,7 @@ nav {
 
 
 /* ============================================================
-   10. COMPONENTS — Toggle Button
+   9. COMPONENTS — Toggle Button
    ============================================================ */
 .toggle-btn {
   display: flex;
@@ -328,17 +338,17 @@ nav {
   background: transparent;
   color: var(--txt2);
   font-family: 'DM Mono', monospace;
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   font-weight: 400;
   cursor: pointer;
   transition: all 0.2s ease;
   letter-spacing: 0.06em;
 }
+
 .toggle-btn:hover {
   color: var(--blue);
   background: var(--blue-bg);
   border-color: var(--blue-bd);
-  transform: none;
 }
 
 .t-icon {
@@ -346,11 +356,18 @@ nav {
   line-height: 1;
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.toggle-btn:hover .t-icon { transform: rotate(25deg); }
+
+.toggle-btn:hover .t-icon {
+  transform: rotate(25deg);
+}
+
+#modeTxt {
+  font-size: 0.75rem;
+}
 
 
 /* ============================================================
-   11. SECTIONS — Hero
+   10. SECTIONS — Hero
    ============================================================ */
 .hero {
   padding: 56px 36px 0;
@@ -368,6 +385,10 @@ nav {
   text-transform: uppercase;
   margin-bottom: 18px;
   opacity: 0.8;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 h1 {
@@ -430,7 +451,7 @@ h1 em {
 
 
 /* ============================================================
-   12. COMPONENTS — CTA Portfolio Button
+   11. COMPONENTS — CTA Portfolio Button
    ============================================================ */
 .cta-portfolio {
   display: inline-flex;
@@ -467,25 +488,36 @@ h1 em {
 
 
 /* ============================================================
-   13. COMPONENTS — GIF Interactive Button
+   12. COMPONENTS — GIF Interactive Button
    ============================================================ */
 .gif-button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   border: none;
   background: none;
   padding: 0;
   margin: 0;
-  transition: transform 0.3s ease;
   width: 80px;
   height: 80px;
-  background-image: url('../assets/delorean-static.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   border-radius: 12px;
   position: relative;
   overflow: hidden;
+}
+
+.gif-button .gif-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+  pointer-events: none;
+  transition: transform 0.3s ease;
+}
+
+.gif-button:hover .gif-img {
+  transform: scale(1.08);
 }
 
 .gif-button .fallback-icon {
@@ -495,39 +527,34 @@ h1 em {
   transform: translate(-50%, -50%);
   width: 60px;
   height: 60px;
-  display: none;
   pointer-events: none;
-  transition: all 0.3s ease;
+  display: none;
+  transition: transform 0.3s ease;
 }
 
-.gif-button.image-failed {
-  background-image: none !important;
-  background-color: transparent !important;
+.gif-button.image-failed .gif-img {
+  display: none;
 }
 
 .gif-button.image-failed .fallback-icon {
   display: block;
 }
 
-.gif-button:hover {
-  background-image: url('../assets/delorean.gif');
-}
-
 .gif-button.image-failed:hover .fallback-icon {
   transform: translate(-50%, -50%) scale(1.15);
 }
 
-.p.dark .gif-button.image-failed .fallback-icon {
+.p.dark .gif-button .fallback-icon {
   color: var(--blue);
 }
 
-.p.light .gif-button.image-failed .fallback-icon {
+.p.light .gif-button .fallback-icon {
   color: #5a3e7a;
 }
 
 
 /* ============================================================
-   14. COMPONENTS — Social Buttons
+   13. COMPONENTS — Social Buttons
    ============================================================ */
 .social-links {
   display: flex;
@@ -556,8 +583,6 @@ h1 em {
 }
 .social-btn:active { transform: translateY(0); }
 
-/* === DARK MODE === */
-
 .social-btn.linkedin-lordicon { background: rgba(212,200,255,0.08); backdrop-filter: blur(8px); }
 .social-btn.linkedin-lordicon:hover { background: rgba(212,200,255,0.25); box-shadow: 0 8px 20px rgba(212,200,255,0.2); }
 .social-btn.linkedin-lordicon lord-icon { width: 28px; height: 28px; transition: all 0.3s ease; }
@@ -573,20 +598,16 @@ h1 em {
 .social-btn.github-lordicon lord-icon { width: 28px; height: 28px; transition: all 0.3s ease; }
 .social-btn.github-lordicon:hover lord-icon { transform: scale(1.1); }
 
-/* === LIGHT MODE === */
-
 .p.light .social-btn.linkedin-lordicon        { background: rgba(124,58,237,0.08); }
 .p.light .social-btn.linkedin-lordicon:hover  { background: rgba(124,58,237,0.18); }
-
 .p.light .social-btn.facebook-lordicon        { background: rgba(24,119,242,0.08); }
 .p.light .social-btn.facebook-lordicon:hover  { background: rgba(24,119,242,0.18); }
-
 .p.light .social-btn.github-lordicon          { background: rgba(74,111,165,0.1); }
 .p.light .social-btn.github-lordicon:hover    { background: rgba(74,111,165,0.2); }
 
 
 /* ============================================================
-   15. SECTIONS — Two-Column Layout
+   14. SECTIONS — Two-Column Layout
    ============================================================ */
 .two-col {
   display: grid;
@@ -619,7 +640,7 @@ h1 em {
 
 
 /* ============================================================
-   16. COMPONENTS — Experience Items
+   15. COMPONENTS — Experience Items
    ============================================================ */
 .exp-item { margin-bottom: 32px; }
 .exp-item:last-child { margin-bottom: 0; }
@@ -677,7 +698,7 @@ h1 em {
 
 
 /* ============================================================
-   17. COMPONENTS — Project Items
+   16. COMPONENTS — Project Items
    ============================================================ */
 .proj-item {
   padding: 16px 0;
@@ -721,7 +742,7 @@ h1 em {
 
 
 /* ============================================================
-   18. SECTIONS — Connect / Contributions Band
+   17. SECTIONS — Connect / Contributions Band
    ============================================================ */
 .contrib-band {
   padding: 36px 36px 32px;
@@ -840,7 +861,7 @@ h1 em {
 
 
 /* ============================================================
-   19. SECTIONS — Footer / Bottom Bar
+   18. SECTIONS — Footer / Bottom Bar
    ============================================================ */
 .bottom {
   display: flex;
@@ -924,7 +945,7 @@ h1 em {
 
 
 /* ============================================================
-   23. MEDIA QUERIES — Tablet & Mobile Optimization
+   19. MEDIA QUERIES — Tablet & Mobile Optimization
    ============================================================ */
 @media (max-width: 1024px) {
   .hero {
@@ -979,53 +1000,59 @@ h1 em {
 @media (max-width: 768px) {
   nav {
     padding: 14px 20px;
-    flex-wrap: nowrap;
-    gap: 12px;
   }
   
   .logo {
-    font-size: 0.875rem;
-    flex-shrink: 0;
-  }
-  
-  .logo .status-pill {
-    font-size: 0.4375rem;
-    padding: 2px 6px;
+    font-size: 1rem;
   }
   
   .nav-r {
-    gap: 10px;
-    flex-shrink: 1;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    gap: 16px;
   }
   
-  .nav-r a {
-    font-size: 0;
+  /* On mobile, hide text, show icons */
+  .nav-text {
+    display: none;
   }
   
-  .nav-r a[href="#exp"]::before,
-  .nav-r a[href="#proj"]::before,
-  .nav-r a[href="#connect"]::before {
-    font-size: 0.6875rem;
+  .nav-icon-mobile {
+    display: block;
   }
   
-  .nav-r a[href="#exp"]::before {
-    content: "exp";
+  .nav-link {
+    padding: 6px;
+    gap: 0;
   }
   
-  .nav-r a[href="#proj"]::before {
-    content: "proj";
-  }
-  
-  .nav-r a[href="#connect"]::before {
-    content: "conn";
+  .nav-link lord-icon {
+    width: 24px !important;
+    height: 24px !important;
   }
   
   .toggle-btn {
-    padding: 4px 10px 4px 8px;
+    padding: 4px 10px;
+  }
+  
+  .t-icon {
+    font-size: 0.875rem;
+  }
+  
+  #modeTxt {
     font-size: 0.625rem;
-    white-space: nowrap;
+  }
+  
+  .eyebrow {
+    font-size: 0.5rem;
+  }
+  
+  .status-pill-nav {
+    font-size: 0.4375rem;
+    padding: 2px 8px;
+  }
+  
+  .sdot-nav {
+    width: 4px;
+    height: 4px;
   }
   
   .hero {
@@ -1035,14 +1062,6 @@ h1 em {
   .hero-body {
     grid-template-columns: 1fr auto;
     gap: 20px;
-  }
-  
-  .cta-wrap {
-    align-items: flex-end;
-  }
-  
-  .cta-hint {
-    text-align: right;
   }
   
   h1 {
@@ -1060,43 +1079,7 @@ h1 em {
   }
   
   .bottom {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
     padding: 18px 20px;
-    flex-wrap: nowrap;
-  }
-  
-  .sig-row {
-    flex-wrap: nowrap;
-    gap: 6px;
-  }
-  
-  .sig {
-    font-size: 0.5rem;
-    padding: 3px 8px;
-    white-space: nowrap;
-  }
-  
-  .build-note {
-    font-size: 0.5rem;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-  
-  .nav-r a,
-  .toggle-btn,
-  .cta-portfolio,
-  .social-btn,
-  .gif-button {
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-  }
-  
-  .nav-r a:active,
-  .toggle-btn:active,
-  .cta-portfolio:active {
-    opacity: 0.7;
   }
 }
 
@@ -1113,22 +1096,20 @@ h1 em {
     gap: 6px;
   }
   
-  .logo {
-    font-size: 0.875rem;
-  }
-  
-  .status-pill {
-    font-size: 0.4375rem;
-    padding: 2px 8px;
+  .nav-r {
+    gap: 12px;
   }
   
   .toggle-btn {
-    padding: 4px 10px 4px 8px;
-    font-size: 0.625rem;
+    padding: 4px 8px;
   }
   
   .t-icon {
-    font-size: 0.875rem;
+    font-size: 0.75rem;
+  }
+  
+  #modeTxt {
+    font-size: 0.5rem;
   }
   
   .hero-body {
@@ -1153,6 +1134,20 @@ h1 em {
   .gif-button {
     width: 60px;
     height: 60px;
+  }
+  
+  .eyebrow {
+    font-size: 0.4375rem;
+  }
+  
+  .status-pill-nav {
+    font-size: 0.375rem;
+    padding: 2px 6px;
+  }
+  
+  .sdot-nav {
+    width: 3px;
+    height: 3px;
   }
   
   .bottom {
@@ -1225,16 +1220,11 @@ h1 em {
     font-size: 0.6875rem;
   }
   
-  .cta-portfolio .portfolio-icon {
-    width: 24px;
-    height: 24px;
-  }
-  
   .gif-button {
     width: 60px;
     height: 60px;
   }
-  
+
   .gif-button .fallback-icon {
     width: 45px;
     height: 45px;
@@ -1264,6 +1254,23 @@ h1 em {
   
   .build-note {
     flex-shrink: 0;
+  }
+  
+  .nav-text {
+    display: none;
+  }
+  
+  .nav-icon-mobile {
+    display: block;
+  }
+  
+  .nav-link lord-icon {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  
+  .nav-r {
+    gap: 10px;
   }
 }
 
