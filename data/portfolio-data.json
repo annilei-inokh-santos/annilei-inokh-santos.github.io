@@ -1,0 +1,144 @@
+{
+  "experience": [
+    {
+      "id": "exp1",
+      "company": "Accenture",
+      "companyUrl": "https://www.accenture.com/ph-en",
+      "role": "Academy Delegate: Cloud Elite",
+      "dateTag": "Apr 2026 – Present",
+      "dateTheme": "blue",
+      "description": "An Academy Delegate in the Cloud Elite program, focusing on cloud technologies and enterprise solutions.",
+      "logo": "assets/logos/Accenture-2026.jpg",
+      "logoFallback": "ACC",
+      "location": "Mandaluyong City"
+    },
+    {
+      "id": "exp2",
+      "company": "Accenture",
+      "companyUrl": "https://www.accenture.com/ph-en",
+      "role": "Microsoft AppDev OJT Trainee",
+      "dateTag": "Feb 2026 – Apr 2026",
+      "dateTheme": "violet",
+      "description": "On-the-job trainee specializing in Microsoft application development and enterprise software solutions.",
+      "logo": "assets/logos/Accenture-2026.jpg",
+      "logoFallback": "ACC",
+      "location": "Mandaluyong City"
+    },
+    {
+      "id": "exp3",
+      "company": "Arduino Day Philippines",
+      "companyUrl": "https://www.facebook.com/arduinodayph",
+      "role": "Volunteer Graphics Designer",
+      "dateTag": "Nov 2025 – Mar 2026",
+      "dateTheme": "blue",
+      "description": "Delivered 30+ promotional materials including social media pubmats and merchandise designs, while collaborating with the Creatives team on event planning and quality control.",
+      "logo": "assets/logos/ADPH-2026.jpg",
+      "logoFallback": "ADPH",
+      "location": ""
+    },
+    {
+      "id": "exp4",
+      "company": "Alliance of Leading Programmers through Heuristic Adaptation (ALPHA)",
+      "companyUrl": "https://www.facebook.com/stiorca.alpha",
+      "role": "Creatives Officer",
+      "dateTag": "Aug 2024 – Nov 2024",
+      "dateTheme": "violet",
+      "description": "Produced 15+ club promotional materials, managed design requests, and assisted with event logistics as a Creatives Officer.",
+      "logo": "assets/logos/ALPHA-2024.jpg",
+      "logoFallback": "ALPHA",
+      "location": ""
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj1",
+      "name": "project alpha",
+      "year": "2026",
+      "yearTheme": "blue",
+      "tech": "React · TypeScript",
+      "techTheme": "blue",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "links": {
+        "liveDemo": "#",
+        "wireframe": "#",
+        "viewPage": "#",
+        "watchVideo": "#"
+      }
+    },
+    {
+      "id": "proj2",
+      "name": "project beta",
+      "year": "2025",
+      "yearTheme": "violet",
+      "tech": "Python · Django",
+      "techTheme": "violet",
+      "description": "Ut enim ad minim veniam, quis nostrud exercitation.",
+      "links": {
+        "liveDemo": "#",
+        "wireframe": "#",
+        "viewPage": "#",
+        "watchVideo": "#"
+      }
+    },
+    {
+      "id": "proj3",
+      "name": "project gamma",
+      "year": "2024",
+      "yearTheme": "blue",
+      "tech": "Vue.js · Node.js",
+      "techTheme": "blue",
+      "description": "Duis aute irure dolor in reprehenderit.",
+      "links": {
+        "liveDemo": "#",
+        "wireframe": "#",
+        "viewPage": "#",
+        "watchVideo": "#"
+      }
+    },
+    {
+      "id": "proj4",
+      "name": "project delta",
+      "year": "2024",
+      "yearTheme": "violet",
+      "tech": "Flutter · Firebase",
+      "techTheme": "violet",
+      "description": "Excepteur sint occaecat cupidatat non proident.",
+      "links": {
+        "liveDemo": "#",
+        "wireframe": "#",
+        "viewPage": "#",
+        "watchVideo": "#"
+      }
+    },
+    {
+      "id": "proj5",
+      "name": "project epsilon",
+      "year": "2023",
+      "yearTheme": "blue",
+      "tech": "Tailwind · Alpine.js",
+      "techTheme": "blue",
+      "description": "Sed ut perspiciatis unde omnis iste natus error.",
+      "links": {
+        "liveDemo": "#",
+        "wireframe": "#",
+        "viewPage": "#",
+        "watchVideo": "#"
+      }
+    },
+    {
+      "id": "proj6",
+      "name": "project legacy",
+      "year": "2020",
+      "yearTheme": "violet",
+      "tech": "jQuery · PHP",
+      "techTheme": "violet",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "links": {
+        "liveDemo": "#",
+        "wireframe": "#",
+        "viewPage": "#",
+        "watchVideo": "#"
+      }
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "versions": [
+    {
+      "id": "v1",
+      "number": 1,
+      "label": "2020",
+      "createdMonth": "NOV",
+      "createdDay": "21",
+      "createdYear": "2020",
+      "thumbnail": "/assets/portfolio-versions/2020-thumbnail.png",
+      "url": "./previous-versions/2020.html",
+      "fullImage": "/assets/portfolio-versions/2020-full.png",
+      "description": "First portfolio version - Built with vanilla HTML/CSS/JS",
+      "tech": ["HTML5", "CSS3", "JavaScript"]
+    },
+    {
+      "id": "v2",
+      "number": 2,
+      "label": "2021 v1",
+      "createdMonth": "JAN",
+      "createdDay": "15",
+      "createdYear": "2021",
+      "thumbnail": "/assets/portfolio-versions/2021-v1-thumbnail.png",
+      "url": "./previous-versions/2021-v1.html",
+      "fullImage": "/assets/portfolio-versions/2021-v1-full.png",
+      "description": "Second portfolio version - Added animations and responsive design",
+      "tech": ["HTML5", "CSS3", "JavaScript"]
+    },
+    {
+      "id": "v3",
+      "number": 3,
+      "label": "2021 v2",
+      "createdMonth": "DEC",
+      "createdDay": "10",
+      "createdYear": "2021",
+      "thumbnail": "/assets/portfolio-versions/2021-v2-thumbnail.png",
+      "url": "./previous-versions/2021-v2.html",
+      "fullImage": "/assets/portfolio-versions/2021-v2-full.png",
+      "description": "Third portfolio version - Introduced dark/light theme",
+      "tech": ["HTML5", "CSS3", "JavaScript"]
+    },
+    {
+      "id": "v4",
+      "number": 4,
+      "label": "2024",
+      "createdMonth": "FEB",
+      "createdDay": "28",
+      "createdYear": "2024",
+      "thumbnail": "/assets/portfolio-versions/2024-thumbnail.png",
+      "url": "./previous-versions/2024.html",
+      "fullImage": "/assets/portfolio-versions/2024-full.png",
+      "description": "Fourth portfolio version - Modern design with time travel theme",
+      "tech": ["HTML5", "CSS3", "JavaScript"]
+    }
+  ]
+}
