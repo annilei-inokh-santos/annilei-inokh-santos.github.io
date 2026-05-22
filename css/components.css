@@ -1,23 +1,59 @@
 /* ============================================================
-   COMPONENTS.CSS — Nav, Toggle Btn, Social Buttons, GIF Button, CTA Portfolio Btn
+   COMPONENTS.CSS — Fixed Navigation - NO WHITE LINE
    ============================================================ */
 
-/* ============================================================
-   1. NAVIGATION
-   ============================================================ */
+/* Remove body padding - we'll handle spacing differently */
+body {
+  margin: 0;
+  padding: 0 !important;
+}
+
+/* Fixed Navigation Bar - NO BORDER, just shadow */
 nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 18px 36px;
-  border-bottom: 0.5px solid var(--border);
-  position: relative;
-  z-index: 3;
-  background: transparent;
-  backdrop-filter: blur(2px);
+  /* REMOVE the border-bottom - this causes the white line */
+  /* border-bottom: 0.5px solid var(--border); */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: var(--bg);
+  /* Add box-shadow instead of border for cleaner look */
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
   gap: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
 }
 
+/* Dark mode shadow instead of border */
+.p.dark nav {
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Add spacing at the top of your main content */
+.main-content, 
+.content-wrapper,
+.hero {
+  padding-top: 85px;
+}
+
+/* Or use a spacer div before your content */
+.nav-spacer {
+  height: 85px;
+  width: 100%;
+}
+
+/* Adjust scroll margin for anchor links */
+#exp, #proj, #connect {
+  scroll-margin-top: 85px;
+}
+
+/* Logo styles */
 .logo {
   font-family: 'Montserrat', sans-serif;
   font-size: 1.125rem;
@@ -78,66 +114,11 @@ nav {
   font-size: 0.875rem;
 }
 
-/* Mobile-only icon - hidden by default */
 .nav-icon-mobile {
   display: none;
 }
 
-@media (max-width: 768px) {
-  nav {
-    padding: 14px 20px;
-  }
-  
-  .logo {
-    font-size: 1rem;
-  }
-  
-  .nav-r {
-    gap: 16px;
-  }
-  
-  /* On mobile, hide text, show icons */
-  .nav-text {
-    display: none;
-  }
-  
-  .nav-icon-mobile {
-    display: block;
-    font-size: 1.125rem;
-  }
-  
-  .nav-link {
-    padding: 6px;
-    gap: 0;
-  }
-  
-  .nav-link i {
-    font-size: 1.125rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .nav-text {
-    display: none;
-  }
-  
-  .nav-icon-mobile {
-    display: block;
-  }
-  
-  .nav-link i {
-    font-size: 1rem;
-  }
-  
-  .nav-r {
-    gap: 10px;
-  }
-}
-
-
-/* ============================================================
-   2. TOGGLE BUTTON
-   ============================================================ */
+/* Toggle button */
 .toggle-btn {
   display: flex;
   align-items: center;
@@ -176,94 +157,7 @@ nav {
   font-size: 0.75rem;
 }
 
-@media (max-width: 768px) {
-  .toggle-btn {
-    padding: 4px 10px;
-  }
-  
-  .t-icon {
-    font-size: 0.875rem;
-  }
-  
-  #modeTxt {
-    font-size: 0.625rem;
-  }
-}
-
-@media (max-width: 600px) {
-  .toggle-btn {
-    padding: 4px 8px;
-  }
-  
-  .t-icon {
-    font-size: 0.75rem;
-  }
-  
-  #modeTxt {
-    font-size: 0.5rem;
-  }
-}
-
-
-/* ============================================================
-   3. CTA PORTFOLIO BUTTON
-   ============================================================ */
-.cta-portfolio {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 12px 28px;
-  border-radius: 0;
-  border: 2px dashed var(--violet);
-  background: transparent;
-  color: var(--violet);
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  letter-spacing: 0.5px;
-  position: relative;
-  backdrop-filter: blur(2px);
-}
-.cta-portfolio:hover {
-  border: 2px solid var(--violet);
-  background: var(--violet-bg);
-  transform: translateY(-2px);
-  box-shadow: 0 0 12px rgba(124,58,237,0.3);
-}
-.cta-portfolio .portfolio-icon {
-  width: 32px;
-  height: 32px;
-  transition: transform 0.3s ease;
-  stroke: var(--violet);
-}
-
-@media (max-width: 600px) {
-  .cta-portfolio {
-    padding: 8px 16px;
-    font-size: 0.6875rem;
-  }
-  
-  .cta-portfolio .portfolio-icon {
-    width: 24px;
-    height: 24px;
-  }
-}
-
-@media (max-width: 480px) {
-  .cta-portfolio {
-    padding: 8px 18px;
-    font-size: 0.6875rem;
-  }
-}
-
-
-/* ============================================================
-   4. GIF INTERACTIVE BUTTON
-   ============================================================ */
+/* GIF BUTTON */
 .gif-button {
   display: inline-flex;
   align-items: center;
@@ -318,32 +212,7 @@ nav {
   transform: translate(-50%, -50%) scale(1.15);
 }
 
-@media (max-width: 600px) {
-  .gif-button {
-    width: 60px;
-    height: 60px;
-  }
-  
-  .gif-button .fallback-icon {
-    font-size: 2rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .gif-button {
-    width: 60px;
-    height: 60px;
-  }
-
-  .gif-button .fallback-icon {
-    font-size: 1.75rem;
-  }
-}
-
-
-/* ============================================================
-   5. SOCIAL BUTTONS (Font Awesome)
-   ============================================================ */
+/* SOCIAL BUTTONS */
 .social-links {
   display: flex;
   gap: 16px;
@@ -453,7 +322,104 @@ nav {
   text-decoration: none; 
 }
 
+/* CTA PORTFOLIO BUTTON */
+.cta-portfolio {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 28px;
+  border-radius: 0;
+  border: 2px dashed var(--violet);
+  background: transparent;
+  color: var(--violet);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  position: relative;
+  backdrop-filter: blur(2px);
+}
+.cta-portfolio:hover {
+  border: 2px solid var(--violet);
+  background: var(--violet-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 0 12px rgba(124,58,237,0.3);
+}
+.cta-portfolio .portfolio-icon {
+  width: 32px;
+  height: 32px;
+  transition: transform 0.3s ease;
+  stroke: var(--violet);
+}
+
+/* ============================================================
+   RESPONSIVE - NO WHITE LINE ON MOBILE
+   ============================================================ */
 @media (max-width: 768px) {
+  nav {
+    padding: 12px 20px;
+  }
+  
+  /* Remove any shadow that might cause lines */
+  nav, .p.dark nav {
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+  }
+  
+  .p.dark nav {
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+  
+  .logo {
+    font-size: 1rem;
+  }
+  
+  .nav-r {
+    gap: 16px;
+  }
+  
+  .nav-text {
+    display: none;
+  }
+  
+  .nav-icon-mobile {
+    display: block;
+    font-size: 1.125rem;
+  }
+  
+  .nav-link {
+    padding: 6px;
+    gap: 0;
+  }
+  
+  .nav-link i {
+    font-size: 1.125rem;
+  }
+  
+  .toggle-btn {
+    padding: 4px 10px;
+  }
+  
+  .t-icon {
+    font-size: 0.875rem;
+  }
+  
+  #modeTxt {
+    font-size: 0.625rem;
+  }
+  
+  .gif-button {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .gif-button .fallback-icon {
+    font-size: 2rem;
+  }
+  
   .social-links {
     gap: 12px;
   }
@@ -463,9 +429,46 @@ nav {
     height: 42px;
     font-size: 1.2rem;
   }
+  
+  .cta-portfolio {
+    padding: 8px 16px;
+    font-size: 0.6875rem;
+  }
+  
+  .cta-portfolio .portfolio-icon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  /* Adjust spacing for mobile */
+  .main-content, 
+  .content-wrapper,
+  .hero {
+    padding-top: 75px;
+  }
+  
+  #exp, #proj, #connect {
+    scroll-margin-top: 75px;
+  }
+  
+  nav.nav-scrolled {
+    padding: 8px 20px;
+  }
 }
 
 @media (max-width: 600px) {
+  .toggle-btn {
+    padding: 4px 8px;
+  }
+  
+  .t-icon {
+    font-size: 0.75rem;
+  }
+  
+  #modeTxt {
+    font-size: 0.5rem;
+  }
+  
   .social-btn {
     width: 38px;
     height: 38px;
@@ -478,13 +481,72 @@ nav {
 }
 
 @media (max-width: 480px) {
+  nav {
+    padding: 10px 16px;
+  }
+  
+  /* Even softer shadow on mobile */
+  nav, .p.dark nav {
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+  }
+  
+  .nav-r {
+    gap: 8px;
+  }
+  
+  .nav-link i {
+    font-size: 1rem;
+  }
+  
+  .gif-button {
+    width: 50px;
+    height: 50px;
+  }
+
+  .gif-button .fallback-icon {
+    font-size: 1.5rem;
+  }
+  
   .social-btn {
-    width: 36px;
-    height: 36px;
-    font-size: 0.9rem;
+    width: 34px;
+    height: 34px;
+    font-size: 0.85rem;
   }
   
   .social-links {
-    gap: 8px;
+    gap: 6px;
+  }
+  
+  .cta-portfolio {
+    padding: 6px 14px;
+    font-size: 0.625rem;
+  }
+  
+  .main-content, 
+  .content-wrapper,
+  .hero {
+    padding-top: 65px;
+  }
+  
+  #exp, #proj, #connect {
+    scroll-margin-top: 65px;
+  }
+}
+
+/* Scrolled state */
+nav.nav-scrolled {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 12px 36px;
+}
+
+@media (max-width: 768px) {
+  nav.nav-scrolled {
+    padding: 8px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  nav.nav-scrolled {
+    padding: 8px 16px;
   }
 }
