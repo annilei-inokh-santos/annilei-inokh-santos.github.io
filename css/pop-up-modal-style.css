@@ -1,5 +1,6 @@
 /* ============================================================
    POP-UP-MODAL-STYLE.CSS — Modal, Carousel & Time Circuit
+   PERFECT ALIGNMENT - Fixed Version
    ============================================================ */
 
 /* ============================================================
@@ -25,16 +26,16 @@
 
 .close-btn {
   position: fixed;
-  top: 25px;
-  right: 35px;
-  font-size: 2.5rem;
+  top: 15px;
+  right: 15px;
+  font-size: 1.8rem;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.2s ease;
   z-index: 10002;
-  background: rgba(255, 255, 255, 0.15);
-  width: 50px;
-  height: 50px;
+  background: rgba(0, 0, 0, 0.7);
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -43,76 +44,71 @@
   color: #ffffff;
 }
 
-.close-btn:hover {
-  color: var(--violet);
-  transform: scale(1.1);
-  background: rgba(255, 255, 255, 0.25);
+.close-btn:active {
+  transform: scale(0.95);
 }
 
 .modal-inner {
-  width: 90%;
-  max-width: 1300px;
+  width: auto;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 50px;
+  gap: 20px;
   background: transparent;
 }
 
 /* ============================================================
-   2. CAROUSEL STYLES
+   2. CAROUSEL STYLES - COMPLETELY REWRITTEN
    ============================================================ */
 .carousel-wrapper {
-  flex: 1;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .carousel-container {
   position: relative;
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
 .carousel-track-container {
   overflow: hidden;
-  width: 500px;
-  margin: 0 20px;
+  position: relative;
+  border-radius: 12px;
+  background: transparent;
 }
 
 .carousel-track {
   display: flex;
-  transition: transform 0.5s ease-in-out;
-  gap: 20px;
+  transition: transform 0.4s ease-in-out;
+  will-change: transform;
 }
 
 .carousel-card {
   flex-shrink: 0;
-  width: 500px;
-  height: 310px;
   cursor: pointer;
   position: relative;
   overflow: hidden;
   background-color: #4a6fa5;
   border: 3px solid transparent;
   border-radius: 12px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-.carousel-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+.carousel-card:active {
+  transform: scale(0.98);
 }
 
 .carousel-card.active {
   border-color: var(--violet);
-  box-shadow: 0 0 0 3px var(--violet), 0 8px 25px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 0 2px var(--violet), 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .card-image {
@@ -124,15 +120,15 @@
 
 .version-label {
   position: absolute;
-  bottom: 12px;
-  right: 15px;
+  bottom: 8px;
+  right: 10px;
   font-family: 'DM Mono', monospace;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-weight: 600;
   color: white;
   background: rgba(0, 0, 0, 0.7);
-  padding: 4px 12px;
-  border-radius: 6px;
+  padding: 3px 8px;
+  border-radius: 4px;
   letter-spacing: 0.5px;
   backdrop-filter: blur(4px);
   z-index: 5;
@@ -142,57 +138,43 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.7);
   border: none;
   color: white;
-  font-size: 2rem;
-  font-weight: bold;
   cursor: pointer;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
   z-index: 10;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-.carousel-arrow:hover {
-  background: rgba(0, 0, 0, 0.9);
-  transform: translateY(-50%) scale(1.1);
-}
-
-.left-arrow {
-  left: -60px;
-}
-
-.right-arrow {
-  right: -60px;
+.carousel-arrow:active {
+  transform: translateY(-50%) scale(0.95);
 }
 
 /* ============================================================
-   3. TIME CIRCUIT PANEL STYLES
+   3. TIME CIRCUIT PANEL
    ============================================================ */
 .bottom-rectangle {
-  flex: 0 0 auto;
-  width: 340px;
   background: linear-gradient(135deg, #1a1a1c 0%, #0d0d0f 100%);
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 20px 15px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  padding: 15px 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
 .rectangle-content {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
 }
 
 .time-container {
   background: linear-gradient(135deg, #2a2a2e 0%, #1a1a1e 100%);
-  padding: 12px 10px;
+  padding: 8px 6px;
   border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -200,35 +182,34 @@
 .time-values-wrapper {
   display: flex;
   justify-content: center;
-  gap: 12px;
-  margin-bottom: 10px;
+  gap: 10px;
+  margin-bottom: 5px;
 }
 
 .time-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5px;
+  gap: 3px;
 }
 
 .time-label {
   font-family: 'DM Mono', monospace;
-  font-size: 0.6rem;
+  font-size: 0.45rem;
   font-weight: 800;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
   color: #fff;
   text-transform: uppercase;
   background: #8b0000;
-  padding: 4px 10px;
-  border-radius: 4px;
+  padding: 2px 6px;
+  border-radius: 3px;
 }
 
 .time-value-box {
   background: #000;
   border: 1px solid #555;
-  border-radius: 6px;
-  padding: 8px 12px;
-  min-width: 70px;
+  border-radius: 5px;
+  padding: 4px 8px;
   text-align: center;
 }
 
@@ -236,135 +217,290 @@
 .time-day,
 .time-year {
   font-family: 'DS-Digital', 'Orbitron', monospace;
-  font-size: 1.2rem;
+  font-size: 0.85rem;
   font-weight: 400;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 }
 
 .destination-time .time-month,
 .destination-time .time-day,
 .destination-time .time-year {
   color: #ff4444;
-  text-shadow: 0 0 5px rgba(255, 68, 68, 0.5);
 }
 
 .present-time .time-month,
 .present-time .time-day,
 .present-time .time-year {
   color: #4caf50;
-  text-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
 }
 
 .last-departed .time-month,
 .last-departed .time-day,
 .last-departed .time-year {
   color: #ffaa44;
-  text-shadow: 0 0 5px rgba(255, 170, 68, 0.5);
 }
 
 .time-header {
   font-family: 'DM Mono', monospace;
-  font-size: 0.65rem;
+  font-size: 0.5rem;
   font-weight: 800;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   color: #fff;
   text-align: center;
-  padding: 6px 12px;
+  padding: 4px 8px;
   background: #000;
   border-radius: 4px;
-  margin-top: 5px;
+  margin-top: 2px;
 }
 
 /* ============================================================
-   4. RESPONSIVE DESIGN
+   4. MOBILE (up to 768px)
    ============================================================ */
-@media (max-width: 1100px) {
-  .carousel-track-container {
-    width: 420px;
-  }
-  .carousel-card {
-    width: 420px;
-    height: 260px;
-  }
-  .left-arrow { left: -50px; }
-  .right-arrow { right: -50px; }
-  .bottom-rectangle { width: 300px; }
-}
-
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .modal-inner {
-    flex-direction: column;
-    gap: 30px;
-    width: 95%;
+    max-width: 300px;
+    gap: 15px;
   }
-  .carousel-wrapper {
-    width: 100%;
-  }
+  
   .carousel-track-container {
-    width: 450px;
+    width: 260px;
   }
+  
+  .carousel-track {
+    gap: 12px;
+  }
+  
   .carousel-card {
-    width: 450px;
-    height: 280px;
+    width: 260px;
+    height: 160px;
   }
-  .bottom-rectangle {
-    width: 100%;
-    max-width: 450px;
-  }
-  .left-arrow, .right-arrow {
-    width: 40px;
-    height: 40px;
-    font-size: 1.5rem;
-  }
-  .left-arrow { left: -20px; }
-  .right-arrow { right: -20px; }
-}
-
-@media (max-width: 600px) {
-  .close-btn {
-    top: 15px;
-    right: 15px;
-    width: 40px;
-    height: 40px;
-    font-size: 2rem;
-  }
-  .carousel-track-container {
-    width: 280px;
-  }
-  .carousel-card {
-    width: 280px;
-    height: 175px;
-  }
-  .left-arrow, .right-arrow {
-    width: 35px;
-    height: 35px;
+  
+  .carousel-arrow {
+    width: 36px;
+    height: 36px;
     font-size: 1.2rem;
   }
-  .left-arrow { left: -10px; }
-  .right-arrow { right: -10px; }
+  
+  .left-arrow {
+    left: -18px;
+  }
+  
+  .right-arrow {
+    right: -18px;
+  }
+  
+  .bottom-rectangle {
+    width: 100%;
+  }
+  
   .time-value-box {
-    min-width: 55px;
-    padding: 5px 8px;
+    min-width: 48px;
   }
-  .time-month, .time-day, .time-year {
-    font-size: 0.9rem;
-  }
-  .time-label {
-    font-size: 0.5rem;
-    padding: 3px 7px;
-  }
-  .time-header {
+  
+  /* Swipe hint */
+  .carousel-wrapper::after {
+    content: '← swipe →';
+    position: absolute;
+    bottom: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'DM Mono', monospace;
     font-size: 0.55rem;
-    padding: 4px 8px;
+    color: rgba(255, 255, 255, 0.4);
+    white-space: nowrap;
+    pointer-events: none;
   }
 }
 
-@media (max-width: 400px) {
-  .carousel-track-container {
-    width: 240px;
+/* ============================================================
+   5. DESKTOP (769px and up)
+   ============================================================ */
+@media (min-width: 769px) {
+  .close-btn {
+    top: 25px;
+    right: 35px;
+    width: 50px;
+    height: 50px;
+    font-size: 2rem;
   }
+  
+  .modal-inner {
+    flex-direction: row;
+    max-width: 1100px;
+    gap: 50px;
+  }
+  
+  .carousel-wrapper {
+    flex: 1;
+  }
+  
+  .carousel-wrapper::after {
+    display: none;
+  }
+  
+  .carousel-track-container {
+    width: 500px;
+  }
+  
+  .carousel-track {
+    gap: 20px;
+  }
+  
   .carousel-card {
-    width: 240px;
-    height: 150px;
+    width: 500px;
+    height: 310px;
+  }
+  
+  .carousel-arrow {
+    width: 45px;
+    height: 45px;
+    font-size: 1.8rem;
+  }
+  
+  .left-arrow {
+    left: -25px;
+  }
+  
+  .right-arrow {
+    right: -25px;
+  }
+  
+  .bottom-rectangle {
+    width: 340px;
+    padding: 20px 15px;
+  }
+  
+  .time-value-box {
+    min-width: 70px;
+    padding: 8px 12px;
+  }
+  
+  .time-month, .time-day, .time-year {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+  }
+  
+  .time-label {
+    font-size: 0.6rem;
+    padding: 4px 10px;
+  }
+  
+  .time-header {
+    font-size: 0.65rem;
+    padding: 6px 12px;
+  }
+}
+
+/* ============================================================
+   6. LARGE DESKTOP (1200px and up)
+   ============================================================ */
+@media (min-width: 1200px) {
+  .carousel-track-container {
+    width: 550px;
+  }
+  
+  .carousel-card {
+    width: 550px;
+    height: 340px;
+  }
+  
+  .bottom-rectangle {
+    width: 360px;
+  }
+}
+
+/* ============================================================
+   7. EXTRA SMALL (under 360px)
+   ============================================================ */
+@media (max-width: 359px) {
+  .modal-inner {
+    max-width: 260px;
+  }
+  
+  .carousel-track-container {
+    width: 220px;
+  }
+  
+  .carousel-card {
+    width: 220px;
+    height: 135px;
+  }
+  
+  .carousel-arrow {
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+  }
+  
+  .left-arrow {
+    left: -15px;
+  }
+  
+  .right-arrow {
+    right: -15px;
+  }
+  
+  .time-value-box {
+    min-width: 40px;
+    padding: 3px 5px;
+  }
+  
+  .time-month, .time-day, .time-year {
+    font-size: 0.7rem;
+  }
+}
+
+/* ============================================================
+   8. LANDSCAPE MODE ON MOBILE
+   ============================================================ */
+@media (max-width: 768px) and (orientation: landscape) {
+  .modal.modal--visible {
+    padding: 15px;
+  }
+  
+  .modal-inner {
+    flex-direction: row;
+    max-width: 650px;
+    gap: 20px;
+  }
+  
+  .carousel-track-container {
+    width: 280px;
+  }
+  
+  .carousel-card {
+    width: 280px;
+    height: 170px;
+  }
+  
+  .carousel-arrow {
+    width: 32px;
+    height: 32px;
+    font-size: 1.1rem;
+  }
+  
+  .left-arrow {
+    left: -16px;
+  }
+  
+  .right-arrow {
+    right: -16px;
+  }
+  
+  .bottom-rectangle {
+    width: 260px;
+  }
+  
+  .carousel-wrapper::after {
+    display: none;
+  }
+  
+  .time-value-box {
+    min-width: 45px;
+    padding: 3px 6px;
+  }
+  
+  .time-month, .time-day, .time-year {
+    font-size: 0.7rem;
   }
 }

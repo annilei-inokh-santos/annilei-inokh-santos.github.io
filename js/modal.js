@@ -1,17 +1,184 @@
 /* ============================================================
-   MODAL.JS — Modal Open/Close + Carousel + Time Circuit Panel Data with Animation
+   MODAL.JS — Modal Open/Close + Carousel + Time Circuit Panel Data
+   NO BACKDROP CLOSE - Only close button works
    ============================================================ */
 
 (function() {
-  const modal = document.getElementById('carouselModal');
-  const closeBtn = document.querySelector('.close-btn');
-  const leftArrow = document.querySelector('.left-arrow');
-  const rightArrow = document.querySelector('.right-arrow');
-  const gifBtn = document.getElementById('gifBtn');
-  
+  // Modal HTML Template
+  const MODAL_TEMPLATE = `
+    <div id="carouselModal" class="modal" role="dialog" aria-label="Portfolio version selector">
+      <span class="close-btn" aria-label="Close">&times;</span>
+      <div class="modal-inner">
+        <!-- Carousel Section -->
+        <div class="carousel-wrapper">
+          <div class="carousel-container">
+            <button class="carousel-arrow left-arrow" aria-label="Previous portfolio">&#10094;</button>
+            <div class="carousel-track-container">
+              <div class="carousel-track" id="carouselTrack">
+                <!-- Carousel cards will be loaded dynamically from portfolio-versions.json -->
+              </div>
+            </div>
+            <button class="carousel-arrow right-arrow" aria-label="Next portfolio">&#10095;</button>
+          </div>
+        </div>
+
+        <!-- Time Circuit Panel -->
+        <div class="bottom-rectangle" id="bottomRectangle">
+          <div class="rectangle-content">
+            <!-- Destination Time -->
+            <div class="time-container destination-time">
+              <div class="time-values-wrapper">
+                <div class="time-item">
+                  <div class="time-label">MONTH</div>
+                  <div class="time-value-box month-box" data-ghost="MMM">
+                    <div class="time-month" id="destinationMonth">---</div>
+                  </div>
+                </div>
+                <div class="time-item">
+                  <div class="time-label">DAY</div>
+                  <div class="time-value-box day-box" data-ghost="88">
+                    <div class="time-day" id="destinationDay">--</div>
+                  </div>
+                </div>
+                <div class="time-item">
+                  <div class="time-label">YEAR</div>
+                  <div class="time-value-box year-box" data-ghost="8888">
+                    <div class="time-year" id="destinationYear">----</div>
+                  </div>
+                </div>
+              </div>
+              <div class="time-header">DESTINATION TIME</div>
+            </div>
+
+            <!-- Present Time -->
+            <div class="time-container present-time">
+              <div class="time-values-wrapper">
+                <div class="time-item">
+                  <div class="time-label">MONTH</div>
+                  <div class="time-value-box month-box" data-ghost="MMM">
+                    <div class="time-month" id="presentMonth">---</div>
+                  </div>
+                </div>
+                <div class="time-item">
+                  <div class="time-label">DAY</div>
+                  <div class="time-value-box day-box" data-ghost="88">
+                    <div class="time-day" id="presentDay">--</div>
+                  </div>
+                </div>
+                <div class="time-item">
+                  <div class="time-label">YEAR</div>
+                  <div class="time-value-box year-box" data-ghost="8888">
+                    <div class="time-year" id="presentYear">----</div>
+                  </div>
+                </div>
+              </div>
+              <div class="time-header">PRESENT TIME</div>
+            </div>
+
+            <!-- Last Time Departed -->
+            <div class="time-container last-departed">
+              <div class="time-values-wrapper">
+                <div class="time-item">
+                  <div class="time-label">MONTH</div>
+                  <div class="time-value-box month-box" data-ghost="MMM">
+                    <div class="time-month" id="lastMonth">---</div>
+                  </div>
+                </div>
+                <div class="time-item">
+                  <div class="time-label">DAY</div>
+                  <div class="time-value-box day-box" data-ghost="88">
+                    <div class="time-day" id="lastDay">--</div>
+                  </div>
+                </div>
+                <div class="time-item">
+                  <div class="time-label">YEAR</div>
+                  <div class="time-value-box year-box" data-ghost="8888">
+                    <div class="time-year" id="lastYear">----</div>
+                  </div>
+                </div>
+              </div>
+              <div class="time-header">LAST TIME DEPARTED</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  let modal = null;
+  let closeBtn = null;
+  let leftArrow = null;
+  let rightArrow = null;
   let currentIndex = 0;
   let cards = [];
   let versionsData = [];
+  
+  /**
+   * Initialize modal by injecting HTML into DOM
+   */
+  function initModal() {
+    // Check if modal already exists
+    if (document.getElementById('carouselModal')) {
+      modal = document.getElementById('carouselModal');
+    } else {
+      // Inject modal HTML
+      document.body.insertAdjacentHTML('beforeend', MODAL_TEMPLATE);
+      modal = document.getElementById('carouselModal');
+    }
+    
+    // Get references to modal elements
+    closeBtn = document.querySelector('.close-btn');
+    leftArrow = document.querySelector('.left-arrow');
+    rightArrow = document.querySelector('.right-arrow');
+    
+    // Setup event listeners
+    setupModalEventListeners();
+    
+    console.log('Modal initialized');
+  }
+  
+  /**
+   * Setup modal event listeners
+   * NOTE: No backdrop click listener - only close button closes the modal
+   */
+  function setupModalEventListeners() {
+    // Only close button closes the modal
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeModal);
+    }
+    
+    // Arrow navigation
+    if (leftArrow) {
+      leftArrow.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        prevSlide();
+      });
+    }
+    
+    if (rightArrow) {
+      rightArrow.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        nextSlide();
+      });
+    }
+    
+    // Close on escape key only (not on backdrop click)
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal && modal.classList.contains('modal--visible')) {
+        closeModal();
+      }
+      if (e.key === 'ArrowLeft' && modal && modal.classList.contains('modal--visible')) {
+        prevSlide();
+      }
+      if (e.key === 'ArrowRight' && modal && modal.classList.contains('modal--visible')) {
+        nextSlide();
+      }
+    });
+    
+    // IMPORTANT: No backdrop click listener - modal only closes via close button or ESC
+  }
   
   function initCards() {
     cards = Array.from(document.querySelectorAll('.carousel-card'));
@@ -53,11 +220,19 @@
     const track = document.getElementById('carouselTrack');
     if (!track) return;
     
-    const cardWidth = cards[0].offsetWidth;
-    const gap = 20;
+    // Get the actual card width including gap
+    const card = cards[0];
+    const cardWidth = card.offsetWidth;
+    
+    // Get gap based on screen size
+    const isMobile = window.innerWidth <= 768;
+    const gap = isMobile ? 12 : 20;
+    
+    // Calculate offset
     const offset = currentIndex * (cardWidth + gap);
     track.style.transform = `translateX(-${offset}px)`;
     
+    // Update destination time
     const currentCard = cards[currentIndex];
     if (currentCard) {
       const destMonth = currentCard.dataset.createdMonth || '---';
@@ -73,6 +248,7 @@
       if (destYearEl) destYearEl.textContent = destYear;
     }
     
+    // Update active class
     cards.forEach((card, index) => {
       if (index === currentIndex) {
         card.classList.add('active');
@@ -152,7 +328,6 @@
         }
       });
     } else if (pendingNavigation) {
-      // Fallback: direct navigation without animation
       pendingNavigation();
     } else {
       console.log(`Portfolio ${versionId} - No URL configured`);
@@ -171,7 +346,6 @@
         
         if (version) {
           closeModal();
-          // Small delay to allow modal to close before animation starts
           setTimeout(() => {
             openPortfolioVersion(version, month, day, year, url);
           }, 100);
@@ -200,11 +374,12 @@
     }
   }
   
-  // Event listeners
+  // Listen for versions loaded event
   document.addEventListener('portfolioVersionsLoaded', (e) => {
     initCarouselWithVersions(e.detail);
   });
   
+  // Check if already loaded
   if (window.PortfolioData && window.PortfolioData.getVersions) {
     const versions = window.PortfolioData.getVersions();
     if (versions && versions.versions) {
@@ -212,6 +387,8 @@
     }
   }
   
+  // Get GIF button and attach click handler
+  const gifBtn = document.getElementById('gifBtn');
   if (gifBtn) {
     gifBtn.addEventListener('click', (e) => {
       e.preventDefault();
@@ -219,33 +396,22 @@
     });
   }
   
-  if (closeBtn) closeBtn.addEventListener('click', closeModal);
-  if (leftArrow) leftArrow.addEventListener('click', (e) => { e.preventDefault(); prevSlide(); });
-  if (rightArrow) rightArrow.addEventListener('click', (e) => { e.preventDefault(); nextSlide(); });
-  
-  window.addEventListener('resize', () => {
-    if (modal && modal.classList.contains('modal--visible')) {
-      updateCarousel();
-    }
-  });
-  
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal && modal.classList.contains('modal--visible')) {
-      closeModal();
-    }
-    if (e.key === 'ArrowLeft' && modal && modal.classList.contains('modal--visible')) {
-      prevSlide();
-    }
-    if (e.key === 'ArrowRight' && modal && modal.classList.contains('modal--visible')) {
-      nextSlide();
-    }
-  });
-  
+  // Update present time every second
   setInterval(() => {
     if (modal && modal.classList.contains('modal--visible')) {
       updatePresentTime();
     }
   }, 1000);
   
-  console.log('Modal module loaded with time travel animation');
+  // Handle window resize
+  window.addEventListener('resize', () => {
+    if (modal && modal.classList.contains('modal--visible')) {
+      setTimeout(() => updateCarousel(), 50);
+    }
+  });
+  
+  // Initialize modal
+  initModal();
+  
+  console.log('Modal module loaded - backdrop click disabled, only close button works');
 })();
