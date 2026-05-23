@@ -37,66 +37,6 @@
       "links": {
         "Link": "#"
       }
-    },
-    {
-      "id": "proj2",
-      "name": "project beta",
-      "year": "2025",
-      "yearTheme": "violet",
-      "tech": "Python · Django",
-      "techTheme": "violet",
-      "description": "Ut enim ad minim veniam, quis nostrud exercitation.",
-      "links": {
-        "Link": "#"
-      }
-    },
-    {
-      "id": "proj3",
-      "name": "project gamma",
-      "year": "2024",
-      "yearTheme": "blue",
-      "tech": "Vue.js · Node.js",
-      "techTheme": "blue",
-      "description": "Duis aute irure dolor in reprehenderit.",
-      "links": {
-        "Link": "#"
-      }
-    },
-    {
-      "id": "proj4",
-      "name": "project delta",
-      "year": "2024",
-      "yearTheme": "violet",
-      "tech": "Flutter · Firebase",
-      "techTheme": "violet",
-      "description": "Excepteur sint occaecat cupidatat non proident.",
-      "links": {
-        "Link": "#"
-      }
-    },
-    {
-      "id": "proj5",
-      "name": "project epsilon",
-      "year": "2023",
-      "yearTheme": "blue",
-      "tech": "Tailwind · Alpine.js",
-      "techTheme": "blue",
-      "description": "Sed ut perspiciatis unde omnis iste natus error.",
-      "links": {
-        "Link": "#"
-      }
-    },
-    {
-      "id": "proj6",
-      "name": "project legacy",
-      "year": "2020",
-      "yearTheme": "violet",
-      "tech": "jQuery · PHP",
-      "techTheme": "violet",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "links": {
-        "Link": "#"
-      }
     }
   ]
 }
