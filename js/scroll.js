@@ -1,4 +1,4 @@
-// js/scroll.js — Smooth Scroll + Fixed Nav Shadow Effect + Logo Click Handler
+// js/scroll.js — Smooth Scroll + Fixed Nav Shadow Effect + Clean URL (No Hashes)
 
 (function() {
   const navLinks = document.querySelectorAll('.nav-r a[href^="#"]');
@@ -50,20 +50,24 @@
     return nav ? nav.offsetHeight : 75;
   }
   
-  // Smooth scroll for existing nav links (experience, projects, connect)
+  // Smooth scroll for all nav links (experience, projects, connect)
   navLinks.forEach(function(link) {
     link.addEventListener('click', function(e) {
       e.preventDefault();
       const id = this.getAttribute('href').slice(1);
       const target = document.getElementById(id);
       if (!target) return;
+      
       const navHeight = getNavHeight();
       const top = target.getBoundingClientRect().top + window.scrollY - navHeight;
       smoothScrollTo(top, 700);
+      
+      // REMOVED: No URL hash update - keep URL clean
+      // Just smooth scroll without changing URL
     });
   });
   
-  // NEW: Logo click handler — smooth scroll to hero section
+  // Logo click handler — smooth scroll to hero section
   if (logoLink) {
     logoLink.addEventListener('click', function(e) {
       e.preventDefault();
@@ -72,13 +76,16 @@
         const navHeight = getNavHeight();
         const top = heroSection.getBoundingClientRect().top + window.scrollY - navHeight;
         smoothScrollTo(top, 700);
-        // Update URL hash without jumping
-        if (history.pushState) {
-          history.pushState(null, null, '#hero');
-        } else {
-          location.hash = '#hero';
-        }
+        
+        // REMOVED: No URL hash update for hero either
+        // Keep URL completely clean
       }
     });
+  }
+  
+  // Optional: Clear any existing hash on page load
+  if (window.location.hash) {
+    // Remove hash from URL without refreshing page
+    history.pushState(null, null, window.location.pathname);
   }
 })();

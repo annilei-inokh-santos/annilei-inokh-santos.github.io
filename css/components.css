@@ -377,7 +377,7 @@ nav {
     font-size: 1rem;
   }
 
-    /* Logo link cursor style */
+  /* Logo link cursor style */
   .logo-link {
     cursor: pointer;
     text-decoration: none;
@@ -410,15 +410,16 @@ nav {
   }
   
   .toggle-btn {
-    padding: 4px 10px;
+    padding: 6px 10px;
   }
   
   .t-icon {
     font-size: 0.875rem;
   }
   
+  /* Hide the light/dark text on mobile */
   #modeTxt {
-    font-size: 0.625rem;
+    display: none;
   }
   
   .gif-button {
@@ -508,6 +509,10 @@ nav {
     font-size: 1rem;
   }
   
+  .toggle-btn {
+    padding: 4px 8px;
+  }
+  
   .gif-button {
     width: 50px;
     height: 50px;
@@ -559,4 +564,4 @@ nav.nav-scrolled {
   nav.nav-scrolled {
     padding: 8px 16px;
   }
-}
+} 
