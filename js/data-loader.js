@@ -83,26 +83,53 @@
   
   /**
    * Create project item HTML
+   * FIXED: Displays ALL links from JSON (any number, any keys)
+   * No trailing separator
    */
   function createProjectHTML(proj) {
-    const linksHTML = [];
-    const linkItems = [
-      { key: 'liveDemo', label: 'Live Demo' },
-      { key: 'wireframe', label: 'Wireframe' },
-      { key: 'viewPage', label: 'View Page' },
-      { key: 'watchVideo', label: 'Watch Video' }
-    ];
+    // Convert links object to an array of { key, label, url }
+    const validLinks = [];
     
-    linkItems.forEach((item, index) => {
-      if (proj.links[item.key]) {
-        linksHTML.push(`
-          <a href="${proj.links[item.key]}" class="proj-link t-${proj.yearTheme}-link">${item.label}</a>
-        `);
-        if (index < linkItems.length - 1) {
-          linksHTML.push('<span class="link-separator">|</span>');
+    // Define custom labels for specific keys (optional - can be extended)
+    const labelMap = {
+      'liveDemo': 'Live Demo',
+      'wireframe': 'Wireframe',
+      'viewPage': 'View Page',
+      'watchVideo': 'Watch Video',
+      'github': 'GitHub',
+      'demo': 'Demo',
+      'documentation': 'Docs',
+      'api': 'API',
+      'test1': 'Test 1',
+      'test2': 'Test 2',
+      'test3': 'Test 3',
+      'test4': 'Test 4'
+    };
+    
+    // Loop through ALL links in the JSON
+    for (const [key, url] of Object.entries(proj.links)) {
+      if (url && url.trim() !== '') {  // Only add if URL exists and is not empty
+        // Use custom label if defined, otherwise format the key name
+        let label = labelMap[key];
+        if (!label) {
+          // Convert camelCase or snake_case to readable title
+          label = key
+            .replace(/([A-Z])/g, ' $1')  // camelCase -> space
+            .replace(/[-_]/g, ' ')        // underscores/hyphens -> space
+            .replace(/^\w/, c => c.toUpperCase())  // Capitalize first letter
+            .trim();
         }
+        
+        validLinks.push(`
+          <a href="${url}" class="proj-link t-${proj.yearTheme}-link">${label}</a>
+        `);
       }
-    });
+    }
+    
+    // Join with separators - only between links, never trailing
+    const linksHTML = validLinks.length > 0 
+      ? validLinks.join('<span class="link-separator">|</span>')
+      : '';
     
     return `
       <div class="proj-item" data-proj-id="${proj.id}">
@@ -115,7 +142,7 @@
         </div>
         <div class="proj-desc">${proj.description}</div>
         <div class="proj-links">
-          ${linksHTML.join('')}
+          ${linksHTML}
         </div>
       </div>
     `;

@@ -7,7 +7,7 @@
       "role": "Academy Delegate: Cloud Elite",
       "dateTag": "Apr 2026 – Present",
       "dateTheme": "blue",
-      "description": "An Academy Delegate in the Cloud Elite program, focusing on cloud technologies and enterprise solutions.",
+      "description": "Engaged in hands-on activities and guided learning sessions on cloud computing fundamentals, enterprise systems, and cloud workflows.",
       "logo": "assets/logos/Accenture-2026.jpg",
       "logoFallback": "ACC",
       "location": "Mandaluyong City"
@@ -19,7 +19,7 @@
       "role": "Microsoft AppDev OJT Trainee",
       "dateTag": "Feb – Apr 2026",
       "dateTheme": "violet",
-      "description": "On-the-job trainee specializing in Microsoft application development and enterprise software solutions.",
+      "description": "Explored prompt engineering, GitHub Copilot, Microsoft Azure, and Amazon Web Services (AWS) within application development and cloud environments.",
       "logo": "assets/logos/Accenture-2026.jpg",
       "logoFallback": "ACC",
       "location": "Mandaluyong City"
@@ -35,10 +35,7 @@
       "techTheme": "blue",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       "links": {
-        "liveDemo": "#",
-        "wireframe": "#",
-        "viewPage": "#",
-        "watchVideo": "#"
+        "Link": "#"
       }
     },
     {
@@ -50,10 +47,7 @@
       "techTheme": "violet",
       "description": "Ut enim ad minim veniam, quis nostrud exercitation.",
       "links": {
-        "liveDemo": "#",
-        "wireframe": "#",
-        "viewPage": "#",
-        "watchVideo": "#"
+        "Link": "#"
       }
     },
     {
@@ -65,10 +59,7 @@
       "techTheme": "blue",
       "description": "Duis aute irure dolor in reprehenderit.",
       "links": {
-        "liveDemo": "#",
-        "wireframe": "#",
-        "viewPage": "#",
-        "watchVideo": "#"
+        "Link": "#"
       }
     },
     {
@@ -80,10 +71,7 @@
       "techTheme": "violet",
       "description": "Excepteur sint occaecat cupidatat non proident.",
       "links": {
-        "liveDemo": "#",
-        "wireframe": "#",
-        "viewPage": "#",
-        "watchVideo": "#"
+        "Link": "#"
       }
     },
     {
@@ -95,10 +83,7 @@
       "techTheme": "blue",
       "description": "Sed ut perspiciatis unde omnis iste natus error.",
       "links": {
-        "liveDemo": "#",
-        "wireframe": "#",
-        "viewPage": "#",
-        "watchVideo": "#"
+        "Link": "#"
       }
     },
     {
@@ -110,10 +95,7 @@
       "techTheme": "violet",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       "links": {
-        "liveDemo": "#",
-        "wireframe": "#",
-        "viewPage": "#",
-        "watchVideo": "#"
+        "Link": "#"
       }
     }
   ]
