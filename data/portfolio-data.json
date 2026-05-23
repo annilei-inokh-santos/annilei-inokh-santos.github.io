@@ -28,14 +28,14 @@
   "projects": [
     {
       "id": "proj1",
-      "name": "project alpha",
-      "year": "2026",
+      "name": "Creative Minds",
+      "year": "2024",
       "yearTheme": "blue",
-      "tech": "React · TypeScript",
+      "tech": "PHP · CSS",
       "techTheme": "blue",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "description": "Originally a 2024 academic project (BASS) for STI College branches featuring merchandise, orgs, and events. Rebranded 2026 as a personal creative collaboration platform.",
       "links": {
-        "Link": "#"
+        "Wireframe": "https://www.figma.com/proto/Vo7dIhB2gD61XEbEDaj9y4/BASS-Website?node-id=9-260&starting-point-node-id=9%3A260&t=dKlsznH2mBROSqt8-1"
       }
     }
   ]

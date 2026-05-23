@@ -85,6 +85,7 @@
    * Create project item HTML
    * FIXED: Displays ALL links from JSON (any number, any keys)
    * No trailing separator
+   * UPDATED: Added target="_blank" rel="noopener noreferrer" for all project links
    */
   function createProjectHTML(proj) {
     // Convert links object to an array of { key, label, url }
@@ -120,8 +121,9 @@
             .trim();
         }
         
+        // UPDATED: Added target="_blank" and rel="noopener noreferrer"
         validLinks.push(`
-          <a href="${url}" class="proj-link t-${proj.yearTheme}-link">${label}</a>
+          <a href="${url}" target="_blank" rel="noopener noreferrer" class="proj-link t-${proj.yearTheme}-link">${label}</a>
         `);
       }
     }
