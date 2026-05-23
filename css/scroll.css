@@ -1,0 +1,34 @@
+/* ============================================================
+   SCROLL.CSS — Thin Scrollbar Base Structure
+   ============================================================ */
+
+/* Base scrollbar styling - THINNER */
+::-webkit-scrollbar {
+  width: 6px !important;
+  height: 6px !important;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 3px !important;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 3px !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  opacity: 0.8 !important;
+}
+
+/* Firefox base */
+* {
+  scrollbar-width: thin !important;
+}
+
+/* Mobile - even thinner */
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 4px !important;
+    height: 4px !important;
+  }
+}
