@@ -17,36 +17,12 @@
       "company": "Accenture",
       "companyUrl": "https://www.accenture.com/ph-en",
       "role": "Microsoft AppDev OJT Trainee",
-      "dateTag": "Feb 2026 – Apr 2026",
+      "dateTag": "Feb – Apr 2026",
       "dateTheme": "violet",
       "description": "On-the-job trainee specializing in Microsoft application development and enterprise software solutions.",
       "logo": "assets/logos/Accenture-2026.jpg",
       "logoFallback": "ACC",
       "location": "Mandaluyong City"
-    },
-    {
-      "id": "exp3",
-      "company": "Arduino Day Philippines",
-      "companyUrl": "https://www.facebook.com/arduinodayph",
-      "role": "Volunteer Graphics Designer",
-      "dateTag": "Nov 2025 – Mar 2026",
-      "dateTheme": "blue",
-      "description": "Delivered 30+ promotional materials including social media pubmats and merchandise designs, while collaborating with the Creatives team on event planning and quality control.",
-      "logo": "assets/logos/ADPH-2026.jpg",
-      "logoFallback": "ADPH",
-      "location": ""
-    },
-    {
-      "id": "exp4",
-      "company": "Alliance of Leading Programmers through Heuristic Adaptation (ALPHA)",
-      "companyUrl": "https://www.facebook.com/stiorca.alpha",
-      "role": "Creatives Officer",
-      "dateTag": "Aug 2024 – Nov 2024",
-      "dateTheme": "violet",
-      "description": "Produced 15+ club promotional materials, managed design requests, and assisted with event logistics as a Creatives Officer.",
-      "logo": "assets/logos/ALPHA-2024.jpg",
-      "logoFallback": "ALPHA",
-      "location": ""
     }
   ],
   "projects": [
