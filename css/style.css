@@ -297,7 +297,11 @@ h1 em {
 /* ============================================================
    9. COMPONENTS — Experience Items (UPDATED: Role color matches project name)
    ============================================================ */
-.exp-item { margin-bottom: 32px; }
+.exp-item {
+  padding: 16px 0;
+  border-bottom: 0.5px solid var(--border2);
+}
+.exp-item:first-of-type { padding-top: 0; }
 .exp-item:last-child { margin-bottom: 0; }
 
 .exp-top {
