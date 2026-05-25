@@ -54,9 +54,9 @@
       "id": 1,
       "name": "BASS Website",
       "year": "2024",
-      "yearTheme": "blue",
+      "yearTheme": "violet",
       "tech": "PHP · CSS",
-      "techTheme": "blue",
+      "techTheme": "violet",
       "description": "A centralized web platform for STI College branches, showcasing available merchandise (prowears), student organizations, and inter-branch sports events.",
       "links": {
         "Wireframe": "https://www.figma.com/proto/Vo7dIhB2gD61XEbEDaj9y4/BASS-Website?node-id=9-260&starting-point-node-id=9%3A260&t=jc8lJDTRugzwxkSI-1"
