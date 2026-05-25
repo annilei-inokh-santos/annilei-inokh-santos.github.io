@@ -295,7 +295,7 @@ h1 em {
 
 
 /* ============================================================
-   9. COMPONENTS — Experience Items
+   9. COMPONENTS — Experience Items (UPDATED: Role color matches project name)
    ============================================================ */
 .exp-item { margin-bottom: 32px; }
 .exp-item:last-child { margin-bottom: 0; }
@@ -309,13 +309,14 @@ h1 em {
   gap: 8px;
 }
 
+/* UPDATED: Experience role now uses --head color (same as proj-name) */
 .exp-role {
-  font-size: 0.75rem;
-  color: var(--blue);
-  margin-bottom: 8px;
-  font-weight: 500;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--head);
   font-family: 'Montserrat', sans-serif;
-  letter-spacing: -0.1px;
+  letter-spacing: -0.2px;
+  margin-bottom: 0;
 }
 
 .exp-year {
@@ -327,12 +328,14 @@ h1 em {
   border-radius: 4px;
 }
 
+/* UPDATED: Company name styling - matches previous exp-place but refined */
 .exp-place {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--txt);
-  font-family: 'Montserrat', sans-serif;
-  letter-spacing: -0.2px;
+  font-size: 0.78125rem;
+  font-weight: 400;
+  color: var(--txt2);
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: normal;
+  margin-bottom: 8px;
 }
 
 .exp-place a {
@@ -350,10 +353,10 @@ h1 em {
   font-size: 0.78125rem;
   color: var(--txt2);
   font-weight: 300;
-  line-height: 1.7;
+  line-height: 1.65;
 }
 
-/* Experience Date Tags */
+/* Experience Date Tags - keeping as is */
 .exp-date-tag {
   font-family: 'DM Mono', monospace;
   font-size: 0.5625rem;
@@ -391,8 +394,20 @@ h1 em {
   background: rgba(155,123,181,0.06);
 }
 
-/* Responsive experience date tags */
+/* Responsive experience */
 @media (max-width: 600px) {
+  .exp-role {
+    font-size: 0.75rem;
+  }
+  
+  .exp-place {
+    font-size: 0.6875rem;
+  }
+  
+  .exp-desc {
+    font-size: 0.6875rem;
+  }
+  
   .exp-date-tag {
     font-size: 0.5rem;
     padding: 2px 8px;
@@ -400,6 +415,18 @@ h1 em {
 }
 
 @media (max-width: 480px) {
+  .exp-role {
+    font-size: 0.6875rem;
+  }
+  
+  .exp-place {
+    font-size: 0.625rem;
+  }
+  
+  .exp-desc {
+    font-size: 0.625rem;
+  }
+  
   .exp-date-tag {
     font-size: 0.4375rem;
     padding: 2px 6px;
@@ -408,7 +435,7 @@ h1 em {
 
 
 /* ============================================================
-   10. COMPONENTS — Project Items
+   10. COMPONENTS — Project Items (UPDATED: Tags below title)
    ============================================================ */
 .proj-item {
   padding: 16px 0;
@@ -417,29 +444,24 @@ h1 em {
 .proj-item:first-of-type { padding-top: 0; }
 .proj-item:last-child    { border-bottom: none; padding-bottom: 0; }
 
-.proj-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 8px;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
+/* Project title - now takes full width */
 .proj-name {
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--head);
   font-family: 'Montserrat', sans-serif;
   letter-spacing: -0.2px;
+  margin-bottom: 8px;
+  display: block;
 }
 
-/* Project Tags Container */
+/* Project Tags Container - now below title */
 .proj-tags {
   display: flex;
   gap: 8px;
   align-items: center;
   flex-wrap: wrap;
+  margin-bottom: 10px;
 }
 
 /* Base tag styles */
@@ -499,6 +521,7 @@ h1 em {
   color: var(--txt2);
   font-weight: 300;
   line-height: 1.65;
+  margin-top: 8px;
 }
 
 /* Project Thumbnails */
@@ -668,7 +691,7 @@ h1 em {
   }
 }
 
-/* Responsive styles */
+/* Responsive styles for tags */
 @media (max-width: 600px) {
   .proj-tag {
     font-size: 0.5rem;
@@ -1006,11 +1029,7 @@ h1 em {
     gap: 6px;
   }
   
-  .proj-top {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-  }
+  /* Remove proj-top since we're not using it anymore */
   
   .hero-body {
     grid-template-columns: minmax(150px, 1fr) auto;

@@ -1,7 +1,7 @@
 {
   "experience": [
     {
-      "id": "exp1",
+      "id": 2,
       "company": "Accenture",
       "companyUrl": "https://www.accenture.com/ph-en",
       "role": "Academy Delegate: Cloud Elite",
@@ -13,7 +13,7 @@
       "location": "Mandaluyong City"
     },
     {
-      "id": "exp2",
+      "id": 1,
       "company": "Accenture",
       "companyUrl": "https://www.accenture.com/ph-en",
       "role": "Microsoft AppDev OJT Trainee",
@@ -27,15 +27,39 @@
   ],
   "projects": [
     {
-      "id": "proj1",
-      "name": "Creative Minds",
+      "id": 3,
+      "name": "Creative Minds — Creative Collaboration Platform",
+      "year": "2026",
+      "yearTheme": "violet",
+      "tech": "PHP · CSS · JS · GitHub · Render",
+      "techTheme": "violet",
+      "description": "A rebranded creative platform evolved from the 2024 BASS Website academic project. Core components: user profiles, project galleries, hero sections, highlights, about section, and collaborator directories.",
+      "links": {
+        " ": ""
+      }
+    },
+    {
+      "id": 2,
+      "name": "Enhanced WIRE System — STI College Ortigas-Cainta",
+      "year": "2025",
+      "yearTheme": "blue",
+      "tech": "HTML · CSS · JavaScript · Figma · GitHub · Render",
+      "techTheme": "blue",
+      "description": "Developed a user-centered web application using HTML, CSS, and JavaScript with UI enhancements such as dark/light mode, conducted UX wireframing in Figma, and performed cross-browser testing for a thesis-capstone project.",
+      "links": {
+        " ": "#"
+      }
+    },
+    {
+      "id": 1,
+      "name": "BASS Website",
       "year": "2024",
       "yearTheme": "blue",
-      "tech": "PHP · CSS · JSON · Render · Git",
+      "tech": "PHP · CSS",
       "techTheme": "blue",
-      "description": "Originally a 2024 academic project (BASS) for STI College branches featuring merchandise, orgs, and events. Rebranded 2026 as a personal creative collaboration platform.",
+      "description": "A centralized web platform for STI College branches, showcasing available merchandise (prowears), student organizations, and inter-branch sports events.",
       "links": {
-        "Wireframe": "https://www.figma.com/proto/Vo7dIhB2gD61XEbEDaj9y4/BASS-Website?node-id=9-260&starting-point-node-id=9%3A260&t=dKlsznH2mBROSqt8-1"
+        "Wireframe": "https://www.figma.com/proto/Vo7dIhB2gD61XEbEDaj9y4/BASS-Website?node-id=9-260&starting-point-node-id=9%3A260&t=jc8lJDTRugzwxkSI-1"
       }
     }
   ]

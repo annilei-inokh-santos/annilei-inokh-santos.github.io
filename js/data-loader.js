@@ -52,6 +52,25 @@
   }
   
   /**
+   * Sort items by ID (descending - most recent/largest ID first)
+   * Supports both numeric IDs and string IDs like "exp-1", "proj-2"
+   */
+  function sortByIdDescending(items) {
+    return [...items].sort((a, b) => {
+      // Extract numeric part from IDs if they contain non-numeric characters
+      const getNumericId = (id) => {
+        if (typeof id === 'number') return id;
+        const match = String(id).match(/\d+/);
+        return match ? parseInt(match[0], 10) : 0;
+      };
+      
+      const aNum = getNumericId(a.id);
+      const bNum = getNumericId(b.id);
+      return bNum - aNum; // Descending: larger ID first (newer items)
+    });
+  }
+  
+  /**
    * Create experience item HTML
    */
   function createExperienceHTML(exp) {
@@ -135,12 +154,10 @@
     
     return `
       <div class="proj-item" data-proj-id="${proj.id}">
-        <div class="proj-top">
-          <div class="proj-name">${proj.name}</div>
-          <div class="proj-tags">
-            <span class="proj-tag t-date-${proj.yearTheme}">${proj.year}</span>
-            <span class="proj-tag t-tech-${proj.techTheme}">${proj.tech}</span>
-          </div>
+        <div class="proj-name">${proj.name}</div>
+        <div class="proj-tags">
+          <span class="proj-tag t-date-${proj.yearTheme}">${proj.year}</span>
+          <span class="proj-tag t-tech-${proj.techTheme}">${proj.tech}</span>
         </div>
         <div class="proj-desc">${proj.description}</div>
         <div class="proj-links">
@@ -181,10 +198,12 @@
     carouselTrack.innerHTML = '';
     
     if (versions && versions.length > 0) {
-      versions.forEach(version => {
+      // Sort versions by ID (descending - newer versions first)
+      const sortedVersions = sortByIdDescending(versions);
+      sortedVersions.forEach(version => {
         carouselTrack.insertAdjacentHTML('beforeend', createVersionCardHTML(version));
       });
-      console.log(`Rendered ${versions.length} portfolio versions`);
+      console.log(`Rendered ${sortedVersions.length} portfolio versions (sorted by ID)`);
       return true;
     } else {
       console.warn('No portfolio versions found');
@@ -193,7 +212,7 @@
   }
   
   /**
-   * Render all experience items
+   * Render all experience items (sorted by ID)
    */
   function renderExperiences(experiences) {
     const experienceContainer = document.querySelector('.col-l');
@@ -211,15 +230,18 @@
     
     expContent.innerHTML = '';
     
-    experiences.forEach(exp => {
+    // Sort experiences by ID (descending - most recent/largest ID first)
+    const sortedExperiences = sortByIdDescending(experiences);
+    
+    sortedExperiences.forEach(exp => {
       expContent.insertAdjacentHTML('beforeend', createExperienceHTML(exp));
     });
     
-    console.log(`Rendered ${experiences.length} experience items`);
+    console.log(`Rendered ${sortedExperiences.length} experience items (sorted by ID descending)`);
   }
   
   /**
-   * Render all project items
+   * Render all project items (sorted by ID)
    */
   function renderProjects(projects) {
     const projectsContainer = document.querySelector('.col-r');
@@ -237,11 +259,14 @@
     
     projContent.innerHTML = '';
     
-    projects.forEach(proj => {
+    // Sort projects by ID (descending - most recent/largest ID first)
+    const sortedProjects = sortByIdDescending(projects);
+    
+    sortedProjects.forEach(proj => {
       projContent.insertAdjacentHTML('beforeend', createProjectHTML(proj));
     });
     
-    console.log(`Rendered ${projects.length} project items`);
+    console.log(`Rendered ${sortedProjects.length} project items (sorted by ID descending)`);
   }
   
   /**
