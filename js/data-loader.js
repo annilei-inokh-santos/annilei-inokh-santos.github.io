@@ -72,6 +72,8 @@
   
   /**
    * Create experience item HTML
+   * ONLY CHANGE: Date tag moved to bottom (after description)
+   * Structure and class names remain exactly the same as working reference
    */
   function createExperienceHTML(exp) {
     const locationHTML = exp.location ? ` · ${exp.location}` : '';
@@ -91,10 +93,10 @@
         <div class="exp-body">
           <div class="exp-top">
             <div class="exp-role">${exp.role}</div>
-            <div class="exp-date-tag exp-date-${exp.dateTheme}">${exp.dateTag}</div>
           </div>
           <div class="exp-place">${companyDisplay}</div>
           <div class="exp-desc">${exp.description}</div>
+          <div class="exp-date-tag exp-date-${exp.dateTheme}">${exp.dateTag}</div>
         </div>
       </div>
     `;
@@ -155,14 +157,12 @@
     return `
       <div class="proj-item" data-proj-id="${proj.id}">
         <div class="proj-name">${proj.name}</div>
+        <div class="proj-desc">${proj.description}</div>
         <div class="proj-tags">
           <span class="proj-tag t-date-${proj.yearTheme}">${proj.year}</span>
           <span class="proj-tag t-tech-${proj.techTheme}">${proj.tech}</span>
         </div>
-        <div class="proj-desc">${proj.description}</div>
-        <div class="proj-links">
-          ${linksHTML}
-        </div>
+        ${linksHTML ? `<div class="proj-links"><i class="fa-solid fa-link"></i>${linksHTML}</div>` : ''}
       </div>
     `;
   }

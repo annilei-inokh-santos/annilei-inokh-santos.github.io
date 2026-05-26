@@ -32,129 +32,26 @@ html, body {
   scroll-padding-top: 80px;
 }
 
+
 /* ============================================================
-   2.1 SELECTIVE SELECT DISABLE - Professional Portfolio Standard
+   2.1 TEXT SIZE SCALING
    ============================================================ */
-
-/* Disable selection on decorative/structural elements */
-.hero .eyebrow,
-.sec-label,
-.cta-hint,
-.exp-date-tag,
-.proj-tag,
-.sig,
-.build-note,
-.bottom,
-.contrib-band .c-sub,
-.exp-year {
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
+html {
+  font-size: 130%;
 }
 
-/* Disable selection on badges and UI chrome */
-.exp-date-tag,
-.proj-thumbnail,
-.cta-wrap .btn,
-.link-separator {
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-}
-
-/* Allow selection on important content - TEXT THAT MATTERS */
-.hero-desc,
-.exp-desc,
-.proj-desc,
-h1,
-.exp-role,
-.exp-place,
-.proj-name,
-.c-big,
-.c-big .shimmer-letter,
-.contrib-left .c-big,
-.hero-body .hero-desc,
-.proj-link,
-a:not(.proj-thumbnail-link):not(.proj-link) {
-  user-select: text;
-  -webkit-user-select: text;
-  -moz-user-select: text;
-  -ms-user-select: text;
-}
-
-/* Selective disable on labels but keep their values */
-.col-l .sec-label,
-.col-r .sec-label {
-  user-select: none;
-  -webkit-user-select: none;
-}
-
-/* Allow double-click selection on links for better UX */
-a, 
-.proj-link,
-.cta-wrap a {
-  user-select: auto;
-  -webkit-user-select: auto;
-  -moz-user-select: auto;
-  -ms-user-select: auto;
-}
-
-/* Prevent accidental selection on hover effects and icons */
-.proj-thumbnail i,
-.sig i,
-.fa, .fas, .far {
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  pointer-events: none;
-}
-
-/* Disable selection on decorative borders and separators */
-.two-col,
-.contrib-band,
-.hero-body {
-  user-select: none;
-}
-
-/* Professional touch: allow text selection on footer content but not on badges */
-.bottom .sig-row {
-  user-select: none;
-}
-
-.bottom .build-note {
-  user-select: none;
-}
-
-/* Email and contact info remain selectable */
-a[href^="mailto"],
-a[href^="tel"],
-.c-sub a {
-  user-select: text !important;
-  -webkit-user-select: text !important;
-}
-
-/* Responsive considerations */
 @media (max-width: 768px) {
-  /* Maintain same rules on mobile - professionalism across devices */
-  .exp-date-tag,
-  .proj-tag,
-  .sig,
-  .build-note {
-    user-select: none;
-    -webkit-user-select: none;
+  html {
+    font-size: 145%;
   }
 }
 
-/* Override for any accidental disabling on key content */
-.proj-desc,
-.exp-desc,
-.hero-desc {
-  user-select: text !important;
-  -webkit-user-select: text !important;
+@media (max-width: 480px) {
+  html {
+    font-size: 145%;
+  }
 }
+
 
 /* ============================================================
    3. CSS VARIABLES — THEMES
@@ -394,25 +291,81 @@ h1 em {
 
 
 /* ============================================================
-   9. COMPONENTS — Experience Items (UPDATED: Role color matches project name)
+   9. COMPONENTS — Experience Items (Date tag at bottom)
    ============================================================ */
+
 .exp-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
   padding: 16px 0;
   border-bottom: 0.5px solid var(--border2);
 }
-.exp-item:first-of-type { padding-top: 0; }
-.exp-item:last-child { margin-bottom: 0; }
 
-.exp-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 6px;
-  flex-wrap: wrap;
-  gap: 8px;
+.exp-item:first-of-type { 
+  padding-top: 0; 
 }
 
-/* UPDATED: Experience role now uses --head color (same as proj-name) */
+.exp-item:last-child { 
+  margin-bottom: 0; 
+}
+
+.exp-logo-wrap {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  border: 0.5px solid var(--border);
+  background: var(--bg2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.exp-logo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 4px;
+  filter: grayscale(20%);
+  transition: filter 0.2s ease;
+}
+
+.exp-item:hover .exp-logo-wrap img {
+  filter: grayscale(0%);
+}
+
+.exp-logo-wrap .exp-logo-fallback {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--txt3);
+  text-align: center;
+  letter-spacing: 0.05em;
+  line-height: 1.1;
+  padding: 2px;
+}
+
+.exp-body {
+  flex: 1;
+  min-width: 0;
+}
+
+/* exp-top now only contains the role group */
+.exp-top {
+  margin-bottom: 8px;
+}
+
+/* Role and company link grouped together */
+.exp-role-group {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+}
+
+/* Role styling */
 .exp-role {
   font-size: 0.875rem;
   font-weight: 600;
@@ -422,36 +375,23 @@ h1 em {
   margin-bottom: 0;
 }
 
-.exp-year {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.625rem;
-  color: var(--txt3);
-  background: var(--bg2);
-  padding: 2px 8px;
-  border-radius: 4px;
-}
-
-/* UPDATED: Company name styling - matches previous exp-place but refined */
+/* Company link styling */
 .exp-place {
   font-size: 0.78125rem;
   font-weight: 400;
-  color: var(--txt2);
+  color: var(--violet);
   font-family: 'Outfit', sans-serif;
   letter-spacing: normal;
-  margin-bottom: 8px;
-}
-
-.exp-place a {
-  color: var(--violet);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
-.exp-place a:hover {
+.exp-place:hover {
   color: var(--link-hover);
   text-decoration: underline;
 }
 
+/* Description */
 .exp-desc {
   font-size: 0.78125rem;
   color: var(--txt2);
@@ -459,7 +399,7 @@ h1 em {
   line-height: 1.65;
 }
 
-/* Experience Date Tags - keeping as is */
+/* Date tag - now at the bottom */
 .exp-date-tag {
   font-family: 'DM Mono', monospace;
   font-size: 0.5625rem;
@@ -468,23 +408,23 @@ h1 em {
   border: 0.5px solid;
   font-weight: 500;
   white-space: nowrap;
+  display: inline-block;
 }
 
-/* Blue theme for experience dates */
+/* Date tag themes */
 .exp-date-blue {
   border-color: var(--blue-bd);
   color: var(--blue);
   background: var(--blue-bg);
 }
 
-/* Violet theme for experience dates */
 .exp-date-violet {
   border-color: var(--violet-bd);
   color: var(--violet);
   background: var(--violet-bg);
 }
 
-/* Light mode adjustments for experience dates */
+/* Light mode adjustments */
 .p.light .exp-date-blue {
   border-color: rgba(123,138,158,0.3);
   color: #7b8a9e;
@@ -497,7 +437,7 @@ h1 em {
   background: rgba(155,123,181,0.06);
 }
 
-/* Responsive experience */
+/* Responsive */
 @media (max-width: 600px) {
   .exp-role {
     font-size: 0.75rem;
@@ -518,6 +458,12 @@ h1 em {
 }
 
 @media (max-width: 480px) {
+  .exp-logo-wrap {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+  }
+  
   .exp-role {
     font-size: 0.6875rem;
   }
@@ -535,7 +481,6 @@ h1 em {
     padding: 2px 6px;
   }
 }
-
 
 /* ============================================================
    10. COMPONENTS — Project Items (UPDATED: Tags below title)
@@ -564,6 +509,7 @@ h1 em {
   gap: 8px;
   align-items: center;
   flex-wrap: wrap;
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 
@@ -956,28 +902,25 @@ h1 em {
 
 
 /* ============================================================
-   12. SECTIONS — Footer / Bottom Bar
+   12. SECTIONS — Footer / Bottom Bar (CENTER-ALIGNED)
    ============================================================ */
 .bottom {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  text-align: center;
   padding: 22px 36px 24px;
-  flex-wrap: nowrap;
   gap: 12px;
-  position: relative;
-  min-width: 0;
+  border-top: 0.5px solid var(--border);
 }
 
 .sig-row {
   display: flex;
   gap: 8px;
   align-items: center;
-  flex-wrap: nowrap;
-  flex-shrink: 1;
-  min-width: 0;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .sig {
@@ -989,24 +932,55 @@ h1 em {
   border: 0.5px solid;
   letter-spacing: 0.3px;
   white-space: nowrap;
-  flex-shrink: 0;
+  transition: all 0.2s ease;
 }
-.s-b { border-color: var(--blue-bd);   color: var(--blue);   background: var(--blue-bg); }
-.s-v { border-color: var(--violet-bd); color: var(--violet); background: var(--violet-bg); }
+
+.sig:hover {
+  transform: translateY(-1px);
+}
+
+.s-b { 
+  border-color: var(--blue-bd);   
+  color: var(--blue);   
+  background: var(--blue-bg); 
+}
+
+.s-v { 
+  border-color: var(--violet-bd); 
+  color: var(--violet); 
+  background: var(--violet-bg); 
+}
 
 .build-note {
   font-family: 'DM Mono', monospace;
   font-size: 0.59375rem;
   color: var(--txt3);
   letter-spacing: 0.2px;
-  white-space: nowrap;
-  flex-shrink: 0;
+  font-weight: 400;
 }
 
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+  .bottom {
+    padding: 18px 30px 20px;
+    gap: 10px;
+  }
+  
+  .sig {
+    font-size: 0.5625rem;
+    padding: 4px 9px;
+  }
+  
+  .build-note {
+    font-size: 0.5625rem;
+  }
+}
+
+/* Mobile (≤768px) */
 @media (max-width: 768px) {
   .bottom {
-    padding: 14px 20px;
-    gap: 8px;
+    padding: 16px 24px 18px;
+    gap: 10px;
   }
   
   .sig {
@@ -1015,7 +989,7 @@ h1 em {
   }
   
   .sig-row {
-    gap: 5px;
+    gap: 6px;
   }
   
   .build-note {
@@ -1023,21 +997,46 @@ h1 em {
   }
 }
 
+/* Small Mobile (≤550px) */
 @media (max-width: 550px) {
   .bottom {
-    justify-content: flex-start;
-    gap: 10px;
+    padding: 14px 20px 16px;
+    gap: 8px;
   }
   
-  .sig-row {
-    flex-shrink: 0;
+  .sig {
+    font-size: 0.5rem;
+    padding: 3px 8px;
   }
   
   .build-note {
-    flex-shrink: 0;
+    font-size: 0.5rem;
+    white-space: normal;
+    max-width: 90%;
   }
 }
 
+/* Very Small Devices (≤380px) */
+@media (max-width: 380px) {
+  .bottom {
+    padding: 12px 16px;
+    gap: 8px;
+  }
+  
+  .sig {
+    font-size: 0.4375rem;
+    padding: 2px 6px;
+  }
+  
+  .sig-row {
+    gap: 5px;
+  }
+  
+  .build-note {
+    font-size: 0.4375rem;
+    line-height: 1.4;
+  }
+}
 
 /* ============================================================
    13. MEDIA QUERIES — Tablet & Mobile Optimization
@@ -1231,4 +1230,124 @@ h1 em {
 
 .content-wrapper {
   padding: 0;
+}
+
+/* ============================================================
+   14. SELECTIVE USER SELECT — RECRUITER HIGHLIGHT MODE (FIXED)
+   ============================================================ */
+
+/* STEP 1: Make EVERYTHING unselectable by default */
+.p, 
+.p *,
+body *,
+html * {
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+}
+
+/* STEP 2: Explicitly allow selection ONLY on recruiter-important items */
+.exp-item,
+.exp-item *,
+.proj-item,
+.proj-item *,
+.hero-desc,
+.hero-desc *,
+.c-big,
+.c-big *,
+.cta,
+.cta *,
+.exp-place,
+.exp-place *,
+.exp-role,
+.exp-role *,
+.proj-name,
+.proj-name *,
+.proj-desc,
+.proj-desc *,
+.exp-desc,
+.exp-desc *,
+.proj-link,
+.proj-link *,
+.exp-date-tag,
+.exp-date-tag *,
+.proj-tag,
+.proj-tag *,
+.sig,
+.sig *,
+.build-note,
+.build-note *,
+.eyebrow,
+.eyebrow * {
+  user-select: text !important;
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  -ms-user-select: text !important;
+}
+
+/* STEP 3: Explicitly BLOCK selection on decorative/label elements */
+.exp-logo-wrap,
+.exp-logo-wrap *,
+.proj-thumbnails,
+.proj-thumbnails *,
+.sec-label,
+.sec-label *,
+.cta-hint,
+.cta-hint *,
+.orb,
+[class*="orb"],
+.contrib-left .c-sub,
+.contrib-left .c-sub *,
+.bottom .sig-row .sig:not(.s-b):not(.s-v) {
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+}
+
+/* Visual feedback for selected recruiter content */
+.exp-item::selection,
+.exp-item *::selection,
+.proj-item::selection,
+.proj-item *::selection,
+.hero-desc::selection,
+.c-big::selection,
+.exp-role::selection,
+.proj-name::selection,
+.exp-desc::selection,
+.proj-desc::selection {
+  background: var(--blue) !important;
+  color: var(--bg) !important;
+  text-shadow: none !important;
+}
+
+/* Special violet accent for key titles */
+.exp-role::selection,
+.proj-name::selection,
+.c-big::selection {
+  background: var(--violet) !important;
+  color: var(--bg) !important;
+}
+
+/* Link selections */
+a::selection,
+.proj-link::selection,
+.exp-place::selection {
+  background: var(--link) !important;
+  color: var(--bg) !important;
+}
+
+/* Light mode adjustments */
+.p.light .exp-item::selection,
+.p.light .proj-item::selection,
+.p.light .hero-desc::selection {
+  background: var(--violet) !important;
+  color: var(--bg) !important;
+}
+
+.p.light .exp-role::selection,
+.p.light .proj-name::selection {
+  background: var(--blue) !important;
+  color: var(--bg) !important;
 }
