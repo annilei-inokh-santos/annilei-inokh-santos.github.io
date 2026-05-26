@@ -357,6 +357,241 @@ nav {
 }
 
 /* ============================================================
+   EXPERIENCE ITEMS WITH COMPANY LOGOS AT TOP-LEFT (FLEXBOX)
+   ============================================================ */
+
+.exp-item {
+  padding: 16px 0;
+  border-bottom: 0.5px solid var(--border2);
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start; /* Keeps everything at the top */
+  gap: 16px;
+}
+
+.exp-item:first-of-type { padding-top: 0; }
+.exp-item:last-child { margin-bottom: 0; }
+
+/* Company Logo Container */
+.exp-logo {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: flex-start; /* Changed from 'center' to 'flex-start' */
+  justify-content: flex-start; /* Changed from 'center' to 'flex-start' */
+}
+
+.exp-logo-img {
+  width: 100%;
+  height: auto; /* Changed from 100% to auto to maintain aspect ratio */
+  max-height: 48px; /* Prevents image from exceeding container height */
+  object-fit: contain;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+  display: block; /* Removes any inline spacing issues */
+}
+
+.exp-logo-img:hover {
+  transform: scale(1.05);
+}
+
+/* Alternative: If you want images to be full width but aligned to top */
+.exp-logo-img-full {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: top; /* Forces image to align to top */
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+.exp-logo-img-full:hover {
+  transform: scale(1.05);
+}
+
+/* Experience Content Container */
+.exp-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.exp-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* UPDATED: Experience role now uses --head color (same as proj-name) */
+.exp-role {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--head);
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: -0.2px;
+  margin-bottom: 0;
+}
+
+.exp-year {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.625rem;
+  color: var(--txt3);
+  background: var(--bg2);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* UPDATED: Company name styling - matches previous exp-place but refined */
+.exp-place {
+  font-size: 0.78125rem;
+  font-weight: 400;
+  color: var(--txt2);
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: normal;
+  margin-bottom: 8px;
+}
+
+.exp-place a {
+  color: var(--violet);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.exp-place a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+.exp-desc {
+  font-size: 0.78125rem;
+  color: var(--txt2);
+  font-weight: 300;
+  line-height: 1.65;
+}
+
+/* Experience Date Tags - keeping as is */
+.exp-date-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5625rem;
+  padding: 3px 10px;
+  border-radius: 5px;
+  border: 0.5px solid;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Blue theme for experience dates */
+.exp-date-blue {
+  border-color: var(--blue-bd);
+  color: var(--blue);
+  background: var(--blue-bg);
+}
+
+/* Violet theme for experience dates */
+.exp-date-violet {
+  border-color: var(--violet-bd);
+  color: var(--violet);
+  background: var(--violet-bg);
+}
+
+/* Light mode adjustments for experience dates */
+.p.light .exp-date-blue {
+  border-color: rgba(123,138,158,0.3);
+  color: #7b8a9e;
+  background: rgba(123,138,158,0.08);
+}
+
+.p.light .exp-date-violet {
+  border-color: rgba(155,123,181,0.25);
+  color: #9b7bb5;
+  background: rgba(155,123,181,0.06);
+}
+
+/* Optional: Add a fallback for missing logos */
+.exp-logo-placeholder {
+  width: 100%;
+  height: 100%;
+  background: var(--bg2);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--txt3);
+  font-size: 1.25rem;
+}
+
+/* Responsive experience with logos */
+@media (max-width: 600px) {
+  .exp-item {
+    gap: 12px;
+  }
+  
+  .exp-logo {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .exp-logo-img {
+    max-height: 40px;
+  }
+  
+  .exp-role {
+    font-size: 0.75rem;
+  }
+  
+  .exp-place {
+    font-size: 0.6875rem;
+  }
+  
+  .exp-desc {
+    font-size: 0.6875rem;
+  }
+  
+  .exp-date-tag {
+    font-size: 0.5rem;
+    padding: 2px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .exp-item {
+    gap: 10px;
+  }
+  
+  .exp-logo {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .exp-logo-img {
+    max-height: 32px;
+  }
+  
+  .exp-role {
+    font-size: 0.6875rem;
+  }
+  
+  .exp-place {
+    font-size: 0.625rem;
+  }
+  
+  .exp-desc {
+    font-size: 0.625rem;
+  }
+  
+  .exp-date-tag {
+    font-size: 0.4375rem;
+    padding: 2px 6px;
+  }
+}
+
+/* ============================================================
    RESPONSIVE - NO WHITE LINE ON MOBILE
    ============================================================ */
 @media (max-width: 768px) {
@@ -564,4 +799,4 @@ nav.nav-scrolled {
   nav.nav-scrolled {
     padding: 8px 16px;
   }
-} 
+}

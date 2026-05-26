@@ -32,26 +32,129 @@ html, body {
   scroll-padding-top: 80px;
 }
 
-
 /* ============================================================
-   2.1 TEXT SIZE SCALING
+   2.1 SELECTIVE SELECT DISABLE - Professional Portfolio Standard
    ============================================================ */
-html {
-  font-size: 130%;
+
+/* Disable selection on decorative/structural elements */
+.hero .eyebrow,
+.sec-label,
+.cta-hint,
+.exp-date-tag,
+.proj-tag,
+.sig,
+.build-note,
+.bottom,
+.contrib-band .c-sub,
+.exp-year {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
+/* Disable selection on badges and UI chrome */
+.exp-date-tag,
+.proj-thumbnail,
+.cta-wrap .btn,
+.link-separator {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Allow selection on important content - TEXT THAT MATTERS */
+.hero-desc,
+.exp-desc,
+.proj-desc,
+h1,
+.exp-role,
+.exp-place,
+.proj-name,
+.c-big,
+.c-big .shimmer-letter,
+.contrib-left .c-big,
+.hero-body .hero-desc,
+.proj-link,
+a:not(.proj-thumbnail-link):not(.proj-link) {
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+}
+
+/* Selective disable on labels but keep their values */
+.col-l .sec-label,
+.col-r .sec-label {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Allow double-click selection on links for better UX */
+a, 
+.proj-link,
+.cta-wrap a {
+  user-select: auto;
+  -webkit-user-select: auto;
+  -moz-user-select: auto;
+  -ms-user-select: auto;
+}
+
+/* Prevent accidental selection on hover effects and icons */
+.proj-thumbnail i,
+.sig i,
+.fa, .fas, .far {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  pointer-events: none;
+}
+
+/* Disable selection on decorative borders and separators */
+.two-col,
+.contrib-band,
+.hero-body {
+  user-select: none;
+}
+
+/* Professional touch: allow text selection on footer content but not on badges */
+.bottom .sig-row {
+  user-select: none;
+}
+
+.bottom .build-note {
+  user-select: none;
+}
+
+/* Email and contact info remain selectable */
+a[href^="mailto"],
+a[href^="tel"],
+.c-sub a {
+  user-select: text !important;
+  -webkit-user-select: text !important;
+}
+
+/* Responsive considerations */
 @media (max-width: 768px) {
-  html {
-    font-size: 145%;
+  /* Maintain same rules on mobile - professionalism across devices */
+  .exp-date-tag,
+  .proj-tag,
+  .sig,
+  .build-note {
+    user-select: none;
+    -webkit-user-select: none;
   }
 }
 
-@media (max-width: 480px) {
-  html {
-    font-size: 145%;
-  }
+/* Override for any accidental disabling on key content */
+.proj-desc,
+.exp-desc,
+.hero-desc {
+  user-select: text !important;
+  -webkit-user-select: text !important;
 }
-
 
 /* ============================================================
    3. CSS VARIABLES — THEMES
@@ -112,10 +215,6 @@ html {
   min-height: 100vh;
   transition: background 0.3s, color 0.3s;
   position: relative;
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   background: var(--bg);
   color: var(--txt);
 }
