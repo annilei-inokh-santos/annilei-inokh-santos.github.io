@@ -53,11 +53,9 @@
   
   /**
    * Sort items by ID (descending - most recent/largest ID first)
-   * Supports both numeric IDs and string IDs like "exp-1", "proj-2"
    */
   function sortByIdDescending(items) {
     return [...items].sort((a, b) => {
-      // Extract numeric part from IDs if they contain non-numeric characters
       const getNumericId = (id) => {
         if (typeof id === 'number') return id;
         const match = String(id).match(/\d+/);
@@ -66,14 +64,12 @@
       
       const aNum = getNumericId(a.id);
       const bNum = getNumericId(b.id);
-      return bNum - aNum; // Descending: larger ID first (newer items)
+      return bNum - aNum;
     });
   }
   
   /**
    * Create experience item HTML
-   * ONLY CHANGE: Date tag moved to bottom (after description)
-   * Structure and class names remain exactly the same as working reference
    */
   function createExperienceHTML(exp) {
     const locationHTML = exp.location ? ` · ${exp.location}` : '';
@@ -103,16 +99,12 @@
   }
   
   /**
-   * Create project item HTML
-   * FIXED: Displays ALL links from JSON (any number, any keys)
-   * No trailing separator
-   * UPDATED: Added target="_blank" rel="noopener noreferrer" for all project links
+   * Create project item HTML with WIP badge BEFORE project title
    */
   function createProjectHTML(proj) {
-    // Convert links object to an array of { key, label, url }
+    // Convert links object to an array
     const validLinks = [];
     
-    // Define custom labels for specific keys (optional - can be extended)
     const labelMap = {
       'liveDemo': 'Live Demo',
       'wireframe': 'Wireframe',
@@ -121,42 +113,41 @@
       'github': 'GitHub',
       'demo': 'Demo',
       'documentation': 'Docs',
-      'api': 'API',
-      'test1': 'Test 1',
-      'test2': 'Test 2',
-      'test3': 'Test 3',
-      'test4': 'Test 4'
+      'api': 'API'
     };
     
     // Loop through ALL links in the JSON
     for (const [key, url] of Object.entries(proj.links)) {
-      if (url && url.trim() !== '') {  // Only add if URL exists and is not empty
-        // Use custom label if defined, otherwise format the key name
+      if (url && url.trim() !== '') {
         let label = labelMap[key];
         if (!label) {
-          // Convert camelCase or snake_case to readable title
           label = key
-            .replace(/([A-Z])/g, ' $1')  // camelCase -> space
-            .replace(/[-_]/g, ' ')        // underscores/hyphens -> space
-            .replace(/^\w/, c => c.toUpperCase())  // Capitalize first letter
+            .replace(/([A-Z])/g, ' $1')
+            .replace(/[-_]/g, ' ')
+            .replace(/^\w/, c => c.toUpperCase())
             .trim();
         }
         
-        // UPDATED: Added target="_blank" and rel="noopener noreferrer"
         validLinks.push(`
           <a href="${url}" target="_blank" rel="noopener noreferrer" class="proj-link t-${proj.yearTheme}-link">${label}</a>
         `);
       }
     }
     
-    // Join with separators - only between links, never trailing
+    // Join with separators
     const linksHTML = validLinks.length > 0 
       ? validLinks.join('<span class="link-separator">|</span>')
       : '';
     
+    // Create WIP badge BEFORE project title if wip === true
+    const wipBadge = proj.wip ? '<span class="wip-badge">WIP</span>' : '';
+    
     return `
       <div class="proj-item" data-proj-id="${proj.id}">
-        <div class="proj-name">${proj.name}</div>
+        <div class="proj-name">
+          ${wipBadge}
+          ${proj.name}
+        </div>
         <div class="proj-desc">${proj.description}</div>
         <div class="proj-tags">
           <span class="proj-tag t-date-${proj.yearTheme}">${proj.year}</span>
@@ -198,7 +189,6 @@
     carouselTrack.innerHTML = '';
     
     if (versions && versions.length > 0) {
-      // Sort versions by ID (descending - newer versions first)
       const sortedVersions = sortByIdDescending(versions);
       sortedVersions.forEach(version => {
         carouselTrack.insertAdjacentHTML('beforeend', createVersionCardHTML(version));
@@ -212,7 +202,7 @@
   }
   
   /**
-   * Render all experience items (sorted by ID)
+   * Render all experience items
    */
   function renderExperiences(experiences) {
     const experienceContainer = document.querySelector('.col-l');
@@ -229,19 +219,17 @@
     }
     
     expContent.innerHTML = '';
-    
-    // Sort experiences by ID (descending - most recent/largest ID first)
     const sortedExperiences = sortByIdDescending(experiences);
     
     sortedExperiences.forEach(exp => {
       expContent.insertAdjacentHTML('beforeend', createExperienceHTML(exp));
     });
     
-    console.log(`Rendered ${sortedExperiences.length} experience items (sorted by ID descending)`);
+    console.log(`Rendered ${sortedExperiences.length} experience items`);
   }
   
   /**
-   * Render all project items (sorted by ID)
+   * Render all project items
    */
   function renderProjects(projects) {
     const projectsContainer = document.querySelector('.col-r');
@@ -258,15 +246,13 @@
     }
     
     projContent.innerHTML = '';
-    
-    // Sort projects by ID (descending - most recent/largest ID first)
     const sortedProjects = sortByIdDescending(projects);
     
     sortedProjects.forEach(proj => {
       projContent.insertAdjacentHTML('beforeend', createProjectHTML(proj));
     });
     
-    console.log(`Rendered ${sortedProjects.length} project items (sorted by ID descending)`);
+    console.log(`Rendered ${sortedProjects.length} project items`);
   }
   
   /**
@@ -293,7 +279,6 @@
   async function initDataLoader() {
     console.log('Data loader initializing...');
     
-    // Load portfolio data (experience & projects)
     const data = await loadPortfolioData();
     if (data.experience && data.experience.length > 0) {
       renderExperiences(data.experience);
@@ -303,20 +288,17 @@
       renderProjects(data.projects);
     }
     
-    // Load portfolio versions
     const versions = await loadPortfolioVersions();
     let versionsRendered = false;
     if (versions.versions && versions.versions.length > 0) {
       versionsRendered = renderPortfolioVersions(versions.versions);
     }
     
-    // Dispatch events after everything is loaded
     const dataLoadedEvent = new CustomEvent('portfolioDataLoaded', { 
       detail: { data, versions: versions.versions } 
     });
     document.dispatchEvent(dataLoadedEvent);
     
-    // If versions were rendered, also dispatch specific event
     if (versionsRendered && versions.versions.length > 0) {
       const versionsLoadedEvent = new CustomEvent('portfolioVersionsLoaded', { 
         detail: versions.versions 

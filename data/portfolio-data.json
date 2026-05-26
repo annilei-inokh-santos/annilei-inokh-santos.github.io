@@ -6,7 +6,7 @@
       "companyUrl": "https://www.accenture.com/ph-en",
       "role": "Academy Delegate: Cloud Elite",
       "dateTag": "Apr 2026 – Present",
-      "dateTheme": "blue",
+      "dateTheme": "violet",
       "description": "Engaged in hands-on activities and guided learning sessions on cloud computing fundamentals, enterprise systems, and cloud workflows.",
       "logo": "assets/logos/Accenture-2026.jpg",
       "logoFallback": "ACC",
@@ -18,7 +18,7 @@
       "companyUrl": "https://www.accenture.com/ph-en",
       "role": "Microsoft AppDev OJT Trainee",
       "dateTag": "Feb – Apr 2026",
-      "dateTheme": "violet",
+      "dateTheme": "blue",
       "description": "Explored prompt engineering, GitHub Copilot, Microsoft Azure, and Amazon Web Services (AWS) within application development and cloud environments.",
       "logo": "assets/logos/Accenture-2026.jpg",
       "logoFallback": "ACC",
@@ -27,39 +27,69 @@
   ],
   "projects": [
     {
-      "id": 3,
+      "id": 4,
       "name": "Creative Minds — Creative Collaboration Platform",
       "year": "2026",
       "yearTheme": "violet",
       "tech": "PHP · CSS · JS · GitHub · Render",
       "techTheme": "violet",
       "description": "A rebranded creative platform evolved from the 2024 BASS Website academic project. Core components: user profiles, project galleries, hero sections, highlights, about section, and collaborator directories.",
+      "wip": true,
       "links": {
         " ": ""
       }
     },
     {
-      "id": 2,
+      "id": 3,
       "name": "Enhanced WIRE System — STI College Ortigas-Cainta",
       "year": "2025",
       "yearTheme": "blue",
       "tech": "HTML · CSS · JavaScript · Figma · GitHub · Render",
       "techTheme": "blue",
       "description": "Developed a user-centered web application using HTML, CSS, and JavaScript with UI enhancements such as dark/light mode, conducted UX wireframing in Figma, and performed cross-browser testing for a thesis-capstone project.",
+      "wip": false,
       "links": {
         " ": ""
       }
     },
     {
-      "id": 1,
+      "id": 2,
       "name": "BASS Website",
       "year": "2024",
-      "yearTheme": "violet",
+      "yearTheme": "blue",
       "tech": "PHP · CSS",
-      "techTheme": "violet",
+      "techTheme": "blue",
       "description": "A centralized web platform for STI College branches, showcasing available merchandise (prowears), student organizations, and inter-branch sports events.",
+      "wip": false,
       "links": {
         "Wireframe": "https://www.figma.com/proto/Vo7dIhB2gD61XEbEDaj9y4/BASS-Website?node-id=9-260&starting-point-node-id=9%3A260&t=jc8lJDTRugzwxkSI-1"
+      }
+    },
+    {
+      "id": 1,
+      "name": "Roblox Game Archive — Curated Collection",
+      "year": "2024",
+      "yearTheme": "blue",
+      "tech": "HTML · CSS · JavaScript · GitHub",
+      "techTheme": "blue",
+      "description": "A curated archive of hand-picked Roblox games with persistent favorites, dynamic filtering, and a sleek dark-themed interface. Demonstrates client-side state management and responsive design.",
+      "wip": false,
+      "links": {
+        "Live Demo": "https://annilei-inokh-santos.github.io/rbx-archive/"
+      }
+    },
+    {
+      "id": 0,
+      "name": "Early Web Experiments",
+      "year": "2020–2021",
+      "yearTheme": "blue",
+      "tech": "HTML · CSS · JS",
+      "techTheme": "blue",
+      "description": "Early academic projects including a fan blog and lyrics website. Revised in 2026. Demonstrates foundational HTML/CSS/JS skills and design consistency over time.",
+      "wip": false,
+      "links": {
+        "Fan Blog": "https://annilei-inokh-santos.github.io/previous-versions/2020/project/skz-blog.html",
+        "Lyrics Site": "https://annilei-inokh-santos.github.io/previous-versions/2021/v1/projects/skz-levanter.html"
       }
     }
   ]

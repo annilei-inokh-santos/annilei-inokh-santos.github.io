@@ -1,0 +1,9 @@
+Copyright (c) 2026 Annilei Inokh C. Santos. All rights reserved.
+
+This repository contains the source code and design assets for my personal creative portfolio. 
+
+Unauthorized copying, distribution, modification, or public hosting of this code, 
+graphics, and assets is strictly prohibited. 
+
+Forks created on GitHub are permitted solely for personal viewing and review 
+purposes in alignment with GitHub's Terms of Service. All other rights reserved.

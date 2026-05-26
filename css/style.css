@@ -1351,3 +1351,26 @@ a::selection,
   background: var(--blue) !important;
   color: var(--bg) !important;
 }
+
+/* ============================================================
+   WIP BADGE STYLES — Violet Theme (Creative/In-Progress)
+   ============================================================ */
+.wip-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5625rem;
+  padding: 2px 8px;
+  border-radius: 5px;
+  background: var(--violet-bg);
+  border: 0.5px solid var(--violet-bd);
+  color: var(--violet);
+  margin-right: 10px;
+  vertical-align: middle;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  display: inline-block;
+  white-space: nowrap;
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* Light mode automatically inherits violet from :root */
