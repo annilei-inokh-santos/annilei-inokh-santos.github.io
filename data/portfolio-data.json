@@ -27,11 +27,11 @@
   ],
   "projects": [
     {
-      "id": 4,
+      "id": 5,
       "name": "Creative Minds — Creative Collaboration Platform",
       "year": "2026",
       "yearTheme": "violet",
-      "tech": "PHP · CSS · JS · GitHub · Render",
+      "tech": "PHP · CSS · JS · GitHub · Render (In Progress)",
       "techTheme": "violet",
       "description": "A rebranded creative platform evolved from the 2024 BASS Website academic project. Core components: user profiles, project galleries, hero sections, highlights, about section, and collaborator directories.",
       "wip": true,
@@ -40,7 +40,7 @@
       }
     },
     {
-      "id": 3,
+      "id": 4,
       "name": "Enhanced WIRE System — STI College Ortigas-Cainta",
       "year": "2025",
       "yearTheme": "blue",
@@ -50,6 +50,19 @@
       "wip": false,
       "links": {
         " ": ""
+      }
+    },
+    {
+      "id": 3,
+      "name": "SideQuest — Freelancing Platform Concept",
+      "year": "2025",
+      "yearTheme": "violet",
+      "tech": "Figma · HTML/CSS/JS/JSON (In Progress)",
+      "techTheme": "violet",
+      "description": "Academic business plan project where I served as Technology Officer. Prepared a partial UI/UX wireframe for a student-to-client freelancing platform. Currently building a functional prototype as a personal technical exercise.",
+      "wip": true,
+      "links": {
+        "Wireframe": "https://www.figma.com/proto/N9XCvSPu5HavATwqv8xFtt/SideQuest-Wireframe?node-id=11-2&p=f&t=pa9uumqD9F4sU64I-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=11%3A2"
       }
     },
     {
@@ -75,21 +88,21 @@
       "description": "A curated archive of hand-picked Roblox games with persistent favorites, dynamic filtering, and a sleek dark-themed interface. Demonstrates client-side state management and responsive design.",
       "wip": false,
       "links": {
-        "Live Demo": "https://annilei-inokh-santos.github.io/rbx-archive/"
+        "Visit Website": "https://annilei-inokh-santos.github.io/rbx-archive/"
       }
     },
     {
       "id": 0,
       "name": "Early Web Experiments",
-      "year": "2020–2021",
+      "year": "2021",
       "yearTheme": "blue",
       "tech": "HTML · CSS · JS",
       "techTheme": "blue",
       "description": "Early academic projects including a fan blog and lyrics website. Revised in 2026. Demonstrates foundational HTML/CSS/JS skills and design consistency over time.",
       "wip": false,
       "links": {
-        "Fan Blog": "https://annilei-inokh-santos.github.io/previous-versions/2020/project/skz-blog.html",
-        "Lyrics Site": "https://annilei-inokh-santos.github.io/previous-versions/2021/v1/projects/skz-levanter.html"
+        "Visit Blog": "https://annilei-inokh-santos.github.io/previous-versions/2020/project/skz-blog.html",
+        "View Lyrics": "https://annilei-inokh-santos.github.io/previous-versions/2021/v1/projects/skz-levanter.html"
       }
     }
   ]
