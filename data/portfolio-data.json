@@ -7,7 +7,7 @@
       "role": "Academy Delegate: Cloud Elite",
       "dateTag": "Apr – Jul 2026",
       "dateTheme": "blue",
-      "description": "Engaged in hands-on activities and guided learning sessions on cloud computing fundamentals, enterprise systems, and cloud workflows.",
+      "description": "Engaged in guided learning sessions and practical applications centered on modern software architectures, cloud-integrated workflows, and collaborative system development.",
       "logo": "assets/logos/Accenture-2026.jpg",
       "logoFallback": "ACC",
       "location": "Mandaluyong City"
@@ -19,7 +19,7 @@
       "role": "Microsoft AppDev OJT Trainee",
       "dateTag": "Feb – May 2026",
       "dateTheme": "blue",
-      "description": "Explored prompt engineering, GitHub Copilot, Microsoft Azure, and Amazon Web Services (AWS) within application development and cloud environments.",
+      "description": "Gained hands-on exposure to cloud platform ecosystems, automated development workflows, and prompt architecture within software engineering frameworks.",
       "logo": "assets/logos/Accenture-2026.jpg",
       "logoFallback": "ACC",
       "location": "Mandaluyong City"
