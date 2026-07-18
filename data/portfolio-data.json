@@ -27,6 +27,19 @@
   ],
   "projects": [
     {
+      "id": 6,
+      "name": "OrderGuard: AI-Powered Fraud Triage System — Accenture",
+      "year": "2026",
+      "yearTheme": "blue",
+      "tech": "Figma · Canva (Design) · Discord (Collaboration)",
+      "techTheme": "blue",
+      "description": "Collaborated on optimizing the visual identity and UI layout for an AI-powered retail fraud command center. Refined complex dashboard wireframes in Figma based on initial concepts, coordinating style tweaks with co￾designers to ensure a clean, user-centric analyst interface.",
+      "wip": false,
+      "links": {
+        "Live Demo": "https://fe-order-guard.vercel.app/"
+      }
+    },
+    {
       "id": 5,
       "name": "Creative Minds — Creative Collaboration Platform",
       "year": "2026",
@@ -41,10 +54,10 @@
     },
     {
       "id": 4,
-      "name": "Enhanced WIRE System — STI College Ortigas-Cainta",
+      "name": "Web-Based Enhanced WIRE System — STI College",
       "year": "2025",
       "yearTheme": "blue",
-      "tech": "HTML · CSS · JavaScript · Figma · GitHub · Render",
+      "tech": "HTML · CSS · JavaScript · Figma · GitHub · Render · Discord",
       "techTheme": "blue",
       "description": "Developed a user-centered web application using HTML, CSS, and JavaScript with UI enhancements such as dark/light mode, conducted UX wireframing in Figma, and performed cross-browser testing for a thesis-capstone project.",
       "wip": false,
